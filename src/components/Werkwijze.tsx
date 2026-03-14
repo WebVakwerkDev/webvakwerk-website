@@ -4,7 +4,7 @@ const steps = [
   {
     number: "01",
     title: "Korte intake",
-    description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren. Dat kan kort en concreet.",
+    description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren.",
     accent: true,
   },
   {
@@ -15,12 +15,12 @@ const steps = [
   {
     number: "03",
     title: "Akkoord & betaling",
-    description: "Na akkoord werken we alles strak af: inhoud, techniek, mobiel en conversie.",
+    description: "Na akkoord maken we de website af en zetten we alles goed klaar voor livegang.",
   },
   {
     number: "04",
     title: "Live & overdracht",
-    description: "Daarna gaat de site live. Hosting kunnen wij regelen of we leveren alles over aan jouw partij.",
+    description: "Na oplevering kies je zelf: hosting via ons of overdracht naar je eigen IT-partij of hostingprovider.",
   },
 ];
 
