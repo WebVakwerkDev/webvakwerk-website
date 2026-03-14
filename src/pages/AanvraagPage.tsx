@@ -113,7 +113,13 @@ const AanvraagPage = () => {
     setErrorMessage("");
 
     try {
-      await submitDemoRequest(payload, files);
+      const submitPayload: DemoRequestPayload = {
+        ...payload,
+        reasonForRequest: payload.reasonForRequest || "Niet ingevuld (verkort aanvraagformulier)",
+        desiredOutcome: payload.desiredOutcome || "Niet ingevuld (verkort aanvraagformulier)",
+      };
+
+      await submitDemoRequest(submitPayload, files);
       setIsSuccess(true);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "De aanvraag kon niet worden verstuurd.");
@@ -322,20 +328,6 @@ const AanvraagPage = () => {
                   <Field label="Uploads" helper="Logo&apos;s, foto&apos;s, iconen, PDF-briefing en overige relevante bestanden.">
                     <Input type="file" multiple onChange={(event) => setFiles(Array.from(event.target.files || []))} />
                   </Field>
-                  <Field label="Waarom willen jullie een nieuwe website of demo?">
-                    <Textarea value={payload.reasonForRequest} onChange={(event) => updateField("reasonForRequest", event.target.value)} />
-                  </Field>
-                  <Field label="Wat hopen jullie ermee te bereiken?">
-                    <Textarea value={payload.desiredOutcome} onChange={(event) => updateField("desiredOutcome", event.target.value)} />
-                  </Field>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Deadline / gewenste periode">
-                      <Input value={payload.deadline} onChange={(event) => updateField("deadline", event.target.value)} />
-                    </Field>
-                    <Field label="Indicatie van budget of investeringsbereidheid">
-                      <Input value={payload.budgetIndication} onChange={(event) => updateField("budgetIndication", event.target.value)} />
-                    </Field>
-                  </div>
                 </SectionCard>
               ) : null}
 

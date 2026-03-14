@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Webvakwerk social preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ef" />
+      <stop offset="0.6" stop-color="#fde8da" />
+      <stop offset="1" stop-color="#f7d7c0" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f38b53" />
+      <stop offset="1" stop-color="#c55624" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1030" cy="115" r="180" fill="#ffffff" opacity="0.7" />
+  <circle cx="140" cy="540" r="220" fill="#ffffff" opacity="0.5" />
+
+  <rect x="92" y="84" width="120" height="120" rx="30" fill="url(#accent)" />
+  <path d="M120 117h15l8 36 9-25h12l9 25 8-36h15l-17 52h-12l-8-23-8 23h-12z" fill="#ffffff" />
+
+  <text x="92" y="300" fill="#1c2031" font-family="DM Sans, Arial, sans-serif" font-size="64" font-weight="700">Webvakwerk</text>
+  <text x="92" y="372" fill="#31374f" font-family="DM Sans, Arial, sans-serif" font-size="42" font-weight="500">Websites op maat voor ondernemers</text>
+  <text x="92" y="442" fill="#4d556f" font-family="DM Sans, Arial, sans-serif" font-size="30">Strategie, design en bouw die resultaat oplevert.</text>
+</svg>
