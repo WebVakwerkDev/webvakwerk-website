@@ -135,7 +135,7 @@ const AanvraagPage = () => {
               Gratis demo-aanvraag
             </span>
             <h1 className="mt-6 max-w-3xl font-syne text-4xl font-extrabold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-              Vraag een serieuze demo-website aan in exact dezelfde Webvakwerk-aanpak.
+              Vraag een demo-website aan.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
               Deze intake is bedoeld voor bedrijven die echt willen zien wat wij voor hun website kunnen neerzetten.
@@ -161,7 +161,7 @@ const AanvraagPage = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary">Aanvraagflow</p>
-                <h2 className="mt-2 font-syne text-2xl font-extrabold">Wat je kunt verwachten</h2>
+                <h2 className="mt-2 font-syne text-2xl font-extrabold">Wat wij van je nodig hebbens</h2>
               </div>
               <span className="rounded-full bg-secondary px-4 py-1 text-sm font-bold text-foreground">
                 {currentStep + 1}/{steps.length}
