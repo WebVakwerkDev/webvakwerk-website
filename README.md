@@ -64,31 +64,60 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
-## Run with Docker
+## Local Development
 
-This project can also run as a standalone Docker container.
-
-Build and run with Docker:
+Run the public website:
 
 ```sh
-docker build -t webvakwerk-demo-builder .
-docker run --rm -p 8080:80 webvakwerk-demo-builder
+npm run dev
 ```
 
-Or use Docker Compose:
+Run the internal portal:
+
+```sh
+npm run portal:dev
+```
+
+Run the API:
+
+```sh
+npm run api:dev
+```
+
+Local URLs:
+
+- public website: `http://localhost:8080`
+- portal: `http://localhost:8081`
+- API: `http://localhost:3001`
+
+Generate a password hash for internal users:
+
+```sh
+npm run hash:password -- "sterk-wachtwoord"
+```
+
+## Docker Setup
+
+This project now runs as separate services:
+
+- public website
+- internal portal
+- API
+- PostgreSQL
+- reverse proxy
+
+Start everything:
 
 ```sh
 docker compose up --build
 ```
 
-Open `http://localhost:8080`.
+For local host-based testing through the reverse proxy, use:
 
-The Docker image uses a multi-stage build:
+- `http://webvakwerk.localtest.me:8080`
+- `http://portal.webvakwerk.localtest.me:8080`
 
-- `node:20-alpine` to build the Vite app
-- `nginx:1.27-alpine` to serve the static files
-
-The Nginx config includes SPA fallback to `index.html`, so React Router routes keep working after refresh.
+Both hosts route through the reverse proxy container. The API itself is only available internally in Docker.
 
 ## Can I connect a custom domain to my Lovable project?
 

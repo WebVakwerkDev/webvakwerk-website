@@ -2,6 +2,7 @@
 .gitignore
 node_modules
 dist
+portal-dist
 dist-ssr
 npm-debug.log*
 yarn-debug.log*
@@ -11,3 +12,4 @@ lerna-debug.log*
 .DS_Store
 .vscode
 .idea
+storage

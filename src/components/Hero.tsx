@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => (
   <section className="relative pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
@@ -20,14 +21,18 @@ const Hero = () => (
           Snel gebouwd, technisch goed en gericht op duidelijkheid en vindbaarheid.
         </p>
         <div className="flex flex-wrap gap-4">
-          <motion.a
-            href="#contact"
+          <motion.div
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold transition-colors hover:opacity-90"
+            className="inline-block"
           >
-            Gratis demo aanvragen
-          </motion.a>
+            <Link
+              to="/aanvraag"
+              className="block px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold transition-colors hover:opacity-90"
+            >
+              Gratis demo aanvragen
+            </Link>
+          </motion.div>
           <motion.a
             href="#werkwijze"
             whileHover={{ y: -2 }}
