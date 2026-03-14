@@ -92,7 +92,7 @@ function LoginPage({ onLogin }: { onLogin: (user: PortalUser) => void }) {
     <main style={{ minHeight: "100vh", display: "grid", placeItems: "center", padding: 24 }}>
       <div style={{ ...cardStyle(), width: "100%", maxWidth: 560, padding: 40 }}>
         <p style={{ color: "var(--portal-primary)", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontSize: 12 }}>Interne portal</p>
-        <h1 style={{ fontFamily: "Syne, sans-serif", fontSize: 44, lineHeight: 1.02, margin: "14px 0 16px" }}>Inloggen op portal.webvakwerk.nl</h1>
+        <h1 style={{ fontFamily: "Syne, sans-serif", fontSize: 44, lineHeight: 1.02, margin: "14px 0 16px" }}>Inloggen op portal</h1>
         <p style={{ color: "var(--portal-muted)", marginBottom: 28 }}>
           Alleen geautoriseerde collega&apos;s hebben toegang tot tickets, uploads en interne opvolging.
         </p>
