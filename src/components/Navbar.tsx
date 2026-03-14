@@ -1,0 +1,89 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navLinks = ["Werkwijze", "Diensten", "Prijzen", "Hosting"];
+
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-foreground/5">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-2">
+          <span className="text-2xl font-extrabold tracking-tighter text-foreground font-syne">
+            Webvakwerk
+          </span>
+          <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+        </a>
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8 text-foreground font-medium">
+          {navLinks.map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="hover:text-primary transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.a
+          href="#contact"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.97 }}
+          className="hidden sm:block px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm transition-colors hover:opacity-90"
+        >
+          Gratis demo aanvragen
+        </motion.a>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden text-foreground"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Menu"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden overflow-hidden bg-background border-b border-foreground/5"
+          >
+            <div className="px-6 py-4 flex flex-col gap-4">
+              {navLinks.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-foreground font-medium hover:text-primary transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                className="mt-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm text-center"
+                onClick={() => setMobileOpen(false)}
+              >
+                Gratis demo aanvragen
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;
