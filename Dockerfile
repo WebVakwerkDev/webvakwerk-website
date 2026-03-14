@@ -8,11 +8,20 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:1.27-alpine AS runtime
+FROM node:20-alpine AS runtime
 
-COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist /usr/share/nginx/html
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3001
+ENV HOST=0.0.0.0
 
-EXPOSE 80
+COPY package.json package-lock.json ./
+RUN npm install --omit=dev
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/server ./server
+RUN mkdir -p data/uploads
+
+EXPOSE 3001
+
+CMD ["npm", "run", "start"]

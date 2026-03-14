@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
@@ -17,15 +18,19 @@ const CTA = () => {
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
           Laat zien wat je doet en wij bouwen een eerste opzet. Dan weet je snel waar je aan toe bent.
         </p>
-        <motion.a
-          href="#contact"
+        <motion.div
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90"
+          className="inline-block"
         >
-          Gratis demo aanvragen
-          <ArrowRight className="w-4 h-4" />
-        </motion.a>
+          <Link
+            to="/aanvraag"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90"
+          >
+            Gratis demo aanvragen
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );
