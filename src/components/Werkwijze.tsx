@@ -3,24 +3,24 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Kennismaking",
-    description: "Vertel wat je doet, stuur je logo en huisstijl mee. We bespreken je wensen en doelen in een kort gesprek.",
+    title: "Korte intake",
+    description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren. Dat kan kort en concreet.",
     accent: true,
   },
   {
     number: "02",
-    title: "Gratis demo",
-    description: "Wij bouwen alvast een demo die 80% klaar is. Volledig vrijblijvend — vind je het niks? Dan stop je gewoon.",
+    title: "Eerste demo",
+    description: "Wij maken een eerste versie, zodat je snel ziet hoe de site eruitziet en wat er nog aangepast moet worden.",
   },
   {
     number: "03",
     title: "Akkoord & betaling",
-    description: "Pas als je akkoord gaat betaal je. Daarna werken we de laatste 20% samen af tot het perfect is.",
+    description: "Na akkoord werken we alles strak af: inhoud, techniek, mobiel en conversie.",
   },
   {
     number: "04",
     title: "Live & overdracht",
-    description: "Tevreden? Dan zetten we je website online of leveren we alles netjes aan jou of je IT-er over.",
+    description: "Daarna gaat de site live. Hosting kunnen wij regelen of we leveren alles over aan jouw partij.",
   },
 ];
 
@@ -36,10 +36,10 @@ const Werkwijze = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
-            Van gesprek naar live website
+            Snel van idee naar live
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Geen vage trajecten. Je weet precies waar je staat — en wanneer je betaalt.
+            Kort proces, duidelijke stappen, geen onnodig gedoe.
           </p>
         </motion.div>
 

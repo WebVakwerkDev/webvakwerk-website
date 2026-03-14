@@ -40,11 +40,10 @@ const Hosting = () => {
           className="text-center mb-6"
         >
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold mb-4">
-            Wij regelen de hosting — jij hoeft nergens naar om te kijken
+            Hosting geregeld, of gewoon overdracht
           </h2>
           <p className="text-background/60 max-w-2xl mx-auto text-lg mb-16">
-            Je website moet ergens op het internet staan. Dat noemen we hosting.
-            Wij regelen dat volledig voor je — of je draagt het over aan je eigen partij.
+            Kies wat praktisch is. Wij kunnen hosting en beheer regelen, of we leveren de site op aan je eigen hoster of IT-partij.
           </p>
         </motion.div>
 

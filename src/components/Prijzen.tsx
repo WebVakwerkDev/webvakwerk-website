@@ -60,7 +60,7 @@ const Prijzen = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
-            Eerlijk en transparant
+            Duidelijke prijzen
           </h2>
         </motion.div>
 
@@ -112,7 +112,7 @@ const Prijzen = () => {
                     : "border border-foreground/15 text-foreground hover:bg-secondary"
                 }`}
               >
-                {plan.price === "Op aanvraag" ? "Neem contact op" : "Gratis demo aanvragen"}
+                {plan.price === "Op aanvraag" ? "Plan een gesprek" : "Plan een demo"}
               </a>
             </motion.div>
           ))}

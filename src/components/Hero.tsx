@@ -10,15 +10,14 @@ const Hero = () => (
         transition={{ duration: 0.6 }}
       >
         <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-          Voor starters &amp; MKB
+          Websites zonder gedoe
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-syne text-foreground leading-[1.1] mb-6 tracking-tight">
-          Jouw bedrijf verdient een{" "}
-          <span className="text-primary">echte website</span>
+          Snel een <span className="text-primary">website</span> die klanten oplevert
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-lg mb-10 font-medium leading-relaxed">
-          Wij bouwen op maat gemaakte websites voor ondernemers die net starten
-          of doorgroeien. Geen templates, geen gedoe — gewoon vakwerk.
+          Duidelijke websites voor ondernemers die online serieus genomen willen worden.
+          Snel gebouwd, technisch goed en gericht op aanvragen, bellen en nieuwe klanten.
         </p>
         <div className="flex flex-wrap gap-4">
           <motion.a
@@ -27,7 +26,7 @@ const Hero = () => (
             whileTap={{ scale: 0.97 }}
             className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold transition-colors hover:opacity-90"
           >
-            Gratis demo aanvragen
+            Plan een demo
           </motion.a>
           <motion.a
             href="#werkwijze"
@@ -72,7 +71,7 @@ const Hero = () => (
               <div>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-bold text-foreground">
-                    Demo klaar
+                    Eerste versie klaar
                   </span>
                   <span className="text-sm font-bold text-primary">80%</span>
                 </div>
@@ -94,7 +93,7 @@ const Hero = () => (
                   ✓ Content
                 </span>
                 <span className="px-3 py-1 rounded-md bg-primary/10 text-primary text-xs font-bold animate-pulse">
-                  Afwerking...
+                  Laatste check
                 </span>
               </div>
             </div>

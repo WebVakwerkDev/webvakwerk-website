@@ -5,32 +5,32 @@ const services = [
   {
     icon: Code,
     title: "Website op maat",
-    description: "Geen template, maar een website die past bij jouw bedrijf. Ontworpen en gebouwd op basis van jouw wensen.",
+    description: "Geen standaard template, maar een site die past bij je bedrijf, aanbod en doelgroep.",
   },
   {
     icon: Smartphone,
     title: "Mobiel & snel",
-    description: "Elke website werkt perfect op telefoon, tablet en desktop. Razendsnel geladen, altijd.",
+    description: "Werkt goed op mobiel, tablet en desktop en laadt snel. Dat is de basis.",
   },
   {
     icon: Search,
     title: "Gevonden worden (SEO)",
-    description: "Basisoptimalisatie zodat je goed vindbaar bent in Google. Van meta-tags tot snelle laadtijden.",
+    description: "Technische basis voor Google: goede structuur, snelle pagina's en nette metadata.",
   },
   {
     icon: Server,
     title: "Hosting & beheer",
-    description: "Wij regelen je hosting, SSL-certificaat en backups. Jij hoeft nergens naar om te kijken.",
+    description: "Hosting, SSL en backups kunnen we voor je regelen. Wil je het zelf doen, dan dragen we het over.",
   },
   {
     icon: FileText,
     title: "Content & teksten",
-    description: "Hulp nodig bij teksten? Wij denken mee over heldere, effectieve content voor je website.",
+    description: "We helpen je teksten scherper maken, zodat bezoekers snel begrijpen wat je doet en contact opnemen.",
   },
   {
     icon: ArrowRightLeft,
     title: "Overdracht op maat",
-    description: "Liever zelf beheren? We dragen alles netjes over aan jou of je IT-partner. Inclusief uitleg.",
+    description: "Liever zelf beheren? Dan leveren we alles netjes op aan jou of je vaste partij.",
   },
 ];
 
@@ -46,7 +46,7 @@ const Diensten = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
-            Alles voor jouw online aanwezigheid
+            Gewoon goed geregeld
           </h2>
         </motion.div>
 
