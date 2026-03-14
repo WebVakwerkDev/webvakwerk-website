@@ -112,7 +112,7 @@ const Prijzen = () => {
                     : "border border-foreground/15 text-foreground hover:bg-secondary"
                 }`}
               >
-                {plan.price === "Op aanvraag" ? "Plan een gesprek" : "Plan een demo"}
+                {plan.price === "Op aanvraag" ? "Plan een gesprek" : "Gratis demo aanvragen"}
               </a>
             </motion.div>
           ))}

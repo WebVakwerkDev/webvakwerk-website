@@ -26,7 +26,7 @@ const Hero = () => (
             whileTap={{ scale: 0.97 }}
             className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold transition-colors hover:opacity-90"
           >
-            Plan een demo
+            Gratis demo aanvragen
           </motion.a>
           <motion.a
             href="#werkwijze"

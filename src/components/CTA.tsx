@@ -23,7 +23,7 @@ const CTA = () => {
           whileTap={{ scale: 0.97 }}
           className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90"
         >
-          Plan een demo
+          Gratis demo aanvragen
           <ArrowRight className="w-4 h-4" />
         </motion.a>
       </motion.div>
