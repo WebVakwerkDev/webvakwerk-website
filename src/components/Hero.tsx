@@ -14,7 +14,7 @@ const Hero = () => (
           Websites zonder gedoe
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-syne text-foreground leading-[1.1] mb-6 tracking-tight">
-          Snel een <span className="text-primary">website</span> die klanten oplevert
+          Snel een <span className="text-primary">website</span> voor jou bedrijf
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-lg mb-10 font-medium leading-relaxed">
           Vakwerk websites voor ondernemers die online gevonden willen worden.
