@@ -812,7 +812,7 @@ app.get("/api/portal/tickets/:ticketId", requireSession, async (req, res) => {
     `select t.*, u.name as assigned_user_name
      from tickets t
      left join users u on u.id = t.assigned_user_id
-     where t.id = $1 or t.public_id::text = $1 or t.ticket_number = $1
+     where t.id::text = $1 or t.public_id::text = $1 or t.ticket_number = $1
      limit 1`,
     [req.params.ticketId],
   );
@@ -855,7 +855,7 @@ app.get("/api/portal/tickets/:ticketId", requireSession, async (req, res) => {
 });
 
 app.patch("/api/portal/tickets/:ticketId", requireSession, ensurePortalMutation, async (req, res) => {
-  const ticketResult = await query("select * from tickets where id = $1 or public_id::text = $1 or ticket_number = $1 limit 1", [req.params.ticketId]);
+  const ticketResult = await query("select * from tickets where id::text = $1 or public_id::text = $1 or ticket_number = $1 limit 1", [req.params.ticketId]);
   if (!ticketResult.rowCount) {
     res.status(404).send("Ticket niet gevonden.");
     return;
@@ -904,7 +904,7 @@ app.post("/api/portal/tickets/:ticketId/notes", requireSession, ensurePortalMuta
     return;
   }
 
-  const ticketResult = await query("select id from tickets where id = $1 or public_id::text = $1 or ticket_number = $1 limit 1", [req.params.ticketId]);
+  const ticketResult = await query("select id from tickets where id::text = $1 or public_id::text = $1 or ticket_number = $1 limit 1", [req.params.ticketId]);
   if (!ticketResult.rowCount) {
     res.status(404).send("Ticket niet gevonden.");
     return;
@@ -926,7 +926,7 @@ app.post("/api/portal/tickets/:ticketId/logs", requireSession, ensurePortalMutat
     return;
   }
 
-  const ticketResult = await query("select id from tickets where id = $1 or public_id::text = $1 or ticket_number = $1 limit 1", [req.params.ticketId]);
+  const ticketResult = await query("select id from tickets where id::text = $1 or public_id::text = $1 or ticket_number = $1 limit 1", [req.params.ticketId]);
   if (!ticketResult.rowCount) {
     res.status(404).send("Ticket niet gevonden.");
     return;

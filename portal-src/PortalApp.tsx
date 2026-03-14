@@ -429,14 +429,25 @@ function TicketPage({ users }: { users: PortalUser[] }) {
   const { ticketId = "" } = useParams();
   const location = useLocation();
   const [data, setData] = useState<PortalTicketDetail | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const [note, setNote] = useState("");
   const [logMessage, setLogMessage] = useState("");
   const [logType, setLogType] = useState("status");
 
   async function refresh() {
     if (!ticketId) return;
-    const detail = await portalApi.ticket(ticketId);
-    setData(detail);
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const detail = await portalApi.ticket(ticketId);
+      setData(detail);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Ticket laden mislukt.");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -445,8 +456,25 @@ function TicketPage({ users }: { users: PortalUser[] }) {
 
   const requestPayload = useMemo(() => data?.ticket.request_payload || {}, [data]);
 
-  if (!data) {
+  if (isLoading) {
     return <main style={{ maxWidth: 1360, margin: "0 auto", padding: 24 }}>Ticket laden...</main>;
+  }
+
+  if (error) {
+    return (
+      <main style={{ maxWidth: 1360, margin: "0 auto", padding: 24 }}>
+        <Link to="/dashboard" style={{ color: "var(--portal-muted)", fontWeight: 700 }}>← Terug naar dashboard</Link>
+        <div style={{ ...cardStyle(), padding: 24, marginTop: 16 }}>
+          <h1 style={{ fontFamily: "Syne, sans-serif", fontSize: 32, marginTop: 0 }}>Ticket kon niet laden</h1>
+          <p style={{ color: "var(--portal-danger)", fontWeight: 700 }}>{error}</p>
+          <button type="button" onClick={() => void refresh()} style={buttonStyle()}>Opnieuw proberen</button>
+        </div>
+      </main>
+    );
+  }
+
+  if (!data) {
+    return <main style={{ maxWidth: 1360, margin: "0 auto", padding: 24 }}>Ticket niet gevonden.</main>;
   }
 
   const ticket = data.ticket;
