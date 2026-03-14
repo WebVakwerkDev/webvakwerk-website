@@ -708,6 +708,102 @@ app.get("/api/portal/tickets", requireSession, async (req, res) => {
   res.json({ tickets: result.rows });
 });
 
+app.post("/api/portal/tickets", requireSession, ensurePortalMutation, async (req, res) => {
+  const payload = {
+    companyName: String(req.body.companyName || "").trim(),
+    contactName: String(req.body.contactName || "").trim(),
+    email: String(req.body.email || "").trim().toLowerCase(),
+    phone: String(req.body.phone || "").trim(),
+    websiteUrl: String(req.body.websiteUrl || "").trim(),
+    industry: String(req.body.industry || "").trim(),
+    region: String(req.body.region || "").trim(),
+    websiteType: String(req.body.websiteType || "bedrijfswebsite").trim(),
+    status: String(req.body.status || "Nieuw").trim(),
+    priority: String(req.body.priority || "normaal").trim(),
+    seriousness: String(req.body.seriousness || "intern").trim(),
+    visualStyle: String(req.body.visualStyle || "").trim(),
+    desiredOutcome: String(req.body.desiredOutcome || "").trim(),
+    reasonForRequest: String(req.body.reasonForRequest || "").trim(),
+    targetAudience: String(req.body.targetAudience || "").trim(),
+    companyDescription: String(req.body.companyDescription || "").trim(),
+  };
+
+  if (!payload.companyName || !payload.contactName || !payload.email) {
+    res.status(400).send("Bedrijfsnaam, contactpersoon en e-mail zijn verplicht.");
+    return;
+  }
+
+  if (!EMAIL_REGEX.test(payload.email)) {
+    res.status(400).send("Vul een geldig e-mailadres in.");
+    return;
+  }
+
+  const allowedStatuses = new Set(["Nieuw", "In review", "In behandeling", "Wacht op assets", "Wacht op klantreactie", "Demo in opbouw", "Demo verzonden", "Wacht op goedkeuring", "Afgerond", "Gesloten", "Afgewezen"]);
+  const allowedPriorities = new Set(["laag", "normaal", "hoog"]);
+  const allowedTypes = new Set(["onepager", "bedrijfswebsite", "portfolio", "landingspagina", "offertewebsite", "anders"]);
+  const allowedSeriousness = new Set(["intern", "laag", "gemiddeld", "hoog"]);
+
+  if (!allowedStatuses.has(payload.status) || !allowedPriorities.has(payload.priority) || !allowedTypes.has(payload.websiteType) || !allowedSeriousness.has(payload.seriousness)) {
+    res.status(400).send("Ongeldige ticketinstellingen.");
+    return;
+  }
+
+  const insertResult = await query(
+    `insert into tickets (
+      public_id, ticket_number, source, company_name, contact_name, email, phone, website_url,
+      industry, region, website_type, status, priority, seriousness, visual_style,
+      desired_outcome, reason_for_request, target_audience, request_payload
+    ) values (
+      $1, '', 'portal-manual', $2, $3, $4, $5, $6,
+      $7, $8, $9, $10, $11, $12, $13,
+      $14, $15, $16, $17
+    )
+    returning id`,
+    [
+      crypto.randomUUID(),
+      payload.companyName,
+      payload.contactName,
+      payload.email,
+      payload.phone,
+      payload.websiteUrl,
+      payload.industry,
+      payload.region,
+      payload.websiteType,
+      payload.status,
+      payload.priority,
+      payload.seriousness,
+      payload.visualStyle,
+      payload.desiredOutcome,
+      payload.reasonForRequest,
+      payload.targetAudience,
+      JSON.stringify({
+        companyDescription: payload.companyDescription,
+        targetAudience: payload.targetAudience,
+        visualStyle: payload.visualStyle,
+        desiredOutcome: payload.desiredOutcome,
+        reasonForRequest: payload.reasonForRequest,
+        createdFromPortal: true,
+      }),
+    ],
+  );
+
+  const ticketId = insertResult.rows[0].id;
+  const ticketNumber = `WV-${String(ticketId).padStart(5, "0")}`;
+
+  await query("update tickets set ticket_number = $1 where id = $2", [ticketNumber, ticketId]);
+  await query(
+    "insert into ticket_status_history (id, ticket_id, from_status, to_status, changed_by_user_id) values ($1, $2, $3, $4, $5)",
+    [crypto.randomUUID(), ticketId, null, payload.status, req.user.id],
+  );
+  await query(
+    "insert into ticket_logs (id, ticket_id, type, message, is_internal, created_by_user_id) values ($1, $2, $3, $4, $5, $6)",
+    [crypto.randomUUID(), ticketId, "manual-create", "Ticket handmatig aangemaakt vanuit de portal.", true, req.user.id],
+  );
+
+  await auditLog("ticket.created.manual", "ticket", String(ticketId), req.user.id, { ticketNumber });
+  res.status(201).json({ ticketId, ticketNumber });
+});
+
 app.get("/api/portal/tickets/:ticketId", requireSession, async (req, res) => {
   const ticketResult = await query(
     `select t.*, u.name as assigned_user_name

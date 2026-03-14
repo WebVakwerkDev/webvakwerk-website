@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate, Outlet, Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { portalApi, type PortalTicket, type PortalTicketDetail, type PortalUser } from "@portal/lib/api";
+import { portalApi, type ManualPortalTicketPayload, type PortalTicket, type PortalTicketDetail, type PortalUser } from "@portal/lib/api";
 
 function formatDate(value?: string) {
   if (!value) return "-";
@@ -131,30 +131,209 @@ function DashboardHome({ users }: { users: PortalUser[] }) {
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
   const [assignedUserId, setAssignedUserId] = useState("");
+  const [showManualCreate, setShowManualCreate] = useState(false);
+  const [manualError, setManualError] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
+  const [manualTicket, setManualTicket] = useState<ManualPortalTicketPayload>({
+    companyName: "",
+    contactName: "",
+    email: "",
+    phone: "",
+    websiteUrl: "",
+    industry: "",
+    region: "",
+    websiteType: "bedrijfswebsite",
+    status: "Nieuw",
+    priority: "normaal",
+    seriousness: "intern",
+    visualStyle: "",
+    desiredOutcome: "",
+    reasonForRequest: "",
+    targetAudience: "",
+    companyDescription: "",
+  });
 
-  useEffect(() => {
-    void portalApi.summary().then(setSummary);
-  }, []);
-
-  useEffect(() => {
+  async function loadDashboardData() {
     const query = new URLSearchParams();
     if (search) query.set("search", search);
     if (status) query.set("status", status);
     if (priority) query.set("priority", priority);
     if (assignedUserId) query.set("assignedUserId", assignedUserId);
-    void portalApi.tickets(query.toString() ? `?${query.toString()}` : "").then((result) => setTickets(result.tickets));
+
+    const [summaryResult, ticketsResult] = await Promise.all([
+      portalApi.summary(),
+      portalApi.tickets(query.toString() ? `?${query.toString()}` : ""),
+    ]);
+
+    setSummary(summaryResult);
+    setTickets(ticketsResult.tickets);
+  }
+
+  useEffect(() => {
+    void loadDashboardData();
   }, [search, status, priority, assignedUserId]);
 
   return (
     <main style={{ maxWidth: 1360, margin: "0 auto", padding: 24, display: "grid", gap: 24 }}>
       <section style={{ display: "grid", gap: 18 }}>
         <div style={{ ...cardStyle(), padding: 28 }}>
-          <p style={{ color: "var(--portal-primary)", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontSize: 12 }}>Dashboard</p>
-          <h1 style={{ fontFamily: "Syne, sans-serif", fontSize: 42, margin: "12px 0 8px" }}>Demo-aanvragen en tickets</h1>
-          <p style={{ color: "var(--portal-muted)", maxWidth: 780 }}>
-            Nieuwe demo-aanvragen komen hier automatisch binnen als ticket. Vanuit hier kun je status, eigenaar, notities en opvolging beheren.
-          </p>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", gap: 20 }}>
+            <div>
+              <p style={{ color: "var(--portal-primary)", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontSize: 12 }}>Dashboard</p>
+              <h1 style={{ fontFamily: "Syne, sans-serif", fontSize: 42, margin: "12px 0 8px" }}>Demo-aanvragen en tickets</h1>
+              <p style={{ color: "var(--portal-muted)", maxWidth: 780 }}>
+                Nieuwe demo-aanvragen komen hier automatisch binnen als ticket. Vanuit hier kun je status, eigenaar, notities en opvolging beheren.
+              </p>
+            </div>
+            <button type="button" onClick={() => setShowManualCreate((current) => !current)} style={buttonStyle(showManualCreate ? "secondary" : "primary")}>
+              {showManualCreate ? "Formulier sluiten" : "Handmatig ticket"}
+            </button>
+          </div>
         </div>
+
+        {showManualCreate ? (
+          <div style={{ ...cardStyle(), padding: 24 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 20, alignItems: "center" }}>
+              <div>
+                <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: 28, margin: 0 }}>Handmatig ticket aanmaken</h2>
+                <p style={{ color: "var(--portal-muted)", margin: "8px 0 0" }}>
+                  Gebruik dit voor telefonische aanvragen, losse leads of interne intake die niet via het publieke formulier zijn binnengekomen.
+                </p>
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 14, marginTop: 20 }}>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Bedrijfsnaam</div>
+                <input style={inputStyle()} value={manualTicket.companyName} onChange={(event) => setManualTicket((current) => ({ ...current, companyName: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Contactpersoon</div>
+                <input style={inputStyle()} value={manualTicket.contactName} onChange={(event) => setManualTicket((current) => ({ ...current, contactName: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>E-mail</div>
+                <input style={inputStyle()} type="email" value={manualTicket.email} onChange={(event) => setManualTicket((current) => ({ ...current, email: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Telefoon</div>
+                <input style={inputStyle()} value={manualTicket.phone || ""} onChange={(event) => setManualTicket((current) => ({ ...current, phone: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Website URL</div>
+                <input style={inputStyle()} value={manualTicket.websiteUrl || ""} onChange={(event) => setManualTicket((current) => ({ ...current, websiteUrl: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Branche</div>
+                <input style={inputStyle()} value={manualTicket.industry || ""} onChange={(event) => setManualTicket((current) => ({ ...current, industry: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Regio</div>
+                <input style={inputStyle()} value={manualTicket.region || ""} onChange={(event) => setManualTicket((current) => ({ ...current, region: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Gewenste stijl</div>
+                <input style={inputStyle()} value={manualTicket.visualStyle || ""} onChange={(event) => setManualTicket((current) => ({ ...current, visualStyle: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Type website</div>
+                <select style={inputStyle()} value={manualTicket.websiteType} onChange={(event) => setManualTicket((current) => ({ ...current, websiteType: event.target.value }))}>
+                  {["onepager", "bedrijfswebsite", "portfolio", "landingspagina", "offertewebsite", "anders"].map((entry) => (
+                    <option key={entry} value={entry}>{entry}</option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Status</div>
+                <select style={inputStyle()} value={manualTicket.status} onChange={(event) => setManualTicket((current) => ({ ...current, status: event.target.value }))}>
+                  {["Nieuw", "In review", "In behandeling", "Wacht op assets", "Wacht op klantreactie", "Demo in opbouw", "Demo verzonden", "Wacht op goedkeuring", "Afgerond", "Gesloten", "Afgewezen"].map((entry) => (
+                    <option key={entry} value={entry}>{entry}</option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Prioriteit</div>
+                <select style={inputStyle()} value={manualTicket.priority} onChange={(event) => setManualTicket((current) => ({ ...current, priority: event.target.value }))}>
+                  <option value="laag">Laag</option>
+                  <option value="normaal">Normaal</option>
+                  <option value="hoog">Hoog</option>
+                </select>
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Seriousness</div>
+                <select style={inputStyle()} value={manualTicket.seriousness} onChange={(event) => setManualTicket((current) => ({ ...current, seriousness: event.target.value }))}>
+                  <option value="intern">Intern</option>
+                  <option value="laag">Laag</option>
+                  <option value="gemiddeld">Gemiddeld</option>
+                  <option value="hoog">Hoog</option>
+                </select>
+              </label>
+            </div>
+
+            <div style={{ display: "grid", gap: 14, marginTop: 14 }}>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Bedrijfsomschrijving</div>
+                <textarea style={{ ...inputStyle(), minHeight: 110 }} value={manualTicket.companyDescription || ""} onChange={(event) => setManualTicket((current) => ({ ...current, companyDescription: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Doelgroep</div>
+                <textarea style={{ ...inputStyle(), minHeight: 90 }} value={manualTicket.targetAudience || ""} onChange={(event) => setManualTicket((current) => ({ ...current, targetAudience: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Waarom deze aanvraag?</div>
+                <textarea style={{ ...inputStyle(), minHeight: 90 }} value={manualTicket.reasonForRequest || ""} onChange={(event) => setManualTicket((current) => ({ ...current, reasonForRequest: event.target.value }))} />
+              </label>
+              <label>
+                <div style={{ fontWeight: 700, marginBottom: 8 }}>Gewenste uitkomst</div>
+                <textarea style={{ ...inputStyle(), minHeight: 90 }} value={manualTicket.desiredOutcome || ""} onChange={(event) => setManualTicket((current) => ({ ...current, desiredOutcome: event.target.value }))} />
+              </label>
+            </div>
+
+            {manualError ? <div style={{ color: "var(--portal-danger)", fontWeight: 700, marginTop: 14 }}>{manualError}</div> : null}
+
+            <div style={{ display: "flex", justifyContent: "flex-end", gap: 12, marginTop: 18 }}>
+              <button type="button" onClick={() => setShowManualCreate(false)} style={buttonStyle("secondary")}>Annuleren</button>
+              <button
+                type="button"
+                disabled={isCreating}
+                onClick={async () => {
+                  setIsCreating(true);
+                  setManualError("");
+                  try {
+                    const result = await portalApi.createTicket(manualTicket);
+                    setManualTicket({
+                      companyName: "",
+                      contactName: "",
+                      email: "",
+                      phone: "",
+                      websiteUrl: "",
+                      industry: "",
+                      region: "",
+                      websiteType: "bedrijfswebsite",
+                      status: "Nieuw",
+                      priority: "normaal",
+                      seriousness: "intern",
+                      visualStyle: "",
+                      desiredOutcome: "",
+                      reasonForRequest: "",
+                      targetAudience: "",
+                      companyDescription: "",
+                    });
+                    setShowManualCreate(false);
+                    await loadDashboardData();
+                    navigate(`/tickets/${result.ticketId}`);
+                  } catch (error) {
+                    setManualError(error instanceof Error ? error.message : "Ticket aanmaken mislukt.");
+                  } finally {
+                    setIsCreating(false);
+                  }
+                }}
+                style={buttonStyle()}
+              >
+                {isCreating ? "Bezig..." : "Ticket aanmaken"}
+              </button>
+            </div>
+          </div>
+        ) : null}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
           {(summary?.counts || []).map((entry) => (

@@ -62,6 +62,25 @@ export type PortalTicketDetail = {
   }>;
 };
 
+export type ManualPortalTicketPayload = {
+  companyName: string;
+  contactName: string;
+  email: string;
+  phone?: string;
+  websiteUrl?: string;
+  industry?: string;
+  region?: string;
+  websiteType: string;
+  status: string;
+  priority: string;
+  seriousness: string;
+  visualStyle?: string;
+  desiredOutcome?: string;
+  reasonForRequest?: string;
+  targetAudience?: string;
+  companyDescription?: string;
+};
+
 async function request<T>(input: string, init?: RequestInit): Promise<T> {
   const response = await fetch(input, {
     credentials: "include",
@@ -100,6 +119,12 @@ export const portalApi = {
   summary: () => request<{ counts: Array<{ status: string; total: number }>; latestActivity: Array<{ message: string; created_at: string; ticket_number: string; company_name: string }> }>("/api/portal/dashboard/summary"),
   users: () => request<{ users: PortalUser[] }>("/api/portal/users"),
   tickets: (query = "") => request<{ tickets: PortalTicket[] }>(`/api/portal/tickets${query}`),
+  createTicket: (payload: ManualPortalTicketPayload) =>
+    request<{ ticketId: number; ticketNumber: string }>("/api/portal/tickets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }),
   ticket: (ticketId: string) => request<PortalTicketDetail>(`/api/portal/tickets/${ticketId}`),
   updateTicket: (ticketId: string, payload: Record<string, unknown>) =>
     request<{ ok: true }>(`/api/portal/tickets/${ticketId}`, {
