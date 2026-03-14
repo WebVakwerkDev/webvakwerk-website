@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const plans = [
   {
@@ -105,8 +104,8 @@ const Prijzen = () => {
                   </li>
                 ))}
               </ul>
-              <Link
-                to="/aanvraag"
+              <a
+                href="#contact"
                 className={`block text-center py-3 rounded-full font-bold text-sm transition-colors ${
                   plan.featured
                     ? "bg-primary text-primary-foreground hover:opacity-90"
@@ -114,7 +113,7 @@ const Prijzen = () => {
                 }`}
               >
                 {plan.price === "Op aanvraag" ? "Plan een gesprek" : "Gratis demo aanvragen"}
-              </Link>
+              </a>
             </motion.div>
           ))}
         </div>

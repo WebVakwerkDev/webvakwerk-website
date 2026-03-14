@@ -86,25 +86,9 @@ Open `http://localhost:8080`.
 The Docker image uses a multi-stage build:
 
 - `node:20-alpine` to build the Vite app
-- `node:20-alpine` to run the built frontend, API and uploads
+- `nginx:1.27-alpine` to serve the static files
 
-The container now runs:
-
-- the website frontend
-- the intake form backend
-- file uploads
-- the internal dashboard API
-
-## Run locally with backend
-
-For local development, run the frontend and backend in separate terminals:
-
-```sh
-npm run server
-npm run dev
-```
-
-The frontend runs on `http://localhost:8080` and proxies `/api` and `/uploads` to the backend on `http://localhost:3001`.
+The Nginx config includes SPA fallback to `index.html`, so React Router routes keep working after refresh.
 
 ## Can I connect a custom domain to my Lovable project?
 
