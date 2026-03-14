@@ -199,6 +199,8 @@ async function ensureSchema() {
       submitted_at timestamptz not null default now()
     );
 
+    alter table tickets add column if not exists source text not null default 'public-demo-form';
+
     create table if not exists ticket_status_history (
       id uuid primary key,
       ticket_id bigint not null references tickets(id) on delete cascade,
