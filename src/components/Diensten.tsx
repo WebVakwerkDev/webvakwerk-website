@@ -5,32 +5,32 @@ const services = [
   {
     icon: Code,
     title: "Website op maat",
-    description: "Geen standaard template, maar een site die past bij je bedrijf, aanbod en doelgroep.",
+    description: "Wij bouwen een website die past bij je bedrijf, diensten en klanten. Zo ziet je site er professioneel uit en sluit alles beter aan op wat jij verkoopt.",
   },
   {
     icon: Smartphone,
     title: "Mobiel & snel",
-    description: "Werkt goed op mobiel, tablet en desktop en laadt snel. Dat is de basis.",
+    description: "Je website werkt goed op mobiel, tablet en desktop en laadt snel. Dat is belangrijk, omdat bezoekers anders afhaken voordat ze contact opnemen.",
   },
   {
     icon: Search,
     title: "Gevonden worden (SEO)",
-    description: "Technische basis voor Google: goede structuur, snelle pagina's en nette metadata.",
+    description: "Wij zorgen ervoor dat je website beter vindbaar is in Google en klanten je makkelijker kunnen vinden. Dat zorgt voor meer aanvragen en sneller contact.",
   },
   {
     icon: Server,
     title: "Hosting & beheer",
-    description: "Hosting, SSL en backups kunnen we voor je regelen. Wil je het zelf doen, dan dragen we het over.",
+    description: "Wij kunnen de hosting, beveiliging en backups voor je regelen. Zo blijft je website online en veilig, zonder dat jij daar zelf achteraan hoeft.",
   },
   {
     icon: FileText,
     title: "Content & teksten",
-    description: "We helpen je teksten scherper maken, zodat bezoekers snel begrijpen wat je doet en contact opnemen.",
+    description: "We helpen je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze sneller contact op.",
   },
   {
     icon: ArrowRightLeft,
     title: "Overdracht op maat",
-    description: "Liever zelf beheren? Dan leveren we alles netjes op aan jou of je vaste partij.",
+    description: "Wil je het liever zelf beheren of bij je eigen partij neerleggen, dan dragen we alles netjes over. Zo zit je nergens aan vast en houd je zelf de regie.",
   },
 ];
 
