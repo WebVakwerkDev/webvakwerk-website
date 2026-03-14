@@ -66,76 +66,45 @@ Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and 
 
 ## Run with Docker
 
-This project now runs as two separate services:
+This project can also run as a standalone Docker container.
 
-- frontend on port `8080`
-- backend API on port `3001`
-
-Use Docker Compose:
+Build and run with Docker:
 
 ```sh
-cp .env.example .env
-npm run auth:hash -- "kies-een-sterk-wachtwoord"
+docker build -t webvakwerk-demo-builder .
+docker run --rm -p 8080:80 webvakwerk-demo-builder
+```
+
+Or use Docker Compose:
+
+```sh
 docker compose up --build
 ```
 
-Open:
+Open `http://localhost:8080`.
 
-- frontend: `http://localhost:8080`
-- backend API: `http://localhost:3001`
+The Docker image uses a multi-stage build:
 
-The backend is meant to run on a separate subdomain, for example:
+- `node:20-alpine` to build the Vite app
+- `node:20-alpine` to run the built frontend, API and uploads
 
-- `www.jouwdomein.nl` for the frontend
-- `api.jouwdomein.nl` for the backend
+The container now runs:
 
-Set `VITE_API_BASE_URL` to your API domain before building the frontend.
+- the website frontend
+- the intake form backend
+- file uploads
+- the internal dashboard API
 
 ## Run locally with backend
 
-For local development, run the backend and frontend separately:
+For local development, run the frontend and backend in separate terminals:
 
 ```sh
 npm run server
 npm run dev
 ```
 
-The frontend runs on `http://localhost:8080`.
-The backend runs on `http://localhost:3001`.
-
-During local development Vite proxies `/api` and `/uploads` to the backend.
-
-## Dashboard authentication
-
-The dashboard and uploaded files are protected by backend authentication.
-
-Required backend environment variables:
-
-- `SESSION_SECRET`
-- `ADMIN_EMAIL`
-- `ADMIN_PASSWORD_HASH`
-- `FRONTEND_ORIGIN`
-
-Optional:
-
-- `AUTH_COOKIE_NAME`
-- `AUTH_COOKIE_DOMAIN`
-- `AUTH_COOKIE_SECURE`
-- `AUTH_SESSION_HOURS`
-
-Generate a password hash with:
-
-```sh
-npm run auth:hash -- "jouw-sterke-wachtwoord"
-```
-
-For production behind Cloudflare:
-
-- run the frontend on your public site domain
-- run the backend on a separate API subdomain
-- set `FRONTEND_ORIGIN` to the exact frontend origin
-- set `AUTH_COOKIE_SECURE=true`
-- keep Cloudflare Access or OAuth in front as an extra layer
+The frontend runs on `http://localhost:8080` and proxies `/api` and `/uploads` to the backend on `http://localhost:3001`.
 
 ## Can I connect a custom domain to my Lovable project?
 

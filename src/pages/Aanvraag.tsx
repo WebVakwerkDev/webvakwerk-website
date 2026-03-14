@@ -234,7 +234,7 @@ const Aanvraag = () => {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                to="/dashboard-login"
+                to="/dashboard"
                 className="rounded-full border border-foreground/10 px-5 py-3 text-sm font-bold text-foreground transition-colors hover:bg-secondary"
               >
                 Dashboard openen

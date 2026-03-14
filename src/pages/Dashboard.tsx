@@ -1,21 +1,12 @@
 import { useMemo, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { nl } from "date-fns/locale";
-import { ArrowRight, BriefcaseBusiness, Clock3, LogOut, Mail, NotebookPen, RefreshCcw, Upload } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Clock3, Mail, NotebookPen, RefreshCcw, Upload } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import {
-  fetchDashboard,
-  convertRequestToTicket,
-  updateTicket,
-  addTicketNote,
-  addTicketEmail,
-  fetchCurrentUser,
-  getApiAssetUrl,
-  logout,
-} from "@/lib/api";
+import { fetchDashboard, convertRequestToTicket, updateTicket, addTicketNote, addTicketEmail } from "@/lib/api";
 import type { IntakeRequest, Ticket, TicketTodo } from "@/lib/workflow";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -39,9 +30,7 @@ function RequestDetails({ request }: { request: IntakeRequest }) {
 
       <div>
         <h2 className="font-syne text-3xl font-extrabold">{request.companyName}</h2>
-        <p className="mt-2 text-muted-foreground">
-          {request.contactName} · {request.email}{request.phone ? ` · ${request.phone}` : ""}
-        </p>
+        <p className="mt-2 text-muted-foreground">{request.contactName} · {request.email}{request.phone ? ` · ${request.phone}` : ""}</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -72,7 +61,7 @@ function RequestDetails({ request }: { request: IntakeRequest }) {
             {allFiles.map((file) => (
               <a
                 key={file.id}
-                href={getApiAssetUrl(file.url)}
+                href={file.url}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:border-primary"
@@ -223,7 +212,6 @@ function TicketPanel({
             placeholder="Nieuwe interne notitie"
           />
           <Button
-            type="button"
             className="mt-3 rounded-full"
             onClick={() => {
               if (!noteText.trim()) return;
@@ -261,7 +249,6 @@ function TicketPanel({
             placeholder="Mailinhoud"
           />
           <Button
-            type="button"
             className="mt-3 rounded-full"
             onClick={() => {
               if (!mailSubject.trim() || !mailBody.trim()) return;
@@ -290,21 +277,13 @@ function TicketPanel({
 }
 
 const Dashboard = () => {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [selectedRequestId, setSelectedRequestId] = useState<string | null>(null);
   const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
 
-  const authQuery = useQuery({
-    queryKey: ["auth-user"],
-    queryFn: fetchCurrentUser,
-    retry: false,
-  });
-
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["dashboard"],
     queryFn: fetchDashboard,
-    enabled: authQuery.isSuccess,
   });
 
   const requests = data?.requests ?? [];
@@ -348,22 +327,6 @@ const Dashboard = () => {
     onSuccess: refresh,
   });
 
-  const logoutMutation = useMutation({
-    mutationFn: logout,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["auth-user"] });
-      navigate("/dashboard-login");
-    },
-  });
-
-  if (authQuery.isLoading) {
-    return <div className="min-h-screen bg-background" />;
-  }
-
-  if (authQuery.isError) {
-    return <Navigate to="/dashboard-login" replace />;
-  }
-
   return (
     <div className="min-h-screen bg-background font-body">
       <Navbar />
@@ -378,7 +341,6 @@ const Dashboard = () => {
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
               Nieuwe intakeformulieren komen hier binnen. Vanuit hier zet je ze om naar een ticket en houd je het hele traject bij.
             </p>
-            <p className="mt-3 text-sm text-muted-foreground">Ingelogd als {authQuery.data.email}</p>
           </div>
 
           <div className="flex flex-wrap gap-3">
@@ -391,14 +353,6 @@ const Dashboard = () => {
                 Nieuwe aanvraag
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="rounded-full"
-              onClick={() => void logoutMutation.mutateAsync()}
-            >
-              <LogOut className="h-4 w-4" />
-              Uitloggen
             </Button>
           </div>
         </div>
@@ -465,7 +419,7 @@ const Dashboard = () => {
 
           <div className="space-y-8">
             {isLoading ? <div className="rounded-[1.75rem] border border-border bg-card p-8">Dashboard laden...</div> : null}
-            {isError ? <div className="rounded-[1.75rem] border border-destructive/40 bg-card p-8 text-destructive">De dashboarddata kon niet geladen worden.</div> : null}
+            {isError ? <div className="rounded-[1.75rem] border border-destructive/40 bg-card p-8 text-destructive">De dashboarddata kon niet geladen worden. Start ook de backendserver.</div> : null}
 
             {!isLoading && !isError && selectedRequest ? (
               <>

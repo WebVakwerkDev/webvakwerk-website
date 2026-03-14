@@ -1,40 +1,16 @@
 import type { DashboardResponse, Ticket } from "@/lib/workflow";
 
-const API_BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+const API_BASE = "";
 
 async function request<T>(input: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE}${input}`, {
-    credentials: "include",
-    ...init,
-  });
+  const response = await fetch(`${API_BASE}${input}`, init);
 
   if (!response.ok) {
     const text = await response.text();
-    let parsedMessage = "";
-
-    try {
-      const parsed = JSON.parse(text);
-      parsedMessage = parsed.message || "";
-    } catch {
-      parsedMessage = "";
-    }
-
-    throw new Error(parsedMessage || text || "Er ging iets mis met de aanvraag.");
+    throw new Error(text || "Er ging iets mis met de aanvraag.");
   }
 
   return response.json() as Promise<T>;
-}
-
-export function getApiAssetUrl(path: string) {
-  if (!path) {
-    return path;
-  }
-
-  if (path.startsWith("http://") || path.startsWith("https://")) {
-    return path;
-  }
-
-  return `${API_BASE}${path}`;
 }
 
 export async function submitIntake(formData: FormData) {
@@ -42,27 +18,6 @@ export async function submitIntake(formData: FormData) {
     method: "POST",
     body: formData,
   });
-}
-
-export async function login(email: string, password: string) {
-  return request<{ email: string }>("/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  });
-}
-
-export async function logout() {
-  await fetch(`${API_BASE}/api/auth/logout`, {
-    method: "POST",
-    credentials: "include",
-  });
-}
-
-export async function fetchCurrentUser() {
-  return request<{ email: string }>("/api/auth/me");
 }
 
 export async function fetchDashboard() {
