@@ -64,6 +64,32 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+## Run with Docker
+
+This project can also run as a standalone Docker container.
+
+Build and run with Docker:
+
+```sh
+docker build -t webvakwerk-demo-builder .
+docker run --rm -p 8080:80 webvakwerk-demo-builder
+```
+
+Or use Docker Compose:
+
+```sh
+docker compose up --build
+```
+
+Open `http://localhost:8080`.
+
+The Docker image uses a multi-stage build:
+
+- `node:20-alpine` to build the Vite app
+- `nginx:1.27-alpine` to serve the static files
+
+The Nginx config includes SPA fallback to `index.html`, so React Router routes keep working after refresh.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
