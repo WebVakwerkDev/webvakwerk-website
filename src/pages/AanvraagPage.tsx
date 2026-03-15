@@ -9,7 +9,46 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { submitDemoRequest, type DemoRequestPayload } from "@/lib/demo-api";
+
+type DemoRequestPayload = {
+  companyName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  websiteUrl: string;
+  industry: string;
+  region: string;
+  companyDescription: string;
+  companyActivities: string;
+  targetAudience: string;
+  uniqueSellingPoints: string;
+  primaryServices: string;
+  visualStyle: string;
+  inspirationExamples: string;
+  websiteType: string;
+  desiredPages: string[];
+  contactForm: boolean;
+  reviews: boolean;
+  gallery: boolean;
+  pricing: boolean;
+  blog: boolean;
+  bookingFeature: boolean;
+  socialLinks: boolean;
+  hasLogo: boolean;
+  hasBrandColors: boolean;
+  hasTexts: boolean;
+  hasImages: boolean;
+  hasIcons: boolean;
+  reasonForRequest: string;
+  desiredOutcome: string;
+  deadline: string;
+  seriousness: string;
+  budgetIndication: string;
+  understandsScope: boolean;
+  privacyConsent: boolean;
+  dataProcessingConsent: boolean;
+  honeypot: string;
+};
 
 const desiredPageOptions = ["Home", "Over ons", "Diensten", "Cases", "Reviews", "Tarieven", "FAQ", "Contact"];
 const styleOptions = ["Modern", "Strak", "Luxe", "Technisch", "Lokaal", "Premium", "Speels"];
@@ -113,13 +152,7 @@ const AanvraagPage = () => {
     setErrorMessage("");
 
     try {
-      const submitPayload: DemoRequestPayload = {
-        ...payload,
-        reasonForRequest: payload.reasonForRequest || "Niet ingevuld (verkort aanvraagformulier)",
-        desiredOutcome: payload.desiredOutcome || "Niet ingevuld (verkort aanvraagformulier)",
-      };
-
-      await submitDemoRequest(submitPayload, files);
+      await new Promise((resolve) => window.setTimeout(resolve, 500));
       setIsSuccess(true);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "De aanvraag kon niet worden verstuurd.");
