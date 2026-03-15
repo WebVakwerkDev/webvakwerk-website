@@ -67,8 +67,8 @@ function cardStyle(): React.CSSProperties {
 
 function LoginPage({ onLogin }: { onLogin: (user: PortalUser) => void }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("admin@example.com");
-  const [password, setPassword] = useState("TestPass123!");
+  const [email, setEmail] = useState("admin@webvakwerk.nl");
+  const [password, setPassword] = useState("Rookworst31!");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
