@@ -217,17 +217,29 @@ async function peppermintLogin() {
     },
     body: JSON.stringify({ email, password }),
   });
+  const rawText = await response.text();
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Peppermint login mislukt (${response.status}): ${errorText}`);
+    throw new Error(`Peppermint login mislukt (${response.status}): ${rawText}`);
   }
 
-  const data = await response.json();
+  let data = null;
+
+  try {
+    data = rawText ? JSON.parse(rawText) : null;
+  } catch {
+    throw new Error(`Peppermint login gaf geen geldige JSON terug: ${rawText}`);
+  }
 
   if (!data.token) {
     throw new Error("Peppermint login gaf geen token terug.");
   }
+
+  console.log("[peppermint] login gelukt", {
+    status: response.status,
+    hasToken: Boolean(data.token),
+    responseKeys: Object.keys(data),
+  });
 
   return { token: data.token, baseUrl };
 }
@@ -241,13 +253,17 @@ async function createPeppermintTicket(token, baseUrl, title, detail) {
     },
     body: JSON.stringify({ title, detail }),
   });
+  const rawText = await response.text();
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Peppermint ticket aanmaken mislukt (${response.status}): ${errorText}`);
+    throw new Error(`Peppermint ticket aanmaken mislukt (${response.status}): ${rawText}`);
   }
 
-  return response.json().catch(() => null);
+  try {
+    return rawText ? JSON.parse(rawText) : { rawText: "" };
+  } catch {
+    return { rawText };
+  }
 }
 
 async function handleDemoRequest(req, res) {
