@@ -152,7 +152,23 @@ const AanvraagPage = () => {
     setErrorMessage("");
 
     try {
-      await new Promise((resolve) => window.setTimeout(resolve, 500));
+      const response = await fetch("/api/demo-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          payload,
+          fileNames: files.map((file) => file.name),
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || !data?.success) {
+        throw new Error(data?.message || "De aanvraag kon niet worden verstuurd.");
+      }
+
       setIsSuccess(true);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "De aanvraag kon niet worden verstuurd.");

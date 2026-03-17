@@ -8,11 +8,15 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:1.27-alpine AS runtime
+FROM node:20-alpine AS runtime
 
-COPY docker/nginx/site.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 80
+ENV NODE_ENV=production
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build /app/dist ./dist
+COPY server ./server
+
+EXPOSE 8080
+
+CMD ["node", "server/server.mjs"]
