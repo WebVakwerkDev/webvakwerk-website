@@ -256,7 +256,15 @@ async function handleDemoRequest(req, res) {
     const payload = body.payload ?? {};
     const fileNames = Array.isArray(body.fileNames) ? body.fileNames : [];
 
+    console.log("[demo-request] ontvangen", {
+      companyName: payload.companyName,
+      contactName: payload.contactName,
+      email: payload.email,
+      websiteType: payload.websiteType,
+    });
+
     if (payload.honeypot) {
+      console.log("[demo-request] honeypot gevuld, request genegeerd");
       return sendJson(res, 200, { success: true });
     }
 
@@ -271,7 +279,12 @@ async function handleDemoRequest(req, res) {
     const title = buildTicketTitle(payload);
     const detail = buildTicketDetail(payload, fileNames);
 
-    await createPeppermintTicket(token, baseUrl, title, detail);
+    const ticketResponse = await createPeppermintTicket(token, baseUrl, title, detail);
+
+    console.log("[demo-request] ticket aangemaakt", {
+      title,
+      peppermintResponse: ticketResponse,
+    });
 
     return sendJson(res, 200, { success: true });
   } catch (error) {
