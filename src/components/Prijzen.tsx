@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const plans = [
   {
     name: "Starter",
-    price: "€499",
+    price: "EUR 499",
     period: "eenmalig",
     featured: false,
     features: [
@@ -16,21 +16,29 @@ const plans = [
       "Gratis demo vooraf",
       "Overdracht of hosting naar keuze",
     ],
+    conditions: [
+      "Maximaal 3 feedbackrondes inbegrepen",
+      "Nieuwe toevoegingen of extra wensen daarna: EUR 100 per punt",
+    ],
   },
   {
     name: "Zakelijk",
-    price: "€899",
+    price: "EUR 899",
     period: "eenmalig",
     featured: true,
     badge: "Meest gekozen",
     features: [
       "Tot 10 pagina's",
-      "Animaties & premium design",
+      "Animaties en premium design",
       "Geavanceerde formulieren",
       "Google Analytics koppeling",
       "SEO uitgebreid",
       "Gratis demo vooraf",
       "1 maand gratis support na oplevering",
+    ],
+    conditions: [
+      "Meer ruimte voor feedback en verfijning binnen de afgesproken scope",
+      "Grote nieuwe toevoegingen buiten scope worden apart geoffreerd",
     ],
   },
   {
@@ -46,26 +54,33 @@ const plans = [
       "Prioriteit support",
       "Onderhoudscontract mogelijk",
     ],
+    conditions: [
+      "Scope, feedbackmomenten en oplevering worden vooraf samen afgestemd",
+      "Prijs en planning hangen af van functionaliteit en complexiteit",
+    ],
   },
 ];
 
 const Prijzen = () => {
   return (
-    <section id="prijzen" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="prijzen" className="px-6 py-24">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
+          <h2 className="mb-4 font-syne text-3xl font-extrabold text-foreground md:text-4xl">
             Duidelijke prijzen
           </h2>
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+            Elk pakket heeft een duidelijke scope, zodat vooraf helder is wat inbegrepen is en wanneer extra werk apart wordt berekend.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -73,41 +88,45 @@ const Prijzen = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`relative rounded-xl p-7 border flex flex-col ${
+              className={`relative flex flex-col rounded-xl border p-7 ${
                 plan.featured
-                  ? "bg-card border-primary shadow-lg scale-[1.03] z-10"
-                  : "bg-card border-border shadow-sm"
+                  ? "z-10 scale-[1.03] border-primary bg-card shadow-lg"
+                  : "border-border bg-card shadow-sm"
               }`}
             >
               {plan.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">
                   {plan.badge}
                 </span>
               )}
-              <h3 className="text-xl font-syne font-bold text-foreground mb-1">
-                {plan.name}
-              </h3>
+              <h3 className="mb-1 font-syne text-xl font-bold text-foreground">{plan.name}</h3>
               <div className="mb-5">
-                <span className="text-3xl font-syne font-extrabold text-foreground">
-                  {plan.price}
-                </span>
-                {plan.period && (
-                  <span className="text-muted-foreground text-sm ml-2">
-                    {plan.period}
-                  </span>
-                )}
+                <span className="font-syne text-3xl font-extrabold text-foreground">{plan.price}</span>
+                {plan.period && <span className="ml-2 text-sm text-muted-foreground">{plan.period}</span>}
               </div>
-              <ul className="space-y-3 mb-7 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-foreground">
-                    <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    {f}
+              <ul className="mb-7 flex-1 space-y-3">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm text-foreground">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    {feature}
                   </li>
                 ))}
               </ul>
+              <div className="mb-7 rounded-lg bg-secondary/60 px-4 py-4">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                  Belangrijke voorwaarden
+                </p>
+                <div className="space-y-2">
+                  {plan.conditions.map((condition) => (
+                    <p key={condition} className="text-sm leading-relaxed text-foreground/80">
+                      {condition}
+                    </p>
+                  ))}
+                </div>
+              </div>
               <Link
                 to="/aanvraag"
-                className={`block text-center py-3 rounded-full font-bold text-sm transition-colors ${
+                className={`block rounded-full py-3 text-center text-sm font-bold transition-colors ${
                   plan.featured
                     ? "bg-primary text-primary-foreground hover:opacity-90"
                     : "border border-foreground/15 text-foreground hover:bg-secondary"
