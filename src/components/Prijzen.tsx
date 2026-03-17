@@ -18,7 +18,7 @@ const plans = [
     ],
     conditions: [
       "Maximaal 3 feedbackrondes inbegrepen",
-      "Extra feedbackrondes en nieuwe toevoegingen daarna vallen onder meerwerk",
+      "Extra feedbackrondes en nieuwe toevoegingen daarna vallen onder meerwerk"/*  */,
     ],
   },
   {
@@ -78,6 +78,11 @@ const Prijzen = () => {
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Elk pakket heeft een duidelijke scope. Een heldere intake voorkomt onnodig uitloopwerk en maakt vooraf duidelijk wat inbegrepen is en wanneer extra werk apart wordt berekend.
           </p>
+          <div className="mt-4">
+            <Link to="/voorwaarden" className="text-sm font-bold text-primary transition-colors hover:opacity-80">
+              Bekijk voorwaarden
+            </Link>
+          </div>
         </motion.div>
 
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
