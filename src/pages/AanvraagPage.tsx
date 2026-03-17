@@ -152,6 +152,13 @@ const AanvraagPage = () => {
     setErrorMessage("");
 
     try {
+      console.log("[demo-request] verzenden gestart", {
+        companyName: payload.companyName,
+        contactName: payload.contactName,
+        email: payload.email,
+        websiteType: payload.websiteType,
+      });
+
       const response = await fetch("/api/demo-request", {
         method: "POST",
         headers: {
@@ -165,12 +172,19 @@ const AanvraagPage = () => {
 
       const data = await response.json().catch(() => null);
 
+      console.log("[demo-request] response ontvangen", {
+        status: response.status,
+        ok: response.ok,
+        data,
+      });
+
       if (!response.ok || !data?.success) {
         throw new Error(data?.message || "De aanvraag kon niet worden verstuurd.");
       }
 
       setIsSuccess(true);
     } catch (error) {
+      console.error("[demo-request] fout", error);
       setErrorMessage(error instanceof Error ? error.message : "De aanvraag kon niet worden verstuurd.");
     } finally {
       setIsSubmitting(false);
