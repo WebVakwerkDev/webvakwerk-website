@@ -1,27 +1,25 @@
 # Webvakwerk Demo Builder
 
-Website built with Vite, React, TypeScript and een kleine Node-backend voor formulierverwerking.
+Website built with Vite, React and TypeScript.
 
 ## Local development
 
 ```sh
 npm install
 npm run dev
-npm run dev:api
 ```
 
 The site runs on `http://localhost:8080`.
-The API runs on `http://localhost:3001`.
 
 Create a `.env` file based on `.env.example` and set:
 
 ```sh
-PEPPERMINT_BASE_URL=http://your-peppermint-host:5003
-PEPPERMINT_EMAIL=your-peppermint-email
-PEPPERMINT_PASSWORD=your-password
+VITE_FORM_ENDPOINT=https://your-form-handler-endpoint
+VITE_CONTACT_EMAIL=info@your-domain.nl
 ```
 
-Form submissions are sent to `/api/demo-request`, which logs into Peppermint and creates a ticket.
+Form submissions are sent directly to `VITE_FORM_ENDPOINT` when set.
+If no endpoint is set, the form falls back to opening the local mail client.
 
 ## Production build
 
@@ -29,6 +27,8 @@ Form submissions are sent to `/api/demo-request`, which logs into Peppermint and
 npm run build
 npm run start
 ```
+
+`npm run start` serves the static `dist` build with a lightweight Node server.
 
 ## Docker
 
