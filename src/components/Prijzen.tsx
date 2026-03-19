@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const plans = [
   {
     name: "Starter",
-    price: "EUR 499",
+    price: "€499",
     period: "eenmalig",
     featured: false,
     features: [
@@ -13,7 +13,7 @@ const plans = [
       "Mobiel geoptimaliseerd",
       "SEO-basis",
       "Gratis demo vooraf",
-      "Overdracht of hosting naar keuze",
+      "Overdracht naar eigen partij of hoster",
     ],
     conditions: [
       "Maximaal 3 feedbackrondes inbegrepen",
@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "Zakelijk",
-    price: "EUR 899",
+    price: "€899",
     period: "eenmalig",
     featured: true,
     badge: "Meest gekozen",
@@ -71,10 +71,10 @@ const Prijzen = () => {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 font-syne text-3xl font-extrabold text-foreground md:text-4xl">
-            Snel. Duidelijk. Vindbaar.
+            Transparante prijzen, geen verrassingen
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Geen verrassingen. Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Alles wat je nodig hebt, niets wat je niet nodig hebt.
+            Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Vaste prijs, duidelijke scope — je weet vooraf precies wat je krijgt.
           </p>
           <div className="mt-4">
             <Link to="/voorwaarden" className="text-sm font-bold text-primary transition-colors hover:opacity-80">
@@ -135,7 +135,7 @@ const Prijzen = () => {
                     : "border border-foreground/15 text-foreground hover:bg-secondary"
                 }`}
               >
-                {plan.price === "Op aanvraag" ? "Plan een gesprek" : "Gratis demo aanvragen"}
+                {plan.price === "Op aanvraag" ? "Plan een gesprek" : "Gratis demo aanvragen →"}
               </Link>
             </motion.div>
           ))}

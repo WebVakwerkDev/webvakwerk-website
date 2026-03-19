@@ -4,23 +4,23 @@ const steps = [
   {
     number: "01",
     title: "Korte intake",
-    description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren.",
+    description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren. Duurt een halfuur.",
     accent: true,
   },
   {
     number: "02",
-    title: "Eerste demo",
-    description: "Wij maken een eerste versie, zodat je snel ziet hoe de site eruitziet en wat er nog aangepast moet worden.",
+    title: "Eerste versie",
+    description: "Wij bouwen een eerste werkende versie, zodat je direct ziet hoe de site eruitziet — geen abstract concept.",
   },
   {
     number: "03",
-    title: "Akkoord & betaling",
-    description: "Na akkoord maken we de website af en zetten we alles goed klaar voor livegang.",
+    title: "Feedback & afronding",
+    description: "Je geeft feedback, wij passen aan. Na akkoord maken we alles klaar voor livegang.",
   },
   {
     number: "04",
-    title: "Live & overdracht",
-    description: "Na oplevering kies je zelf: hosting via ons of overdracht naar je eigen IT-partij of hostingprovider.",
+    title: "Live",
+    description: "De site gaat live. Kies je voor hosting via ons, of draag je de site over aan je eigen partij — jij beslist.",
   },
 ];
 
@@ -39,7 +39,7 @@ const Werkwijze = () => {
             Snel van idee naar live
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Kort proces, duidelijke stappen, geen onnodig gedoe.
+            Intake, eerste versie, feedback, live. Geen maandenlange trajecten, geen vage tussenstappen.
           </p>
         </motion.div>
 

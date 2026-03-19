@@ -13,10 +13,10 @@ const CTA = () => {
         className="max-w-3xl mx-auto text-center"
       >
         <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-primary-foreground mb-4">
-          Snel doorpakken?
+          Klaar om te starten?
         </h2>
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-          Laat zien wat je doet en wij bouwen een eerste opzet. Dan weet je snel waar je aan toe bent.
+          Laat zien wat je doet en wij bouwen een eerste versie — gratis en vrijblijvend. Pas als we samen een opdracht starten, betaal je iets.
         </p>
         <motion.div
           whileHover={{ y: -2 }}

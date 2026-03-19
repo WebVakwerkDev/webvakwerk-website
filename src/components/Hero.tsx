@@ -14,7 +14,7 @@ const Hero = () => (
           Duidelijk. Snel. Vindbaar.
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-syne text-foreground leading-[1.1] mb-6 tracking-tight">
-          Snel een <span className="text-primary">website</span> voor jou bedrijf
+          Een professionele <span className="text-primary">website</span> voor jouw bedrijf
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-lg mb-10 font-medium leading-relaxed">
           Vakwerk websites voor ondernemers die online gevonden willen worden.
@@ -117,6 +117,24 @@ const Hero = () => (
         <div className="absolute -z-10 -bottom-6 -right-6 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       </motion.div>
     </div>
+
+    {/* Scroll indicator */}
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.2, duration: 0.5 }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer group"
+      onClick={() => document.getElementById("werkwijze")?.scrollIntoView({ behavior: "smooth" })}
+    >
+      <span className="text-xs font-medium text-muted-foreground/60 tracking-widest uppercase group-hover:text-muted-foreground transition-colors">
+        scroll
+      </span>
+      <motion.div
+        animate={{ y: [0, 5, 0] }}
+        transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+        className="w-px h-8 bg-gradient-to-b from-muted-foreground/40 to-transparent"
+      />
+    </motion.div>
   </section>
 );
 

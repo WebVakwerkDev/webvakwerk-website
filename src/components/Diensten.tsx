@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Smartphone, Search, Server, FileText, ArrowRightLeft } from "lucide-react";
+import { Code, Smartphone, Search, FileText, ArrowRightLeft } from "lucide-react";
 
 const services = [
   {
@@ -16,11 +16,6 @@ const services = [
     icon: Search,
     title: "Gevonden worden (SEO)",
     description: "Wij zorgen ervoor dat je website beter vindbaar is in Google en klanten je makkelijker kunnen vinden. Dat zorgt voor meer aanvragen en sneller contact.",
-  },
-  {
-    icon: Server,
-    title: "Hosting & beheer",
-    description: "Wij kunnen de hosting, beveiliging en backups voor je regelen. Zo blijft je website online en veilig, zonder dat jij daar zelf achteraan hoeft.",
   },
   {
     icon: FileText,
@@ -46,7 +41,7 @@ const Diensten = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
-            Gewoon goed geregeld
+            Alles wat je nodig hebt om goed online te staan
           </h2>
         </motion.div>
 

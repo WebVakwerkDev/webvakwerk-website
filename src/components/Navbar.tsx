@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const navLinks = ["Werkwijze", "Diensten", "Prijzen", "Hosting"];
+const navLinks = ["Werkwijze", "Diensten", "Prijzen"];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
