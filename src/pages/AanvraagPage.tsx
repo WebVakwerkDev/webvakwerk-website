@@ -129,7 +129,6 @@ function ChoiceChip({
 const AanvraagPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [payload, setPayload] = useState(initialPayload);
-  const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -174,7 +173,6 @@ const AanvraagPage = () => {
         },
         body: JSON.stringify({
           payload,
-          fileNames: files.map((file) => file.name),
         }),
       });
 
@@ -464,18 +462,9 @@ const AanvraagPage = () => {
                       placeholder="Plak links of beschrijf kort wat je aanspreekt."
                     />
                   </Field>
-                  <Field label="Bestanden uploaden" helper="Optioneel: stuur een logo, screenshot, moodboard of briefing mee.">
-                    <Input
-                      type="file"
-                      multiple
-                      accept=".pdf,.png,.jpg,.jpeg,.webp,.svg"
-                      onChange={(event) => setFiles(Array.from(event.target.files ?? []))}
-                      className="h-auto py-3"
-                    />
-                    {files.length ? (
-                      <p className="text-xs text-muted-foreground">{files.length} bestand(en) geselecteerd: {files.map((file) => file.name).join(", ")}</p>
-                    ) : null}
-                  </Field>
+                  <div className="rounded-2xl border border-foreground/8 bg-secondary/25 px-4 py-4 text-sm text-muted-foreground">
+                    Bestanden meesturen? Mail ze na je aanvraag naar info@webvakwerk.nl.
+                  </div>
                 </SectionCard>
               ) : null}
 
