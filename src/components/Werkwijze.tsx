@@ -48,7 +48,7 @@ const Werkwijze = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-5">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
