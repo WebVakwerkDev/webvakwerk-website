@@ -4,17 +4,17 @@ const steps = [
   {
     number: "01",
     title: "Intake",
-    description: "Je deelt je wensen, doelen, stijlvoorkeuren en wat de website voor je bedrijf moet gaan opleveren.",
+    description: "Jij deelt je wensen, doelen, stijlvoorkeuren en wat de website voor je bedrijf moet gaan opleveren.",
   },
   {
     number: "02",
     title: "Demo oplevering",
-    description: "Op basis van de intake bouwen we gratis een demo-website en zetten die kort live, zodat je die echt kunt bekijken en beoordelen.",
+    description: "Op basis van de intake bouwen we gratis een demo-website en zetten die live, zodat jij deze kunt bekijken en beoordelen.",
   },
   {
     number: "03",
     title: "Akkoord en betaling",
-    description: "Wil je verder met de demo? Dan kies je het pakket dat past en start het betaalde traject.",
+    description: "Geinterresseerd? Dan kies je het pakket dat past en start het traject.",
     accent: true,
   },
   {
