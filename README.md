@@ -1,27 +1,23 @@
-# Webvakwerk Demo Builder
+# Webvakwerk
 
-Website built with Vite, React, TypeScript and een kleine Node-backend voor formulierverwerking.
+Frontend website built with Vite, React, and TypeScript.
 
 ## Local development
 
 ```sh
 npm install
 npm run dev
-npm run dev:api
 ```
 
 The site runs on `http://localhost:8080`.
-The API runs on `http://localhost:3001`.
 
-Create a `.env` file based on `.env.example` and set:
+Create a `.env` file based on `.env.example` (optional—defaults are in place):
 
 ```sh
-PEPPERMINT_BASE_URL=http://your-peppermint-host:5003
-PEPPERMINT_EMAIL=your-peppermint-email
-PEPPERMINT_PASSWORD=your-password
+VITE_CONTACT_EMAIL=info@webvakwerk.nl
 ```
 
-Form submissions are sent to `/api/demo-request`, which logs into Peppermint and creates a ticket.
+Form submissions are frontend-only: they open the visitor's mail client with a pre-filled intake form.
 
 ## Production build
 
@@ -30,6 +26,8 @@ npm run build
 npm run start
 ```
 
+`npm run start` runs a static preview server on port 8080.
+
 ## Docker
 
 ```sh
@@ -37,3 +35,5 @@ docker compose up --build
 ```
 
 The website is then available on `http://localhost:8080`.
+
+The Docker setup uses nginx to serve the static frontend build.
