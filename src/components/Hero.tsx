@@ -11,14 +11,14 @@ const Hero = () => (
         transition={{ duration: 0.6 }}
       >
         <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-          Vindbaar. Duidelijk. Snel live.
+          Websites zonder gedoe
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-syne text-foreground leading-[1.1] mb-6 tracking-tight">
-          Websites die direct duidelijk maken <span className="text-primary">wat je doet</span>
+          Snel een <span className="text-primary">website</span> voor jou bedrijf
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-lg mb-10 font-medium leading-relaxed">
-          Voor ondernemers en mkb-bedrijven die een professionele website willen zonder vaag proces.
-          Je krijgt een duidelijke opbouw, sterke teksten en een technisch nette site die beter vindbaar is.
+          Vakwerk websites voor ondernemers die online gevonden willen worden.
+          Snel gebouwd, technisch goed en gericht op duidelijkheid en vindbaarheid.
         </p>
         <div className="flex flex-wrap gap-4">
           <motion.div
@@ -30,7 +30,7 @@ const Hero = () => (
               to="/aanvraag"
               className="block px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold transition-colors hover:opacity-90"
             >
-              Start met een vrijblijvende intake
+              Gratis demo aanvragen
             </Link>
           </motion.div>
           <motion.a
@@ -39,7 +39,7 @@ const Hero = () => (
             whileTap={{ scale: 0.97 }}
             className="px-6 py-3 rounded-full border-2 border-foreground text-foreground font-bold transition-colors hover:bg-foreground hover:text-background"
           >
-            Bekijk onze werkwijze
+            Bekijk werkwijze
           </motion.a>
         </div>
       </motion.div>
@@ -76,7 +76,7 @@ const Hero = () => (
               <div>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-bold text-foreground">
-                    Eerste concept klaar
+                    Eerste versie klaar
                   </span>
                   <span className="text-sm font-bold text-primary">80%</span>
                 </div>
@@ -92,13 +92,13 @@ const Hero = () => (
 
               <div className="flex flex-wrap gap-3">
                 <span className="px-3 py-1 rounded-md bg-[hsl(135,64%,90%)] text-[hsl(135,64%,30%)] text-xs font-bold">
-                  ✓ Structuur
+                  ✓ Design
                 </span>
                 <span className="px-3 py-1 rounded-md bg-[hsl(135,64%,90%)] text-[hsl(135,64%,30%)] text-xs font-bold">
-                  ✓ Teksten
+                  ✓ Content
                 </span>
                 <span className="px-3 py-1 rounded-md bg-primary/10 text-primary text-xs font-bold animate-pulse">
-                  SEO-check
+                  Laatste check
                 </span>
               </div>
             </div>

@@ -13,10 +13,10 @@ const CTA = () => {
         className="max-w-3xl mx-auto text-center"
       >
         <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-primary-foreground mb-4">
-          Klaar voor een duidelijke website?
+          Snel doorpakken?
         </h2>
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-          Plan een korte intake. Je krijgt snel een heldere aanpak, realistische planning en een eerste richting voor je website.
+          Laat zien wat je doet en wij bouwen een eerste opzet. Dan weet je snel waar je aan toe bent.
         </p>
         <motion.div
           whileHover={{ y: -2 }}
@@ -27,7 +27,7 @@ const CTA = () => {
             to="/aanvraag"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90"
           >
-            Vraag een intake aan
+            Gratis demo aanvragen
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

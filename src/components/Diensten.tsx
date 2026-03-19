@@ -4,33 +4,33 @@ import { Code, Smartphone, Search, Server, FileText, ArrowRightLeft } from "luci
 const services = [
   {
     icon: Code,
-    title: "Heldere website-opbouw",
-    description: "We bouwen een structuur die direct uitlegt wat je doet, voor wie en hoe klanten contact opnemen.",
+    title: "Website op maat",
+    description: "Wij bouwen een website die past bij je bedrijf, diensten en klanten. Zo ziet je site er professioneel uit en sluit alles beter aan op wat jij verkoopt.",
   },
   {
     icon: Smartphone,
-    title: "Snel en mobiel vriendelijk",
-    description: "Je site werkt op mobiel, tablet en desktop en laadt snel, zodat bezoekers niet afhaken.",
+    title: "Mobiel & snel",
+    description: "Je website werkt goed op mobiel, tablet en desktop en laadt snel. Dat is belangrijk, omdat bezoekers anders afhaken voordat ze contact opnemen.",
   },
   {
     icon: Search,
-    title: "Vindbaarheid als basis",
-    description: "We leggen SEO-fundamenten direct goed aan met duidelijke pagina-opbouw, metadata en logische content.",
+    title: "Gevonden worden (SEO)",
+    description: "Wij zorgen ervoor dat je website beter vindbaar is in Google en klanten je makkelijker kunnen vinden. Dat zorgt voor meer aanvragen en sneller contact.",
   },
   {
     icon: Server,
-    title: "Hosting zonder gedoe",
-    description: "Wij regelen hosting, updates en back-ups, of dragen alles netjes over aan je eigen partij.",
+    title: "Hosting & beheer",
+    description: "Wij kunnen de hosting, beveiliging en backups voor je regelen. Zo blijft je website online en veilig, zonder dat jij daar zelf achteraan hoeft.",
   },
   {
     icon: FileText,
-    title: "Teksten die converteren",
-    description: "Geen vage marketingtaal, maar concrete copy die vertrouwen geeft en aanzet tot actie.",
+    title: "Content & teksten",
+    description: "We helpen je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze sneller contact op.",
   },
   {
     icon: ArrowRightLeft,
-    title: "Duidelijke overdracht",
-    description: "Je zit nergens aan vast: na oplevering kies je zelf voor beheer door ons of volledige overdracht.",
+    title: "Overdracht op maat",
+    description: "Wil je het liever zelf beheren of bij je eigen partij neerleggen, dan dragen we alles netjes over. Zo zit je nergens aan vast en houd je zelf de regie.",
   },
 ];
 
@@ -46,11 +46,8 @@ const Diensten = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
-            Voor ondernemers die online duidelijk willen zijn
+            Gewoon goed geregeld
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            We bouwen websites voor bedrijven die professioneel willen overkomen, beter gevonden willen worden en snel live willen.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
