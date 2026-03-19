@@ -154,10 +154,10 @@ const VoorwaardenPage = () => {
           <h1 className="mt-4 max-w-3xl font-syne text-4xl font-extrabold leading-[1.05] text-foreground md:text-5xl">
             Algemene voorwaarden voor webdevelopment en digitale diensten
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-foreground/90">
             Deze algemene voorwaarden beschrijven duidelijk hoe we samenwerken, wat je van ons mag verwachten en wat wij van jou nodig hebben. Zo voorkomen we onduidelijkheid achteraf en houden we projecten snel, overzichtelijk en professioneel.
           </p>
-          <p className="mt-3 text-sm text-muted-foreground">Versie: 19 maart 2026</p>
+          <p className="mt-3 text-sm text-foreground/75">Versie: 19 maart 2026</p>
         </div>
       </section>
 
@@ -168,12 +168,12 @@ const VoorwaardenPage = () => {
               <h2 className="font-syne text-2xl font-extrabold text-foreground">{section.title}</h2>
               <div className="mt-5 space-y-3">
                 {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="text-sm leading-relaxed text-foreground/80 sm:text-base">
+                  <p key={paragraph} className="text-sm leading-relaxed text-foreground/95 sm:text-base">
                     {paragraph}
                   </p>
                 ))}
                 {section.bullets ? (
-                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/80 sm:text-base">
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/95 sm:text-base">
                     {section.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
@@ -185,7 +185,7 @@ const VoorwaardenPage = () => {
 
           <div className="rounded-[1.5rem] border border-primary/15 bg-primary/5 p-6 sm:p-8">
             <h2 className="font-syne text-2xl font-extrabold text-foreground">Vragen over deze voorwaarden?</h2>
-            <p className="mt-4 max-w-3xl text-foreground/80">
+            <p className="mt-4 max-w-3xl text-foreground/90">
               Als je vragen hebt over scope, onderhoud, aansprakelijkheid of facturatie, bespreken we dat graag vooraf. Duidelijke afspraken zorgen voor snelle uitvoering zonder gedoe.
             </p>
             <div className="mt-6">

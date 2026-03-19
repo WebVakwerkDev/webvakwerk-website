@@ -36,6 +36,7 @@ const plans = [
       "SEO uitgebreid",
       "Gratis demo vooraf",
       "Max. 5 feedbackmomenten inbegrepen",
+      "Overdracht naar eigen partij of hoster",
     ],
     conditions: [
       "Een feedbackmoment = jij levert alle opmerkingen gebundeld aan, wij verwerken dat in één iteratie.",
@@ -121,18 +122,20 @@ const Prijzen = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mb-7 rounded-lg bg-secondary/60 px-4 py-4">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                  Belangrijke voorwaarden
-                </p>
-                <div className="space-y-2">
-                  {plan.conditions.map((condition) => (
-                    <p key={condition} className="text-sm leading-relaxed text-foreground/80">
-                      {condition}
-                    </p>
-                  ))}
+              {plan.price !== "Op aanvraag" ? (
+                <div className="mb-7 rounded-lg bg-secondary/60 px-4 py-4">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                    Belangrijke voorwaarden
+                  </p>
+                  <div className="space-y-2">
+                    {plan.conditions.map((condition) => (
+                      <p key={condition} className="text-sm leading-relaxed text-foreground/80">
+                        {condition}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ) : null}
               <Link
                 to="/aanvraag"
                 className={`block rounded-full py-3 text-center text-sm font-bold transition-colors ${
