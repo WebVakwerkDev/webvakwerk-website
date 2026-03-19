@@ -12,8 +12,8 @@ const indexFile = path.join(distDir, "index.html");
 
 const app = express();
 const port = Number(process.env.PORT || 8080);
-const internalApiUrl = process.env.INTERNAL_API_URL;
-const internalApiKey = process.env.INTERNAL_API_KEY;
+const internalApiUrl = process.env.INTERNAL_TICKET_API_URL || process.env.INTERNAL_API_URL;
+const internalApiKey = process.env.INTERNAL_TICKET_API_KEY || process.env.INTERNAL_API_KEY;
 const rateLimitWindowMs = 15 * 60 * 1000;
 const rateLimitMaxRequests = 5;
 const requestTracker = new Map();
@@ -53,7 +53,7 @@ function isRateLimited(ip) {
 
 app.post("/api/demo-request", async (req, res) => {
   if (!internalApiUrl || !internalApiKey) {
-    console.error("[demo-request] missing INTERNAL_API_URL or INTERNAL_API_KEY");
+    console.error("[demo-request] missing INTERNAL_TICKET_API_URL or INTERNAL_TICKET_API_KEY");
     return res.status(500).json({
       success: false,
       message: "De server is nog niet volledig geconfigureerd.",

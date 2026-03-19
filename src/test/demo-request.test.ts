@@ -19,6 +19,7 @@ describe("demo request validation", () => {
       email: "jan@bedrijf.nl",
       phone: "+31 6 12345678",
       industry: "Bouw",
+      region: "Straat 1, 1234 AB Amsterdam",
       subject: "Nieuwe website aanvraag",
       budget: "5000-10000",
       deadline: "2026-04-15",
@@ -35,19 +36,32 @@ describe("demo request validation", () => {
 
     expect(result).toEqual({
       client: {
-        name: "Jan Jansen",
+        companyName: "Webvakwerk",
+        contactName: "Jan Jansen",
         email: "jan@bedrijf.nl",
-        company: "Webvakwerk",
         phone: "+31 6 12345678",
+        address: "Straat 1, 1234 AB Amsterdam",
       },
       project: {
         name: "Nieuwe website aanvraag",
+        projectType: "NEW_WEBSITE",
+        status: "INTAKE",
+        priority: "MEDIUM",
         description: expect.stringContaining("Aanleiding: De huidige site converteert niet goed."),
-        type: "bedrijfswebsite",
-        budget: "5000-10000",
-        deadline: "2026-04-15",
+        intakeSummary: "Aanvraag via websiteformulier\nBudgetindicatie: 5000-10000\nGewenste oplevering: 2026-04-15",
+        scope: "bedrijfswebsite, Keukens en maatwerkmeubels., Meer offerteaanvragen.",
       },
-      source: "website-form",
+      initialLogEntry: {
+        type: "EMAIL",
+        subject: "Nieuwe website aanvraag",
+        content: expect.stringContaining("Bedrijfsomschrijving: We bouwen maatwerk interieurs."),
+        externalSenderName: "Jan Jansen",
+        externalSenderEmail: "jan@bedrijf.nl",
+      },
+      source: {
+        type: "website_form",
+        label: "Website contactformulier",
+      },
     });
   });
 });

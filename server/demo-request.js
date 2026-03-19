@@ -102,6 +102,13 @@ const descriptionSections = [
   ["Inputgereedheid", "inputReadiness"],
 ];
 
+const projectTypeMap = {
+  bedrijfswebsite: "NEW_WEBSITE",
+  landingspagina: "LANDING_PAGE",
+  portfolio: "PORTFOLIO",
+  anders: "OTHER",
+};
+
 export function formatValidationErrors(zodError) {
   return zodError.issues.reduce((accumulator, issue) => {
     const key = issue.path[0];
@@ -114,29 +121,71 @@ export function formatValidationErrors(zodError) {
   }, {});
 }
 
-export function buildInternalApiPayload(payload) {
-  const description = descriptionSections
+function buildProjectDescription(payload) {
+  return descriptionSections
     .map(([label, key]) => {
       const value = payload[key];
       return value ? `${label}: ${value}` : null;
     })
     .filter(Boolean)
     .join("\n\n");
+}
+
+function buildIntakeSummary(payload) {
+  const summaryLines = ["Aanvraag via websiteformulier"];
+
+  if (payload.budget) {
+    summaryLines.push(`Budgetindicatie: ${payload.budget}`);
+  }
+
+  if (payload.deadline) {
+    summaryLines.push(`Gewenste oplevering: ${payload.deadline}`);
+  }
+
+  return summaryLines.join("\n");
+}
+
+function buildProjectScope(payload) {
+  const scopeItems = [payload.websiteType, payload.primaryServices, payload.desiredOutcome]
+    .filter(Boolean)
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  return scopeItems.join(", ");
+}
+
+export function buildInternalApiPayload(payload) {
+  const description = buildProjectDescription(payload);
+  const intakeSummary = buildIntakeSummary(payload);
+  const scope = buildProjectScope(payload);
 
   return {
     client: {
-      name: payload.contactName,
+      companyName: payload.companyName,
+      contactName: payload.contactName,
       email: payload.email,
-      company: payload.companyName,
       phone: payload.phone,
+      ...(payload.region ? { address: payload.region } : {}),
     },
     project: {
       name: payload.subject,
+      projectType: projectTypeMap[payload.websiteType] || "OTHER",
+      status: "INTAKE",
+      priority: "MEDIUM",
       description,
-      type: payload.websiteType,
-      budget: payload.budget || undefined,
-      deadline: payload.deadline || undefined,
+      intakeSummary,
+      scope: scope || undefined,
     },
-    source: "website-form",
+    initialLogEntry: {
+      type: "EMAIL",
+      subject: payload.subject,
+      content: description,
+      externalSenderName: payload.contactName,
+      externalSenderEmail: payload.email,
+    },
+    source: {
+      type: "website_form",
+      label: "Website contactformulier",
+    },
   };
 }
