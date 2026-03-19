@@ -165,6 +165,13 @@ const AanvraagPage = () => {
               Deze intake is bedoeld voor bedrijven die echt willen zien wat wij voor hun website kunnen neerzetten.
               Daarom vragen we direct alle input die nodig is om een sterk concept op te bouwen.
             </p>
+            <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
+              Door een aanvraag te versturen ga je akkoord met onze algemene voorwaarden, inclusief afspraken over scope,
+              oplevering, revisierondes en meerwerk.
+              <Link to="/voorwaarden" className="ml-1 font-bold text-primary underline-offset-4 hover:underline">
+                Lees de voorwaarden
+              </Link>
+            </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               <div className="rounded-2xl border border-foreground/5 bg-card p-5 shadow-sm">
                 <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -288,9 +295,22 @@ const AanvraagPage = () => {
 
               {currentStep === 2 ? (
                 <SectionCard title="Laatste checks" description="Voordat je verstuurt, willen we zeker weten dat de aanvraag compleet is.">
+                  <div className="rounded-2xl border border-primary/20 bg-primary/5 px-4 py-4 text-sm text-muted-foreground">
+                    Voor websitepakketten gelden maximaal 3 feedbackrondes. Extra rondes of wijzigingen buiten scope vallen
+                    onder meerwerk (EUR 100 per extra feedbackronde).
+                    <Link to="/voorwaarden" className="ml-1 font-bold text-primary underline-offset-4 hover:underline">
+                      Bekijk alle voorwaarden
+                    </Link>
+                  </div>
                   <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
                     <Checkbox checked={payload.privacyConsent} onCheckedChange={(checked) => updateField("privacyConsent", Boolean(checked))} />
-                    <span>Ik ga akkoord met het privacybeleid.</span>
+                    <span>
+                      Ik ga akkoord met het privacybeleid en de
+                      <Link to="/voorwaarden" className="ml-1 font-bold text-primary underline-offset-4 hover:underline">
+                        algemene voorwaarden
+                      </Link>
+                      .
+                    </span>
                   </label>
                   <div className="hidden">
                     <Input value={payload.honeypot} onChange={(event) => updateField("honeypot", event.target.value)} tabIndex={-1} autoComplete="off" />
