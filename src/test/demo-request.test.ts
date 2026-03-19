@@ -21,8 +21,6 @@ describe("demo request validation", () => {
       industry: "Bouw",
       region: "Straat 1, 1234 AB Amsterdam",
       subject: "Nieuwe website aanvraag",
-      budget: "5000-10000",
-      deadline: "2026-04-15",
       companyDescription: "We bouwen maatwerk interieurs.",
       companyActivities: "Ontwerp en realisatie.",
       targetAudience: "Particulieren en architecten.",
@@ -48,7 +46,7 @@ describe("demo request validation", () => {
         status: "INTAKE",
         priority: "MEDIUM",
         description: expect.stringContaining("Aanleiding: De huidige site converteert niet goed."),
-        intakeSummary: "Aanvraag via websiteformulier\nBudgetindicatie: 5000-10000\nGewenste oplevering: 2026-04-15",
+        intakeSummary: "Aanvraag via websiteformulier",
         scope: "bedrijfswebsite, Keukens en maatwerkmeubels., Meer offerteaanvragen.",
       },
       initialLogEntry: {

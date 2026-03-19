@@ -326,14 +326,6 @@ const AanvraagPage = () => {
                       />
                       <FieldError message={fieldErrors.subject} />
                     </Field>
-                    <Field label="Budgetindicatie" helper="Optioneel, maar helpt om intern sneller te triagen.">
-                      <Input
-                        value={payload.budget}
-                        onChange={(event) => updateField("budget", event.target.value)}
-                        placeholder="Bijvoorbeeld: 5000-10000"
-                      />
-                      <FieldError message={fieldErrors.budget} />
-                    </Field>
                   </div>
                   <Field label="Wat voor website heb je ongeveer nodig?" helper="Kies de richting die het dichtst in de buurt komt.">
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -526,12 +518,6 @@ const AanvraagPage = () => {
                         ))}
                       </RadioGroup>
                       <FieldError message={fieldErrors.inputReadiness} />
-                    </Field>
-                  </div>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Gewenste oplevering" helper="Optioneel. Gebruik indien mogelijk een concrete datum.">
-                      <Input type="date" value={payload.deadline} onChange={(event) => updateField("deadline", event.target.value)} />
-                      <FieldError message={fieldErrors.deadline} />
                     </Field>
                   </div>
                   <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">

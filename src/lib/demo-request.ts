@@ -7,8 +7,6 @@ export type DemoRequestPayload = {
   industry: string;
   region: string;
   subject: string;
-  budget: string;
-  deadline: string;
   companyDescription: string;
   companyActivities: string;
   targetAudience: string;
@@ -49,8 +47,6 @@ export const initialPayload: DemoRequestPayload = {
   industry: "",
   region: "",
   subject: "",
-  budget: "",
-  deadline: "",
   companyDescription: "",
   companyActivities: "",
   targetAudience: "",
@@ -108,10 +104,6 @@ function isValidHttpUrl(value: string) {
   }
 }
 
-function isValidDate(value: string) {
-  return value === "" || /^\d{4}-\d{2}-\d{2}$/.test(value);
-}
-
 export function validateDemoRequestPayload(payload: DemoRequestPayload) {
   const errors: DemoRequestErrors = {};
 
@@ -129,10 +121,6 @@ export function validateDemoRequestPayload(payload: DemoRequestPayload) {
 
   if (!isValidHttpUrl(payload.websiteUrl.trim())) {
     errors.websiteUrl = "Gebruik een volledige URL inclusief http:// of https://.";
-  }
-
-  if (!isValidDate(payload.deadline.trim())) {
-    errors.deadline = "Gebruik een geldige datum.";
   }
 
   if (!payload.privacyConsent) {

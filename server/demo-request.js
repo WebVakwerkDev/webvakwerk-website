@@ -41,15 +41,6 @@ const urlSchema = z.preprocess(
     .or(z.literal("")),
 );
 
-const dateSchema = z.preprocess(
-  trimString,
-  z
-    .string()
-    .refine((value) => value === "" || /^\d{4}-\d{2}-\d{2}$/.test(value), "Gebruik een geldige datum.")
-    .optional()
-    .or(z.literal("")),
-);
-
 export const demoRequestSchema = z.object({
   companyName: requiredTrimmedString("Bedrijfsnaam"),
   contactName: requiredTrimmedString("Contactpersoon"),
@@ -59,8 +50,6 @@ export const demoRequestSchema = z.object({
   industry: requiredTrimmedString("Branche", 120),
   region: optionalTrimmedString,
   subject: requiredTrimmedString("Onderwerp", 160),
-  budget: optionalTrimmedString,
-  deadline: dateSchema,
   companyDescription: requiredTrimmedString("Bedrijfsomschrijving", 1200),
   companyActivities: requiredTrimmedString("Bedrijfsactiviteiten", 1200),
   targetAudience: requiredTrimmedString("Doelgroep", 1200),
@@ -131,20 +120,6 @@ function buildProjectDescription(payload) {
     .join("\n\n");
 }
 
-function buildIntakeSummary(payload) {
-  const summaryLines = ["Aanvraag via websiteformulier"];
-
-  if (payload.budget) {
-    summaryLines.push(`Budgetindicatie: ${payload.budget}`);
-  }
-
-  if (payload.deadline) {
-    summaryLines.push(`Gewenste oplevering: ${payload.deadline}`);
-  }
-
-  return summaryLines.join("\n");
-}
-
 function buildProjectScope(payload) {
   const scopeItems = [payload.websiteType, payload.primaryServices, payload.desiredOutcome]
     .filter(Boolean)
@@ -156,7 +131,6 @@ function buildProjectScope(payload) {
 
 export function buildInternalApiPayload(payload) {
   const description = buildProjectDescription(payload);
-  const intakeSummary = buildIntakeSummary(payload);
   const scope = buildProjectScope(payload);
 
   return {
@@ -173,7 +147,7 @@ export function buildInternalApiPayload(payload) {
       status: "INTAKE",
       priority: "MEDIUM",
       description,
-      intakeSummary,
+      intakeSummary: "Aanvraag via websiteformulier",
       scope: scope || undefined,
     },
     initialLogEntry: {
