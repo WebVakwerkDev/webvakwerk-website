@@ -484,42 +484,6 @@ const AanvraagPage = () => {
                       contact met je op om de mogelijkheden te bespreken.
                     </p>
                   </div>
-                  <div className="rounded-[1.5rem] border border-primary/25 bg-amber-50 px-5 py-5 text-sm text-slate-900 shadow-sm">
-                    <p className="font-bold">Duidelijkheid over revisies en meerwerk</p>
-                    <p className="mt-2 leading-relaxed">
-                      Voor websitepakketten zijn maximaal 3 feedbackrondes inbegrepen. Extra rondes of wijzigingen buiten de
-                      afgesproken scope vallen onder meerwerk van EUR 100 per extra feedbackronde.
-                    </p>
-                    <Link to="/voorwaarden" className="mt-3 inline-flex font-bold text-primary underline-offset-4 hover:underline">
-                      Bekijk alle voorwaarden
-                    </Link>
-                  </div>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Gewenst resultaat" helper="Wat moet deze website vooral opleveren?">
-                      <Textarea
-                        rows={3}
-                        value={payload.desiredOutcome}
-                        onChange={(event) => updateField("desiredOutcome", event.target.value)}
-                        placeholder="Bijvoorbeeld: meer offerteaanvragen, professionelere uitstraling of betere vindbaarheid."
-                      />
-                      <FieldError message={fieldErrors.desiredOutcome} />
-                    </Field>
-                    <Field label="Hoe snel kunnen jullie input aanleveren?">
-                      <RadioGroup value={payload.inputReadiness} onValueChange={(value) => updateField("inputReadiness", value)} className="gap-3">
-                        {[
-                          "We kunnen snel schakelen",
-                          "We hebben nog wat materiaal nodig",
-                          "We willen eerst de richting bepalen",
-                        ].map((option) => (
-                          <label key={option} className="flex items-center gap-3 rounded-2xl border border-foreground/8 bg-secondary/25 px-4 py-3 text-sm text-foreground">
-                            <RadioGroupItem value={option} />
-                            <span>{option}</span>
-                          </label>
-                        ))}
-                      </RadioGroup>
-                      <FieldError message={fieldErrors.inputReadiness} />
-                    </Field>
-                  </div>
                   <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
                     <Checkbox checked={payload.privacyConsent} onCheckedChange={(checked) => updateField("privacyConsent", Boolean(checked))} />
                     <span>

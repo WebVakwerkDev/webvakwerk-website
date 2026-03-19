@@ -26,7 +26,6 @@ describe("demo request validation", () => {
       targetAudience: "Particulieren en architecten.",
       primaryServices: "Keukens en maatwerkmeubels.",
       reasonForRequest: "De huidige site converteert niet goed.",
-      desiredOutcome: "Meer offerteaanvragen.",
       privacyConsent: true,
     });
 

@@ -20,8 +20,6 @@ export type DemoRequestPayload = {
   existingBrandAssets: string;
   websiteType: string;
   reasonForRequest: string;
-  inputReadiness: string;
-  desiredOutcome: string;
   privacyConsent: boolean;
   honeypot: string;
 };
@@ -60,8 +58,6 @@ export const initialPayload: DemoRequestPayload = {
   existingBrandAssets: "",
   websiteType: "bedrijfswebsite",
   reasonForRequest: "",
-  inputReadiness: "We kunnen snel schakelen",
-  desiredOutcome: "",
   privacyConsent: false,
   honeypot: "",
 };
@@ -78,13 +74,12 @@ const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
   targetAudience: "Beschrijf de doelgroep.",
   primaryServices: "Noem de belangrijkste diensten of producten.",
   reasonForRequest: "Beschrijf kort waarom je deze website aanvraagt.",
-  desiredOutcome: "Beschrijf het gewenste resultaat.",
 };
 
 const stepFields: DemoRequestField[][] = [
   ["companyName", "contactName", "email", "phone", "industry", "subject", "reasonForRequest"],
   ["companyDescription", "companyActivities", "targetAudience", "primaryServices"],
-  ["desiredOutcome", "privacyConsent"],
+  ["privacyConsent"],
 ];
 
 function isValidEmail(value: string) {

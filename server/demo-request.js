@@ -63,8 +63,6 @@ export const demoRequestSchema = z.object({
   existingBrandAssets: optionalTrimmedString,
   websiteType: requiredTrimmedString("Type website", 80),
   reasonForRequest: requiredTrimmedString("Aanvraag", 1200),
-  inputReadiness: requiredTrimmedString("Inputgereedheid", 120),
-  desiredOutcome: requiredTrimmedString("Gewenst resultaat", 1200),
   privacyConsent: z.literal(true, {
     errorMap: () => ({ message: "Je moet toestemming geven voor contact over deze aanvraag." }),
   }),
@@ -77,7 +75,6 @@ const descriptionSections = [
   ["Bedrijfsactiviteiten", "companyActivities"],
   ["Doelgroep", "targetAudience"],
   ["Belangrijkste diensten of producten", "primaryServices"],
-  ["Gewenst resultaat", "desiredOutcome"],
   ["Onderscheidend vermogen", "uniqueSellingPoints"],
   ["Gewenste uitstraling", "visualStyle"],
   ["Merkwoorden", "brandKeywords"],
@@ -88,7 +85,6 @@ const descriptionSections = [
   ["Bestaande website", "websiteUrl"],
   ["Regio", "region"],
   ["Branche", "industry"],
-  ["Inputgereedheid", "inputReadiness"],
 ];
 
 const projectTypeMap = {
@@ -121,7 +117,7 @@ function buildProjectDescription(payload) {
 }
 
 function buildProjectScope(payload) {
-  const scopeItems = [payload.websiteType, payload.primaryServices, payload.desiredOutcome]
+  const scopeItems = [payload.websiteType, payload.primaryServices]
     .filter(Boolean)
     .map((value) => value.trim())
     .filter(Boolean);
@@ -150,7 +146,7 @@ export function buildInternalApiPayload(payload) {
       intakeSummary: "Aanvraag via websiteformulier",
       scope: scope || undefined,
     },
-    initialLogEntry: {
+    initialCommunication: {
       type: "EMAIL",
       subject: payload.subject,
       content: description,
