@@ -10,75 +10,21 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
-type DemoRequestPayload = {
-  companyName: string;
-  contactName: string;
-  email: string;
-  phone: string;
-  websiteUrl: string;
-  industry: string;
-  region: string;
-  companyDescription: string;
-  companyActivities: string;
-  targetAudience: string;
-  uniqueSellingPoints: string;
-  primaryServices: string;
-  visualStyle: string;
-  inspirationExamples: string;
-  brandColors: string;
-  avoidedColors: string;
-  brandKeywords: string;
-  existingBrandAssets: string;
-  websiteType: string;
-  reasonForRequest: string;
-  inputReadiness: string;
-  desiredOutcome: string;
-  privacyConsent: boolean;
-  honeypot: string;
-};
-
-const styleOptions = ["Modern", "Strak", "Warm", "Minimalistisch", "Premium", "Speels", "Ambachtelijk", "Technisch"];
-
-const websiteTypeOptions = [
-  { value: "bedrijfswebsite", title: "Bedrijfswebsite", description: "Voor zichtbaarheid, vertrouwen en leads." },
-  { value: "landingspagina", title: "Landingspagina", description: "Voor een campagne, dienst of actie." },
-  { value: "portfolio", title: "Portfolio", description: "Voor cases, projecten of visueel werk." },
-  { value: "anders", title: "Anders", description: "Als het net buiten deze opties valt." },
-];
+import {
+  getStepErrors,
+  initialPayload,
+  styleOptions,
+  validateDemoRequestPayload,
+  websiteTypeOptions,
+  type DemoRequestErrors,
+  type DemoRequestPayload,
+} from "@/lib/demo-request";
 
 const steps = [
   { title: "Bedrijf en project", description: "De snelle basis: wie je bent en wat je nodig hebt." },
   { title: "Doelgroep en stijl", description: "Inhoud, uitstraling en huisstijlvoorkeuren." },
   { title: "Controleren en versturen", description: "Vrijblijvend indienen en laatste controle." },
 ];
-
-const initialPayload: DemoRequestPayload = {
-  companyName: "",
-  contactName: "",
-  email: "",
-  phone: "",
-  websiteUrl: "",
-  industry: "",
-  region: "",
-  companyDescription: "",
-  companyActivities: "",
-  targetAudience: "",
-  uniqueSellingPoints: "",
-  primaryServices: "",
-  visualStyle: "",
-  inspirationExamples: "",
-  brandColors: "",
-  avoidedColors: "",
-  brandKeywords: "",
-  existingBrandAssets: "",
-  websiteType: "bedrijfswebsite",
-  reasonForRequest: "",
-  inputReadiness: "we kunnen snel schakelen",
-  desiredOutcome: "",
-  privacyConsent: false,
-  honeypot: "",
-};
 
 function SectionCard({ title, description, children }: { title: string; description: string; children: ReactNode }) {
   return (
@@ -100,6 +46,14 @@ function Field({ label, helper, children }: { label: string; helper?: string; ch
       {helper ? <p className="text-xs text-muted-foreground">{helper}</p> : null}
     </label>
   );
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) {
+    return null;
+  }
+
+  return <p className="text-xs font-bold text-destructive">{message}</p>;
 }
 
 function ChoiceChip({
@@ -129,6 +83,7 @@ function ChoiceChip({
 const AanvraagPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [payload, setPayload] = useState(initialPayload);
+  const [fieldErrors, setFieldErrors] = useState<DemoRequestErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -137,6 +92,15 @@ const AanvraagPage = () => {
 
   function updateField<K extends keyof DemoRequestPayload>(key: K, value: DemoRequestPayload[K]) {
     setPayload((current) => ({ ...current, [key]: value }));
+    setFieldErrors((current) => {
+      if (!current[key]) {
+        return current;
+      }
+
+      const nextErrors = { ...current };
+      delete nextErrors[key];
+      return nextErrors;
+    });
   }
 
   function toggleStyleOption(option: string) {
@@ -155,17 +119,18 @@ const AanvraagPage = () => {
   }
 
   async function handleSubmit() {
+    const validationErrors = validateDemoRequestPayload(payload);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setFieldErrors(validationErrors);
+      setErrorMessage("Controleer de ingevulde velden en probeer het opnieuw.");
+      return;
+    }
+
     setIsSubmitting(true);
     setErrorMessage("");
 
     try {
-      console.log("[demo-request] verzenden gestart", {
-        companyName: payload.companyName,
-        contactName: payload.contactName,
-        email: payload.email,
-        websiteType: payload.websiteType,
-      });
-
       const response = await fetch("/api/demo-request", {
         method: "POST",
         headers: {
@@ -178,23 +143,35 @@ const AanvraagPage = () => {
 
       const data = await response.json().catch(() => null);
 
-      console.log("[demo-request] response ontvangen", {
-        status: response.status,
-        ok: response.ok,
-        data,
-      });
-
       if (!response.ok || !data?.success) {
+        if (data?.errors) {
+          setFieldErrors(data.errors as DemoRequestErrors);
+        }
+
         throw new Error(data?.message || "De aanvraag kon niet worden verstuurd.");
       }
 
       setIsSuccess(true);
+      setFieldErrors({});
+      setPayload(initialPayload);
     } catch (error) {
-      console.error("[demo-request] fout", error);
       setErrorMessage(error instanceof Error ? error.message : "De aanvraag kon niet worden verstuurd.");
     } finally {
       setIsSubmitting(false);
     }
+  }
+
+  function handleNextStep() {
+    const stepErrors = getStepErrors(payload, currentStep);
+
+    if (Object.keys(stepErrors).length > 0) {
+      setFieldErrors((current) => ({ ...current, ...stepErrors }));
+      setErrorMessage("Controleer de ingevulde velden voordat je doorgaat.");
+      return;
+    }
+
+    setErrorMessage("");
+    setCurrentStep((current) => Math.min(steps.length - 1, current + 1));
   }
 
   return (
@@ -288,6 +265,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("companyName", event.target.value)}
                         placeholder="Bijvoorbeeld: Bakkerij Jansen"
                       />
+                      <FieldError message={fieldErrors.companyName} />
                     </Field>
                     <Field label="Contactpersoon">
                       <Input
@@ -295,6 +273,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("contactName", event.target.value)}
                         placeholder="Voor- en achternaam"
                       />
+                      <FieldError message={fieldErrors.contactName} />
                     </Field>
                     <Field label="E-mailadres">
                       <Input
@@ -303,6 +282,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("email", event.target.value)}
                         placeholder="naam@bedrijf.nl"
                       />
+                      <FieldError message={fieldErrors.email} />
                     </Field>
                     <Field label="Telefoonnummer">
                       <Input
@@ -310,6 +290,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("phone", event.target.value)}
                         placeholder="+31 6 12 34 56 78"
                       />
+                      <FieldError message={fieldErrors.phone} />
                     </Field>
                     <Field label="Website URL">
                       <Input
@@ -317,6 +298,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("websiteUrl", event.target.value)}
                         placeholder="https://..."
                       />
+                      <FieldError message={fieldErrors.websiteUrl} />
                     </Field>
                     <Field label="Vestigingsplaats / regio">
                       <Input
@@ -324,6 +306,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("region", event.target.value)}
                         placeholder="Bijvoorbeeld: Amsterdam of Randstad"
                       />
+                      <FieldError message={fieldErrors.region} />
                     </Field>
                   </div>
                   <Field label="Branche / type bedrijf">
@@ -332,7 +315,26 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("industry", event.target.value)}
                       placeholder="Bijvoorbeeld: bouw, zorg, horeca, consultancy"
                     />
+                    <FieldError message={fieldErrors.industry} />
                   </Field>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Onderwerp">
+                      <Input
+                        value={payload.subject}
+                        onChange={(event) => updateField("subject", event.target.value)}
+                        placeholder="Bijvoorbeeld: Nieuwe website aanvraag"
+                      />
+                      <FieldError message={fieldErrors.subject} />
+                    </Field>
+                    <Field label="Budgetindicatie" helper="Optioneel, maar helpt om intern sneller te triagen.">
+                      <Input
+                        value={payload.budget}
+                        onChange={(event) => updateField("budget", event.target.value)}
+                        placeholder="Bijvoorbeeld: 5000-10000"
+                      />
+                      <FieldError message={fieldErrors.budget} />
+                    </Field>
+                  </div>
                   <Field label="Wat voor website heb je ongeveer nodig?" helper="Kies de richting die het dichtst in de buurt komt.">
                     <div className="grid gap-3 sm:grid-cols-2">
                       {websiteTypeOptions.map((option) => (
@@ -351,6 +353,7 @@ const AanvraagPage = () => {
                         </button>
                       ))}
                     </div>
+                    <FieldError message={fieldErrors.websiteType} />
                   </Field>
                   <Field label="Waarom vraag je deze website aan?" helper="Een paar woorden zijn genoeg.">
                     <Textarea
@@ -359,6 +362,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("reasonForRequest", event.target.value)}
                       placeholder="Bijvoorbeeld: huidige site is verouderd, we willen professioneler overkomen of meer aanvragen krijgen."
                     />
+                    <FieldError message={fieldErrors.reasonForRequest} />
                   </Field>
                 </SectionCard>
               ) : null}
@@ -372,6 +376,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("companyDescription", event.target.value)}
                       placeholder="Wat doet jullie bedrijf in 2 of 3 zinnen?"
                     />
+                    <FieldError message={fieldErrors.companyDescription} />
                   </Field>
                   <Field label="Wat doet het bedrijf?">
                     <Textarea
@@ -380,6 +385,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("companyActivities", event.target.value)}
                       placeholder="Welke diensten, producten of werkzaamheden zijn het belangrijkst?"
                     />
+                    <FieldError message={fieldErrors.companyActivities} />
                   </Field>
                   <Field label="Wie is de doelgroep?">
                     <Textarea
@@ -388,6 +394,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("targetAudience", event.target.value)}
                       placeholder="Bijvoorbeeld: particulieren, mkb, aannemers, starters of bestaande klanten."
                     />
+                    <FieldError message={fieldErrors.targetAudience} />
                   </Field>
                   <Field label="Wat onderscheidt jullie van concurrenten?">
                     <Textarea
@@ -396,6 +403,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("uniqueSellingPoints", event.target.value)}
                       placeholder="Bijvoorbeeld: snel, persoonlijk, specialistisch of premium."
                     />
+                    <FieldError message={fieldErrors.uniqueSellingPoints} />
                   </Field>
                   <Field label="Belangrijkste diensten of producten">
                     <Textarea
@@ -404,6 +412,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("primaryServices", event.target.value)}
                       placeholder="Noem de belangrijkste diensten, producten of categorieen."
                     />
+                    <FieldError message={fieldErrors.primaryServices} />
                   </Field>
                   <Field label="Gewenste uitstraling" helper="Selecteer gerust meerdere richtingen.">
                     <div className="flex flex-wrap gap-2">
@@ -417,6 +426,7 @@ const AanvraagPage = () => {
                         </ChoiceChip>
                       ))}
                     </div>
+                    <FieldError message={fieldErrors.visualStyle} />
                   </Field>
                   <div className="rounded-[1.5rem] border border-foreground/8 bg-secondary/25 p-5 sm:p-6">
                     <h3 className="font-syne text-xl font-extrabold text-foreground">Kleur- en huisstijlwensen</h3>
@@ -430,6 +440,7 @@ const AanvraagPage = () => {
                           onChange={(event) => updateField("brandColors", event.target.value)}
                           placeholder="Bijvoorbeeld: donkerblauw, zand, koper"
                         />
+                        <FieldError message={fieldErrors.brandColors} />
                       </Field>
                       <Field label="Kleuren die je niet wilt">
                         <Input
@@ -437,6 +448,7 @@ const AanvraagPage = () => {
                           onChange={(event) => updateField("avoidedColors", event.target.value)}
                           placeholder="Bijvoorbeeld: felgroen of paars"
                         />
+                        <FieldError message={fieldErrors.avoidedColors} />
                       </Field>
                       <Field label="Huisstijlwoorden" helper="Denk aan woorden als rustig, strak, warm of uitgesproken.">
                         <Input
@@ -444,6 +456,7 @@ const AanvraagPage = () => {
                           onChange={(event) => updateField("brandKeywords", event.target.value)}
                           placeholder="Bijvoorbeeld: professioneel, warm, modern"
                         />
+                        <FieldError message={fieldErrors.brandKeywords} />
                       </Field>
                       <Field label="Wat is er al aanwezig?" helper="Bijvoorbeeld een logo, lettertype, kleurenpalet of bestaande brochure.">
                         <Input
@@ -451,6 +464,7 @@ const AanvraagPage = () => {
                           onChange={(event) => updateField("existingBrandAssets", event.target.value)}
                           placeholder="Bijvoorbeeld: logo aanwezig, nog geen vaste huisstijl"
                         />
+                        <FieldError message={fieldErrors.existingBrandAssets} />
                       </Field>
                     </div>
                   </div>
@@ -461,6 +475,7 @@ const AanvraagPage = () => {
                       onChange={(event) => updateField("inspirationExamples", event.target.value)}
                       placeholder="Plak links of beschrijf kort wat je aanspreekt."
                     />
+                    <FieldError message={fieldErrors.inspirationExamples} />
                   </Field>
                   <div className="rounded-2xl border border-foreground/8 bg-secondary/25 px-4 py-4 text-sm text-muted-foreground">
                     Bestanden meesturen? Mail ze na je aanvraag naar info@webvakwerk.nl.
@@ -495,6 +510,7 @@ const AanvraagPage = () => {
                         onChange={(event) => updateField("desiredOutcome", event.target.value)}
                         placeholder="Bijvoorbeeld: meer offerteaanvragen, professionelere uitstraling of betere vindbaarheid."
                       />
+                      <FieldError message={fieldErrors.desiredOutcome} />
                     </Field>
                     <Field label="Hoe snel kunnen jullie input aanleveren?">
                       <RadioGroup value={payload.inputReadiness} onValueChange={(value) => updateField("inputReadiness", value)} className="gap-3">
@@ -509,6 +525,13 @@ const AanvraagPage = () => {
                           </label>
                         ))}
                       </RadioGroup>
+                      <FieldError message={fieldErrors.inputReadiness} />
+                    </Field>
+                  </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Gewenste oplevering" helper="Optioneel. Gebruik indien mogelijk een concrete datum.">
+                      <Input type="date" value={payload.deadline} onChange={(event) => updateField("deadline", event.target.value)} />
+                      <FieldError message={fieldErrors.deadline} />
                     </Field>
                   </div>
                   <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
@@ -521,6 +544,7 @@ const AanvraagPage = () => {
                       gelezen.
                     </span>
                   </label>
+                  <FieldError message={fieldErrors.privacyConsent} />
                   <div className="hidden">
                     <Input value={payload.honeypot} onChange={(event) => updateField("honeypot", event.target.value)} tabIndex={-1} autoComplete="off" />
                   </div>
@@ -534,7 +558,7 @@ const AanvraagPage = () => {
                   Vorige stap
                 </Button>
                 {currentStep < steps.length - 1 ? (
-                  <Button type="button" className="rounded-full" onClick={() => setCurrentStep((current) => Math.min(steps.length - 1, current + 1))}>
+                  <Button type="button" className="rounded-full" onClick={handleNextStep}>
                     Volgende stap
                     <ArrowRight className="h-4 w-4" />
                   </Button>
