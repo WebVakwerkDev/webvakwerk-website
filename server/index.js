@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import express from "express";
@@ -9,18 +10,75 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const distDir = path.join(projectRoot, "dist");
 const indexFile = path.join(distDir, "index.html");
-
-const app = express();
 const port = Number(process.env.PORT || 8080);
-const internalApiUrl = process.env.INTERNAL_TICKET_API_URL || process.env.INTERNAL_API_URL;
-const internalApiKey = process.env.INTERNAL_TICKET_API_KEY || process.env.INTERNAL_API_KEY;
+const internalApiUrl = process.env.INTERNAL_TICKET_API_URL;
+const internalApiKey = process.env.INTERNAL_TICKET_API_KEY;
+const appPublicUrl = process.env.APP_PUBLIC_URL;
+const trustProxy = process.env.TRUST_PROXY || "loopback";
 const rateLimitWindowMs = 15 * 60 * 1000;
 const rateLimitMaxRequests = 5;
 const requestTracker = new Map();
+const duplicateWindowMs = 10 * 60 * 1000;
+const duplicateTracker = new Map();
+
+function validateEnvironment() {
+  const errors = [];
+
+  if (!Number.isInteger(port) || port <= 0) {
+    errors.push("PORT must be a positive integer");
+  }
+
+  if (!internalApiUrl) {
+    errors.push("INTERNAL_TICKET_API_URL is required");
+  } else {
+    try {
+      const url = new URL(internalApiUrl);
+
+      if (!["http:", "https:"].includes(url.protocol)) {
+        errors.push("INTERNAL_TICKET_API_URL must use http or https");
+      }
+    } catch {
+      errors.push("INTERNAL_TICKET_API_URL must be a valid URL");
+    }
+  }
+
+  if (!internalApiKey) {
+    errors.push("INTERNAL_TICKET_API_KEY is required");
+  }
+
+  if (!appPublicUrl) {
+    errors.push("APP_PUBLIC_URL is required");
+  } else {
+    try {
+      new URL(appPublicUrl);
+    } catch {
+      errors.push("APP_PUBLIC_URL must be a valid URL");
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Invalid server configuration: ${errors.join("; ")}`);
+  }
+}
+
+validateEnvironment();
+
+const app = express();
+const allowedOrigins = new Set([new URL(appPublicUrl).origin]);
 
 app.disable("x-powered-by");
-app.set("trust proxy", true);
+app.set("trust proxy", trustProxy);
 app.use(express.json({ limit: "32kb" }));
+app.use((error, _req, res, next) => {
+  if (error instanceof SyntaxError && "body" in error) {
+    return res.status(400).json({
+      success: false,
+      message: "Ongeldige JSON ontvangen.",
+    });
+  }
+
+  return next(error);
+});
 
 function cleanupRateLimitEntries(now) {
   for (const [ip, timestamps] of requestTracker.entries()) {
@@ -51,16 +109,67 @@ function isRateLimited(ip) {
   return false;
 }
 
-app.post("/api/demo-request", async (req, res) => {
-  if (!internalApiUrl || !internalApiKey) {
-    console.error("[demo-request] missing INTERNAL_TICKET_API_URL or INTERNAL_TICKET_API_KEY");
-    return res.status(500).json({
-      success: false,
-      message: "De server is nog niet volledig geconfigureerd.",
-    });
+function cleanupDuplicateEntries(now) {
+  for (const [key, entry] of duplicateTracker.entries()) {
+    if (now - entry.timestamp >= duplicateWindowMs) {
+      duplicateTracker.delete(key);
+    }
+  }
+}
+
+function createRequestFingerprint(payload) {
+  const normalized = [
+    payload.companyName,
+    payload.contactName,
+    payload.email,
+    payload.subject,
+    payload.reasonForRequest,
+  ]
+    .map((value) => value.trim().toLowerCase())
+    .join("|");
+
+  return crypto.createHash("sha256").update(normalized).digest("hex");
+}
+
+function getDuplicateState(fingerprint) {
+  const now = Date.now();
+  cleanupDuplicateEntries(now);
+
+  const entry = duplicateTracker.get(fingerprint);
+
+  if (!entry) {
+    return null;
   }
 
+  return entry.state;
+}
+
+function markDuplicateFingerprint(fingerprint, state) {
+  duplicateTracker.set(fingerprint, {
+    state,
+    timestamp: Date.now(),
+  });
+}
+
+function validateOrigin(req) {
+  const origin = req.get("origin");
+
+  if (!origin) {
+    return false;
+  }
+
+  return allowedOrigins.has(origin);
+}
+
+app.post("/api/demo-request", async (req, res) => {
   const ip = req.ip || "unknown";
+
+  if (!validateOrigin(req)) {
+    return res.status(403).json({
+      success: false,
+      message: "Deze aanvraag mag alleen vanaf de website worden verzonden.",
+    });
+  }
 
   if (isRateLimited(ip)) {
     return res.status(429).json({
@@ -80,6 +189,7 @@ app.post("/api/demo-request", async (req, res) => {
   }
 
   const payload = payloadResult.data;
+  const fingerprint = createRequestFingerprint(payload);
 
   if (payload.honeypot) {
     return res.status(200).json({
@@ -87,6 +197,17 @@ app.post("/api/demo-request", async (req, res) => {
       message: "Je aanvraag is ontvangen.",
     });
   }
+
+  const duplicateState = getDuplicateState(fingerprint);
+
+  if (duplicateState === "pending" || duplicateState === "completed") {
+    return res.status(409).json({
+      success: false,
+      message: "Deze aanvraag is al recent verzonden. Controleer je inbox of probeer het later opnieuw.",
+    });
+  }
+
+  markDuplicateFingerprint(fingerprint, "pending");
 
   try {
     const internalPayload = buildInternalApiPayload(payload);
@@ -108,11 +229,15 @@ app.post("/api/demo-request", async (req, res) => {
         body: errorBody.slice(0, 300),
       });
 
+      duplicateTracker.delete(fingerprint);
+
       return res.status(502).json({
         success: false,
         message: "De aanvraag kon niet worden doorgestuurd. Probeer het later opnieuw.",
       });
     }
+
+    markDuplicateFingerprint(fingerprint, "completed");
 
     return res.status(200).json({
       success: true,
@@ -122,6 +247,8 @@ app.post("/api/demo-request", async (req, res) => {
     console.error("[demo-request] unexpected server error", {
       message: error instanceof Error ? error.message : "Unknown error",
     });
+
+    duplicateTracker.delete(fingerprint);
 
     return res.status(502).json({
       success: false,

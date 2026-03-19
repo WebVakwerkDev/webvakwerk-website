@@ -20,11 +20,12 @@ npm run dev:server
 Create a `.env` file based on `.env.example`:
 
 ```sh
+APP_PUBLIC_URL=http://172.16.2.12:8080
 INTERNAL_TICKET_API_URL=http://172.16.2.14:3000/api/internal/projects
 INTERNAL_TICKET_API_KEY=replace-me
 ```
 
-The browser submits to `/api/demo-request`. The Node server validates the intake, applies honeypot + rate limiting, and forwards the request server-to-server to the internal tickets API with `Authorization: Bearer INTERNAL_TICKET_API_KEY`.
+The browser submits to `/api/demo-request`. The Node server validates the intake, checks the request origin against `APP_PUBLIC_URL`, applies honeypot + rate limiting + duplicate protection, and forwards the request server-to-server to the internal tickets API with `Authorization: Bearer INTERNAL_TICKET_API_KEY`.
 
 ## Production build
 
@@ -43,4 +44,4 @@ docker compose up --build
 
 The website is then available on `http://localhost:8080`.
 
-Docker reads the same `.env` file, so set `INTERNAL_TICKET_API_URL` and `INTERNAL_TICKET_API_KEY` there before starting the container.
+Docker reads the same `.env` file, so set `APP_PUBLIC_URL`, `INTERNAL_TICKET_API_URL` and `INTERNAL_TICKET_API_KEY` there before starting the container.
