@@ -11,7 +11,7 @@ const Hero = () => (
         transition={{ duration: 0.6 }}
       >
         <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-          Websites zonder gedoe
+          Duidelijk. Snel. Vindbaar.
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-syne text-foreground leading-[1.1] mb-6 tracking-tight">
           Snel een <span className="text-primary">website</span> voor jou bedrijf
