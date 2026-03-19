@@ -66,11 +66,13 @@ const sections: Section[] = [
     title: "7. Oplevering en revisies",
     paragraphs: [
       "Een website of onderdeel geldt als opgeleverd zodra opdrachtnemer dit als gereed heeft gemeld en opdrachtgever de gelegenheid heeft gehad om te controleren.",
-      "Inbegrepen revisierondes worden vooraf in offerte of pakket omschreven.",
-      "Wijzigingen buiten de afgesproken scope of extra revisierondes gelden als meerwerk.",
+      "Bij websitepakketten zijn maximaal 3 feedbackrondes inbegrepen, tenzij schriftelijk een ander aantal is afgesproken.",
+      "Na deze inbegrepen feedbackrondes worden extra aanpassingen uitgevoerd als meerwerk tegen een vast tarief van EUR 100 per extra feedbackronde.",
+      "Wijzigingen buiten de afgesproken scope gelden altijd als meerwerk.",
     ],
     bullets: [
       "Wanneer opdrachtgever binnen 7 dagen na oplevering geen inhoudelijke feedback geeft, mag opdrachtnemer de oplevering als geaccepteerd beschouwen.",
+      "Opdrachtnemer is niet verplicht om onbeperkt te blijven aanpassen binnen een vaste pakketprijs.",
       "Technische of inhoudelijke wijzigingen na acceptatie worden uitgevoerd als nieuwe opdracht of onderhoudswerk.",
     ],
   },
