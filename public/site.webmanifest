@@ -7,9 +7,21 @@
   "theme_color": "#e76c36",
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/favicon-32x32.png?v=20260319",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-48x48.png?v=20260319",
       "sizes": "48x48",
-      "type": "image/x-icon",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png?v=20260319",
+      "sizes": "180x180",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

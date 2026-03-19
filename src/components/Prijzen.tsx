@@ -11,7 +11,6 @@ const plans = [
     features: [
       "Tot 5 pagina's",
       "Mobiel geoptimaliseerd",
-      "Contactformulier",
       "SEO-basis",
       "Gratis demo vooraf",
       "Overdracht of hosting naar keuze",
@@ -30,8 +29,7 @@ const plans = [
     features: [
       "Tot 10 pagina's",
       "Animaties en premium design",
-      "Geavanceerde formulieren",
-      "Google Analytics koppeling",
+      "Contactformulier & geavanceerde formulieren",
       "SEO uitgebreid",
       "Gratis demo vooraf",
       "1 maand gratis support na oplevering",
@@ -73,10 +71,10 @@ const Prijzen = () => {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 font-syne text-3xl font-extrabold text-foreground md:text-4xl">
-            Duidelijke prijzen
+            Snel. Duidelijk. Vindbaar.
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Elk pakket heeft een duidelijke scope. Een heldere intake voorkomt onnodig uitloopwerk en maakt vooraf duidelijk wat inbegrepen is en wanneer extra werk apart wordt berekend.
+            Geen verrassingen. Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Alles wat je nodig hebt, niets wat je niet nodig hebt.
           </p>
           <div className="mt-4">
             <Link to="/voorwaarden" className="text-sm font-bold text-primary transition-colors hover:opacity-80">
