@@ -4,33 +4,33 @@ const steps = [
   {
     number: "01",
     title: "Intake",
-    description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren. Duurt een halfuur.",
+    description: "Jij geeft je wensen door: wat je bedrijf doet, wie je doelgroep is en wat de website moet opleveren.",
   },
   {
     number: "02",
-    title: "Eerste oplevering",
-    description: "Wij bouwen een eerste werkende versie. Jij ziet direct hoe de site eruitziet — geen wireframes, geen vaag concept.",
+    title: "Demo website",
+    description: "Op basis van de intake bouwen wij een eerste demo-website zodat je direct ziet hoe de site eruit kan zien.",
   },
   {
     number: "03",
-    title: "Feedbackmoment",
-    description: "Jij verzamelt al je opmerkingen en levert die in één keer aan. Niet als losse berichtjes — als één overzicht.",
-    accent: true,
+    title: "Akkoord op richting",
+    description: "Je kiest of je akkoord bent met de richting. Zonder akkoord stoppen we hier, met akkoord gaan we door naar de iteraties.",
   },
   {
     number: "04",
-    title: "Verbeterde versie",
-    description: "Wij verwerken je feedback volledig en leveren de volgende versie op. Afhankelijk van je pakket volgt nog een feedbackmoment.",
+    title: "Feedback en iteraties",
+    description: "Na akkoord geef je feedback op wat je anders wilt zien. Het aantal feedbackrondes hangt af van het gekozen pakket.",
+    accent: true,
   },
   {
     number: "05",
-    title: "Finaliseren",
-    description: "Na het laatste feedbackmoment werken we alles af — design, teksten, techniek. Klaar voor livegang.",
+    title: "Oplevering",
+    description: "Zodra je akkoord bent na de feedbackrondes, leveren we de website definitief op.",
   },
   {
     number: "06",
-    title: "Live",
-    description: "De site gaat live. We dragen alles netjes over aan jouw eigen partij of hoster — jij houdt de regie.",
+    title: "Hostingoverdracht",
+    description: "We helpen bij de overdracht naar jouw hostingpartij of bij zelf hosten, zodat de livegang soepel verloopt.",
   },
 ];
 
@@ -49,7 +49,7 @@ const Werkwijze = () => {
             Snel van idee naar live
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Intake, eerste versie, feedback, live. Geen maandenlange trajecten, geen vage tussenstappen.
+            Intake, demo, akkoord, iteraties en overdracht. Duidelijk proces, korte lijnen, geen gedoe.
           </p>
         </motion.div>
 
