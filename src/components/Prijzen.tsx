@@ -9,7 +9,7 @@ const plans = [
     period: "eenmalig",
     featured: false,
     features: [
-      "Tot 5 pagina's",
+      "Tot 3 pagina's",
       "Mobiel geoptimaliseerd",
       "SEO-basis",
       "Gratis demo vooraf",
@@ -28,13 +28,12 @@ const plans = [
     featured: true,
     badge: "Meest gekozen",
     features: [
-      "Tot 10 pagina's",
+      "Tot 5 pagina's",
       "Animaties en premium design",
       "Contactformulier & geavanceerde formulieren",
       "SEO uitgebreid",
       "Gratis demo vooraf",
-      "Max. 5 feedbackrondes inbegrepen",
-      "1 maand gratis support na oplevering",
+      "Max. 5 feedbackrondes inbegrepen",",
     ],
     conditions: [
       "Een feedbackronde = één verzameld moment van opmerkingen, niet losse mailtjes.",
