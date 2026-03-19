@@ -8,6 +8,7 @@ const plans = [
     price: "€499",
     period: "eenmalig",
     featured: false,
+    tagline: "Perfect voor zzp'ers die snel online gevonden willen worden.",
     features: [
       "Tot 3 pagina's",
       "Mobiel geoptimaliseerd",
@@ -22,11 +23,12 @@ const plans = [
     ],
   },
   {
-    name: "Zakelijk",
+    name: "Enterprise",
     price: "€899",
     period: "eenmalig",
     featured: true,
     badge: "Meest gekozen",
+    tagline: "Voor ondernemers die meer uit hun website willen halen.",
     features: [
       "Tot 5 pagina's",
       "Animaties en premium design",
@@ -75,7 +77,7 @@ const Prijzen = () => {
             Transparante prijzen, geen verrassingen
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Vaste prijs, duidelijke scope — je weet vooraf precies wat je krijgt.
+            Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Vaste prijs en duidelijkheid.
           </p>
           <div className="mt-4">
             <Link to="/voorwaarden" className="text-sm font-bold text-primary transition-colors hover:opacity-80">
@@ -104,6 +106,9 @@ const Prijzen = () => {
                 </span>
               )}
               <h3 className="mb-1 font-syne text-xl font-bold text-foreground">{plan.name}</h3>
+              {"tagline" in plan && plan.tagline && (
+                <p className="mb-3 text-sm text-muted-foreground">{plan.tagline}</p>
+              )}
               <div className="mb-5">
                 <span className="font-syne text-3xl font-extrabold text-foreground">{plan.price}</span>
                 {plan.period && <span className="ml-2 text-sm text-muted-foreground">{plan.period}</span>}
