@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type DemoRequestPayload = {
   companyName: string;
@@ -35,8 +34,6 @@ type DemoRequestPayload = {
   reasonForRequest: string;
   inputReadiness: string;
   desiredOutcome: string;
-  deadline: string;
-  budgetIndication: string;
   privacyConsent: boolean;
   honeypot: string;
 };
@@ -79,8 +76,6 @@ const initialPayload: DemoRequestPayload = {
   reasonForRequest: "",
   inputReadiness: "we kunnen snel schakelen",
   desiredOutcome: "",
-  deadline: "geen harde deadline",
-  budgetIndication: "nog niet bepaald",
   privacyConsent: false,
   honeypot: "",
 };
@@ -359,35 +354,6 @@ const AanvraagPage = () => {
                       ))}
                     </div>
                   </Field>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Gewenste planning">
-                      <Select value={payload.deadline} onValueChange={(value) => updateField("deadline", value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Kies een planning" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="zo snel mogelijk">Zo snel mogelijk</SelectItem>
-                          <SelectItem value="binnen 1 maand">Binnen 1 maand</SelectItem>
-                          <SelectItem value="binnen 2 tot 3 maanden">Binnen 2 tot 3 maanden</SelectItem>
-                          <SelectItem value="geen harde deadline">Geen harde deadline</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                    <Field label="Budgetindicatie">
-                      <Select value={payload.budgetIndication} onValueChange={(value) => updateField("budgetIndication", value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Kies een indicatie" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="nog niet bepaald">Nog niet bepaald</SelectItem>
-                          <SelectItem value="onder 1500">Onder EUR 1.500</SelectItem>
-                          <SelectItem value="1500 tot 3000">EUR 1.500 tot 3.000</SelectItem>
-                          <SelectItem value="3000 tot 5000">EUR 3.000 tot 5.000</SelectItem>
-                          <SelectItem value="5000 of meer">EUR 5.000 of meer</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                  </div>
                   <Field label="Waarom vraag je deze website aan?" helper="Een paar woorden zijn genoeg.">
                     <Textarea
                       rows={3}
