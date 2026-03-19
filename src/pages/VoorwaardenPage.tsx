@@ -154,26 +154,26 @@ const VoorwaardenPage = () => {
           <h1 className="mt-4 max-w-3xl font-syne text-4xl font-extrabold leading-[1.05] text-foreground md:text-5xl">
             Algemene voorwaarden voor webdevelopment en digitale diensten
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-foreground/90">
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-foreground">
             Deze algemene voorwaarden beschrijven duidelijk hoe we samenwerken, wat je van ons mag verwachten en wat wij van jou nodig hebben. Zo voorkomen we onduidelijkheid achteraf en houden we projecten snel, overzichtelijk en professioneel.
           </p>
-          <p className="mt-3 text-sm text-foreground/75">Versie: 19 maart 2026</p>
+          <p className="mt-3 text-sm font-medium text-foreground/80">Versie: 19 maart 2026</p>
         </div>
       </section>
 
-      <section className="px-6 py-16">
-        <div className="mx-auto max-w-5xl space-y-6">
+      <section className="bg-[linear-gradient(180deg,hsl(var(--background)),hsl(var(--secondary)/0.35))] px-6 py-16">
+        <div className="mx-auto max-w-4xl space-y-6">
           {sections.map((section) => (
-            <div key={section.title} className="rounded-[1.5rem] border border-foreground/5 bg-card p-6 shadow-sm sm:p-8">
-              <h2 className="font-syne text-2xl font-extrabold text-foreground">{section.title}</h2>
-              <div className="mt-5 space-y-3">
+            <div key={section.title} className="rounded-[1.5rem] border border-foreground/10 bg-card p-7 shadow-[0_20px_50px_-30px_hsl(var(--ink)/0.22)] sm:p-9">
+              <h2 className="font-syne text-2xl font-extrabold tracking-tight text-foreground sm:text-[1.9rem]">{section.title}</h2>
+              <div className="mt-6 space-y-4">
                 {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="text-sm leading-relaxed text-foreground/95 sm:text-base">
+                  <p key={paragraph} className="max-w-none text-[1.02rem] leading-8 text-foreground sm:text-[1.05rem]">
                     {paragraph}
                   </p>
                 ))}
                 {section.bullets ? (
-                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/95 sm:text-base">
+                  <ul className="list-disc space-y-3 pl-6 text-[1.02rem] leading-8 text-foreground marker:text-primary sm:text-[1.05rem]">
                     {section.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
@@ -183,9 +183,9 @@ const VoorwaardenPage = () => {
             </div>
           ))}
 
-          <div className="rounded-[1.5rem] border border-primary/15 bg-primary/5 p-6 sm:p-8">
+          <div className="rounded-[1.5rem] border border-primary/20 bg-primary/8 p-7 shadow-[0_20px_50px_-30px_hsl(var(--ink)/0.18)] sm:p-9">
             <h2 className="font-syne text-2xl font-extrabold text-foreground">Vragen over deze voorwaarden?</h2>
-            <p className="mt-4 max-w-3xl text-foreground/90">
+            <p className="mt-4 max-w-3xl text-[1.02rem] leading-8 text-foreground">
               Als je vragen hebt over scope, onderhoud, aansprakelijkheid of facturatie, bespreken we dat graag vooraf. Duidelijke afspraken zorgen voor snelle uitvoering zonder gedoe.
             </p>
             <div className="mt-6">
