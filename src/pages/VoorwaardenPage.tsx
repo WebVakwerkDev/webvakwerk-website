@@ -168,12 +168,12 @@ const VoorwaardenPage = () => {
               <h2 className="font-syne text-2xl font-extrabold text-foreground">{section.title}</h2>
               <div className="mt-5 space-y-3">
                 {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  <p key={paragraph} className="text-sm leading-relaxed text-foreground/80 sm:text-base">
                     {paragraph}
                   </p>
                 ))}
                 {section.bullets ? (
-                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/80 sm:text-base">
                     {section.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
@@ -185,7 +185,7 @@ const VoorwaardenPage = () => {
 
           <div className="rounded-[1.5rem] border border-primary/15 bg-primary/5 p-6 sm:p-8">
             <h2 className="font-syne text-2xl font-extrabold text-foreground">Vragen over deze voorwaarden?</h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-foreground/80">
               Als je vragen hebt over scope, onderhoud, aansprakelijkheid of facturatie, bespreken we dat graag vooraf. Duidelijke afspraken zorgen voor snelle uitvoering zonder gedoe.
             </p>
             <div className="mt-6">
