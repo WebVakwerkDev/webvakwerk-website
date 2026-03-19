@@ -64,42 +64,50 @@ const Hero = () => (
             </div>
           </div>
 
-          {/* Content Preview */}
-          <div className="p-6 sm:p-8">
-            <div className="aspect-video bg-foreground rounded-lg mb-8 flex items-center justify-center">
-              <span className="text-background/20 font-syne font-bold text-sm">
-                Website Preview
-              </span>
+          {/* Content Preview with Actual Sections */}
+          <div className="p-8 space-y-6 bg-gradient-to-b from-card to-background/40">
+            {/* Hero Section Mockup */}
+            <div className="bg-primary/10 rounded-lg p-6 space-y-3">
+              <div className="h-4 bg-foreground/30 rounded w-3/4" />
+              <div className="h-3 bg-foreground/20 rounded w-full" />
+              <div className="h-3 bg-foreground/20 rounded w-5/6" />
             </div>
 
-            <div className="space-y-6">
+            {/* Features Grid Mockup */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="h-12 bg-foreground/10 rounded" />
+              <div className="h-12 bg-foreground/10 rounded" />
+              <div className="h-12 bg-foreground/10 rounded" />
+            </div>
+
+            {/* Process Stages */}
+            <div className="pt-2 space-y-4">
               <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-bold text-foreground">
-                    Eerste versie klaar
-                  </span>
-                  <span className="text-sm font-bold text-primary">80%</span>
-                </div>
-                <div className="w-full h-3 bg-foreground/5 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "80%" }}
-                    transition={{ duration: 1.5, delay: 1 }}
-                    className="h-full bg-primary rounded-full"
-                  />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">1</div>
+                    <span className="text-sm font-bold text-foreground">Ontwerp & structuur</span>
+                  </div>
+                  <span className="text-xs font-bold text-primary">✓</span>
                 </div>
               </div>
-
-              <div className="flex flex-wrap gap-3">
-                <span className="px-3 py-1 rounded-md bg-[hsl(135,64%,90%)] text-[hsl(135,64%,30%)] text-xs font-bold">
-                  ✓ Design
-                </span>
-                <span className="px-3 py-1 rounded-md bg-[hsl(135,64%,90%)] text-[hsl(135,64%,30%)] text-xs font-bold">
-                  ✓ Content
-                </span>
-                <span className="px-3 py-1 rounded-md bg-primary/10 text-primary text-xs font-bold animate-pulse">
-                  Laatste check
-                </span>
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">2</div>
+                    <span className="text-sm font-bold text-foreground">Inhoud & SEO</span>
+                  </div>
+                  <span className="text-xs font-bold text-primary">✓</span>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground">3</div>
+                    <span className="text-sm font-bold text-foreground">Live & oplevering</span>
+                  </div>
+                  <span className="text-xs font-bold text-primary animate-pulse">→</span>
+                </div>
               </div>
             </div>
           </div>
