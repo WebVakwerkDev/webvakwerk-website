@@ -15,12 +15,12 @@ const steps = [
   {
     number: "03",
     title: "Feedback & afronding",
-    description: "Je geeft feedback, wij passen aan. Na akkoord maken we alles klaar voor livegang.",
+    description: "Je verzamelt je feedback in één moment, wij passen aan. Dit herhalen we binnen het aantal inbegrepen rondes. Daarna gaan we live.",
   },
   {
     number: "04",
     title: "Live",
-    description: "De site gaat live. Kies je voor hosting via ons, of draag je de site over aan je eigen partij — jij beslist.",
+    description: "De site gaat live. We dragen alles netjes over aan jouw eigen partij of hoster — jij houdt de regie.",
   },
 ];
 

@@ -13,11 +13,12 @@ const plans = [
       "Mobiel geoptimaliseerd",
       "SEO-basis",
       "Gratis demo vooraf",
+      "Max. 3 feedbackrondes inbegrepen",
       "Overdracht naar eigen partij of hoster",
     ],
     conditions: [
-      "Maximaal 3 feedbackrondes inbegrepen",
-      "Extra feedbackrondes en nieuwe toevoegingen daarna vallen onder meerwerk"/*  */,
+      "Een feedbackronde = één verzameld moment van opmerkingen, niet losse mailtjes.",
+      "Extra rondes of wijzigingen buiten de afgesproken scope: €100 per ronde.",
     ],
   },
   {
@@ -32,11 +33,12 @@ const plans = [
       "Contactformulier & geavanceerde formulieren",
       "SEO uitgebreid",
       "Gratis demo vooraf",
+      "Max. 5 feedbackrondes inbegrepen",
       "1 maand gratis support na oplevering",
     ],
     conditions: [
-      "Meer ruimte voor feedback en verfijning binnen de afgesproken scope",
-      "Grote nieuwe toevoegingen buiten scope worden apart geoffreerd",
+      "Een feedbackronde = één verzameld moment van opmerkingen, niet losse mailtjes.",
+      "Nieuwe onderdelen buiten de afgesproken scope worden apart geoffreerd.",
     ],
   },
   {
@@ -53,8 +55,8 @@ const plans = [
       "Onderhoudscontract mogelijk",
     ],
     conditions: [
-      "Scope, feedbackmomenten en oplevering worden vooraf samen afgestemd",
-      "Prijs en planning hangen af van functionaliteit en complexiteit",
+      "Scope, aantal feedbackmomenten en oplevering worden vooraf schriftelijk vastgelegd.",
+      "Prijs en planning hangen af van functionaliteit en complexiteit.",
     ],
   },
 ];
