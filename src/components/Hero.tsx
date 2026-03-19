@@ -86,7 +86,7 @@ const Hero = () => (
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">1</div>
-                    <span className="text-sm font-bold text-foreground">Ontwerp & structuur</span>
+                    <span className="text-sm font-bold text-foreground">Korte intake</span>
                   </div>
                   <span className="text-xs font-bold text-primary">✓</span>
                 </div>
@@ -95,7 +95,7 @@ const Hero = () => (
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">2</div>
-                    <span className="text-sm font-bold text-foreground">Inhoud & SEO</span>
+                    <span className="text-sm font-bold text-foreground">Eerste demo</span>
                   </div>
                   <span className="text-xs font-bold text-primary">✓</span>
                 </div>
@@ -104,7 +104,7 @@ const Hero = () => (
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground">3</div>
-                    <span className="text-sm font-bold text-foreground">Live & oplevering</span>
+                    <span className="text-sm font-bold text-foreground">Live gaan</span>
                   </div>
                   <span className="text-xs font-bold text-primary animate-pulse">→</span>
                 </div>

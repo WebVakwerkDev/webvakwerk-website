@@ -26,38 +26,19 @@ type DemoRequestPayload = {
   visualStyle: string;
   inspirationExamples: string;
   websiteType: string;
-  desiredPages: string[];
-  contactForm: boolean;
-  reviews: boolean;
-  gallery: boolean;
-  pricing: boolean;
-  blog: boolean;
-  bookingFeature: boolean;
-  socialLinks: boolean;
-  hasLogo: boolean;
-  hasBrandColors: boolean;
-  hasTexts: boolean;
-  hasImages: boolean;
-  hasIcons: boolean;
   reasonForRequest: string;
   desiredOutcome: string;
   deadline: string;
-  seriousness: string;
   budgetIndication: string;
-  understandsScope: boolean;
   privacyConsent: boolean;
-  dataProcessingConsent: boolean;
   honeypot: string;
 };
 
-const desiredPageOptions = ["Home", "Over ons", "Diensten", "Cases", "Reviews", "Tarieven", "FAQ", "Contact"];
 const styleOptions = ["Modern", "Strak", "Luxe", "Technisch", "Lokaal", "Premium", "Speels"];
 
 const steps = [
   { title: "Bedrijfsgegevens", description: "Wie je bent en hoe we je bereiken." },
   { title: "Bedrijfscontext", description: "Wat je doet, voor wie en hoe je wilt overkomen." },
-  { title: "Wensen", description: "Wat er op de demo-website terug moet komen." },
-  { title: "Assets", description: "Bestanden, branding en praktische input." },
   { title: "Afronden", description: "Laatste checks en versturen." },
 ];
 
@@ -77,27 +58,11 @@ const initialPayload: DemoRequestPayload = {
   visualStyle: "",
   inspirationExamples: "",
   websiteType: "bedrijfswebsite",
-  desiredPages: ["Home", "Contact"],
-  contactForm: true,
-  reviews: false,
-  gallery: false,
-  pricing: false,
-  blog: false,
-  bookingFeature: false,
-  socialLinks: true,
-  hasLogo: false,
-  hasBrandColors: false,
-  hasTexts: false,
-  hasImages: false,
-  hasIcons: false,
   reasonForRequest: "",
   desiredOutcome: "",
   deadline: "",
-  seriousness: "serieus",
   budgetIndication: "",
-  understandsScope: false,
   privacyConsent: false,
-  dataProcessingConsent: false,
   honeypot: "",
 };
 
@@ -135,16 +100,6 @@ const AanvraagPage = () => {
 
   function updateField<K extends keyof DemoRequestPayload>(key: K, value: DemoRequestPayload[K]) {
     setPayload((current) => ({ ...current, [key]: value }));
-  }
-
-  function togglePage(value: string) {
-    const selected = payload.desiredPages.includes(value);
-    updateField(
-      "desiredPages",
-      selected
-        ? payload.desiredPages.filter((entry) => entry !== value)
-        : [...payload.desiredPages, value],
-    );
   }
 
   async function handleSubmit() {
@@ -332,88 +287,10 @@ const AanvraagPage = () => {
               ) : null}
 
               {currentStep === 2 ? (
-                <SectionCard title="Functionele wensen" description="Welke onderdelen en functies moeten zichtbaar zijn in de demo?">
-                  <Field label="Wat voor soort website willen jullie?">
-                    <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" value={payload.websiteType} onChange={(event) => updateField("websiteType", event.target.value)}>
-                      <option value="onepager">Onepager</option>
-                      <option value="bedrijfswebsite">Bedrijfswebsite</option>
-                      <option value="portfolio">Portfolio</option>
-                      <option value="landingspagina">Landingspagina</option>
-                      <option value="offertewebsite">Offertewebsite</option>
-                      <option value="anders">Anders</option>
-                    </select>
-                  </Field>
-                  <Field label="Gewenste pagina&apos;s of onderdelen">
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {desiredPageOptions.map((option) => (
-                        <label key={option} className="flex items-center gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-3 text-sm">
-                          <Checkbox checked={payload.desiredPages.includes(option)} onCheckedChange={() => togglePage(option)} />
-                          <span>{option}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </Field>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {[
-                      ["contactForm", "Contactformulier"],
-                      ["reviews", "Reviews / testimonials"],
-                      ["gallery", "Galerij"],
-                      ["pricing", "Prijsoverzicht"],
-                      ["blog", "Blog / nieuws"],
-                      ["bookingFeature", "Boekings- of aanvraagfunctie"],
-                      ["socialLinks", "Social media links"],
-                    ].map(([key, label]) => (
-                      <label key={key} className="flex items-center gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-3 text-sm">
-                        <Checkbox checked={Boolean(payload[key as keyof DemoRequestPayload])} onCheckedChange={(checked) => updateField(key as keyof DemoRequestPayload, Boolean(checked) as never)} />
-                        <span>{label}</span>
-                      </label>
-                    ))}
-                  </div>
-                </SectionCard>
-              ) : null}
-
-              {currentStep === 3 ? (
-                <SectionCard title="Content en assets" description="Wat is er al beschikbaar en wat kunnen jullie direct meesturen?">
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {[
-                      ["hasLogo", "Logo aanwezig"],
-                      ["hasBrandColors", "Huisstijlkleuren aanwezig"],
-                      ["hasTexts", "Teksten aanwezig"],
-                      ["hasImages", "Foto's / afbeeldingen aanwezig"],
-                      ["hasIcons", "Iconen / branding-assets aanwezig"],
-                    ].map(([key, label]) => (
-                      <label key={key} className="flex items-center gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-3 text-sm">
-                        <Checkbox checked={Boolean(payload[key as keyof DemoRequestPayload])} onCheckedChange={(checked) => updateField(key as keyof DemoRequestPayload, Boolean(checked) as never)} />
-                        <span>{label}</span>
-                      </label>
-                    ))}
-                  </div>
-                  <Field label="Uploads" helper="Logo&apos;s, foto&apos;s, iconen, PDF-briefing en overige relevante bestanden.">
-                    <Input type="file" multiple onChange={(event) => setFiles(Array.from(event.target.files || []))} />
-                  </Field>
-                </SectionCard>
-              ) : null}
-
-              {currentStep === 4 ? (
-                <SectionCard title="Laatste checks" description="Voordat je verstuurt, willen we zeker weten dat de aanvraag serieus en compleet is.">
-                  <Field label="Hoe serieus is deze aanvraag?">
-                    <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" value={payload.seriousness} onChange={(event) => updateField("seriousness", event.target.value)}>
-                      <option value="oriënterend">Oriënterend</option>
-                      <option value="serieus">Serieus</option>
-                      <option value="direct-project">Direct projectklaar</option>
-                    </select>
-                  </Field>
-                  <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
-                    <Checkbox checked={payload.understandsScope} onCheckedChange={(checked) => updateField("understandsScope", Boolean(checked))} />
-                    <span>Ik begrijp dat dit om een gratis demo of concept gaat en niet direct om een volledige productie-website.</span>
-                  </label>
+                <SectionCard title="Laatste checks" description="Voordat je verstuurt, willen we zeker weten dat de aanvraag compleet is.">
                   <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
                     <Checkbox checked={payload.privacyConsent} onCheckedChange={(checked) => updateField("privacyConsent", Boolean(checked))} />
                     <span>Ik ga akkoord met het privacybeleid.</span>
-                  </label>
-                  <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
-                    <Checkbox checked={payload.dataProcessingConsent} onCheckedChange={(checked) => updateField("dataProcessingConsent", Boolean(checked))} />
-                    <span>Ik geef toestemming voor verwerking van de aangeleverde gegevens en bestanden.</span>
                   </label>
                   <div className="hidden">
                     <Input value={payload.honeypot} onChange={(event) => updateField("honeypot", event.target.value)} tabIndex={-1} autoComplete="off" />
