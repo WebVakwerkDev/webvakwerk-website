@@ -3,22 +3,32 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Korte intake",
+    title: "Intake",
     description: "Jij vertelt wat je doet, wie je klanten zijn en wat de site moet opleveren. Duurt een halfuur.",
-    accent: true,
   },
   {
     number: "02",
-    title: "Eerste versie",
-    description: "Wij bouwen een eerste werkende versie, zodat je direct ziet hoe de site eruitziet — geen abstract concept.",
+    title: "Eerste oplevering",
+    description: "Wij bouwen een eerste werkende versie. Jij ziet direct hoe de site eruitziet — geen wireframes, geen vaag concept.",
   },
   {
     number: "03",
-    title: "Feedback & afronding",
-    description: "Je verzamelt je feedback in één moment, wij passen aan. Dit herhalen we binnen het aantal inbegrepen rondes. Daarna gaan we live.",
+    title: "Feedbackmoment",
+    description: "Jij verzamelt al je opmerkingen en levert die in één keer aan. Niet als losse berichtjes — als één overzicht.",
+    accent: true,
   },
   {
     number: "04",
+    title: "Verbeterde versie",
+    description: "Wij verwerken je feedback volledig en leveren de volgende versie op. Afhankelijk van je pakket volgt nog een feedbackmoment.",
+  },
+  {
+    number: "05",
+    title: "Finaliseren",
+    description: "Na het laatste feedbackmoment werken we alles af — design, teksten, techniek. Klaar voor livegang.",
+  },
+  {
+    number: "06",
     title: "Live",
     description: "De site gaat live. We dragen alles netjes over aan jouw eigen partij of hoster — jij houdt de regie.",
   },
@@ -43,7 +53,7 @@ const Werkwijze = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}

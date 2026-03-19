@@ -13,12 +13,12 @@ const plans = [
       "Mobiel geoptimaliseerd",
       "SEO-basis",
       "Gratis demo vooraf",
-      "Max. 3 feedbackrondes inbegrepen",
+      "Max. 3 feedbackmomenten inbegrepen",
       "Overdracht naar eigen partij of hoster",
     ],
     conditions: [
-      "Een feedbackronde = één verzameld moment van opmerkingen, niet losse mailtjes.",
-      "Extra rondes of wijzigingen buiten de afgesproken scope: €100 per ronde.",
+      "Een feedbackmoment = jij levert alle opmerkingen gebundeld aan, wij verwerken dat in één iteratie.",
+      "Extra feedbackmomenten of wijzigingen buiten scope: €100 per moment.",
     ],
   },
   {
@@ -33,10 +33,10 @@ const plans = [
       "Contactformulier & geavanceerde formulieren",
       "SEO uitgebreid",
       "Gratis demo vooraf",
-      "Max. 5 feedbackrondes inbegrepen",",
+      "Max. 5 feedbackmomenten inbegrepen",
     ],
     conditions: [
-      "Een feedbackronde = één verzameld moment van opmerkingen, niet losse mailtjes.",
+      "Een feedbackmoment = jij levert alle opmerkingen gebundeld aan, wij verwerken dat in één iteratie.",
       "Nieuwe onderdelen buiten de afgesproken scope worden apart geoffreerd.",
     ],
   },
