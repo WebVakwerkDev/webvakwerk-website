@@ -4,33 +4,28 @@ const steps = [
   {
     number: "01",
     title: "Intake",
-    description: "Jij geeft je wensen door: wat je bedrijf doet, wie je doelgroep is en wat de website moet opleveren.",
+    description: "Je deelt je wensen, doelen, stijlvoorkeuren en wat de website voor je bedrijf moet gaan opleveren.",
   },
   {
     number: "02",
-    title: "Demo website",
-    description: "Op basis van de intake bouwen wij een eerste demo-website zodat je direct ziet hoe de site eruit kan zien.",
+    title: "Demo oplevering",
+    description: "Op basis van de intake bouwen we gratis een demo-website en zetten die kort live, zodat je die echt kunt bekijken en beoordelen.",
   },
   {
     number: "03",
-    title: "Akkoord op richting",
-    description: "Je kiest of je akkoord bent met de richting. Zonder akkoord stoppen we hier, met akkoord gaan we door naar de iteraties.",
-  },
-  {
-    number: "04",
-    title: "Feedback en iteraties",
-    description: "Na akkoord geef je feedback op wat je anders wilt zien. Het aantal feedbackrondes hangt af van het gekozen pakket.",
+    title: "Akkoord en betaling",
+    description: "Wil je verder met de demo? Dan kies je het pakket dat past en start het betaalde traject.",
     accent: true,
   },
   {
-    number: "05",
-    title: "Oplevering",
-    description: "Zodra je akkoord bent na de feedbackrondes, leveren we de website definitief op.",
+    number: "04",
+    title: "Iteraties",
+    description: "Afhankelijk van het gekozen pakket verwerken we je feedback in duidelijke iteratiemomenten richting de definitieve versie.",
   },
   {
-    number: "06",
-    title: "Hostingoverdracht",
-    description: "We helpen bij de overdracht naar jouw hostingpartij of bij zelf hosten, zodat de livegang soepel verloopt.",
+    number: "05",
+    title: "Oplevering en overdracht",
+    description: "Na de laatste akkoordronde leveren we de website definitief op en zorgen we voor een nette overdracht of livegang.",
   },
 ];
 
@@ -49,7 +44,7 @@ const Werkwijze = () => {
             Snel van idee naar live
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Intake, demo, akkoord, iteraties en overdracht. Duidelijk proces, korte lijnen, geen gedoe.
+            Van intake tot overdracht: eerst een gratis demo, daarna pas het betaalde traject als je verder wilt.
           </p>
         </motion.div>
 
