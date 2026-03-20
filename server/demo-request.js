@@ -145,6 +145,7 @@ export function buildInternalApiPayload(payload) {
       description,
       intakeSummary: "Aanvraag via websiteformulier",
       scope: scope || undefined,
+      tags: ["website-aanvraag"],
     },
     initialCommunication: {
       type: "EMAIL",

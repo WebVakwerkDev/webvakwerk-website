@@ -211,15 +211,26 @@ app.post("/api/demo-request", async (req, res) => {
 
   try {
     const internalPayload = buildInternalApiPayload(payload);
-    const response = await fetch(internalApiUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${internalApiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(internalPayload),
-      signal: AbortSignal.timeout(10000),
-    });
+
+    let response;
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      response = await fetch(internalApiUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${internalApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(internalPayload),
+        signal: AbortSignal.timeout(10000),
+      });
+
+      // Only retry on transient server errors; don't retry client errors (4xx)
+      if (response.ok || response.status < 500) break;
+
+      if (attempt < 2) {
+        console.warn("[demo-request] internal API returned 5xx, retrying", { status: response.status, attempt });
+      }
+    }
 
     if (!response.ok) {
       const errorBody = await response.text().catch(() => "");
@@ -238,6 +249,11 @@ app.post("/api/demo-request", async (req, res) => {
     }
 
     markDuplicateFingerprint(fingerprint, "completed");
+
+    console.info("[demo-request] project created", {
+      company: payload.companyName,
+      email: payload.email,
+    });
 
     return res.status(200).json({
       success: true,
