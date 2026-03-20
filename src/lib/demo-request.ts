@@ -67,18 +67,11 @@ const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
   contactName: "Contactpersoon is verplicht.",
   email: "E-mailadres is verplicht.",
   phone: "Telefoonnummer is verplicht.",
-  industry: "Branche is verplicht.",
-  subject: "Onderwerp is verplicht.",
-  companyDescription: "Korte beschrijving van het bedrijf is verplicht.",
-  companyActivities: "Beschrijf de belangrijkste activiteiten.",
-  targetAudience: "Beschrijf de doelgroep.",
-  primaryServices: "Noem de belangrijkste diensten of producten.",
-  reasonForRequest: "Beschrijf kort waarom je deze website aanvraagt.",
 };
 
 const stepFields: DemoRequestField[][] = [
-  ["companyName", "contactName", "email", "phone", "websiteUrl", "industry", "subject", "reasonForRequest"],
-  ["companyDescription", "companyActivities", "targetAudience", "primaryServices"],
+  ["companyName", "contactName", "email", "phone", "websiteUrl"],
+  [],
   ["privacyConsent"],
 ];
 

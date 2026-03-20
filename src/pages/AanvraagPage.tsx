@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   getStepErrors,
   initialPayload,
@@ -258,8 +257,9 @@ const AanvraagPage = () => {
             <div className="space-y-8">
               {currentStep === 0 ? (
                 <SectionCard title="Bedrijf en project" description="Korte basisinformatie, zodat iemand dit in een paar minuten kan invullen.">
+                  <p className="-mt-2 text-xs text-muted-foreground">Velden met <span className="text-destructive font-bold">*</span> zijn verplicht.</p>
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Bedrijfsnaam">
+                    <Field label="Bedrijfsnaam *">
                       <Input
                         value={payload.companyName}
                         onChange={(event) => updateField("companyName", event.target.value)}
@@ -267,7 +267,7 @@ const AanvraagPage = () => {
                       />
                       <FieldError message={fieldErrors.companyName} />
                     </Field>
-                    <Field label="Contactpersoon">
+                    <Field label="Contactpersoon *">
                       <Input
                         value={payload.contactName}
                         onChange={(event) => updateField("contactName", event.target.value)}
@@ -275,7 +275,7 @@ const AanvraagPage = () => {
                       />
                       <FieldError message={fieldErrors.contactName} />
                     </Field>
-                    <Field label="E-mailadres">
+                    <Field label="E-mailadres *">
                       <Input
                         type="email"
                         value={payload.email}
@@ -284,7 +284,7 @@ const AanvraagPage = () => {
                       />
                       <FieldError message={fieldErrors.email} />
                     </Field>
-                    <Field label="Telefoonnummer">
+                    <Field label="Telefoonnummer *">
                       <Input
                         value={payload.phone}
                         onChange={(event) => updateField("phone", event.target.value)}
