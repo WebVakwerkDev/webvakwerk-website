@@ -77,7 +77,7 @@ const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
 };
 
 const stepFields: DemoRequestField[][] = [
-  ["companyName", "contactName", "email", "phone", "industry", "subject", "reasonForRequest"],
+  ["companyName", "contactName", "email", "phone", "websiteUrl", "industry", "subject", "reasonForRequest"],
   ["companyDescription", "companyActivities", "targetAudience", "primaryServices"],
   ["privacyConsent"],
 ];
@@ -102,7 +102,12 @@ export function validateDemoRequestPayload(payload: DemoRequestPayload) {
     errors.email = "Voer een geldig e-mailadres in.";
   }
 
-if (!payload.privacyConsent) {
+  const websiteUrl = payload.websiteUrl.trim();
+  if (websiteUrl && !/^https?:\/\//i.test(websiteUrl)) {
+    errors.websiteUrl = "Gebruik een volledige URL inclusief http:// of https://.";
+  }
+
+  if (!payload.privacyConsent) {
     errors.privacyConsent = "Je moet toestemming geven voor contact over deze aanvraag.";
   }
 
