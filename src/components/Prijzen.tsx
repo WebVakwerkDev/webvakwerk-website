@@ -80,6 +80,9 @@ const Prijzen = () => {
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Vaste prijs en duidelijkheid.
           </p>
+          <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-foreground/80">
+            Alle genoemde pakketprijzen zijn exclusief 21% btw.
+          </p>
           <div className="mt-4">
             <Link to="/voorwaarden" className="text-sm font-bold text-primary transition-colors hover:opacity-80">
               Bekijk voorwaarden
@@ -113,6 +116,9 @@ const Prijzen = () => {
               <div className="mb-5">
                 <span className="font-syne text-3xl font-extrabold text-foreground">{plan.price}</span>
                 {plan.period && <span className="ml-2 text-sm text-muted-foreground">{plan.period}</span>}
+                {plan.price !== "Op aanvraag" && (
+                  <p className="mt-2 text-sm font-medium text-muted-foreground">Excl. 21% btw</p>
+                )}
               </div>
               <ul className="mb-7 flex-1 space-y-3">
                 {plan.features.map((feature) => (
