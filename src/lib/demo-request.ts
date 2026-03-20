@@ -77,7 +77,7 @@ const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
 };
 
 const stepFields: DemoRequestField[][] = [
-  ["companyName", "contactName", "email", "phone", "industry", "subject", "reasonForRequest"],
+  ["companyName", "contactName", "email", "phone", "websiteUrl", "industry", "subject", "reasonForRequest"],
   ["companyDescription", "companyActivities", "targetAudience", "primaryServices"],
   ["privacyConsent"],
 ];
