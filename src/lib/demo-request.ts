@@ -77,7 +77,7 @@ const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
 };
 
 const stepFields: DemoRequestField[][] = [
-  ["companyName", "contactName", "email", "phone", "websiteUrl", "industry", "subject", "reasonForRequest"],
+  ["companyName", "contactName", "email", "phone", "industry", "subject", "reasonForRequest"],
   ["companyDescription", "companyActivities", "targetAudience", "primaryServices"],
   ["privacyConsent"],
 ];
@@ -86,18 +86,6 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-function isValidHttpUrl(value: string) {
-  if (!value) {
-    return true;
-  }
-
-  try {
-    const url = new URL(value);
-    return url.protocol === "http:" || url.protocol === "https:";
-  } catch {
-    return false;
-  }
-}
 
 export function validateDemoRequestPayload(payload: DemoRequestPayload) {
   const errors: DemoRequestErrors = {};
@@ -114,11 +102,7 @@ export function validateDemoRequestPayload(payload: DemoRequestPayload) {
     errors.email = "Voer een geldig e-mailadres in.";
   }
 
-  if (!isValidHttpUrl(payload.websiteUrl.trim())) {
-    errors.websiteUrl = "Gebruik een volledige URL inclusief http:// of https://.";
-  }
-
-  if (!payload.privacyConsent) {
+if (!payload.privacyConsent) {
     errors.privacyConsent = "Je moet toestemming geven voor contact over deze aanvraag.";
   }
 
