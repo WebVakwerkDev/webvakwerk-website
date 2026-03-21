@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { usePageSeo } from "@/hooks/use-page-seo";
 
 type Section = {
   title: string;
@@ -165,12 +166,20 @@ const sections: Section[] = [
 ];
 
 const VoorwaardenPage = () => {
+  usePageSeo({
+    title: "Algemene voorwaarden | Webvakwerk",
+    description:
+      "Lees de algemene voorwaarden van Webvakwerk voor software development, webdevelopment en IT-diensten.",
+    canonicalPath: "/voorwaarden",
+  });
+
   return (
     <div className="min-h-screen bg-background font-body">
       <Navbar />
 
-      <section className="border-b border-foreground/5 bg-secondary/30 px-6 py-16">
-        <div className="mx-auto max-w-5xl">
+      <main id="main-content">
+        <section className="border-b border-foreground/5 bg-secondary/30 px-6 py-16">
+          <div className="mx-auto max-w-5xl">
           <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary">Algemene voorwaarden</p>
           <h1 className="mt-4 max-w-3xl font-syne text-4xl font-extrabold leading-[1.05] text-foreground md:text-5xl">
             Algemene voorwaarden voor software development, webdevelopment en IT-diensten
@@ -181,11 +190,11 @@ const VoorwaardenPage = () => {
           <p className="mt-3 max-w-3xl text-sm font-medium text-foreground/80">
             Deze voorwaarden zijn primair bedoeld voor zakelijke opdrachtgevers. Versie: 20 maart 2026
           </p>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="bg-[linear-gradient(180deg,hsl(var(--background)),hsl(var(--secondary)/0.35))] px-6 py-16">
-        <div className="mx-auto max-w-4xl space-y-6">
+        <section className="bg-[linear-gradient(180deg,hsl(var(--background)),hsl(var(--secondary)/0.35))] px-6 py-16">
+          <div className="mx-auto max-w-4xl space-y-6">
           {sections.map((section) => (
             <div key={section.title} className="rounded-[1.5rem] border border-foreground/10 bg-card p-7 shadow-[0_20px_50px_-30px_hsl(var(--ink)/0.22)] sm:p-9">
               <h2 className="font-syne text-2xl font-extrabold tracking-tight text-foreground sm:text-[1.9rem]">{section.title}</h2>
@@ -220,8 +229,9 @@ const VoorwaardenPage = () => {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

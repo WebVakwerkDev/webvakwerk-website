@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { usePageSeo } from "@/hooks/use-page-seo";
 import {
   getStepErrors,
   initialPayload,
@@ -82,6 +83,13 @@ function ChoiceChip({
 }
 
 const AanvraagPage = () => {
+  usePageSeo({
+    title: "Gratis demo-aanvraag | Webvakwerk",
+    description:
+      "Vraag vrijblijvend een demo-website aan bij Webvakwerk. Deel je wensen, doelgroep en stijl in een korte intake.",
+    canonicalPath: "/aanvraag",
+  });
+
   const [currentStep, setCurrentStep] = useState(0);
   const [payload, setPayload] = useState(initialPayload);
   const [fieldErrors, setFieldErrors] = useState<DemoRequestErrors>({});
@@ -202,9 +210,10 @@ const AanvraagPage = () => {
     <div className="min-h-screen bg-background font-body">
       <Navbar />
 
-      <section className="relative overflow-hidden border-b border-foreground/5 bg-secondary/40 pt-14 pb-20">
-        <div className="absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.22),transparent_60%)]" />
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <main id="main-content">
+        <section className="relative overflow-hidden border-b border-foreground/5 bg-secondary/40 pt-14 pb-20">
+          <div className="absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.22),transparent_60%)]" />
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-bold text-primary">
               <Sparkles className="h-4 w-4" />
@@ -262,11 +271,11 @@ const AanvraagPage = () => {
               ))}
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section ref={formSectionRef} className="px-6 py-16">
-        <div className="mx-auto max-w-5xl">
+        <section ref={formSectionRef} className="px-6 py-16">
+          <div className="mx-auto max-w-5xl">
           {isSuccess ? (
             <div className="rounded-[2rem] border border-foreground/5 bg-card p-8 text-center shadow-sm">
               <CheckCircle2 className="mx-auto h-12 w-12 text-primary" />
@@ -523,7 +532,7 @@ const AanvraagPage = () => {
                   <div className="hidden">
                     <Input value={payload.honeypot} onChange={(event) => updateField("honeypot", event.target.value)} tabIndex={-1} autoComplete="off" />
                   </div>
-                  {errorMessage ? <p className="text-sm font-bold text-destructive">{errorMessage}</p> : null}
+                  {errorMessage ? <p className="text-sm font-bold text-destructive" role="alert">{errorMessage}</p> : null}
                 </SectionCard>
               ) : null}
 
@@ -545,8 +554,9 @@ const AanvraagPage = () => {
               </div>
             </div>
           )}
-        </div>
-      </section>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

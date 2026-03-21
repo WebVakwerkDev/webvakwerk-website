@@ -33,14 +33,18 @@ const Hero = () => (
               Gratis demo aanvragen
             </Link>
           </motion.div>
-          <motion.a
-            href="#werkwijze"
+          <motion.div
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-full border-2 border-foreground text-foreground font-bold transition-colors hover:bg-foreground hover:text-background"
+            className="inline-block"
           >
-            Bekijk werkwijze
-          </motion.a>
+            <Link
+              to="/#werkwijze"
+              className="block px-6 py-3 rounded-full border-2 border-foreground text-foreground font-bold transition-colors hover:bg-foreground hover:text-background"
+            >
+              Bekijk werkwijze
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
 

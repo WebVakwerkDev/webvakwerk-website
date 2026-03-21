@@ -5,16 +5,26 @@ import Diensten from "@/components/Diensten";
 import Prijzen from "@/components/Prijzen";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { usePageSeo } from "@/hooks/use-page-seo";
 
 const Index = () => {
+  usePageSeo({
+    title: "Webvakwerk | Websites op maat voor ondernemers",
+    description:
+      "Webvakwerk bouwt converterende websites op maat voor ondernemers. Van intake tot livegang: snel, duidelijk en professioneel uitgevoerd.",
+    canonicalPath: "/",
+  });
+
   return (
     <div className="min-h-screen bg-background font-body">
       <Navbar />
-      <Hero />
-      <Werkwijze />
-      <Diensten />
-      <Prijzen />
-      <CTA />
+      <main id="main-content">
+        <Hero />
+        <Werkwijze />
+        <Diensten />
+        <Prijzen />
+        <CTA />
+      </main>
       <Footer />
     </div>
   );
