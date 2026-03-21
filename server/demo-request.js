@@ -71,8 +71,7 @@ export const demoRequestSchema = z.object({
 
 const descriptionSections = [
   ["Aanleiding", "reasonForRequest"],
-  ["Bedrijfsomschrijving", "companyDescription"],
-  ["Bedrijfsactiviteiten", "companyActivities"],
+  ["Bedrijfsomschrijving en werkzaamheden", "companySummary"],
   ["Doelgroep", "targetAudience"],
   ["Belangrijkste diensten of producten", "primaryServices"],
   ["Onderscheidend vermogen", "uniqueSellingPoints"],
@@ -107,9 +106,15 @@ export function formatValidationErrors(zodError) {
 }
 
 function buildProjectDescription(payload) {
+  const companySummaryParts = [payload.companyDescription, payload.companyActivities]
+    .map((value) => (typeof value === "string" ? value.trim() : ""))
+    .filter(Boolean);
+
+  const companySummary = Array.from(new Set(companySummaryParts)).join("\n");
+
   return descriptionSections
     .map(([label, key]) => {
-      const value = payload[key];
+      const value = key === "companySummary" ? companySummary : payload[key];
       return value ? `${label}: ${value}` : null;
     })
     .filter(Boolean)

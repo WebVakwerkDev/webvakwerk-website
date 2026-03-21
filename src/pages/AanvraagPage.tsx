@@ -426,23 +426,14 @@ const AanvraagPage = () => {
 
               {currentStep === 1 ? (
                 <SectionCard title="Doelgroep en stijl" description="We houden het compact, maar wel concreet genoeg om een passende richting te bepalen.">
-                  <Field label="Korte beschrijving van het bedrijf">
+                  <Field label="Korte beschrijving van je bedrijf en werkzaamheden">
                     <Textarea
                       rows={3}
                       value={payload.companyDescription}
                       onChange={(event) => updateField("companyDescription", event.target.value)}
-                      placeholder="Wat doet jullie bedrijf in 2 of 3 zinnen?"
+                      placeholder="Beschrijf in 2-4 zinnen wat jullie doen en welke diensten of producten het belangrijkst zijn."
                     />
                     <FieldError message={fieldErrors.companyDescription} />
-                  </Field>
-                  <Field label="Wat doet het bedrijf?">
-                    <Textarea
-                      rows={3}
-                      value={payload.companyActivities}
-                      onChange={(event) => updateField("companyActivities", event.target.value)}
-                      placeholder="Welke diensten, producten of werkzaamheden zijn het belangrijkst?"
-                    />
-                    <FieldError message={fieldErrors.companyActivities} />
                   </Field>
                   <Field label="Wie is de doelgroep?">
                     <Textarea
