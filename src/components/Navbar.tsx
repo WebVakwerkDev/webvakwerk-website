@@ -22,13 +22,13 @@ const Navbar = () => {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8 text-foreground font-medium">
           {navLinks.map((item) => (
-            <a
+            <Link
               key={item}
-              href={`/#${item.toLowerCase()}`}
+              to={`/#${item.toLowerCase()}`}
               className="hover:text-primary transition-colors"
             >
               {item}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -67,14 +67,14 @@ const Navbar = () => {
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((item) => (
-                <a
+                <Link
                   key={item}
-                  href={`/#${item.toLowerCase()}`}
+                  to={`/#${item.toLowerCase()}`}
                   className="text-foreground font-medium hover:text-primary transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
               <Link
                 to="/aanvraag"

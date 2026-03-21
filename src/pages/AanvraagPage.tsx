@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, FileImage, ShieldCheck, Sparkles } from "lucide-react";
@@ -24,6 +24,8 @@ const steps = [
   { title: "Doelgroep en stijl", description: "Inhoud, uitstraling en huisstijlvoorkeuren." },
   { title: "Controleren en versturen", description: "Vrijblijvend indienen en laatste controle." },
 ];
+
+const FORM_SCROLL_OFFSET = 104;
 
 function SectionCard({ title, description, children }: { title: string; description: string; children: ReactNode }) {
   return (
@@ -86,8 +88,20 @@ const AanvraagPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const formSectionRef = useRef<HTMLElement | null>(null);
 
   const progress = useMemo(() => ((currentStep + 1) / steps.length) * 100, [currentStep]);
+
+  function scrollToFormSection() {
+    const section = formSectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const top = section.getBoundingClientRect().top + window.scrollY - FORM_SCROLL_OFFSET;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
 
   function updateField<K extends keyof DemoRequestPayload>(key: K, value: DemoRequestPayload[K]) {
     setPayload((current) => ({ ...current, [key]: value }));
@@ -123,6 +137,7 @@ const AanvraagPage = () => {
     if (Object.keys(validationErrors).length > 0) {
       setFieldErrors(validationErrors);
       setErrorMessage("Controleer de ingevulde velden en probeer het opnieuw.");
+      scrollToFormSection();
       return;
     }
 
@@ -153,8 +168,10 @@ const AanvraagPage = () => {
       setIsSuccess(true);
       setFieldErrors({});
       setPayload(initialPayload);
+      scrollToFormSection();
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "De aanvraag kon niet worden verstuurd.");
+      scrollToFormSection();
     } finally {
       setIsSubmitting(false);
     }
@@ -166,11 +183,19 @@ const AanvraagPage = () => {
     if (Object.keys(stepErrors).length > 0) {
       setFieldErrors((current) => ({ ...current, ...stepErrors }));
       setErrorMessage("Controleer de ingevulde velden voordat je doorgaat.");
+      scrollToFormSection();
       return;
     }
 
     setErrorMessage("");
     setCurrentStep((current) => Math.min(steps.length - 1, current + 1));
+    scrollToFormSection();
+  }
+
+  function handlePreviousStep() {
+    setCurrentStep((current) => Math.max(0, current - 1));
+    setErrorMessage("");
+    scrollToFormSection();
   }
 
   return (
@@ -240,7 +265,7 @@ const AanvraagPage = () => {
         </div>
       </section>
 
-      <section className="px-6 py-16">
+      <section ref={formSectionRef} className="px-6 py-16">
         <div className="mx-auto max-w-5xl">
           {isSuccess ? (
             <div className="rounded-[2rem] border border-foreground/5 bg-card p-8 text-center shadow-sm">
@@ -503,7 +528,7 @@ const AanvraagPage = () => {
               ) : null}
 
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <Button type="button" variant="outline" className="rounded-full" onClick={() => setCurrentStep((current) => Math.max(0, current - 1))} disabled={currentStep === 0}>
+                <Button type="button" variant="outline" className="rounded-full" onClick={handlePreviousStep} disabled={currentStep === 0}>
                   <ArrowLeft className="h-4 w-4" />
                   Vorige stap
                 </Button>
