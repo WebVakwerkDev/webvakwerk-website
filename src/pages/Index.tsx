@@ -6,6 +6,7 @@ import Prijzen from "@/components/Prijzen";
 import OverWebvakwerk from "@/components/OverWebvakwerk";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import SectionScrollHint from "@/components/SectionScrollHint";
 import { usePageSeo } from "@/hooks/use-page-seo";
 
 const Index = () => {
@@ -21,10 +22,15 @@ const Index = () => {
       <Navbar />
       <main id="main-content">
         <Hero />
+        <SectionScrollHint targetId="werkwijze" />
         <Werkwijze />
+        <SectionScrollHint targetId="diensten" />
         <Diensten />
+        <SectionScrollHint targetId="prijzen" />
         <Prijzen />
+        <SectionScrollHint targetId="over" />
         <OverWebvakwerk />
+        <SectionScrollHint targetId="contact" />
         <CTA />
       </main>
       <Footer />
