@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, FileImage, ShieldCheck, Sparkles } from "lucide-react";
@@ -96,6 +96,7 @@ const AanvraagPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showScrollPrompt, setShowScrollPrompt] = useState(true);
   const formSectionRef = useRef<HTMLElement | null>(null);
 
   const progress = useMemo(() => ((currentStep + 1) / steps.length) * 100, [currentStep]);
@@ -110,6 +111,17 @@ const AanvraagPage = () => {
     const top = section.getBoundingClientRect().top + window.scrollY - FORM_SCROLL_OFFSET;
     window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   }
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowScrollPrompt(window.scrollY < 120);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   function updateField<K extends keyof DemoRequestPayload>(key: K, value: DemoRequestPayload[K]) {
     setPayload((current) => ({ ...current, [key]: value }));
@@ -273,6 +285,21 @@ const AanvraagPage = () => {
           </div>
           </div>
         </section>
+
+        {currentStep === 0 && !isSuccess && showScrollPrompt ? (
+          <motion.button
+            type="button"
+            onClick={scrollToFormSection}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 rounded-full border border-primary/30 bg-background/95 px-5 py-3 text-sm font-bold text-foreground shadow-lg backdrop-blur-sm"
+            aria-label="Scroll naar aanvraagformulier"
+          >
+            Scroll naar het formulier
+            <ChevronDown className="ml-2 inline h-4 w-4 text-primary" aria-hidden="true" />
+          </motion.button>
+        ) : null}
 
         <section ref={formSectionRef} className="px-6 py-16">
           <div className="mx-auto max-w-5xl">
