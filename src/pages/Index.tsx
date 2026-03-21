@@ -22,7 +22,6 @@ const Index = () => {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <SectionScrollHint targetId="werkwijze" />
         <Werkwijze />
         <SectionScrollHint targetId="diensten" />
         <Diensten />
