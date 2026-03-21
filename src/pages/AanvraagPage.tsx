@@ -458,13 +458,13 @@ const AanvraagPage = () => {
                   </Field>
                   <Field
                     label="Heb je al bestaande teksten die we kunnen gebruiken?"
-                    helper="Plak ze hier of beschrijf kort wat je al hebt. Heb je nog niets? Zet dan: ik denk er zelf nog over na."
+                    helper="Plak hier bestaande teksten of notities. Je mag hier ook stijlwoorden, kleuren die je juist niet wilt en wat je al hebt (zoals logo/brandguide) toevoegen. Heb je nog niets? Zet dan: ik denk er zelf nog over na."
                   >
                     <Textarea
                       rows={3}
                       value={payload.reasonForRequest}
                       onChange={(event) => updateField("reasonForRequest", event.target.value)}
-                      placeholder="Bijvoorbeeld: We hebben al teksten per dienst die je mag gebruiken. Of: nog geen teksten, ik denk er zelf nog over na."
+                      placeholder="Bijvoorbeeld: We hebben al teksten per dienst en een logo. Stijlwoorden: strak en professioneel. Geen felle kleuren. Of: nog geen teksten, ik denk er zelf nog over na."
                     />
                     <FieldError message={fieldErrors.reasonForRequest} />
                   </Field>
@@ -495,30 +495,6 @@ const AanvraagPage = () => {
                           placeholder="Bijvoorbeeld: donkerblauw, zand, koper"
                         />
                         <FieldError message={fieldErrors.brandColors} />
-                      </Field>
-                      <Field label="Kleuren die je niet wilt">
-                        <Input
-                          value={payload.avoidedColors}
-                          onChange={(event) => updateField("avoidedColors", event.target.value)}
-                          placeholder="Bijvoorbeeld: felgroen of paars"
-                        />
-                        <FieldError message={fieldErrors.avoidedColors} />
-                      </Field>
-                      <Field label="Huisstijlwoorden" helper="Denk aan woorden als rustig, strak, warm of uitgesproken.">
-                        <Input
-                          value={payload.brandKeywords}
-                          onChange={(event) => updateField("brandKeywords", event.target.value)}
-                          placeholder="Bijvoorbeeld: professioneel, warm, modern"
-                        />
-                        <FieldError message={fieldErrors.brandKeywords} />
-                      </Field>
-                      <Field label="Wat is er al aanwezig?" helper="Bijvoorbeeld een logo, lettertype, kleurenpalet of bestaande brochure.">
-                        <Input
-                          value={payload.existingBrandAssets}
-                          onChange={(event) => updateField("existingBrandAssets", event.target.value)}
-                          placeholder="Bijvoorbeeld: logo aanwezig, nog geen vaste huisstijl"
-                        />
-                        <FieldError message={fieldErrors.existingBrandAssets} />
                       </Field>
                     </div>
                   </div>
