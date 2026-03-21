@@ -426,12 +426,15 @@ const AanvraagPage = () => {
 
               {currentStep === 1 ? (
                 <SectionCard title="Doelgroep en stijl" description="We houden het compact, maar wel concreet genoeg om een passende richting te bepalen.">
-                  <Field label="Korte beschrijving van je bedrijf en werkzaamheden">
+                  <Field
+                    label="Korte beschrijving van je bedrijf, werkzaamheden en belangrijkste diensten"
+                    helper="Handig om te noemen: wat je precies doet, voor wie, je 3-5 belangrijkste diensten/producten, je werkwijze en wat je uniek maakt."
+                  >
                     <Textarea
-                      rows={3}
+                      rows={4}
                       value={payload.companyDescription}
                       onChange={(event) => updateField("companyDescription", event.target.value)}
-                      placeholder="Beschrijf in 2-4 zinnen wat jullie doen en welke diensten of producten het belangrijkst zijn."
+                      placeholder="Bijvoorbeeld: Wij helpen mkb-bedrijven met installatie en onderhoud van zonnepanelen. Belangrijkste diensten: advies, installatie, monitoring en servicecontracten. Doelgroep: huiseigenaren en kleine bedrijven in regio Utrecht."
                     />
                     <FieldError message={fieldErrors.companyDescription} />
                   </Field>
@@ -452,15 +455,6 @@ const AanvraagPage = () => {
                       placeholder="Bijvoorbeeld: snel, persoonlijk, specialistisch of premium."
                     />
                     <FieldError message={fieldErrors.uniqueSellingPoints} />
-                  </Field>
-                  <Field label="Belangrijkste diensten of producten">
-                    <Textarea
-                      rows={3}
-                      value={payload.primaryServices}
-                      onChange={(event) => updateField("primaryServices", event.target.value)}
-                      placeholder="Noem de belangrijkste diensten, producten of categorieen."
-                    />
-                    <FieldError message={fieldErrors.primaryServices} />
                   </Field>
                   <Field
                     label="Heb je al bestaande teksten die we kunnen gebruiken?"

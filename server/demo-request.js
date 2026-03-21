@@ -73,7 +73,6 @@ const descriptionSections = [
   ["Aanleiding", "reasonForRequest"],
   ["Bedrijfsomschrijving en werkzaamheden", "companySummary"],
   ["Doelgroep", "targetAudience"],
-  ["Belangrijkste diensten of producten", "primaryServices"],
   ["Onderscheidend vermogen", "uniqueSellingPoints"],
   ["Gewenste uitstraling", "visualStyle"],
   ["Merkwoorden", "brandKeywords"],
@@ -106,7 +105,7 @@ export function formatValidationErrors(zodError) {
 }
 
 function buildProjectDescription(payload) {
-  const companySummaryParts = [payload.companyDescription, payload.companyActivities]
+  const companySummaryParts = [payload.companyDescription, payload.companyActivities, payload.primaryServices]
     .map((value) => (typeof value === "string" ? value.trim() : ""))
     .filter(Boolean);
 
