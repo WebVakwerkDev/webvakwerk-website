@@ -24,13 +24,9 @@ const Index = () => {
         <Hero />
         <SectionScrollHint targetId="werkwijze" />
         <Werkwijze />
-        <SectionScrollHint targetId="diensten" />
         <Diensten />
-        <SectionScrollHint targetId="prijzen" />
         <Prijzen />
-        <SectionScrollHint targetId="contact" />
         <CTA />
-        <SectionScrollHint targetId="over" />
         <OverWebvakwerk />
       </main>
       <Footer />

@@ -22,16 +22,17 @@ const SectionScrollHint = ({ targetId }: SectionScrollHintProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.9 }}
       transition={{ duration: 0.35 }}
-      className="flex justify-center px-6 py-2"
+      className="flex justify-center px-6 py-3"
     >
       <button
         type="button"
         onClick={handleScroll}
-        className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-card/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+        className="group inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label="Scroll naar volgende sectie"
       >
+        <span className="h-px w-12 bg-border transition-colors group-hover:bg-foreground/70" aria-hidden="true" />
         Scroll
-        <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+        <ChevronDown className="h-3.5 w-3.5 animate-bounce text-foreground/70" aria-hidden="true" />
       </button>
     </motion.div>
   );
