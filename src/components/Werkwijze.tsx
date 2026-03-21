@@ -9,7 +9,7 @@ const steps = [
   {
     number: "02",
     title: "Demo oplevering",
-    description: "Op basis van je intake bouwen we gratis een demo-website. Het is een voorproefje (geen volledig uitgewerkte site), 2 dagen online en zonder verplichtingen.",
+    description: "Op basis van de intake bouwen we gratis een demo-website en zetten die live, zodat jij deze kunt bekijken en beoordelen.",
   },
   {
     number: "03",
