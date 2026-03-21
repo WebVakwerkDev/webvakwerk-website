@@ -36,7 +36,6 @@ const urlSchema = z.preprocess(
   z
     .string()
     .max(500, "Website URL is te lang.")
-    .refine((value) => value === "" || /^https?:\/\//i.test(value), "Gebruik een volledige URL inclusief http:// of https://.")
     .optional()
     .or(z.literal("")),
 );

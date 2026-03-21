@@ -353,11 +353,11 @@ const AanvraagPage = () => {
                       />
                       <FieldError message={fieldErrors.phone} />
                     </Field>
-                    <Field label="Website URL">
+                    <Field label="Website URL" helper="Leeghouden als je nog niet over een website beschikt.">
                       <Input
                         value={payload.websiteUrl}
                         onChange={(event) => updateField("websiteUrl", event.target.value)}
-                        placeholder="https://..."
+                        placeholder="Bijvoorbeeld: webvakwerk.nl"
                       />
                       <FieldError message={fieldErrors.websiteUrl} />
                     </Field>
