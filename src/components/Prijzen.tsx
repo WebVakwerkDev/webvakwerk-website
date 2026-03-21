@@ -17,10 +17,6 @@ const plans = [
       "Max. 3 feedbackmomenten inbegrepen",
       "Overdracht naar eigen partij of hoster",
     ],
-    conditions: [
-      "Een feedbackmoment = jij levert alle opmerkingen gebundeld aan, wij verwerken dat in één iteratie.",
-      "Extra feedbackmomenten of wijzigingen buiten scope: €100 per moment.",
-    ],
   },
   {
     name: "Enterprise",
@@ -38,10 +34,6 @@ const plans = [
       "Max. 5 feedbackmomenten inbegrepen",
       "Overdracht naar eigen partij of hoster",
     ],
-    conditions: [
-      "Een feedbackmoment = jij levert alle opmerkingen gebundeld aan, wij verwerken dat in één iteratie.",
-      "Nieuwe onderdelen buiten de afgesproken scope worden apart geoffreerd.",
-    ],
   },
   {
     name: "Op maat",
@@ -56,10 +48,6 @@ const plans = [
       "Procesautomatisering en slimme flows",
       "Applicaties en maatwerkfunctionaliteiten",
       "Technische uitbreiding als losse vervolgstap",
-    ],
-    conditions: [
-      "Scope, aantal feedbackmomenten en oplevering worden vooraf schriftelijk vastgelegd.",
-      "Prijs en planning hangen af van functionaliteit en complexiteit.",
     ],
   },
 ];
@@ -129,20 +117,6 @@ const Prijzen = () => {
                   </li>
                 ))}
               </ul>
-              {plan.price !== "Op aanvraag" ? (
-                <div className="mb-7 rounded-lg bg-secondary/60 px-4 py-4">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                    Belangrijke voorwaarden
-                  </p>
-                  <div className="space-y-2">
-                    {plan.conditions.map((condition) => (
-                      <p key={condition} className="text-sm leading-relaxed text-foreground/80">
-                        {condition}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
               <Link
                 to="/aanvraag"
                 className={`block rounded-full py-3 text-center text-sm font-bold transition-colors ${
