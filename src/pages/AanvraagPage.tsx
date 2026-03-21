@@ -379,11 +379,14 @@ const AanvraagPage = () => {
                     <FieldError message={fieldErrors.industry} />
                   </Field>
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Waarom vraag je deze website aan?" helper="Houd het kort. Deze vraag vervangt het onderwerp.">
+                    <Field
+                      label="Projecttitel"
+                      helper="Deze titel gebruiken we als onderwerp van je aanvraag en als projectnaam in verdere administratie (zoals offerte/factuur)."
+                    >
                       <Input
                         value={payload.subject}
                         onChange={(event) => updateField("subject", event.target.value)}
-                        placeholder="Bijvoorbeeld: Nieuwe website nodig"
+                        placeholder="Bijvoorbeeld: Ontwerp en realisatie nieuwe website"
                       />
                       <FieldError message={fieldErrors.subject} />
                     </Field>

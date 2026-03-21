@@ -44,7 +44,7 @@ export const initialPayload: DemoRequestPayload = {
   websiteUrl: "",
   industry: "",
   region: "",
-  subject: "",
+  subject: "Ontwerp en realisatie nieuwe website",
   companyDescription: "",
   companyActivities: "",
   targetAudience: "",
