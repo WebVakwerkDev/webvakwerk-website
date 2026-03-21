@@ -293,11 +293,11 @@ const AanvraagPage = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 rounded-full border border-primary/30 bg-background/95 px-5 py-3 text-sm font-bold text-foreground shadow-lg backdrop-blur-sm"
+            className="fixed bottom-5 left-1/2 z-40 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-foreground/10 bg-card/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-foreground shadow-[0_12px_30px_-18px_hsl(var(--ink)/0.45)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:text-primary"
             aria-label="Scroll naar aanvraagformulier"
           >
-            Scroll naar het formulier
-            <ChevronDown className="ml-2 inline h-4 w-4 text-primary" aria-hidden="true" />
+            Naar formulier
+            <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
           </motion.button>
         ) : null}
 
