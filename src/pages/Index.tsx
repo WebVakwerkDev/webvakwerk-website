@@ -28,10 +28,10 @@ const Index = () => {
         <Diensten />
         <SectionScrollHint targetId="prijzen" />
         <Prijzen />
-        <SectionScrollHint targetId="over" />
-        <OverWebvakwerk />
         <SectionScrollHint targetId="contact" />
         <CTA />
+        <SectionScrollHint targetId="over" />
+        <OverWebvakwerk />
       </main>
       <Footer />
     </div>

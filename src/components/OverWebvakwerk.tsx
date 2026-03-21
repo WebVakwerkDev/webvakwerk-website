@@ -13,8 +13,9 @@ const OverWebvakwerk = () => {
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Over Webvakwerk</p>
           <h2 className="mt-3 font-syne text-3xl font-extrabold text-foreground sm:text-4xl">Gemaakt door Stijn van de Pol</h2>
           <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Ik ben Stijn van de Pol. Met Webvakwerk bouw ik duidelijke websites voor ondernemers die snel online zichtbaar
-            willen zijn en meer aanvragen willen krijgen. Kort traject, duidelijke afspraken en een site die gewoon klopt.
+            Ik ben Stijn van de Pol. Ik help ondernemers aan een website die helder uitlegt wat je doet en direct aanzet
+            tot contact. Geen lang traject of vaag gedoe: duidelijke keuzes, snel schakelen en een resultaat waar je mee
+            verder kunt.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
             Meer over mij: <a href="https://stijnvandepol.nl" target="_blank" rel="noreferrer" className="font-bold text-primary hover:underline">stijnvandepol.nl</a>
