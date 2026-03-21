@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle2, FileImage, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, FileImage, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -21,7 +21,7 @@ import {
 } from "@/lib/demo-request";
 
 const steps = [
-  { title: "Bedrijf en project", description: "De snelle basis: wie je bent en wat je nodig hebt." },
+  { title: "Bedrijf en project", description: "Vertel wie je bent en wat je nodig hebt voor je demo-website." },
   { title: "Doelgroep en stijl", description: "Inhoud, uitstraling en huisstijlvoorkeuren." },
   { title: "Controleren en versturen", description: "Vrijblijvend indienen en laatste controle." },
 ];
@@ -290,7 +290,20 @@ const AanvraagPage = () => {
           ) : (
             <div className="space-y-8">
               {currentStep === 0 ? (
-                <SectionCard title="Bedrijf en project" description="Korte basisinformatie, zodat iemand dit in een paar minuten kan invullen.">
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-primary/8 px-5 py-4 text-center"
+                >
+                  <p className="text-sm font-bold text-foreground">Start hieronder met je gratis demo-aanvraag</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Scroll een stukje omlaag en vul het formulier in.</p>
+                  <ChevronDown className="mx-auto mt-2 h-5 w-5 text-primary animate-bounce" aria-hidden="true" />
+                </motion.div>
+              ) : null}
+
+              {currentStep === 0 ? (
+                <SectionCard title="Bedrijf en project" description="Vul hier je bedrijfsgegevens en wensen in, zodat we je demo-website gericht kunnen voorbereiden.">
                   <p className="-mt-2 text-xs text-muted-foreground">Velden met <span className="text-destructive font-bold">*</span> zijn verplicht.</p>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <Field label="Bedrijfsnaam *">
