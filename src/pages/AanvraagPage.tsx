@@ -365,11 +365,11 @@ const AanvraagPage = () => {
                     <FieldError message={fieldErrors.industry} />
                   </Field>
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Onderwerp">
+                    <Field label="Waarom vraag je deze website aan?" helper="Houd het kort. Deze vraag vervangt het onderwerp.">
                       <Input
                         value={payload.subject}
                         onChange={(event) => updateField("subject", event.target.value)}
-                        placeholder="Bijvoorbeeld: Nieuwe website aanvraag"
+                        placeholder="Bijvoorbeeld: Nieuwe website nodig"
                       />
                       <FieldError message={fieldErrors.subject} />
                     </Field>
@@ -393,15 +393,6 @@ const AanvraagPage = () => {
                       ))}
                     </div>
                     <FieldError message={fieldErrors.websiteType} />
-                  </Field>
-                  <Field label="Waarom vraag je deze website aan?" helper="Een paar woorden zijn genoeg.">
-                    <Textarea
-                      rows={3}
-                      value={payload.reasonForRequest}
-                      onChange={(event) => updateField("reasonForRequest", event.target.value)}
-                      placeholder="Bijvoorbeeld: huidige site is verouderd, we willen professioneler overkomen of meer aanvragen krijgen."
-                    />
-                    <FieldError message={fieldErrors.reasonForRequest} />
                   </Field>
                 </SectionCard>
               ) : null}
@@ -452,6 +443,18 @@ const AanvraagPage = () => {
                       placeholder="Noem de belangrijkste diensten, producten of categorieen."
                     />
                     <FieldError message={fieldErrors.primaryServices} />
+                  </Field>
+                  <Field
+                    label="Heb je al bestaande teksten die we kunnen gebruiken?"
+                    helper="Plak ze hier of beschrijf kort wat je al hebt. Heb je nog niets? Zet dan: ik denk er zelf nog over na."
+                  >
+                    <Textarea
+                      rows={3}
+                      value={payload.reasonForRequest}
+                      onChange={(event) => updateField("reasonForRequest", event.target.value)}
+                      placeholder="Bijvoorbeeld: We hebben al teksten per dienst die je mag gebruiken. Of: nog geen teksten, ik denk er zelf nog over na."
+                    />
+                    <FieldError message={fieldErrors.reasonForRequest} />
                   </Field>
                   <Field label="Gewenste uitstraling" helper="Selecteer gerust meerdere richtingen.">
                     <div className="flex flex-wrap gap-2">
