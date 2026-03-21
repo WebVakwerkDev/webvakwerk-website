@@ -69,17 +69,16 @@ export const demoRequestSchema = z.object({
 });
 
 const descriptionSections = [
-  ["Aanleiding", "reasonForRequest"],
-  ["Bedrijfsomschrijving en werkzaamheden", "companySummary"],
+  ["Projecttitel", "subject"],
+  ["Wat voor website heb je ongeveer nodig?", "websiteType"],
+  ["Heb je al bestaande teksten die we kunnen gebruiken?", "reasonForRequest"],
+  ["Korte beschrijving van je bedrijf, werkzaamheden en belangrijkste diensten", "companySummary"],
   ["Gewenste uitstraling", "visualStyle"],
-  ["Merkwoorden", "brandKeywords"],
   ["Voorkeurskleuren", "brandColors"],
-  ["Vermijden kleuren", "avoidedColors"],
-  ["Bestaande merkassets", "existingBrandAssets"],
-  ["Inspiratie", "inspirationExamples"],
-  ["Bestaande website", "websiteUrl"],
-  ["Regio", "region"],
-  ["Branche", "industry"],
+  ["Voorbeelden van websites die jullie mooi vinden", "inspirationExamples"],
+  ["Website URL", "websiteUrl"],
+  ["Vestigingsplaats / regio", "region"],
+  ["Branche / type bedrijf", "industry"],
 ];
 
 const projectTypeMap = {
