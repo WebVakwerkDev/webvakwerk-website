@@ -31,7 +31,9 @@ const SectionScrollHint = ({ targetId }: SectionScrollHintProps) => {
         aria-label="Scroll naar volgende sectie"
       >
         <span className="h-px w-12 bg-border transition-colors group-hover:bg-foreground/70" aria-hidden="true" />
-        Scroll
+        <span className="text-xs font-medium text-muted-foreground/60 tracking-widest uppercase group-hover:text-muted-foreground transition-colors">
+          Scroll
+        </span>
         <ChevronDown className="h-3.5 w-3.5 animate-bounce text-foreground/70" aria-hidden="true" />
       </button>
     </motion.div>
