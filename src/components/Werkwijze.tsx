@@ -9,12 +9,12 @@ const steps = [
   {
     number: "02",
     title: "Demo oplevering",
-    description: "Op basis van de intake bouwen we gratis een demo-website en zetten die live, zodat jij deze kunt bekijken en beoordelen.",
+    description: "Op basis van je intake bouwen we gratis een demo-website. Het is een voorproefje (geen volledig uitgewerkte site), 2 dagen online en zonder verplichtingen.",
   },
   {
     number: "03",
     title: "Akkoord en betaling",
-    description: "Geinterresseerd? Dan kies je het pakket dat past en start het traject.",
+    description: "Geinteresseerd? Dan kies je het pakket dat past en starten we het traject.",
     accent: true,
   },
   {
@@ -45,6 +45,9 @@ const Werkwijze = () => {
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Van intake tot overdracht: eerst een gratis demo, daarna pas het betaalde traject als je verder wilt.
+          </p>
+          <p className="text-muted-foreground max-w-xl mx-auto mt-3 text-sm">
+            Doorlooptijd hangt af van beschikbaarheid. We mikken op oplevering binnen enkele weken.
           </p>
         </motion.div>
 

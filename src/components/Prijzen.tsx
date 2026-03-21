@@ -48,13 +48,14 @@ const plans = [
     price: "Op aanvraag",
     period: "",
     featured: false,
+    tagline: "Voor ondernemers die verder willen gaan dan alleen een website.",
     features: [
       "Onbeperkt pagina's",
       "Webshop of klantportaal",
       "Koppelingen met externe systemen",
-      "Maatwerk functionaliteiten",
-      "Prioriteit support",
-      "Onderhoudscontract mogelijk",
+      "Procesautomatisering en slimme flows",
+      "Applicaties en maatwerkfunctionaliteiten",
+      "Technische uitbreiding als losse vervolgstap",
     ],
     conditions: [
       "Scope, aantal feedbackmomenten en oplevering worden vooraf schriftelijk vastgelegd.",
@@ -78,7 +79,7 @@ const Prijzen = () => {
             Transparante prijzen, geen verrassingen
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Starter voor eenvoudige sites, Zakelijk voor meer mogelijkheden. Vaste prijs en duidelijkheid.
+            Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor trajecten met website + automatisering.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-foreground/80">
             Alle genoemde pakketprijzen zijn exclusief 21% btw.

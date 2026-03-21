@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Werkwijze from "@/components/Werkwijze";
 import Diensten from "@/components/Diensten";
 import Prijzen from "@/components/Prijzen";
+import OverWebvakwerk from "@/components/OverWebvakwerk";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import { usePageSeo } from "@/hooks/use-page-seo";
@@ -23,6 +24,7 @@ const Index = () => {
         <Werkwijze />
         <Diensten />
         <Prijzen />
+        <OverWebvakwerk />
         <CTA />
       </main>
       <Footer />
