@@ -223,7 +223,7 @@ const AanvraagPage = () => {
       <Navbar />
 
       <main id="main-content">
-        <section className="relative overflow-hidden border-b border-foreground/5 bg-secondary/40 pt-14 pb-20">
+        <section className="relative overflow-hidden border-b border-foreground/5 bg-secondary/40 pt-14 pb-14">
           <div className="absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.22),transparent_60%)]" />
           <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
@@ -301,7 +301,7 @@ const AanvraagPage = () => {
           </motion.button>
         ) : null}
 
-        <section ref={formSectionRef} className="px-6 py-16">
+        <section ref={formSectionRef} className="px-6 py-10 sm:py-12">
           <div className="mx-auto max-w-5xl">
           {isSuccess ? (
             <div className="rounded-[2rem] border border-foreground/5 bg-card p-8 text-center shadow-sm">
@@ -316,19 +316,6 @@ const AanvraagPage = () => {
             </div>
           ) : (
             <div className="space-y-8">
-              {currentStep === 0 ? (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35 }}
-                  className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-primary/8 px-5 py-4 text-center"
-                >
-                  <p className="text-sm font-bold text-foreground">Start hieronder met je gratis demo-aanvraag</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Scroll een stukje omlaag en vul het formulier in.</p>
-                  <ChevronDown className="mx-auto mt-2 h-5 w-5 text-primary animate-bounce" aria-hidden="true" />
-                </motion.div>
-              ) : null}
-
               {currentStep === 0 ? (
                 <SectionCard title="Bedrijf en project" description="Vul hier je bedrijfsgegevens en wensen in, zodat we je demo-website gericht kunnen voorbereiden.">
                   <p className="-mt-2 text-xs text-muted-foreground">Velden met <span className="text-destructive font-bold">*</span> zijn verplicht.</p>
