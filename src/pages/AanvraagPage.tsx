@@ -470,7 +470,7 @@ const AanvraagPage = () => {
                       </Field>
                     </div>
                   </div>
-                  <Field label="Voorbeelden van websites die jullie mooi vinden">
+                  <Field label="Voorbeelden van websites die jullie mooi vinden" helper="Optioneel: dit is geen must en niet verplicht.">
                     <Textarea
                       rows={3}
                       value={payload.inspirationExamples}
