@@ -418,33 +418,15 @@ const AanvraagPage = () => {
                 <SectionCard title="Doelgroep en stijl" description="We houden het compact, maar wel concreet genoeg om een passende richting te bepalen.">
                   <Field
                     label="Korte beschrijving van je bedrijf, werkzaamheden en belangrijkste diensten"
-                    helper="Handig om te noemen: wat je precies doet, voor wie, je 3-5 belangrijkste diensten/producten, je werkwijze en wat je uniek maakt."
+                    helper="Handig om te noemen: wat je precies doet, wie je doelgroep is, je 3-5 belangrijkste diensten/producten, je werkwijze en wat je onderscheidt van concurrenten."
                   >
                     <Textarea
                       rows={4}
                       value={payload.companyDescription}
                       onChange={(event) => updateField("companyDescription", event.target.value)}
-                      placeholder="Bijvoorbeeld: Wij helpen mkb-bedrijven met installatie en onderhoud van zonnepanelen. Belangrijkste diensten: advies, installatie, monitoring en servicecontracten. Doelgroep: huiseigenaren en kleine bedrijven in regio Utrecht."
+                      placeholder="Bijvoorbeeld: Wij helpen mkb-bedrijven met installatie en onderhoud van zonnepanelen. Doelgroep: huiseigenaren en kleine bedrijven in regio Utrecht. Belangrijkste diensten: advies, installatie, monitoring en servicecontracten. We onderscheiden ons met snelle service en vaste contactpersonen."
                     />
                     <FieldError message={fieldErrors.companyDescription} />
-                  </Field>
-                  <Field label="Wie is de doelgroep?">
-                    <Textarea
-                      rows={3}
-                      value={payload.targetAudience}
-                      onChange={(event) => updateField("targetAudience", event.target.value)}
-                      placeholder="Bijvoorbeeld: particulieren, mkb, aannemers, starters of bestaande klanten."
-                    />
-                    <FieldError message={fieldErrors.targetAudience} />
-                  </Field>
-                  <Field label="Wat onderscheidt jullie van concurrenten?">
-                    <Textarea
-                      rows={3}
-                      value={payload.uniqueSellingPoints}
-                      onChange={(event) => updateField("uniqueSellingPoints", event.target.value)}
-                      placeholder="Bijvoorbeeld: snel, persoonlijk, specialistisch of premium."
-                    />
-                    <FieldError message={fieldErrors.uniqueSellingPoints} />
                   </Field>
                   <Field
                     label="Heb je al bestaande teksten die we kunnen gebruiken?"
