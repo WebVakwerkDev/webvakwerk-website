@@ -497,11 +497,11 @@ const AanvraagPage = () => {
                   <label className="flex items-start gap-3 rounded-2xl border border-foreground/5 bg-secondary/30 px-4 py-4 text-sm">
                     <Checkbox checked={payload.privacyConsent} onCheckedChange={(checked) => updateField("privacyConsent", Boolean(checked))} />
                     <span>
-                      Ik geef toestemming om mijn gegevens te gebruiken voor contact over deze aanvraag en ik heb de
-                      <Link to="/voorwaarden" className="ml-1 font-bold text-primary underline-offset-4 hover:underline">
+                      Ik geef toestemming om mijn gegevens te gebruiken voor contact over deze aanvraag en ik heb de{" "}
+                      <Link to="/voorwaarden" className="font-bold text-primary underline-offset-4 hover:underline">
                         algemene voorwaarden
                       </Link>
-                      gelezen.
+                      {" "}gelezen.
                     </span>
                   </label>
                   <FieldError message={fieldErrors.privacyConsent} />
