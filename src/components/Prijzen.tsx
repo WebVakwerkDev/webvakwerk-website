@@ -47,7 +47,7 @@ const plans = [
       "Koppelingen met externe systemen",
       "Procesautomatisering en slimme flows",
       "Applicaties en maatwerkfunctionaliteiten",
-      "Technische uitbreiding als losse vervolgstap",
+      "Hulp bij hosting, onderhoud en doorontwikkeling",
     ],
   },
 ];
