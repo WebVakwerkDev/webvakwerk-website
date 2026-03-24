@@ -46,9 +46,6 @@ const Werkwijze = () => {
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Van intake tot overdracht: eerst een gratis demo, daarna pas het betaalde traject als je verder wilt.
           </p>
-          <p className="text-muted-foreground max-w-xl mx-auto mt-3 text-sm">
-            Doorlooptijd hangt af van beschikbaarheid. We mikken op oplevering binnen enkele weken.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-5">
