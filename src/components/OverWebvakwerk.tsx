@@ -18,7 +18,7 @@ const OverWebvakwerk = () => {
             verder kunt.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
-            Meer over mij: <a href="https://stijnvandepol.nl" target="_blank" rel="noreferrer" className="font-bold text-primary hover:underline">stijnvandepol.nl</a>
+            Meer over mij: <a href="https://stijnvandepol.nl" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">stijnvandepol.nl</a>
           </p>
         </motion.div>
       </div>

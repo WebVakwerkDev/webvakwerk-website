@@ -43,6 +43,19 @@ function setCanonical(url: string) {
   link.setAttribute("href", url);
 }
 
+function setHreflang(url: string) {
+  let link = document.head.querySelector("link[rel='alternate'][hreflang='nl']") as HTMLLinkElement | null;
+
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "alternate");
+    link.setAttribute("hreflang", "nl");
+    document.head.appendChild(link);
+  }
+
+  link.setAttribute("href", url);
+}
+
 export function usePageSeo({ title, description, canonicalPath, robots = "index,follow" }: PageSeoOptions) {
   useEffect(() => {
     const origin = window.location.origin;
@@ -57,5 +70,6 @@ export function usePageSeo({ title, description, canonicalPath, robots = "index,
     setPropertyMeta("og:description", description);
     setPropertyMeta("og:url", canonicalUrl);
     setCanonical(canonicalUrl);
+    setHreflang(canonicalUrl);
   }, [title, description, canonicalPath, robots]);
 }
