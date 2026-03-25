@@ -70,16 +70,8 @@ const Prijzen = () => {
             Transparante prijzen, geen verrassingen
           </h2>
           <p className="max-w-2xl text-lg text-muted-foreground">
-            Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor grotere trajecten.
+            Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor grotere trajecten. Alle prijzen zijn exclusief 21% btw.
           </p>
-          <p className="mt-3 max-w-2xl text-sm font-medium text-foreground/80">
-            Alle genoemde pakketprijzen zijn exclusief 21% btw.
-          </p>
-          <div className="mt-4">
-            <Link to="/voorwaarden" className="text-sm font-bold text-primary transition-colors hover:opacity-80">
-              Bekijk voorwaarden
-            </Link>
-          </div>
         </motion.div>
 
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
