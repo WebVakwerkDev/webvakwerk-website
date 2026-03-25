@@ -38,8 +38,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         <h3 className="font-syne text-base sm:text-lg font-bold text-foreground">{question}</h3>
         <ChevronDown className={`w-5 h-5 shrink-0 text-primary transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </div>
-      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-40 mt-3 opacity-100" : "max-h-0 opacity-0"}`}>
-        <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{answer}</p>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 mt-3 opacity-100" : "max-h-0 opacity-0"}`}>
+        <p className="text-base leading-relaxed text-foreground/70">{answer}</p>
       </div>
     </button>
   );
