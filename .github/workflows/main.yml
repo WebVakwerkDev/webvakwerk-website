@@ -28,6 +28,12 @@ jobs:
     environment: production
 
     steps:
+      - name: Backup .env
+        run: |
+          if [ -f .env ]; then
+            cp .env /tmp/.env.backup
+          fi
+
       - name: Check out requested ref
         if: github.event_name == 'workflow_dispatch' && inputs.ref != ''
         uses: actions/checkout@v4
@@ -40,6 +46,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Restore .env
+        run: |
+          if [ -f /tmp/.env.backup ]; then
+            cp /tmp/.env.backup .env
+            rm /tmp/.env.backup
+          else
+            echo "::error::No .env backup found — .env was missing before checkout"
+            exit 1
+          fi
 
       - name: Verify Docker tooling
         run: |
