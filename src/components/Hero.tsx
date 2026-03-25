@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Hero = () => (
-  <section className="relative pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden bg-gradient-to-b from-primary/[0.06] via-primary/[0.02] to-transparent">
+  <section className="relative pt-10 pb-16 lg:pt-20 lg:pb-24 overflow-hidden bg-gradient-to-b from-primary/[0.06] via-primary/[0.02] to-transparent">
     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       {/* Left Content */}
       <motion.div

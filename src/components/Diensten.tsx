@@ -36,12 +36,10 @@ const services = [
 
 const Diensten = () => {
   return (
-    <section id="diensten" className="scroll-mt-28 py-24 px-6 bg-foreground relative overflow-hidden">
+    <section id="diensten" className="scroll-mt-28 py-16 px-6 bg-foreground/95 relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
-      <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/20 blur-[100px]" />
-      <div className="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-primary/15 blur-[80px]" />
+      <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/15 blur-[100px]" />
+      <div className="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-primary/10 blur-[80px]" />
 
       <div className="max-w-7xl mx-auto relative z-20">
         <motion.div
@@ -49,7 +47,7 @@ const Diensten = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Diensten</p>
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-background mb-4">

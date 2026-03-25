@@ -31,7 +31,7 @@ const steps = [
 
 const Werkwijze = () => {
   return (
-    <section id="werkwijze" className="scroll-mt-28 py-24 px-6 relative overflow-hidden">
+    <section id="werkwijze" className="scroll-mt-28 py-16 px-6 relative overflow-hidden">
       {/* Warm background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-primary/[0.03] to-transparent" />
       <div className="absolute right-0 top-0 -z-10 h-full w-1/2 bg-gradient-to-l from-primary/[0.05] to-transparent" />
@@ -42,7 +42,7 @@ const Werkwijze = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-10"
         >
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Werkwijze</p>
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4 max-w-lg">

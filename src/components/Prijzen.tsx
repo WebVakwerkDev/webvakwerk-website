@@ -53,7 +53,7 @@ const plans = [
 
 const Prijzen = () => {
   return (
-    <section id="prijzen" className="scroll-mt-28 px-6 py-24 relative overflow-hidden">
+    <section id="prijzen" className="scroll-mt-28 px-6 py-16 relative overflow-hidden">
       {/* Warm orange background accent */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/[0.06] to-primary/[0.1]" />
       <div className="absolute -left-40 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-primary/[0.08] blur-[100px]" />
@@ -64,7 +64,7 @@ const Prijzen = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-10"
         >
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Pakketten</p>
           <h2 className="mb-4 font-syne text-3xl font-extrabold text-foreground md:text-4xl max-w-lg">

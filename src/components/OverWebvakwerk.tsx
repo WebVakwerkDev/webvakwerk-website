@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const OverWebvakwerk = () => {
   return (
-    <section id="over" className="scroll-mt-28 px-6 py-20 relative">
+    <section id="over" className="scroll-mt-28 px-6 py-14 relative">
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground/[0.03] to-transparent" />
       <motion.div
         initial={{ opacity: 0, y: 18 }}

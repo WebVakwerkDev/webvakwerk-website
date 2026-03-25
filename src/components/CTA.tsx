@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
-    <section id="contact" className="scroll-mt-28 px-6 py-6">
-      <div className="mx-auto max-w-7xl relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary via-primary to-primary/85 py-20 px-6 shadow-[0_32px_80px_-20px_hsl(var(--warm-orange)/0.4)]">
+    <section id="contact" className="scroll-mt-28 px-6 py-4">
+      <div className="mx-auto max-w-7xl relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary via-primary to-primary/85 py-16 px-6 shadow-[0_32px_80px_-20px_hsl(var(--warm-orange)/0.4)]">
         {/* Decorative shapes */}
         <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/[0.07]" />
         <div className="absolute -left-8 -bottom-8 h-40 w-40 rounded-full bg-white/[0.05]" />
