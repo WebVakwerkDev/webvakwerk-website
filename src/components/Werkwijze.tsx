@@ -14,7 +14,7 @@ const steps = [
   {
     number: "03",
     title: "Akkoord en betaling",
-    description: "Geinteresseerd? Dan kies je het pakket dat past en starten we het traject.",
+    description: "Geïnteresseerd? Dan kies je het pakket dat past en starten we het traject.",
     accent: true,
   },
   {

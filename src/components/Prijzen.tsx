@@ -43,7 +43,6 @@ const plans = [
     tagline: "Voor ondernemers die verder willen gaan dan alleen een website.",
     features: [
       "Onbeperkt pagina's",
-      "Webshop of klantportaal",
       "Koppelingen met externe systemen",
       "Procesautomatisering en slimme flows",
       "Applicaties en maatwerkfunctionaliteiten",

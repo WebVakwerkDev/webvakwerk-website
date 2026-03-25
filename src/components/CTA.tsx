@@ -16,7 +16,7 @@ const CTA = () => {
           Klaar om te starten?
         </h2>
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-          Laat zien wat je doet en wij bouwen een eerste versie — gratis en vrijblijvend. Pas als we samen een opdracht starten, betaal je iets.
+          Laat zien wat je doet en wij bouwen een eerste versie, gratis en vrijblijvend. Pas als we samen een opdracht starten, betaal je iets.
         </p>
         <motion.div
           whileHover={{ y: -2 }}
