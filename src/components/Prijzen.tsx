@@ -28,7 +28,7 @@ const plans = [
     features: [
       "Tot 5 pagina's",
       "Animaties en premium design",
-      "Contactformulier & geavanceerde formulieren",
+      "Contactformulier en uitgebreide formulieren",
       "SEO uitgebreid",
       "Gratis demo vooraf",
       "Max. 5 feedbackmomenten inbegrepen",
@@ -43,9 +43,9 @@ const plans = [
     tagline: "Voor ondernemers die verder willen gaan dan alleen een website.",
     features: [
       "Onbeperkt pagina's",
-      "Koppelingen met externe systemen",
-      "Procesautomatisering en slimme flows",
-      "Applicaties en maatwerkfunctionaliteiten",
+      "Koppelingen met andere tools en software",
+      "Automatisering van terugkerende taken",
+      "Op maat gemaakte functionaliteiten",
       "Hulp bij hosting, onderhoud en doorontwikkeling",
     ],
   },
@@ -66,7 +66,7 @@ const Prijzen = () => {
             Transparante prijzen, geen verrassingen
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor trajecten met website + automatisering.
+            Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor grotere trajecten.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-foreground/80">
             Alle genoemde pakketprijzen zijn exclusief 21% btw.

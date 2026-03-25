@@ -19,8 +19,8 @@ const steps = [
   },
   {
     number: "04",
-    title: "Iteraties",
-    description: "Afhankelijk van het gekozen pakket verwerken we je feedback in duidelijke iteratiemomenten richting de definitieve versie.",
+    title: "Aanpassingen",
+    description: "Afhankelijk van het gekozen pakket verwerken we je feedback in duidelijke aanpassingsrondes richting de definitieve versie.",
   },
   {
     number: "05",

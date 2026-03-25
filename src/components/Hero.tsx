@@ -18,7 +18,7 @@ const Hero = () => (
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-lg mb-10 font-medium leading-relaxed">
           Vakwerk websites voor ondernemers die online gevonden willen worden.
-          Snel gebouwd, technisch goed en gericht op duidelijkheid en vindbaarheid.
+          Snel gebouwd, goed in elkaar en gericht op duidelijkheid en vindbaarheid.
         </p>
         <div className="flex flex-wrap gap-4">
           <motion.div
