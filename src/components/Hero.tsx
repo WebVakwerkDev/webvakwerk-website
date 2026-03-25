@@ -12,10 +12,10 @@ const Hero = () => (
         transition={{ duration: 0.5 }}
       >
         <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-          Gratis demo in 5 werkdagen
+          Duidelijk. Snel. Vindbaar.
         </span>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-syne text-foreground leading-tight mb-6 tracking-tight">
-          Een website die <span className="text-primary">klanten oplevert</span>
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-syne text-foreground leading-[1.1] mb-6 tracking-tight">
+          Een professionele <span className="text-primary">website</span> voor jouw bedrijf
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
           Wij bouwen websites voor ondernemers die online gevonden willen worden.
