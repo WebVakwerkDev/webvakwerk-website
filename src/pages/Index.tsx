@@ -83,7 +83,6 @@ const Index = () => {
         <Diensten />
         <SectionScrollHint targetId="prijzen" />
         <Prijzen />
-        <SectionScrollHint targetId="contact" />
         <CTA />
         <OverWebvakwerk />
       </main>
