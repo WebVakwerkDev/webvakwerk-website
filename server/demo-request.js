@@ -81,13 +81,6 @@ const descriptionSections = [
   ["Branche / type bedrijf", "industry"],
 ];
 
-const projectTypeMap = {
-  bedrijfswebsite: "NEW_WEBSITE",
-  landingspagina: "LANDING_PAGE",
-  portfolio: "PORTFOLIO",
-  anders: "OTHER",
-};
-
 export function formatValidationErrors(zodError) {
   return zodError.issues.reduce((accumulator, issue) => {
     const key = issue.path[0];
@@ -120,15 +113,6 @@ function buildProjectDescription(payload) {
     })
     .filter(Boolean)
     .join("\n\n");
-}
-
-function buildProjectScope(payload) {
-  const scopeItems = [payload.websiteType, payload.primaryServices]
-    .filter(Boolean)
-    .map((value) => value.trim())
-    .filter(Boolean);
-
-  return scopeItems.join(", ");
 }
 
 export function buildInternalApiPayload(payload) {

@@ -4,10 +4,11 @@ import { initialPayload, validateDemoRequestPayload } from "../lib/demo-request"
 
 describe("demo request validation", () => {
   it("flags required frontend fields", () => {
-    const errors = validateDemoRequestPayload(initialPayload);
+    const errors = validateDemoRequestPayload({ ...initialPayload, companyName: "", contactName: "", email: "", phone: "" });
 
     expect(errors.companyName).toBe("Bedrijfsnaam is verplicht.");
-    expect(errors.subject).toBe("Onderwerp is verplicht.");
+    expect(errors.contactName).toBe("Contactpersoon is verplicht.");
+    expect(errors.phone).toBe("Telefoonnummer is verplicht.");
     expect(errors.privacyConsent).toBe("Je moet toestemming geven voor contact over deze aanvraag.");
   });
 
@@ -33,32 +34,15 @@ describe("demo request validation", () => {
 
     expect(result).toEqual({
       client: {
-        companyName: "Webvakwerk",
-        contactName: "Jan Jansen",
+        company_name: "Webvakwerk",
+        contact_name: "Jan Jansen",
         email: "jan@bedrijf.nl",
         phone: "+31 6 12345678",
-        address: "Straat 1, 1234 AB Amsterdam",
       },
-      project: {
-        name: "Nieuwe website aanvraag",
-        projectType: "NEW_WEBSITE",
-        status: "INTAKE",
-        priority: "MEDIUM",
-        description: expect.stringContaining("Aanleiding: De huidige site converteert niet goed."),
-        intakeSummary: "Aanvraag via websiteformulier",
-        scope: "bedrijfswebsite, Keukens en maatwerkmeubels., Meer offerteaanvragen.",
-      },
-      initialLogEntry: {
-        type: "EMAIL",
-        subject: "Nieuwe website aanvraag",
-        content: expect.stringContaining("Bedrijfsomschrijving: We bouwen maatwerk interieurs."),
-        externalSenderName: "Jan Jansen",
-        externalSenderEmail: "jan@bedrijf.nl",
-      },
-      source: {
-        type: "website_form",
-        label: "Website contactformulier",
-      },
+      project_name: "Nieuwe website aanvraag",
+      description: expect.stringContaining("De huidige site converteert niet goed."),
+      source: "WEBSITE_FORM",
+      priority: "MEDIUM",
     });
   });
 });

@@ -30,14 +30,12 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
           fetch-depth: 1
-          clean: false
 
       - name: Check out triggering commit
         if: github.event_name != 'workflow_dispatch' || inputs.ref == ''
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          clean: false
 
       - name: Verify Docker tooling
         run: |
