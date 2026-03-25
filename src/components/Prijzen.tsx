@@ -136,6 +136,10 @@ const Prijzen = () => {
             </motion.div>
           ))}
         </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
+          Meer feedback nodig dan in je pakket zit? Extra iteratiemomenten zijn bij te boeken voor €149 per keer (excl. btw).
+        </p>
       </div>
     </section>
   );

@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: "Kan ik later nog dingen aanpassen?",
-    answer: "Zeker. Binnen het gekozen pakket heb je een aantal feedbackmomenten om aanpassingen door te voeren. Na oplevering kun je zelf verder of een vervolgtraject afspreken.",
+    answer: "Zeker. Binnen het gekozen pakket heb je een aantal feedbackmomenten om aanpassingen door te voeren. Heb je daarna nog wijzigingen? Dan kun je extra iteratiemomenten bijboeken voor €149 per keer (excl. btw). Zo houd je de regie over je website, ook na oplevering.",
   },
 ];
 
