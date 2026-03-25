@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
-    <section id="cta" className="scroll-mt-28 py-24 px-6 bg-primary">
+    <section id="contact" className="scroll-mt-28 py-24 px-6 bg-primary">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -18,19 +18,29 @@ const CTA = () => {
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
           Laat zien wat je doet en wij bouwen een eerste versie, gratis en vrijblijvend. Pas als we samen een opdracht starten, betaal je iets.
         </p>
-        <motion.div
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-block"
-        >
-          <Link
-            to="/aanvraag"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90"
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
           >
-            Gratis demo aanvragen
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
+            <Link
+              to="/aanvraag"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90"
+            >
+              Gratis demo aanvragen
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+          <motion.a
+            href="mailto:info@webvakwerk.nl"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-primary-foreground text-primary-foreground font-bold text-sm transition-colors hover:bg-primary-foreground/10"
+          >
+            <Mail className="w-4 h-4" />
+            info@webvakwerk.nl
+          </motion.a>
+        </div>
       </motion.div>
     </section>
   );

@@ -53,7 +53,7 @@ const plans = [
 
 const Prijzen = () => {
   return (
-    <section id="prijzen" className="scroll-mt-28 px-6 py-24">
+    <section id="prijzen" className="scroll-mt-28 px-6 py-24 bg-primary/5">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

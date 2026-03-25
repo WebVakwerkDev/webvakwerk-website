@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Hero = () => (
-  <section className="relative pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+  <section className="relative pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden bg-gradient-to-b from-primary/5 to-transparent">
     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       {/* Left Content */}
       <motion.div
@@ -118,7 +118,7 @@ const Hero = () => (
         </div>
 
         {/* Decorative */}
-        <div className="absolute -z-10 -bottom-6 -right-6 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute -z-10 -bottom-6 -right-6 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
       </motion.div>
     </div>
 

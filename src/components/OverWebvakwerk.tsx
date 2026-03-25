@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const OverWebvakwerk = () => {
   return (
     <section id="over" className="scroll-mt-28 px-6 py-24">
-      <div className="mx-auto max-w-4xl rounded-[1.75rem] border border-foreground/8 bg-card p-8 shadow-sm sm:p-10">
+      <div className="mx-auto max-w-4xl rounded-[1.75rem] border border-primary/15 bg-card p-8 shadow-sm sm:p-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
