@@ -133,36 +133,17 @@ function buildProjectScope(payload) {
 
 export function buildInternalApiPayload(payload) {
   const description = buildProjectDescription(payload);
-  const scope = buildProjectScope(payload);
 
   return {
     client: {
-      companyName: payload.companyName,
-      contactName: payload.contactName,
+      company_name: payload.companyName,
+      contact_name: payload.contactName,
       email: payload.email,
       phone: payload.phone,
-      ...(payload.region ? { address: payload.region } : {}),
     },
-    project: {
-      name: payload.subject?.trim() || `${payload.companyName} — website aanvraag`,
-      projectType: projectTypeMap[payload.websiteType] || "OTHER",
-      status: "INTAKE",
-      priority: "MEDIUM",
-      description,
-      intakeSummary: "Aanvraag via websiteformulier",
-      scope: scope || undefined,
-      tags: ["website-aanvraag"],
-    },
-    initialCommunication: {
-      type: "EMAIL",
-      subject: payload.subject,
-      content: description,
-      externalSenderName: payload.contactName,
-      externalSenderEmail: payload.email,
-    },
-    source: {
-      type: "website_form",
-      label: "Website contactformulier",
-    },
+    project_name: payload.subject?.trim() || `${payload.companyName} — website aanvraag`,
+    description: description || `Website aanvraag van ${payload.companyName}`,
+    source: "WEBSITE_FORM",
+    priority: "MEDIUM",
   };
 }
