@@ -19,10 +19,10 @@ const CTA = () => {
           className="max-w-3xl mx-auto text-center relative z-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-syne font-extrabold text-primary-foreground mb-4">
-            Klaar om te starten?
+            Jouw gratis demo in 5 dagen
           </h2>
           <p className="text-primary-foreground/80 text-lg mb-10 max-w-xl mx-auto">
-            Laat zien wat je doet en wij bouwen een eerste versie, gratis en vrijblijvend. Pas als we samen een opdracht starten, betaal je iets.
+            Laat zien wat je doet en wij bouwen een eerste versie. Pas als we samen een opdracht starten, betaal je iets.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.div
@@ -47,6 +47,9 @@ const CTA = () => {
               info@webvakwerk.nl
             </motion.a>
           </div>
+          <p className="mt-6 text-sm text-primary-foreground/50">
+            Geen verplichting. Geen kleine lettertjes. Binnen 48 uur reactie.
+          </p>
         </motion.div>
       </div>
     </section>

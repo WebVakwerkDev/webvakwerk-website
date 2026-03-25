@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -7,9 +7,17 @@ const navLinks = ["Werkwijze", "Diensten", "Prijzen", "Contact"];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav aria-label="Hoofdnavigatie" className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-foreground/5">
+    <nav aria-label="Hoofdnavigatie" className={`sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b transition-all ${scrolled ? "border-foreground/10 shadow-[0_2px_16px_-4px_hsl(var(--ink)/0.08)]" : "border-foreground/5"}`}>
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"

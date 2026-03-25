@@ -4,6 +4,7 @@ import Werkwijze from "@/components/Werkwijze";
 import Diensten from "@/components/Diensten";
 import Prijzen from "@/components/Prijzen";
 import OverWebvakwerk from "@/components/OverWebvakwerk";
+import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import { usePageSeo } from "@/hooks/use-page-seo";
@@ -24,6 +25,7 @@ const Index = () => {
         <Werkwijze />
         <Diensten />
         <Prijzen />
+        <FAQ />
         <CTA />
         <OverWebvakwerk />
       </main>

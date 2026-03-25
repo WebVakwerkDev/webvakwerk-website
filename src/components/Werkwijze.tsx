@@ -3,38 +3,27 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Intake",
-    description: "Jij deelt je wensen, doelen, stijlvoorkeuren en wat de website voor je bedrijf moet gaan opleveren.",
+    title: "Intake en demo",
+    description: "Jij deelt je wensen en doelen. Wij bouwen gratis een demo-website zodat je direct kunt zien wat we voor je kunnen doen.",
   },
   {
     number: "02",
-    title: "Demo oplevering",
-    description: "Op basis van de intake bouwen we gratis een demo-website en zetten die live, zodat jij deze kunt bekijken en beoordelen.",
-  },
-  {
-    number: "03",
-    title: "Akkoord en betaling",
-    description: "Geïnteresseerd? Dan kies je het pakket dat past en starten we het traject.",
+    title: "Akkoord en uitwerking",
+    description: "Tevreden met de richting? Dan kies je het pakket dat past en verwerken we je feedback in duidelijke aanpassingsrondes.",
     accent: true,
   },
   {
-    number: "04",
-    title: "Aanpassingen",
-    description: "Afhankelijk van het gekozen pakket verwerken we je feedback in duidelijke aanpassingsrondes richting de definitieve versie.",
-  },
-  {
-    number: "05",
-    title: "Oplevering en overdracht",
-    description: "Na de laatste akkoordronde leveren we de website definitief op en zorgen we voor een nette overdracht of livegang.",
+    number: "03",
+    title: "Oplevering",
+    description: "We leveren de definitieve website op en zorgen voor een nette overdracht of livegang. Klaar om klanten te ontvangen.",
   },
 ];
 
 const Werkwijze = () => {
   return (
     <section id="werkwijze" className="scroll-mt-28 py-16 px-6 relative overflow-hidden">
-      {/* Warm background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-primary/[0.03] to-transparent" />
-      <div className="absolute right-0 top-0 -z-10 h-full w-1/2 bg-gradient-to-l from-primary/[0.05] to-transparent" />
+      {/* Subtle warm background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.04] to-transparent" />
 
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -58,7 +47,7 @@ const Werkwijze = () => {
           {/* Connecting line */}
           <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 via-primary/20 to-primary/5 hidden xl:block" />
 
-          <div className="space-y-6 xl:space-y-0 xl:grid xl:grid-cols-5 xl:gap-0">
+          <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
             {steps.map((step, i) => (
               <motion.div
                 key={step.number}

@@ -54,9 +54,8 @@ const plans = [
 const Prijzen = () => {
   return (
     <section id="prijzen" className="scroll-mt-28 px-6 py-16 relative overflow-hidden">
-      {/* Warm orange background accent */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/[0.06] to-primary/[0.1]" />
-      <div className="absolute -left-40 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-primary/[0.08] blur-[100px]" />
+      {/* Subtle warm background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-primary/[0.04]" />
 
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -91,10 +90,10 @@ const Prijzen = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`relative flex flex-col rounded-2xl p-7 ${
+              className={`relative flex flex-col rounded-2xl p-7 transition-all duration-300 ${
                 plan.featured
-                  ? "z-10 scale-[1.03] bg-primary text-primary-foreground shadow-[0_20px_60px_-12px_hsl(var(--warm-orange)/0.4)]"
-                  : "bg-card border border-foreground/[0.04] shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)]"
+                  ? "z-10 md:scale-[1.05] bg-primary text-primary-foreground shadow-[0_20px_60px_-12px_hsl(var(--warm-orange)/0.4)] order-first md:order-none"
+                  : "bg-card border border-foreground/[0.04] shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)] hover:shadow-[0_16px_40px_-8px_hsl(var(--ink)/0.16)] hover:-translate-y-1"
               }`}
             >
               {plan.badge && (
