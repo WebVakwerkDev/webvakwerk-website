@@ -1,31 +1,36 @@
 import { motion } from "framer-motion";
-import { Code, Smartphone, Search, FileText, ArrowRightLeft } from "lucide-react";
+import { Code, Smartphone, Search, FileText, ArrowRightLeft, Server } from "lucide-react";
 
 const services = [
   {
     icon: Code,
     title: "Website op maat",
-    description: "Wij bouwen een website die past bij je bedrijf, diensten en klanten. Zo ziet je site er professioneel uit en sluit alles beter aan op wat jij verkoopt.",
+    description: "Custom frontend gebouwd met moderne frameworks zoals React en Vite. Geen WordPress-templates, maar schone, onderhoudbare code die exact doet wat jouw business nodig heeft.",
   },
   {
     icon: Smartphone,
     title: "Mobiel & snel",
-    description: "Je website werkt goed op mobiel, tablet en desktop en laadt snel. Dat is belangrijk, omdat bezoekers anders afhaken voordat ze contact opnemen.",
+    description: "Responsive design met mobile-first approach. Geoptimaliseerde assets, lazy loading en hoge Core Web Vitals scores zodat je site snel laadt op elk apparaat en netwerk.",
   },
   {
     icon: Search,
-    title: "Gevonden worden (SEO)",
-    description: "Wij zorgen ervoor dat je website beter vindbaar is in Google en klanten je makkelijker kunnen vinden. Dat zorgt voor meer aanvragen en sneller contact.",
+    title: "SEO & vindbaarheid",
+    description: "Technische SEO vanaf de basis: structured data (JSON-LD), semantic HTML, optimale meta-tags, sitemap en snelle laadtijden. Zo scoor je beter in Google zonder afhankelijk te zijn van ads.",
   },
   {
     icon: FileText,
     title: "Content & teksten",
-    description: "We helpen je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze sneller contact op.",
+    description: "Heldere, conversiegerichte copy die aansluit op je doelgroep. We schrijven teksten met de juiste tone of voice en zorgen voor een logische informatiearchitectuur op elke pagina.",
+  },
+  {
+    icon: Server,
+    title: "Hosting advies",
+    description: "We helpen je de juiste hosting kiezen zonder te veel te betalen. Of het nu Vercel, Netlify, een VPS of shared hosting is — we kijken naar wat je site nodig heeft qua traffic, uptime en budget.",
   },
   {
     icon: ArrowRightLeft,
     title: "Overdracht op maat",
-    description: "Wil je het liever zelf beheren of bij je eigen partij neerleggen, dan dragen we alles netjes over. Zo zit je nergens aan vast en houd je zelf de regie.",
+    description: "Volledige overdracht van broncode, deployment pipeline en documentatie. Je krijgt toegang tot de Git-repo en kunt zelf verder ontwikkelen of het bij je eigen partij onderbrengen.",
   },
 ];
 
