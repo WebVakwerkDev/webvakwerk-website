@@ -53,22 +53,27 @@ const plans = [
 
 const Prijzen = () => {
   return (
-    <section id="prijzen" className="scroll-mt-28 px-6 py-24">
+    <section id="prijzen" className="scroll-mt-28 px-6 py-24 relative overflow-hidden">
+      {/* Warm orange background accent */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/[0.06] to-primary/[0.1]" />
+      <div className="absolute -left-40 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-primary/[0.08] blur-[100px]" />
+
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
+          className="mb-16"
         >
-          <h2 className="mb-4 font-syne text-3xl font-extrabold text-foreground md:text-4xl">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Pakketten</p>
+          <h2 className="mb-4 font-syne text-3xl font-extrabold text-foreground md:text-4xl max-w-lg">
             Transparante prijzen, geen verrassingen
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="max-w-2xl text-lg text-muted-foreground">
             Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor grotere trajecten.
           </p>
-          <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-foreground/80">
+          <p className="mt-3 max-w-2xl text-sm font-medium text-foreground/80">
             Alle genoemde pakketprijzen zijn exclusief 21% btw.
           </p>
           <div className="mt-4">
@@ -86,32 +91,35 @@ const Prijzen = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`relative flex flex-col rounded-2xl border p-7 ${
+              className={`relative flex flex-col rounded-2xl p-7 ${
                 plan.featured
-                  ? "z-10 scale-[1.03] border-primary bg-card shadow-[0_16px_50px_-12px_hsl(var(--warm-orange)/0.25)]"
-                  : "border-foreground/[0.04] bg-card shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)]"
+                  ? "z-10 scale-[1.03] bg-primary text-primary-foreground shadow-[0_20px_60px_-12px_hsl(var(--warm-orange)/0.4)]"
+                  : "bg-card border border-foreground/[0.04] shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)]"
               }`}
             >
               {plan.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-foreground px-4 py-1 text-xs font-bold text-background">
                   {plan.badge}
                 </span>
               )}
-              <h3 className="mb-1 font-syne text-xl font-bold text-foreground">{plan.name}</h3>
+              <h3 className={`mb-1 font-syne text-xl font-bold ${plan.featured ? "" : "text-foreground"}`}>{plan.name}</h3>
               {"tagline" in plan && plan.tagline && (
-                <p className="mb-3 text-sm text-muted-foreground">{plan.tagline}</p>
+                <p className={`mb-3 text-sm ${plan.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{plan.tagline}</p>
               )}
               <div className="mb-5">
-                <span className="font-syne text-3xl font-extrabold text-foreground">{plan.price}</span>
-                {plan.period && <span className="ml-2 text-sm text-muted-foreground">{plan.period}</span>}
-                {plan.price !== "Op aanvraag" && (
+                <span className={`font-syne text-3xl font-extrabold ${plan.featured ? "" : "text-foreground"}`}>{plan.price}</span>
+                {plan.period && <span className={`ml-2 text-sm ${plan.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{plan.period}</span>}
+                {plan.price !== "Op aanvraag" && !plan.featured && (
                   <p className="mt-2 text-sm font-medium text-muted-foreground">Excl. 21% btw</p>
+                )}
+                {plan.price !== "Op aanvraag" && plan.featured && (
+                  <p className="mt-2 text-sm font-medium text-primary-foreground/60">Excl. 21% btw</p>
                 )}
               </div>
               <ul className="mb-7 flex-1 space-y-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-foreground">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <li key={feature} className={`flex items-start gap-2 text-sm ${plan.featured ? "text-primary-foreground/90" : "text-foreground"}`}>
+                    <Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.featured ? "text-primary-foreground/70" : "text-primary"}`} />
                     {feature}
                   </li>
                 ))}
@@ -120,7 +128,7 @@ const Prijzen = () => {
                 to="/aanvraag"
                 className={`block rounded-full py-3 text-center text-sm font-bold transition-colors ${
                   plan.featured
-                    ? "bg-primary text-primary-foreground hover:opacity-90"
+                    ? "bg-primary-foreground text-primary hover:opacity-90"
                     : "border border-foreground/15 text-foreground hover:bg-secondary"
                 }`}
               >

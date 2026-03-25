@@ -31,46 +31,67 @@ const steps = [
 
 const Werkwijze = () => {
   return (
-    <section id="werkwijze" className="scroll-mt-28 pt-14 pb-24 px-6">
+    <section id="werkwijze" className="scroll-mt-28 py-24 px-6 relative overflow-hidden">
+      {/* Warm background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-primary/[0.03] to-transparent" />
+      <div className="absolute right-0 top-0 -z-10 h-full w-1/2 bg-gradient-to-l from-primary/[0.05] to-transparent" />
+
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Werkwijze</p>
+          <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4 max-w-lg">
             Snel van idee naar live
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-xl text-lg">
             Van intake tot overdracht: eerst een gratis demo, daarna pas het betaalde traject als je verder wilt.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-5">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`relative bg-card rounded-2xl p-6 shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)] border border-foreground/[0.04] ${
-                step.accent ? "border-t-4 border-t-primary shadow-[0_8px_30px_-12px_hsl(var(--warm-orange)/0.2)]" : ""
-              }`}
-            >
-              <span className="text-4xl font-syne font-extrabold text-primary/20 mb-3 block">
-                {step.number}
-              </span>
-              <h3 className="text-lg font-syne font-bold text-foreground mb-2">
-                {step.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+        {/* Timeline layout */}
+        <div className="relative">
+          {/* Connecting line */}
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 via-primary/20 to-primary/5 hidden xl:block" />
+
+          <div className="space-y-6 xl:space-y-0 xl:grid xl:grid-cols-5 xl:gap-0">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="relative"
+              >
+                <div className={`rounded-2xl p-6 mx-1 h-full ${
+                  step.accent
+                    ? "bg-primary text-primary-foreground shadow-[0_12px_40px_-8px_hsl(var(--warm-orange)/0.35)]"
+                    : "bg-card shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)] border border-foreground/[0.04]"
+                }`}>
+                  <span className={`text-5xl font-syne font-extrabold mb-4 block ${
+                    step.accent ? "text-primary-foreground/30" : "text-primary/20"
+                  }`}>
+                    {step.number}
+                  </span>
+                  <h3 className={`text-lg font-syne font-bold mb-2 ${
+                    step.accent ? "text-primary-foreground" : "text-foreground"
+                  }`}>
+                    {step.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed ${
+                    step.accent ? "text-primary-foreground/80" : "text-muted-foreground"
+                  }`}>
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

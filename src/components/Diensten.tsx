@@ -36,8 +36,14 @@ const services = [
 
 const Diensten = () => {
   return (
-    <section id="diensten" className="scroll-mt-28 py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="diensten" className="scroll-mt-28 py-24 px-6 bg-foreground relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/20 blur-[100px]" />
+      <div className="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-primary/15 blur-[80px]" />
+
+      <div className="max-w-7xl mx-auto relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,12 +51,13 @@ const Diensten = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-foreground mb-4">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Diensten</p>
+          <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-background mb-4">
             Alles wat je nodig hebt om goed online te staan
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -58,15 +65,15 @@ const Diensten = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="bg-card rounded-2xl p-6 shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.12)] border border-foreground/[0.04] hover:shadow-[0_16px_40px_-12px_hsl(var(--ink)/0.18)] hover:-translate-y-1 transition-all duration-300"
+              className="group rounded-2xl p-6 bg-foreground/80 border border-background/10 hover:border-primary/30 hover:bg-foreground/90 transition-all duration-300"
             >
-              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <div className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
                 <service.icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="text-lg font-syne font-bold text-foreground mb-2">
+              <h3 className="text-lg font-syne font-bold text-background mb-2">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-background/60 text-sm leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
