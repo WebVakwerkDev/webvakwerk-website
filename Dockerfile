@@ -17,8 +17,10 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/server ./server
+COPY --from=build --chown=node:node /app/dist ./dist
+COPY --from=build --chown=node:node /app/server ./server
+
+USER node
 
 EXPOSE 8080
 

@@ -44,6 +44,8 @@ function validateEnvironment() {
 
   if (!internalApiKey) {
     errors.push("INTERNAL_TICKET_API_KEY is required");
+  } else if (internalApiKey.length < 32) {
+    errors.push("INTERNAL_TICKET_API_KEY must be at least 32 characters");
   }
 
   if (!appPublicUrl) {
@@ -68,6 +70,20 @@ const allowedOrigins = new Set([new URL(appPublicUrl).origin]);
 
 app.disable("x-powered-by");
 app.set("trust proxy", trustProxy);
+
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("X-XSS-Protection", "0");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'none'; script-src 'none'; frame-ancestors 'none'",
+  );
+  next();
+});
+
 app.use(express.json({ limit: "32kb" }));
 app.use((error, _req, res, next) => {
   if (error instanceof SyntaxError && "body" in error) {
@@ -250,10 +266,7 @@ app.post("/api/demo-request", async (req, res) => {
 
     markDuplicateFingerprint(fingerprint, "completed");
 
-    console.info("[demo-request] project created", {
-      company: payload.companyName,
-      email: payload.email,
-    });
+    console.info("[demo-request] project created successfully");
 
     return res.status(200).json({
       success: true,

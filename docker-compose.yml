@@ -8,3 +8,13 @@ services:
     ports:
       - "8080:8080"
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 256M

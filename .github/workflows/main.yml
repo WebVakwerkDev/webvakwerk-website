@@ -16,12 +16,16 @@ concurrency:
   group: deploy-webvakwerk
   cancel-in-progress: false
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     name: Deploy
     runs-on:
       - self-hosted
     timeout-minutes: 30
+    environment: production
 
     steps:
       - name: Check out requested ref
