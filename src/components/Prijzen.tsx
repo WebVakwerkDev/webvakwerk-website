@@ -53,7 +53,7 @@ const plans = [
 
 const Prijzen = () => {
   return (
-    <section id="prijzen" className="scroll-mt-28 px-6 py-24 bg-primary/5">
+    <section id="prijzen" className="scroll-mt-28 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,10 +86,10 @@ const Prijzen = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`relative flex flex-col rounded-xl border p-7 ${
+              className={`relative flex flex-col rounded-2xl border p-7 ${
                 plan.featured
-                  ? "z-10 scale-[1.03] border-primary bg-card shadow-lg"
-                  : "border-border bg-card shadow-sm"
+                  ? "z-10 scale-[1.03] border-primary bg-card shadow-[0_16px_50px_-12px_hsl(var(--warm-orange)/0.25)]"
+                  : "border-foreground/[0.04] bg-card shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)]"
               }`}
             >
               {plan.badge && (

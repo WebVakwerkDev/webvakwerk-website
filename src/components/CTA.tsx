@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
-    <section id="contact" className="scroll-mt-28 py-24 px-6 bg-primary">
+    <section id="contact" className="scroll-mt-28 mx-6 mb-6 rounded-[2rem] py-24 px-6 bg-gradient-to-br from-primary to-primary/90 shadow-[0_24px_80px_-20px_hsl(var(--warm-orange)/0.35)]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

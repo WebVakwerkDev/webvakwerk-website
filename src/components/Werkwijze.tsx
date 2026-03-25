@@ -31,7 +31,7 @@ const steps = [
 
 const Werkwijze = () => {
   return (
-    <section id="werkwijze" className="scroll-mt-28 pt-14 pb-24 px-6 bg-primary/5">
+    <section id="werkwijze" className="scroll-mt-28 pt-14 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,8 +56,8 @@ const Werkwijze = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`relative bg-card rounded-xl p-6 shadow-sm border border-border ${
-                step.accent ? "border-t-4 border-t-primary" : ""
+              className={`relative bg-card rounded-2xl p-6 shadow-[0_8px_30px_-12px_hsl(var(--ink)/0.1)] border border-foreground/[0.04] ${
+                step.accent ? "border-t-4 border-t-primary shadow-[0_8px_30px_-12px_hsl(var(--warm-orange)/0.2)]" : ""
               }`}
             >
               <span className="text-4xl font-syne font-extrabold text-primary/20 mb-3 block">
