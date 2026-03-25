@@ -25,7 +25,6 @@ const Index = () => {
         <Werkwijze />
         <SectionScrollHint targetId="diensten" />
         <Diensten />
-        <SectionScrollHint targetId="prijzen" />
         <Prijzen />
         <CTA />
         <OverWebvakwerk />
