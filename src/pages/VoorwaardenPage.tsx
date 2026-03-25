@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { usePageSeo } from "@/hooks/use-page-seo";
+import { useBreadcrumbSchema } from "@/hooks/use-breadcrumb-schema";
 
 type Section = {
   title: string;
@@ -172,6 +173,8 @@ const VoorwaardenPage = () => {
       "Lees de algemene voorwaarden van Webvakwerk voor software development, webdevelopment en IT-diensten.",
     canonicalPath: "/voorwaarden",
   });
+
+  useBreadcrumbSchema([{ name: "Voorwaarden", path: "/voorwaarden" }]);
 
   return (
     <div className="min-h-screen bg-background font-body">

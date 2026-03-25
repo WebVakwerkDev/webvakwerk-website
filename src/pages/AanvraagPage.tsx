@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { usePageSeo } from "@/hooks/use-page-seo";
+import { useBreadcrumbSchema } from "@/hooks/use-breadcrumb-schema";
 import {
   getStepErrors,
   initialPayload,
@@ -89,6 +90,8 @@ const AanvraagPage = () => {
       "Vraag vrijblijvend een demo-website aan bij Webvakwerk. Deel je wensen, doelgroep en stijl in een korte intake.",
     canonicalPath: "/aanvraag",
   });
+
+  useBreadcrumbSchema([{ name: "Demo aanvragen", path: "/aanvraag" }]);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [payload, setPayload] = useState(initialPayload);
