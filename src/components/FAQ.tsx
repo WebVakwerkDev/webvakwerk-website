@@ -32,15 +32,15 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     <button
       type="button"
       onClick={() => setOpen(!open)}
-      className="w-full text-left rounded-2xl bg-card border border-foreground/[0.04] shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)] p-5 sm:p-6 transition-all hover:shadow-[0_8px_24px_-8px_hsl(var(--ink)/0.1)]"
+      className="w-full text-left rounded-2xl bg-card border border-foreground/[0.04] shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)] p-5 sm:p-6 transition-shadow hover:shadow-[0_8px_24px_-8px_hsl(var(--ink)/0.1)]"
     >
       <div className="flex items-center justify-between gap-4">
         <h3 className="font-syne text-base sm:text-lg font-bold text-foreground">{question}</h3>
         <ChevronDown className={`w-5 h-5 shrink-0 text-primary transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </div>
-      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 mt-3 opacity-100" : "max-h-0 opacity-0"}`}>
-        <p className="text-base leading-relaxed text-foreground/70">{answer}</p>
-      </div>
+      {open && (
+        <p className="mt-3 text-base leading-relaxed text-foreground/70">{answer}</p>
+      )}
     </button>
   );
 }
