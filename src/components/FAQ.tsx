@@ -4,16 +4,12 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Wat kost een website bij Webvakwerk?",
-    answer: "Een Starter-website kost €499 (excl. btw) en bevat tot 3 pagina's met SEO-basis. Het Enterprise-pakket kost €899 (excl. btw) en biedt tot 5 pagina's met premium design, animaties en uitgebreide SEO. Voor grotere trajecten maken we een offerte op maat.",
-  },
-  {
     question: "Hoe lang duurt het om een website te laten maken?",
     answer: "We mikken op oplevering binnen enkele weken. De doorlooptijd hangt af van beschikbaarheid en het gekozen pakket. Het traject begint met een gratis demo, pas daarna start de betaalde fase.",
   },
   {
-    question: "Wat als ik de demo niet mooi vind?",
-    answer: "Geen probleem. De demo is volledig gratis en vrijblijvend. Als de richting niet bevalt, zit je nergens aan vast. Pas als we samen besluiten om een opdracht te starten, betaal je iets.",
+    question: "Wat als de demo niet precies is wat ik zoek?",
+    answer: "De demo is bedoeld om te laten zien wat wij kunnen betekenen op het gebied van webdesign. Als je interesse hebt maar de demo niet helemaal aansluit bij je wensen, is dat geen probleem. Alle verbeterpunten en veranderingen bespreken we samen en worden doorgevoerd in het uiteindelijke ontwerp.",
   },
   {
     question: "Kan ik mijn website zelf beheren na oplevering?",
