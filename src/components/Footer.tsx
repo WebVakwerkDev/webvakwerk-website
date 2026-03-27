@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground px-6 pt-14 pb-8">
+    <footer className="bg-foreground px-6 pt-14 pb-8 rounded-t-[3rem]">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 pb-10 border-b border-background/10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-1 mb-4">
               <span className="text-xl font-extrabold tracking-tighter text-background font-syne">
                 Webvakwerk
               </span>
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-xl font-extrabold text-primary font-syne">.</span>
             </div>
             <p className="text-sm text-background/50 leading-relaxed max-w-xs">
               Websites op maat voor ondernemers die online gevonden willen worden.
@@ -21,34 +22,30 @@ const Footer = () => {
 
           {/* Links */}
           <div>
-            <p className="text-sm font-bold text-background/70 mb-4">Pagina's</p>
+            <p className="text-sm font-bold text-background/70 mb-4 uppercase tracking-widest">Pagina's</p>
             <ul className="space-y-2">
-              <li>
-                <Link to="/#werkwijze" className="text-sm text-background/50 hover:text-primary transition-colors">
-                  Werkwijze
-                </Link>
-              </li>
-              <li>
-                <Link to="/#diensten" className="text-sm text-background/50 hover:text-primary transition-colors">
-                  Diensten
-                </Link>
-              </li>
-              <li>
-                <Link to="/#prijzen" className="text-sm text-background/50 hover:text-primary transition-colors">
-                  Pakketten
-                </Link>
-              </li>
-              <li>
-                <Link to="/aanvraag" className="text-sm text-background/50 hover:text-primary transition-colors">
-                  Demo aanvragen
-                </Link>
-              </li>
+              {["Werkwijze", "Diensten", "Pakketten", "Demo aanvragen"].map((item, i) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                >
+                  <Link
+                    to={item === "Demo aanvragen" ? "/aanvraag" : `/#${item.toLowerCase()}`}
+                    className="text-sm text-background/50 hover:text-primary transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <p className="text-sm font-bold text-background/70 mb-4">Contact</p>
+            <p className="text-sm font-bold text-background/70 mb-4 uppercase tracking-widest">Contact</p>
             <a
               href="mailto:info@webvakwerk.nl"
               className="inline-flex items-center gap-2 text-sm text-background/50 hover:text-primary transition-colors"
@@ -59,8 +56,11 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="mx-auto my-6 w-full max-w-sm h-px bg-background/10" />
+
         {/* Bottom bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-background/40">
             © {new Date().getFullYear()} Webvakwerk. KvK: 42015984. Alle rechten voorbehouden.
           </p>

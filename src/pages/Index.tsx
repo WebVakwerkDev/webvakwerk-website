@@ -7,6 +7,7 @@ import OverWebvakwerk from "@/components/OverWebvakwerk";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import MobileNav from "@/components/MobileNav";
 import { usePageSeo } from "@/hooks/use-page-seo";
 
 const Index = () => {
@@ -18,7 +19,7 @@ const Index = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background font-body">
+    <div className="min-h-screen bg-background font-body pb-20 md:pb-0">
       <Navbar />
       <main id="main-content">
         <Hero />
@@ -30,6 +31,7 @@ const Index = () => {
         <OverWebvakwerk />
       </main>
       <Footer />
+      <MobileNav />
     </div>
   );
 };

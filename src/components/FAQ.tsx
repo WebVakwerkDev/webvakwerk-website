@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
@@ -21,23 +21,44 @@ const faqs = [
   },
 ];
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <button
+    <motion.button
       type="button"
       onClick={() => setOpen(!open)}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      whileHover={{ scale: 1.01 }}
       className="w-full text-left rounded-2xl bg-card border border-foreground/[0.04] shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)] p-5 sm:p-6 transition-shadow hover:shadow-[0_8px_24px_-8px_hsl(var(--ink)/0.1)]"
     >
       <div className="flex items-center justify-between gap-4">
         <h3 className="font-syne text-base sm:text-lg font-bold text-foreground">{question}</h3>
-        <ChevronDown className={`w-5 h-5 shrink-0 text-primary transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+        <motion.div
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+          className="shrink-0"
+        >
+          <ChevronDown className="w-5 h-5 text-primary" />
+        </motion.div>
       </div>
-      {open && (
-        <p className="mt-3 text-base leading-relaxed text-foreground/70">{answer}</p>
-      )}
-    </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+            className="overflow-hidden"
+          >
+            <p className="mt-3 text-base leading-relaxed text-foreground/70">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.button>
   );
 }
 
@@ -60,15 +81,7 @@ const FAQ = () => {
 
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <motion.div
-              key={faq.question}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-            >
-              <FAQItem question={faq.question} answer={faq.answer} />
-            </motion.div>
+            <FAQItem key={faq.question} question={faq.question} answer={faq.answer} index={i} />
           ))}
         </div>
       </div>
