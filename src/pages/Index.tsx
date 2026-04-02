@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Werkwijze from "@/components/Werkwijze";
 import Diensten from "@/components/Diensten";
+import Automatisering from "@/components/Automatisering";
 import Prijzen from "@/components/Prijzen";
 import OverWebvakwerk from "@/components/OverWebvakwerk";
 import FAQ from "@/components/FAQ";
@@ -25,6 +26,7 @@ const Index = () => {
         <Hero />
         <Werkwijze />
         <Diensten />
+        <Automatisering />
         <Prijzen />
         <FAQ />
         <CTA />
