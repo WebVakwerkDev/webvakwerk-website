@@ -88,7 +88,7 @@ const Diensten = () => {
               whileInView="visible"
               viewport={{ once: true }}
               whileHover={{ y: -8, scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-              className="group rounded-2xl p-6 bg-foreground/80 border border-background/10 hover:border-primary/30 hover:bg-foreground/90 transition-colors duration-300"
+              className="group relative rounded-2xl p-6 bg-foreground/80 border border-background/10 hover:border-primary/30 hover:bg-foreground/90 transition-colors duration-300"
             >
               <motion.div
                 className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors"
@@ -114,6 +114,26 @@ const Diensten = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Bridge to automatisering */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 text-center"
+        >
+          <p className="text-background/50 text-sm mb-3">Meer nodig dan alleen een website?</p>
+          <a
+            href="#automatisering"
+            className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline underline-offset-4"
+          >
+            Bekijk onze automatiseringsdiensten
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
