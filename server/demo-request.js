@@ -60,7 +60,12 @@ export const demoRequestSchema = z.object({
   avoidedColors: optionalTrimmedString,
   brandKeywords: optionalTrimmedString,
   existingBrandAssets: optionalTrimmedString,
-  websiteType: requiredTrimmedString("Type website", 80),
+  serviceType: optionalTrimmedString,
+  websiteType: optionalTrimmedString,
+  automationProcesses: optionalTrimmedString,
+  currentTools: optionalTrimmedString,
+  desiredOutcome: optionalTrimmedString,
+  platformPreference: optionalTrimmedString,
   reasonForRequest: optionalTrimmedString,
   privacyConsent: z.literal(true, {
     errorMap: () => ({ message: "Je moet toestemming geven voor contact over deze aanvraag." }),
@@ -70,7 +75,12 @@ export const demoRequestSchema = z.object({
 
 const descriptionSections = [
   ["Projecttitel", "subject"],
+  ["Diensttype", "serviceType"],
   ["Wat voor website heb je ongeveer nodig?", "websiteType"],
+  ["Te automatiseren processen", "automationProcesses"],
+  ["Huidige tools en systemen", "currentTools"],
+  ["Gewenst resultaat", "desiredOutcome"],
+  ["Platformvoorkeur", "platformPreference"],
   ["Heb je al bestaande teksten die we kunnen gebruiken?", "reasonForRequest"],
   ["Korte beschrijving van je bedrijf, werkzaamheden en belangrijkste diensten", "companySummary"],
   ["Gewenste uitstraling", "visualStyle"],
