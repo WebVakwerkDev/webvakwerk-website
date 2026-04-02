@@ -25,3 +25,7 @@ storage
 *.sw?
 
 .env
+
+# Claude
+.claude/
+docs/superpowers/
