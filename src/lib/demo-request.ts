@@ -36,6 +36,22 @@ export const styleOptions = ["Modern", "Strak", "Warm", "Minimalistisch", "Premi
 
 export const platformOptions = ["N8N", "Power Automate", "Make", "Geen voorkeur"];
 
+export function generateSubjectSuggestion(serviceType: string, websiteType: string): string {
+  if (serviceType === "automatisering") {
+    return "Uitwerking automatiseringsproces";
+  }
+  if (serviceType === "website") {
+    const map: Record<string, string> = {
+      bedrijfswebsite: "Ontwerp en realisatie bedrijfswebsite",
+      landingspagina: "Ontwerp en realisatie landingspagina",
+      portfolio: "Ontwerp en realisatie portfolio",
+      anders: "Ontwerp en realisatie website",
+    };
+    return map[websiteType] ?? "Ontwerp en realisatie website";
+  }
+  return "";
+}
+
 export const websiteTypeOptions = [
   { value: "bedrijfswebsite", title: "Bedrijfswebsite", description: "Voor zichtbaarheid, vertrouwen en leads." },
   { value: "landingspagina", title: "Landingspagina", description: "Voor een campagne, dienst of actie." },
