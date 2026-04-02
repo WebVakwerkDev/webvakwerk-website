@@ -38,7 +38,7 @@ const automationServices = [
   {
     icon: Workflow,
     title: "Procesautomatisering",
-    description: "Repetitieve taken automatisch laten verlopen met N8N, Make of Power Automate. Denk aan offertes, facturen, e-mails en planningen die zichzelf afhandelen. Snel inzetbaar, zonder maatwerk-code.",
+    description: "Repetitieve taken automatisch laten verlopen met low-code flows. Denk aan offertes, facturen, e-mails en planningen die zichzelf afhandelen. Snel inzetbaar, zonder maatwerk-code.",
   },
   {
     icon: Bot,
