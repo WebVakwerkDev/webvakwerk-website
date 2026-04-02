@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Webvakwerk favicon">
+  <rect width="64" height="64" fill="#e76c36"/>
+  <polyline
+    points="15,21 23.5,44 32,29 40.5,44 49,21"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

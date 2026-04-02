@@ -1,6 +1,7 @@
 {
   "name": "Webvakwerk",
   "short_name": "Webvakwerk",
+  "description": "Websites op maat voor ondernemers die online gevonden willen worden.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f7f2ea",
@@ -23,6 +24,18 @@
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
   ]
 }

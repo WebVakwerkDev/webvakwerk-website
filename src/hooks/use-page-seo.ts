@@ -56,7 +56,7 @@ function setHreflang(url: string) {
   link.setAttribute("href", url);
 }
 
-export function usePageSeo({ title, description, canonicalPath, robots = "index,follow" }: PageSeoOptions) {
+export function usePageSeo({ title, description, canonicalPath, robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" }: PageSeoOptions) {
   useEffect(() => {
     const origin = window.location.origin;
     const canonicalUrl = new URL(canonicalPath, origin).toString();
