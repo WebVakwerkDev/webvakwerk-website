@@ -14,6 +14,7 @@ import { useBreadcrumbSchema } from "@/hooks/use-breadcrumb-schema";
 import {
   getStepErrors,
   initialPayload,
+  platformOptions,
   styleOptions,
   validateDemoRequestPayload,
   websiteTypeOptions,
@@ -22,8 +23,8 @@ import {
 } from "@/lib/demo-request";
 
 const steps = [
-  { title: "Bedrijf en project", description: "Vertel wie je bent en wat je nodig hebt voor je demo-website." },
-  { title: "Doelgroep en stijl", description: "Inhoud, uitstraling en huisstijlvoorkeuren." },
+  { title: "Dienst en bedrijf", description: "Kies wat je nodig hebt en vertel wie je bent." },
+  { title: "Details en wensen", description: "Inhoud, uitstraling of procesomschrijving." },
   { title: "Controleren en versturen", description: "Vrijblijvend indienen en laatste controle." },
 ];
 
@@ -85,9 +86,9 @@ function ChoiceChip({
 
 const AanvraagPage = () => {
   usePageSeo({
-    title: "Gratis demo-aanvraag | Webvakwerk",
+    title: "Gratis intake aanvragen | Webvakwerk",
     description:
-      "Vraag vrijblijvend een demo-website aan bij Webvakwerk. Deel je wensen, doelgroep en stijl in een korte intake.",
+      "Vraag vrijblijvend een intake aan bij Webvakwerk. Voor een website op maat of een automatiseringsoplossing.",
     canonicalPath: "/aanvraag",
   });
 
@@ -232,14 +233,13 @@ const AanvraagPage = () => {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-bold text-primary">
               <Sparkles className="h-4 w-4" />
-              Gratis demo-aanvraag
+              Gratis intake
             </span>
             <h1 className="mt-6 max-w-3xl font-syne text-4xl font-extrabold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-              Vraag een demo-website aan.
+              Vraag een gratis intake aan.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              Deze intake is vrijblijvend. Je zit na het invullen nergens aan vast, maar geeft ons wel genoeg context om
-              snel te beoordelen of we een sterk websiteconcept voor je kunnen neerzetten.
+              Of het nu gaat om een website op maat of het automatiseren van je werkprocessen — deze intake is vrijblijvend. Je zit na het invullen nergens aan vast.
             </p>
             <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
               Pas als we samen echt een opdracht starten, gelden de afspraken over scope, oplevering, revisierondes en
@@ -321,6 +321,29 @@ const AanvraagPage = () => {
             <div className="space-y-8">
               {currentStep === 0 ? (
                 <SectionCard title="Bedrijf en project" description="Vul hier je bedrijfsgegevens en wensen in, zodat we je demo-website gericht kunnen voorbereiden.">
+                  <Field label="Waar gaat je aanvraag over? *">
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {[
+                        { value: "website", title: "Website", description: "Een professionele website op maat." },
+                        { value: "automatisering", title: "Automatisering & AI", description: "Processen automatiseren met low-code of AI." },
+                      ].map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => updateField("serviceType", option.value)}
+                          className={`rounded-2xl border p-4 text-left transition-colors ${
+                            payload.serviceType === option.value
+                              ? "border-primary bg-primary/8 shadow-sm"
+                              : "border-foreground/8 bg-secondary/30 hover:border-primary/25"
+                          }`}
+                        >
+                          <p className="text-sm font-bold text-foreground">{option.title}</p>
+                          <p className="mt-1 text-sm text-muted-foreground">{option.description}</p>
+                        </button>
+                      ))}
+                    </div>
+                    <FieldError message={fieldErrors.serviceType} />
+                  </Field>
                   <p className="-mt-2 text-xs text-muted-foreground">Velden met <span className="text-destructive font-bold">*</span> zijn verplicht.</p>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <Field label="Bedrijfsnaam *">
@@ -418,73 +441,137 @@ const AanvraagPage = () => {
               ) : null}
 
               {currentStep === 1 ? (
-                <SectionCard title="Doelgroep en stijl" description="We houden het compact, maar wel concreet genoeg om een passende richting te bepalen.">
-                  <Field
-                    label="Korte beschrijving van je bedrijf, werkzaamheden en belangrijkste diensten"
-                    helper="Handig om te noemen: wat je precies doet, wie je doelgroep is, je 3-5 belangrijkste diensten/producten, je werkwijze en wat je onderscheidt van concurrenten."
-                  >
-                    <Textarea
-                      rows={4}
-                      value={payload.companyDescription}
-                      onChange={(event) => updateField("companyDescription", event.target.value)}
-                      placeholder="Bijvoorbeeld: Wij helpen mkb-bedrijven met installatie en onderhoud van zonnepanelen. Doelgroep: huiseigenaren en kleine bedrijven in regio Utrecht. Belangrijkste diensten: advies, installatie, monitoring en servicecontracten. We onderscheiden ons met snelle service en vaste contactpersonen."
-                    />
-                    <FieldError message={fieldErrors.companyDescription} />
-                  </Field>
-                  <Field
-                    label="Heb je al bestaande teksten die we kunnen gebruiken?"
-                    helper="Plak hier bestaande teksten of notities. Je mag hier ook stijlwoorden, kleuren die je juist niet wilt en wat je al hebt (zoals logo/brandguide) toevoegen. Heb je nog niets? Zet dan: ik denk er zelf nog over na."
-                  >
-                    <Textarea
-                      rows={3}
-                      value={payload.reasonForRequest}
-                      onChange={(event) => updateField("reasonForRequest", event.target.value)}
-                      placeholder="Bijvoorbeeld: We hebben al teksten per dienst en een logo. Stijlwoorden: strak en professioneel. Geen felle kleuren. Of: nog geen teksten, ik denk er zelf nog over na."
-                    />
-                    <FieldError message={fieldErrors.reasonForRequest} />
-                  </Field>
-                  <Field label="Gewenste uitstraling" helper="Selecteer gerust meerdere richtingen.">
-                    <div className="flex flex-wrap gap-2">
-                      {styleOptions.map((option) => (
-                        <ChoiceChip
-                          key={option}
-                          active={payload.visualStyle.split(",").map((value) => value.trim()).includes(option)}
-                          onClick={() => toggleStyleOption(option)}
-                        >
-                          {option}
-                        </ChoiceChip>
-                      ))}
-                    </div>
-                    <FieldError message={fieldErrors.visualStyle} />
-                  </Field>
-                  <div className="rounded-[1.5rem] border border-foreground/8 bg-secondary/25 p-5 sm:p-6">
-                    <h3 className="font-syne text-xl font-extrabold text-foreground">Kleur- en huisstijlwensen</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Dit helpt om sneller een richting te kiezen die echt bij jullie merk past.
-                    </p>
-                    <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                      <Field label="Voorkeurskleuren" helper="Noem kleuren, tinten of hex-codes als je die hebt.">
-                        <Input
-                          value={payload.brandColors}
-                          onChange={(event) => updateField("brandColors", event.target.value)}
-                          placeholder="Bijvoorbeeld: donkerblauw, zand, koper"
+                <SectionCard
+                  title="Details en wensen"
+                  description={
+                    payload.serviceType === "automatisering"
+                      ? "Beschrijf wat je wilt automatiseren zodat we gericht kunnen adviseren."
+                      : "We houden het compact, maar wel concreet genoeg om een passende richting te bepalen."
+                  }
+                >
+                  {payload.serviceType === "automatisering" ? (
+                    <>
+                      <Field
+                        label="Welke processen wil je automatiseren?"
+                        helper="Bijv: offertes aanmaken, leads doorsturen naar CRM, facturen verwerken, rapportages genereren."
+                      >
+                        <Textarea
+                          rows={4}
+                          value={payload.automationProcesses}
+                          onChange={(event) => updateField("automationProcesses", event.target.value)}
+                          placeholder="Beschrijf de processen die nu handmatig gaan en die je wilt automatiseren."
                         />
-                        <FieldError message={fieldErrors.brandColors} />
+                        <FieldError message={fieldErrors.automationProcesses} />
                       </Field>
-                    </div>
-                  </div>
-                  <Field label="Voorbeelden van websites die jullie mooi vinden" helper="Optioneel: dit is geen must en niet verplicht.">
-                    <Textarea
-                      rows={3}
-                      value={payload.inspirationExamples}
-                      onChange={(event) => updateField("inspirationExamples", event.target.value)}
-                      placeholder="Plak links of beschrijf kort wat je aanspreekt."
-                    />
-                    <FieldError message={fieldErrors.inspirationExamples} />
-                  </Field>
-                  <div className="rounded-2xl border border-foreground/8 bg-secondary/25 px-4 py-4 text-sm text-muted-foreground">
-                    Bestanden meesturen? Mail ze na je aanvraag naar info@webvakwerk.nl.
-                  </div>
+                      <Field
+                        label="Welke tools en systemen gebruik je nu?"
+                        helper="Bijv: Exact Online, HubSpot, Outlook, eigen database, Google Sheets."
+                      >
+                        <Textarea
+                          rows={3}
+                          value={payload.currentTools}
+                          onChange={(event) => updateField("currentTools", event.target.value)}
+                          placeholder="Noem de tools en systemen die je dagelijks gebruikt."
+                        />
+                        <FieldError message={fieldErrors.currentTools} />
+                      </Field>
+                      <Field
+                        label="Wat is het gewenste resultaat?"
+                        helper="Bijv: minder handmatig werk, snellere opvolging van leads, foutvrije facturering."
+                      >
+                        <Textarea
+                          rows={3}
+                          value={payload.desiredOutcome}
+                          onChange={(event) => updateField("desiredOutcome", event.target.value)}
+                          placeholder="Beschrijf wat succes eruit ziet na de automatisering."
+                        />
+                        <FieldError message={fieldErrors.desiredOutcome} />
+                      </Field>
+                      <Field label="Platformvoorkeur" helper="Geen voorkeur is ook prima — we adviseren op basis van jouw situatie.">
+                        <div className="flex flex-wrap gap-2">
+                          {platformOptions.map((option) => (
+                            <ChoiceChip
+                              key={option}
+                              active={payload.platformPreference === option}
+                              onClick={() => updateField("platformPreference", payload.platformPreference === option ? "" : option)}
+                            >
+                              {option}
+                            </ChoiceChip>
+                          ))}
+                        </div>
+                        <FieldError message={fieldErrors.platformPreference} />
+                      </Field>
+                    </>
+                  ) : (
+                    <>
+                      <Field
+                        label="Korte beschrijving van je bedrijf, werkzaamheden en belangrijkste diensten"
+                        helper="Handig om te noemen: wat je precies doet, wie je doelgroep is, je 3-5 belangrijkste diensten/producten, je werkwijze en wat je onderscheidt van concurrenten."
+                      >
+                        <Textarea
+                          rows={4}
+                          value={payload.companyDescription}
+                          onChange={(event) => updateField("companyDescription", event.target.value)}
+                          placeholder="Bijvoorbeeld: Wij helpen mkb-bedrijven met installatie en onderhoud van zonnepanelen. Doelgroep: huiseigenaren en kleine bedrijven in regio Utrecht. Belangrijkste diensten: advies, installatie, monitoring en servicecontracten. We onderscheiden ons met snelle service en vaste contactpersonen."
+                        />
+                        <FieldError message={fieldErrors.companyDescription} />
+                      </Field>
+                      <Field
+                        label="Heb je al bestaande teksten die we kunnen gebruiken?"
+                        helper="Plak hier bestaande teksten of notities. Je mag hier ook stijlwoorden, kleuren die je juist niet wilt en wat je al hebt (zoals logo/brandguide) toevoegen. Heb je nog niets? Zet dan: ik denk er zelf nog over na."
+                      >
+                        <Textarea
+                          rows={3}
+                          value={payload.reasonForRequest}
+                          onChange={(event) => updateField("reasonForRequest", event.target.value)}
+                          placeholder="Bijvoorbeeld: We hebben al teksten per dienst en een logo. Stijlwoorden: strak en professioneel. Geen felle kleuren. Of: nog geen teksten, ik denk er zelf nog over na."
+                        />
+                        <FieldError message={fieldErrors.reasonForRequest} />
+                      </Field>
+                      <Field label="Gewenste uitstraling" helper="Selecteer gerust meerdere richtingen.">
+                        <div className="flex flex-wrap gap-2">
+                          {styleOptions.map((option) => (
+                            <ChoiceChip
+                              key={option}
+                              active={payload.visualStyle.split(",").map((value) => value.trim()).includes(option)}
+                              onClick={() => toggleStyleOption(option)}
+                            >
+                              {option}
+                            </ChoiceChip>
+                          ))}
+                        </div>
+                        <FieldError message={fieldErrors.visualStyle} />
+                      </Field>
+                      <div className="rounded-[1.5rem] border border-foreground/8 bg-secondary/25 p-5 sm:p-6">
+                        <h3 className="font-syne text-xl font-extrabold text-foreground">Kleur- en huisstijlwensen</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">
+                          Dit helpt om sneller een richting te kiezen die echt bij jullie merk past.
+                        </p>
+                        <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                          <Field label="Voorkeurskleuren" helper="Noem kleuren, tinten of hex-codes als je die hebt.">
+                            <Input
+                              value={payload.brandColors}
+                              onChange={(event) => updateField("brandColors", event.target.value)}
+                              placeholder="Bijvoorbeeld: donkerblauw, zand, koper"
+                            />
+                            <FieldError message={fieldErrors.brandColors} />
+                          </Field>
+                        </div>
+                      </div>
+                      <Field label="Voorbeelden van websites die jullie mooi vinden" helper="Optioneel: dit is geen must en niet verplicht.">
+                        <Textarea
+                          rows={3}
+                          value={payload.inspirationExamples}
+                          onChange={(event) => updateField("inspirationExamples", event.target.value)}
+                          placeholder="Plak links of beschrijf kort wat je aanspreekt."
+                        />
+                        <FieldError message={fieldErrors.inspirationExamples} />
+                      </Field>
+                      <div className="rounded-2xl border border-foreground/8 bg-secondary/25 px-4 py-4 text-sm text-muted-foreground">
+                        Bestanden meesturen? Mail ze na je aanvraag naar info@webvakwerk.nl.
+                      </div>
+                    </>
+                  )}
                 </SectionCard>
               ) : null}
 
