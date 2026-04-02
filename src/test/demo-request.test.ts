@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildInternalApiPayload, demoRequestSchema } from "../../server/demo-request.js";
-import { initialPayload, validateDemoRequestPayload } from "../lib/demo-request";
+import { getStepErrors, initialPayload, validateDemoRequestPayload } from "../lib/demo-request";
 
 describe("demo request validation", () => {
   it("flags required frontend fields", () => {
@@ -44,5 +44,22 @@ describe("demo request validation", () => {
       source: "WEBSITE_FORM",
       priority: "MEDIUM",
     });
+  });
+});
+
+describe("service type validation", () => {
+  it("flags missing serviceType on step 1", () => {
+    const errors = getStepErrors({ ...initialPayload, serviceType: "" }, 0);
+    expect(errors.serviceType).toBe("Kies een diensttype.");
+  });
+
+  it("accepts 'website' as valid serviceType", () => {
+    const errors = getStepErrors({ ...initialPayload, serviceType: "website" }, 0);
+    expect(errors.serviceType).toBeUndefined();
+  });
+
+  it("accepts 'automatisering' as valid serviceType", () => {
+    const errors = getStepErrors({ ...initialPayload, serviceType: "automatisering" }, 0);
+    expect(errors.serviceType).toBeUndefined();
   });
 });

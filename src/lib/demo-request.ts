@@ -1,4 +1,5 @@
 export type DemoRequestPayload = {
+  serviceType: string;
   companyName: string;
   contactName: string;
   email: string;
@@ -20,6 +21,10 @@ export type DemoRequestPayload = {
   existingBrandAssets: string;
   websiteType: string;
   reasonForRequest: string;
+  automationProcesses: string;
+  currentTools: string;
+  desiredOutcome: string;
+  platformPreference: string;
   privacyConsent: boolean;
   honeypot: string;
 };
@@ -29,6 +34,8 @@ export type DemoRequestErrors = Partial<Record<DemoRequestField, string>>;
 
 export const styleOptions = ["Modern", "Strak", "Warm", "Minimalistisch", "Premium", "Speels", "Ambachtelijk", "Technisch"];
 
+export const platformOptions = ["N8N", "Power Automate", "Make", "Geen voorkeur"];
+
 export const websiteTypeOptions = [
   { value: "bedrijfswebsite", title: "Bedrijfswebsite", description: "Voor zichtbaarheid, vertrouwen en leads." },
   { value: "landingspagina", title: "Landingspagina", description: "Voor een campagne, dienst of actie." },
@@ -37,6 +44,7 @@ export const websiteTypeOptions = [
 ];
 
 export const initialPayload: DemoRequestPayload = {
+  serviceType: "website",
   companyName: "",
   contactName: "",
   email: "",
@@ -44,7 +52,7 @@ export const initialPayload: DemoRequestPayload = {
   websiteUrl: "",
   industry: "",
   region: "",
-  subject: "Ontwerp en realisatie nieuwe website (demo)",
+  subject: "",
   companyDescription: "",
   companyActivities: "",
   targetAudience: "",
@@ -58,11 +66,16 @@ export const initialPayload: DemoRequestPayload = {
   existingBrandAssets: "",
   websiteType: "bedrijfswebsite",
   reasonForRequest: "",
+  automationProcesses: "",
+  currentTools: "",
+  desiredOutcome: "",
+  platformPreference: "",
   privacyConsent: false,
   honeypot: "",
 };
 
 const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
+  serviceType: "Kies een diensttype.",
   companyName: "Bedrijfsnaam is verplicht.",
   contactName: "Contactpersoon is verplicht.",
   email: "E-mailadres is verplicht.",
@@ -70,7 +83,7 @@ const requiredFieldMessages: Partial<Record<DemoRequestField, string>> = {
 };
 
 const stepFields: DemoRequestField[][] = [
-  ["companyName", "contactName", "email", "phone", "websiteUrl"],
+  ["serviceType", "companyName", "contactName", "email", "phone"],
   [],
   ["privacyConsent"],
 ];
@@ -78,7 +91,6 @@ const stepFields: DemoRequestField[][] = [
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
-
 
 export function validateDemoRequestPayload(payload: DemoRequestPayload) {
   const errors: DemoRequestErrors = {};
@@ -106,5 +118,7 @@ export function getStepErrors(payload: DemoRequestPayload, stepIndex: number) {
   const errors = validateDemoRequestPayload(payload);
   const fields = stepFields[stepIndex] || [];
 
-  return Object.fromEntries(Object.entries(errors).filter(([field]) => fields.includes(field as DemoRequestField))) as DemoRequestErrors;
+  return Object.fromEntries(
+    Object.entries(errors).filter(([field]) => fields.includes(field as DemoRequestField))
+  ) as DemoRequestErrors;
 }
