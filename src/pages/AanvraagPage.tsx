@@ -320,7 +320,7 @@ const AanvraagPage = () => {
           ) : (
             <div className="space-y-8">
               {currentStep === 0 ? (
-                <SectionCard title="Bedrijf en project" description="Vul hier je bedrijfsgegevens en wensen in, zodat we je demo-website gericht kunnen voorbereiden.">
+                <SectionCard title="Dienst en bedrijf" description="Kies wat je nodig hebt en vul je contactgegevens in.">
                   <Field label="Waar gaat je aanvraag over? *">
                     <div className="grid gap-3 sm:grid-cols-2">
                       {[
@@ -417,26 +417,28 @@ const AanvraagPage = () => {
                       <FieldError message={fieldErrors.subject} />
                     </Field>
                   </div>
-                  <Field label="Wat voor website heb je ongeveer nodig?" helper="Kies de richting die het dichtst in de buurt komt.">
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {websiteTypeOptions.map((option) => (
-                        <button
-                          key={option.value}
-                          type="button"
-                          onClick={() => updateField("websiteType", option.value)}
-                          className={`rounded-2xl border p-4 text-left transition-colors ${
-                            payload.websiteType === option.value
-                              ? "border-primary bg-primary/8 shadow-sm"
-                              : "border-foreground/8 bg-secondary/30 hover:border-primary/25"
-                          }`}
-                        >
-                          <p className="text-sm font-bold text-foreground">{option.title}</p>
-                          <p className="mt-1 text-sm text-muted-foreground">{option.description}</p>
-                        </button>
-                      ))}
-                    </div>
-                    <FieldError message={fieldErrors.websiteType} />
-                  </Field>
+                  {payload.serviceType === "website" ? (
+                    <Field label="Wat voor website heb je ongeveer nodig?" helper="Kies de richting die het dichtst in de buurt komt.">
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {websiteTypeOptions.map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => updateField("websiteType", option.value)}
+                            className={`rounded-2xl border p-4 text-left transition-colors ${
+                              payload.websiteType === option.value
+                                ? "border-primary bg-primary/8 shadow-sm"
+                                : "border-foreground/8 bg-secondary/30 hover:border-primary/25"
+                            }`}
+                          >
+                            <p className="text-sm font-bold text-foreground">{option.title}</p>
+                            <p className="mt-1 text-sm text-muted-foreground">{option.description}</p>
+                          </button>
+                        ))}
+                      </div>
+                      <FieldError message={fieldErrors.websiteType} />
+                    </Field>
+                  ) : null}
                 </SectionCard>
               ) : null}
 
