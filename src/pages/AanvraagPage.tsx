@@ -239,7 +239,7 @@ const AanvraagPage = () => {
               Vraag een gratis intake aan.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              Of het nu gaat om een website op maat of het automatiseren van je werkprocessen — deze intake is vrijblijvend. Je zit na het invullen nergens aan vast.
+              Of het nu gaat om een website op maat of het automatiseren van werkprocessen: deze intake is vrijblijvend en er zit na het invullen nergens aan vast.
             </p>
             <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
               Pas als we samen echt een opdracht starten, gelden de afspraken over scope, oplevering, revisierondes en
@@ -489,7 +489,7 @@ const AanvraagPage = () => {
                         />
                         <FieldError message={fieldErrors.desiredOutcome} />
                       </Field>
-                      <Field label="Platformvoorkeur" helper="Geen voorkeur is ook prima — we adviseren op basis van jouw situatie.">
+                      <Field label="Platformvoorkeur" helper="Geen voorkeur is ook prima, we adviseren op basis van de situatie.">
                         <div className="flex flex-wrap gap-2">
                           {platformOptions.map((option) => (
                             <ChoiceChip

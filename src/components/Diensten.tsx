@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Smartphone, Search, FileText, ArrowRightLeft, Server, Workflow, Plug, Bot, Sparkles, RefreshCw, Lightbulb } from "lucide-react";
+import { Code, Smartphone, Search, FileText, ArrowRightLeft, Server, Workflow, Bot, Lightbulb } from "lucide-react";
 
 const webServices = [
   {
@@ -24,8 +24,8 @@ const webServices = [
   },
   {
     icon: Server,
-    title: "Hosting advies",
-    description: "We helpen je de juiste plek kiezen om je website te laten draaien, zonder dat je te veel betaalt. We kijken naar wat je site nodig heeft en zorgen dat je niet vastzit aan dure abonnementen.",
+    title: "Betaalbare hosting",
+    description: "Veel bedrijven betalen te veel voor hosting via een bureau of reseller. Wij helpen bij het opzetten van goedkope, betrouwbare hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
   },
   {
     icon: ArrowRightLeft,
@@ -37,33 +37,18 @@ const webServices = [
 const automationServices = [
   {
     icon: Workflow,
-    title: "Low-code flows",
-    description: "Werkprocessen automatiseren met N8N, Power Automate of Make — zonder maatwerk-code. Snel inzetbaar en eenvoudig te beheren.",
-  },
-  {
-    icon: Plug,
-    title: "API koppelingen",
-    description: "Systemen laten samenwerken via API's: van CRM en boekhouding tot webshops en eigen platformen. Geen dubbel invoeren meer.",
+    title: "Procesautomatisering",
+    description: "Repetitieve taken automatisch laten verlopen met N8N, Make of Power Automate. Denk aan offertes, facturen, e-mails en planningen die zichzelf afhandelen. Snel inzetbaar, zonder maatwerk-code.",
   },
   {
     icon: Bot,
-    title: "MCP integraties",
-    description: "AI-tooling verbinden met je eigen omgeving via het Model Context Protocol. Geef AI toegang tot jouw data en systemen.",
-  },
-  {
-    icon: Sparkles,
-    title: "AI-driven flows",
-    description: "Documenten verwerken, leads opvolgen, rapportages genereren — aangestuurd door AI. Slim automatiseren op basis van context.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Procesautomatisering",
-    description: "Offertes, facturen, e-mails en planningen automatisch laten afhandelen. Minder handmatig werk, meer tijd voor wat telt.",
+    title: "AI & Integratie",
+    description: "AI inzetten op de plekken waar het echt iets oplevert. Van AI agents die zelfstandig taken uitvoeren tot MCP koppelingen die AI toegang geven tot eigen data en systemen. Inclusief advies over aanpak en inrichting.",
   },
   {
     icon: Lightbulb,
     title: "Advies & strategie",
-    description: "Samen bepalen wát je automatiseert, in welke volgorde en met welke tooling. Zodat je investering direct resultaat oplevert.",
+    description: "Samen bepalen wat automatiseren of AI oplevert, in welke volgorde en met welke middelen. Zodat er gebouwd wordt op basis van een concreet doel.",
   },
 ];
 
@@ -107,7 +92,7 @@ const Diensten = () => {
         >
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Diensten</p>
           <h2 className="text-3xl md:text-4xl font-syne font-extrabold text-background mb-4">
-            Van website tot automatisering — alles onder één dak
+            Van website tot automatisering, alles onder één dak
           </h2>
         </motion.div>
 
