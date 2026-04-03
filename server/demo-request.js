@@ -122,7 +122,7 @@ function buildProjectDescription(payload) {
       return value ? `${label}: ${value}` : null;
     })
     .filter(Boolean)
-    .join("\n\n");
+    .join("\n");
 }
 
 export function buildInternalApiPayload(payload) {
