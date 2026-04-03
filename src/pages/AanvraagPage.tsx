@@ -15,7 +15,6 @@ import {
   generateSubjectSuggestion,
   getStepErrors,
   initialPayload,
-  platformOptions,
   styleOptions,
   validateDemoRequestPayload,
   websiteTypeOptions,
@@ -502,20 +501,7 @@ const AanvraagPage = () => {
                         />
                         <FieldError message={fieldErrors.desiredOutcome} />
                       </Field>
-                      <Field label="Platformvoorkeur" helper="Geen voorkeur is ook prima, we adviseren op basis van de situatie.">
-                        <div className="flex flex-wrap gap-2">
-                          {platformOptions.map((option) => (
-                            <ChoiceChip
-                              key={option}
-                              active={payload.platformPreference === option}
-                              onClick={() => updateField("platformPreference", payload.platformPreference === option ? "" : option)}
-                            >
-                              {option}
-                            </ChoiceChip>
-                          ))}
-                        </div>
-                        <FieldError message={fieldErrors.platformPreference} />
-                      </Field>
+
                     </>
                   ) : (
                     <>

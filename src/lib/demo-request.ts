@@ -24,7 +24,6 @@ export type DemoRequestPayload = {
   automationProcesses: string;
   currentTools: string;
   desiredOutcome: string;
-  platformPreference: string;
   privacyConsent: boolean;
   honeypot: string;
 };
@@ -34,7 +33,6 @@ export type DemoRequestErrors = Partial<Record<DemoRequestField, string>>;
 
 export const styleOptions = ["Modern", "Strak", "Warm", "Minimalistisch", "Premium", "Speels", "Ambachtelijk", "Technisch"];
 
-export const platformOptions = ["N8N", "Power Automate", "Make", "Geen voorkeur"];
 
 export function generateSubjectSuggestion(serviceType: string, websiteType: string): string {
   if (serviceType === "automatisering") {
@@ -85,7 +83,6 @@ export const initialPayload: DemoRequestPayload = {
   automationProcesses: "",
   currentTools: "",
   desiredOutcome: "",
-  platformPreference: "",
   privacyConsent: false,
   honeypot: "",
 };
