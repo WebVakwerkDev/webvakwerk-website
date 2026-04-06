@@ -1,9 +1,12 @@
-FROM node:20-alpine AS build
+FROM node:20 AS build
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN npm ci
+
+# Install Playwright browser + system dependencies
+RUN npx playwright install --with-deps chromium
 
 COPY . .
 RUN npm run build:prerender
