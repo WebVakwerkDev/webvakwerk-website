@@ -98,7 +98,7 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.9 }}
           >
-            Geen verplichting. Geen kleine lettertjes. Demo binnen 5 werkdagen. Live binnen 2 weken.
+            Geen verplichting. Geen kleine lettertjes. Demo binnen 5 werkdagen. Live binnen 3 weken.
           </motion.p>
         </motion.div>
       </motion.div>

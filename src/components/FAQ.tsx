@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     question: "Hoe snel is mijn website live?",
-    answer: "Je gratis demo staat binnen 5 werkdagen online. Beslis je om verder te gaan? Dan is je website live binnen 2 weken na akkoord. Geen vage tijdlijnen, gewoon een concrete datum.",
+    answer: "Je gratis demo staat binnen 5 werkdagen online. Beslis je om verder te gaan? Dan is je website live binnen 3 weken na akkoord. Geen vage tijdlijnen, gewoon een concrete datum.",
   },
   {
     question: "Wat als de demo niet precies is wat ik zoek?",
