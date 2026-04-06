@@ -57,7 +57,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            Elke dag zonder goede website gaat een potentiële klant naar iemand anders. Ik help zzp'ers en kleine bedrijven in de regio Eindhoven, Nijmegen en Venlo aan een website die dat verandert. Geen duur bureau, geen lang traject.
+            Elke dag zonder goede website gaat een potentiële klant naar iemand anders. Ik help zzp'ers en kleine bedrijven aan een website die dat verandert.
           </motion.p>
 
           <motion.div
