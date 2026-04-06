@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 
 const portfolio = [
   {
-    name: "Rens Barber",
+    name: "Barber Rens",
     description: "Duidelijke website die in één oogopslag laat zien wat Rens doet en klanten direct doorlinkt naar WhatsApp voor een afspraak.",
     url: "https://rensvandepol.nl",
   },
