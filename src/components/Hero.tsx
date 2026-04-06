@@ -57,7 +57,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            Voor zzp'ers en kleine bedrijven die online gevonden willen worden. Geen duur bureau, geen lang traject — gewoon een website die klanten oplevert. Actief in de regio Eindhoven, Nijmegen en Venlo.
+            Voor zzp'ers en kleine bedrijven die online gevonden willen worden. Geen duur bureau, geen lang traject. Gewoon een website die klanten oplevert. Actief in de regio Eindhoven, Nijmegen en Venlo.
           </motion.p>
 
           <motion.div
@@ -83,7 +83,7 @@ const Hero = () => {
             transition={{ delay: 1.3, duration: 0.5 }}
             className="mt-4 text-sm text-muted-foreground"
           >
-            Vrijblijvend en gratis. Je betaalt pas als je verder wilt.
+            Geen technisch gedoe van jouw kant. Je betaalt pas als je verder wilt.
           </motion.p>
         </div>
 

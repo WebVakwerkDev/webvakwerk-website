@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     question: "Wat als de demo niet precies is wat ik zoek?",
-    answer: "Geen probleem — je krijgt een extra feedbackronde gratis. De demo is er juist voor om te zien wat we voor je kunnen betekenen. Bevalt het na die extra ronde nog steeds niet? Dan betaal je niks en stop je ermee. Geen verplichtingen.",
+    answer: "Geen probleem, je krijgt een extra feedbackronde gratis. De demo is er juist voor om te zien wat we voor je kunnen betekenen. Bevalt het na die extra ronde nog steeds niet? Dan betaal je niks en stop je ermee. Geen verplichtingen.",
   },
   {
     question: "Hoeveel aanpassingen kan ik doen?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: "Kan ik ook hulp krijgen bij hosting?",
-    answer: "Ja. We helpen je bij het opzetten van betaalbare, betrouwbare hosting in eigen beheer — of bij het migreren van je huidige omgeving. Geen onnodige marges via een bureau, gewoon hosting die past bij wat jij nodig hebt.",
+    answer: "Ja. We helpen je bij het opzetten van betaalbare, betrouwbare hosting in eigen beheer, of bij het migreren van je huidige omgeving. Geen onnodige marges via een bureau, gewoon hosting die past bij wat jij nodig hebt.",
   },
 ];
 

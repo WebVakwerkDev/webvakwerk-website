@@ -3,23 +3,23 @@ import { ExternalLink } from "lucide-react";
 
 const portfolio = [
   {
-    name: "Rens van de Pol",
-    description: "Website voor een barbier in de regio — simpel, snel en direct naar WhatsApp.",
+    name: "Rens Barber",
+    description: "Duidelijke website die in één oogopslag laat zien wat Rens doet en klanten direct doorlinkt naar WhatsApp voor een afspraak.",
     url: "https://rensvandepol.nl",
   },
   {
     name: "SnackSpot",
-    description: "Community webapplicatie voor het ontdekken van lokale eetgelegenheden.",
+    description: "Werkende community-app met actieve gebruikers die lokale eetgelegenheden ontdekken, beoordelen en delen.",
     url: "https://snackspot.online/product",
   },
   {
     name: "BunkHosting",
-    description: "Eigen VPS hosting platform — van ontwerp tot volledige webapplicatie.",
+    description: "Volledig zelfgebouwd VPS hosting platform, van database tot gebruikersinterface, end-to-end ontwikkeld.",
     url: "https://bunkhosting.nl",
   },
   {
-    name: "Stijn van de Pol",
-    description: "Persoonlijke portfolio in macOS-stijl — eigen branding, design en development.",
+    name: "Stijn van de Pol, Portfolio",
+    description: "Creatieve portfolio in macOS-stijl die meteen laat zien wat ik kan. Bezoekers zien direct mijn ervaring en skillset.",
     url: "https://stijnvandepol.nl",
   },
 ];
@@ -72,7 +72,7 @@ const OverWebvakwerk = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              Ik ben een developer uit de regio Eindhoven–Venlo met een achtergrond in IT-infrastructuur, webdevelopment en automatisering. Ik help zzp'ers en kleine bedrijven aan een website die helder uitlegt wat je doet en direct aanzet tot contact — zonder lang traject of vaag gedoe.
+              Ik ben een developer uit de regio Eindhoven tot Venlo met een achtergrond in IT-infrastructuur, webdevelopment en automatisering. Ik help zzp'ers en kleine bedrijven aan een website die helder uitlegt wat je doet en direct aanzet tot contact. Geen lang traject of vaag gedoe.
             </motion.p>
             <motion.p
               className="mt-3 text-base leading-relaxed text-muted-foreground"
