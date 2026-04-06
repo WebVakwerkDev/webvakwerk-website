@@ -93,7 +93,7 @@ const Hero = () => {
             className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1"
           >
             <span className="text-xs text-muted-foreground/60 uppercase tracking-widest font-bold">Eerder gemaakt voor</span>
-            {["Rens Barber", "SnackSpot (20+ gebruikers)", "BunkHosting"].map((name) => (
+            {["Barber Rens", "SnackSpot", "BunkHosting"].map((name) => (
               <span key={name} className="text-xs font-semibold text-foreground/50">{name}</span>
             ))}
           </motion.div>

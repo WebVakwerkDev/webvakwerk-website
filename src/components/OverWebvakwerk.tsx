@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 const portfolio = [
   {
     name: "Barber Rens",
-    description: "Duidelijke website die in één oogopslag laat zien wat Rens doet en klanten direct doorlinkt naar WhatsApp voor een afspraak.",
+    description: "Duidelijke website die in één oogopslag laat zien wat Rens doet en klanten direct doorlinkt voor een afspraak.",
     url: "https://rensvandepol.nl",
   },
   {
@@ -14,12 +14,12 @@ const portfolio = [
   },
   {
     name: "BunkHosting",
-    description: "Volledig zelfgebouwd VPS hosting platform, van database tot gebruikersinterface, end-to-end ontwikkeld.",
+    description: "Volledig VPS hosting platform, van gebruikersinterface tot automatisering en infrastructuur.",
     url: "https://bunkhosting.nl",
   },
   {
     name: "Stijn van de Pol, Portfolio",
-    description: "Creatieve portfolio in macOS-stijl die meteen laat zien wat ik kan. Bezoekers zien direct mijn ervaring en skillset.",
+    description: "Creatief portfolio in tech stijl die meteen laat zien wat ik kan.",
     url: "https://stijnvandepol.nl",
   },
 ];
@@ -72,7 +72,7 @@ const OverWebvakwerk = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              Ik ben een developer uit Noord-Brabant en Limburg met een achtergrond in IT-infrastructuur, webdevelopment en automatisering. Ik help zzp'ers en kleine bedrijven aan een website die helder uitlegt wat je doet en direct aanzet tot contact. Geen lang traject of vaag gedoe.
+              Ik ben een developer uit Noord-Brabant met een achtergrond in IT-infrastructuur, webdevelopment en automatisering. Ik help zzp'ers en kleine bedrijven aan een website die helder uitlegt wat je doet en direct aanzet tot contact. Geen lang traject maar snel resultaat.
             </motion.p>
             <motion.p
               className="mt-3 text-base leading-relaxed text-muted-foreground"
