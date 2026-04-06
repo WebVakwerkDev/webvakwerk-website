@@ -81,7 +81,7 @@ const OverWebvakwerk = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
             >
-              Naast websites bouw ik ook webapplicaties, hosting-oplossingen en automatiseringen. Alles wat ik aanbied heb ik zelf ook gebouwd en gebruik ik zelf.
+              Naast websites bouw ik ook webapplicaties, hosting-oplossingen en automatiseringen.
             </motion.p>
             <motion.p
               className="mt-3 text-sm text-muted-foreground"
