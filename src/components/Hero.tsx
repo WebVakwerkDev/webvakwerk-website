@@ -13,7 +13,7 @@ const wordVariants = {
 };
 
 const Hero = () => {
-  const titleWords = "Meer klanten via een website die écht werkt".split(" ");
+  const titleWords = "Meer klanten via een website die werkt".split(" ");
 
   return (
     <section
