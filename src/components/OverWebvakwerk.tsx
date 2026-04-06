@@ -18,7 +18,7 @@ const portfolio = [
     url: "https://bunkhosting.nl",
   },
   {
-    name: "Stijn van de Pol, Portfolio",
+    name: "Eigen Portfolio",
     description: "Creatief portfolio in tech stijl die meteen laat zien wat ik kan.",
     url: "https://stijnvandepol.nl",
   },

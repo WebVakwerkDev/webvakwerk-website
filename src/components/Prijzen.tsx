@@ -35,7 +35,7 @@ const plans = [
     featured: false,
     tagline: "Perfect voor zzp'ers die snel online gevonden willen worden.",
     features: [
-      "Alles wat je nodig hebt om online gevonden te worden",
+      "Tot 3 pagina's, professioneel en mobiel klaar",
       "Werkt op elke telefoon, tablet en computer",
       "Klanten vinden je via Google, SEO inbegrepen",
       "Gratis demo vooraf, betaal pas bij akkoord",

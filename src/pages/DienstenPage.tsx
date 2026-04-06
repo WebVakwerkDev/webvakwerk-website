@@ -12,7 +12,7 @@ const services = [
     icon: Server,
     title: "Hosting & infrastructuur",
     description:
-      "Betaal je te veel voor hosting, of zit je vast aan een dure cloudoplossing? Wij helpen bij het opzetten van betaalbare hosting, en bij migraties van cloud naar eigen server of andersom. Geen onnodige kosten, gewoon de infrastructuur die bij je situatie past.",
+      "Betaal je te veel voor hosting, of zit je vast aan een dure cloudoplossing? Ik help bij het opzetten van betaalbare hosting, en bij migraties van cloud naar eigen server of andersom. Geen onnodige kosten, gewoon de infrastructuur die bij je situatie past.",
   },
   {
     icon: Workflow,
@@ -30,7 +30,7 @@ const services = [
     icon: Lightbulb,
     title: "Advies & strategie",
     description:
-      "Samen bepalen wat automatiseren of AI oplevert, in welke volgorde en met welke middelen. Zodat er gebouwd wordt op basis van een concreet doel.",
+      "Ik help bepalen wat automatiseren of AI oplevert, in welke volgorde en met welke middelen. Zodat er gebouwd wordt op basis van een concreet doel.",
   },
 ];
 
@@ -76,8 +76,9 @@ const DienstenPage = () => {
               Hosting, automatisering & AI
             </h1>
             <p className="text-foreground/60 max-w-2xl mx-auto">
-              Naast webdevelopment helpen we je met infrastructuur, automatisering en slimme AI-toepassingen. Geen onnodige complexiteit, wel concrete resultaten.
+              Naast webdevelopment help ik je met infrastructuur, automatisering en slimme AI-toepassingen. Geen onnodige complexiteit, wel concrete resultaten.
             </p>
+
           </motion.div>
 
           <div

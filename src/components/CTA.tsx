@@ -58,7 +58,7 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            Laat zien wat je doet en wij bouwen een eerste versie. Niet tevreden met de demo? Je krijgt een extra ronde gratis. Bevalt het daarna nog niet? Dan betaal je niks.
+            Laat zien wat je doet en ik bouw een eerste versie. Niet tevreden met de demo? Je krijgt een extra ronde gratis. Bevalt het daarna nog niet? Dan betaal je niks.
           </motion.p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.div
