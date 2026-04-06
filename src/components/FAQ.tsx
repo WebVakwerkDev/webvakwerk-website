@@ -4,20 +4,28 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Hoe lang duurt het om een website te laten maken?",
-    answer: "We mikken op oplevering binnen enkele weken. De doorlooptijd hangt af van beschikbaarheid en het gekozen pakket. Het traject begint met een gratis demo, pas daarna start de betaalde fase.",
+    question: "Hoe snel is mijn website live?",
+    answer: "Je gratis demo staat binnen 5 werkdagen online. Beslis je om verder te gaan? Dan is je website live binnen 2 weken na akkoord. Geen vage tijdlijnen, gewoon een concrete datum.",
   },
   {
     question: "Wat als de demo niet precies is wat ik zoek?",
-    answer: "De demo is bedoeld om te laten zien wat wij kunnen betekenen op het gebied van webdesign. Als je interesse hebt maar de demo niet helemaal aansluit bij je wensen, is dat geen probleem. Alle verbeterpunten en veranderingen bespreken we samen en worden doorgevoerd in het uiteindelijke ontwerp.",
+    answer: "Geen probleem — je krijgt een extra feedbackronde gratis. De demo is er juist voor om te zien wat we voor je kunnen betekenen. Bevalt het na die extra ronde nog steeds niet? Dan betaal je niks en stop je ermee. Geen verplichtingen.",
+  },
+  {
+    question: "Hoeveel aanpassingen kan ik doen?",
+    answer: "Bij het Starter pakket heb je 3 revisierondes, bij Enterprise 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
   },
   {
     question: "Kan ik mijn website zelf beheren na oplevering?",
     answer: "Ja. Als je het liever zelf beheert of bij je eigen partij neerlegt, dragen we alles netjes over. Zo zit je nergens aan vast en houd je zelf de regie over je website.",
   },
   {
-    question: "Kan ik later nog dingen aanpassen?",
-    answer: "Zeker. Binnen het gekozen pakket heb je een aantal feedbackmomenten om aanpassingen door te voeren. Heb je daarna nog wijzigingen? Dan kun je extra iteratiemomenten bijboeken voor €149 per keer (excl. btw). Zo houd je de regie over je website, ook na oplevering.",
+    question: "Wat kost een website laten maken bij Webvakwerk?",
+    answer: "Het Starter pakket begint vanaf €499 eenmalig, het Enterprise pakket vanaf €899. Beide zijn exclusief 21% btw. Voor grotere projecten, koppelingen of maatwerk vragen we een prijs op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
+  },
+  {
+    question: "Kan ik ook hulp krijgen bij hosting?",
+    answer: "Ja. We helpen je bij het opzetten van betaalbare, betrouwbare hosting in eigen beheer — of bij het migreren van je huidige omgeving. Geen onnodige marges via een bureau, gewoon hosting die past bij wat jij nodig hebt.",
   },
 ];
 

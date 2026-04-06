@@ -13,7 +13,7 @@ const wordVariants = {
 };
 
 const Hero = () => {
-  const titleWords = "Een professionele website voor jouw bedrijf".split(" ");
+  const titleWords = "Meer klanten via een website die écht werkt".split(" ");
 
   return (
     <section
@@ -57,8 +57,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            Wij bouwen websites voor ondernemers die online gevonden willen worden.
-            Duidelijk, snel en gericht op resultaat.
+            Voor zzp'ers en kleine bedrijven die online gevonden willen worden. Geen duur bureau, geen lang traject — gewoon een website die klanten oplevert. Actief in de regio Eindhoven, Nijmegen en Venlo.
           </motion.p>
 
           <motion.div

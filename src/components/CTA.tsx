@@ -58,7 +58,7 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            Laat zien wat je doet en wij bouwen een eerste versie. Pas als we samen een opdracht starten, betaal je iets.
+            Laat zien wat je doet en wij bouwen een eerste versie. Niet tevreden met de demo? Je krijgt een extra ronde gratis. Bevalt het daarna nog niet? Dan betaal je niks.
           </motion.p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.div
@@ -98,7 +98,7 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.9 }}
           >
-            Geen verplichting. Geen kleine lettertjes. Binnen 48 uur reactie.
+            Geen verplichting. Geen kleine lettertjes. Demo binnen 5 werkdagen. Live binnen 2 weken.
           </motion.p>
         </motion.div>
       </motion.div>

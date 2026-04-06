@@ -39,7 +39,8 @@ const plans = [
       "Mobiel geoptimaliseerd",
       "SEO-basis",
       "Gratis demo vooraf",
-      "Max. 3 feedbackmomenten inbegrepen",
+      "Live binnen 2 weken na akkoord",
+      "Max. 3 revisierondes inbegrepen",
       "Overdracht naar eigen partij of hoster",
     ],
   },
@@ -57,7 +58,9 @@ const plans = [
       "Contactformulier en uitgebreide formulieren",
       "SEO uitgebreid",
       "Gratis demo vooraf",
-      "Max. 5 feedbackmomenten inbegrepen",
+      "Live binnen 2 weken na akkoord",
+      "Max. 5 revisierondes inbegrepen",
+      "2 weken support na livegang",
       "Overdracht naar eigen partij of hoster",
     ],
   },
@@ -202,8 +205,21 @@ const Prijzen = () => {
           transition={{ delay: 0.6 }}
           className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground"
         >
-          3 of 5 iteratiemomenten gehad en nog niet helemaal tevreden? Extra iteratiemomenten zijn bij te boeken voor €149 per keer (excl. btw).
+          Revisierondes op? Extra rondes zijn bij te boeken voor €149 per keer (excl. btw).
         </motion.p>
+
+        {/* Garantieblok */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7 }}
+          className="mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 px-8 py-6 text-center"
+        >
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Onze garantie</p>
+          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Je krijgt een extra ronde gratis.</p>
+          <p className="text-sm text-muted-foreground">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
+        </motion.div>
       </div>
     </section>
   );
