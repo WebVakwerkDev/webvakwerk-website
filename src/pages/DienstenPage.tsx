@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { Server, CloudUpload, Workflow, Bot, Lightbulb } from "lucide-react";
+import { Server, Workflow, Bot, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import { usePageSeo } from "@/hooks/use-page-seo";
+import { useBreadcrumbSchema } from "@/hooks/use-breadcrumb-schema";
 
 const services = [
   {
@@ -49,16 +50,18 @@ const cardVariants = {
 
 const DienstenPage = () => {
   usePageSeo({
-    title: "Overige diensten | Webvakwerk",
+    title: "Hosting, automatisering & AI-integratie | Webvakwerk",
     description:
-      "Hosting, infrastructuur migratie, procesautomatisering en AI-integratie. Webvakwerk helpt je verder dan alleen een website.",
+      "Van hosting migratie (cloud naar on-premises of andersom) tot procesautomatisering en AI-integratie. Webvakwerk helpt ondernemers met slimme, betaalbare infrastructuur en automatisering.",
     canonicalPath: "/diensten",
   });
+
+  useBreadcrumbSchema([{ name: "Hosting & automatisering", path: "/diensten" }]);
 
   return (
     <div className="min-h-screen bg-background font-body pb-20 md:pb-0">
       <Navbar />
-      <main className="py-16 px-6">
+      <main id="main-content" className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -129,9 +132,9 @@ const DienstenPage = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-16 text-center"
           >
-            <h3 className="text-2xl font-syne font-extrabold text-foreground mb-3">
+            <h2 className="text-2xl font-syne font-extrabold text-foreground mb-3">
               Wil je weten wat dit voor jou kan betekenen?
-            </h3>
+            </h2>
             <p className="text-foreground/60 mb-6 max-w-lg mx-auto">
               Neem vrijblijvend contact op en we kijken samen naar de mogelijkheden.
             </p>

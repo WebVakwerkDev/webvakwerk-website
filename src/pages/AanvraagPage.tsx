@@ -86,9 +86,9 @@ function ChoiceChip({
 
 const AanvraagPage = () => {
   usePageSeo({
-    title: "Gratis intake aanvragen | Webvakwerk",
+    title: "Gratis website demo aanvragen | Webvakwerk",
     description:
-      "Vraag vrijblijvend een intake aan bij Webvakwerk. Voor een website op maat of een automatiseringsoplossing.",
+      "Vraag je gratis demo-website aan bij Webvakwerk. Binnen 5 werkdagen een eerste versie van je website — vrijblijvend, zonder kosten. Voor een website op maat of automatisering.",
     canonicalPath: "/aanvraag",
   });
 

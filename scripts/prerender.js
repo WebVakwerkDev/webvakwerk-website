@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, "../dist");
 
-const routes = ["/", "/aanvraag", "/voorwaarden", "/privacy"];
+const routes = ["/", "/aanvraag", "/diensten", "/voorwaarden", "/privacy"];
 
 async function prerender() {
   console.log("[prerender] Starting Vite preview server...");

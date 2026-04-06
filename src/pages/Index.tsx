@@ -12,9 +12,9 @@ import { usePageSeo } from "@/hooks/use-page-seo";
 
 const Index = () => {
   usePageSeo({
-    title: "Webvakwerk | Websites op maat voor ondernemers",
+    title: "Website laten maken op maat | Webvakwerk",
     description:
-      "Webvakwerk bouwt converterende websites op maat voor ondernemers. Van intake tot livegang: snel, duidelijk en professioneel uitgevoerd.",
+      "Webvakwerk bouwt converterende websites op maat voor ondernemers. Van intake tot livegang: snel, duidelijk en professioneel uitgevoerd. Pakketten vanaf €499, gratis demo in 5 dagen.",
     canonicalPath: "/",
   });
 

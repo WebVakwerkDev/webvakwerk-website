@@ -170,7 +170,7 @@ const VoorwaardenPage = () => {
   usePageSeo({
     title: "Algemene voorwaarden | Webvakwerk",
     description:
-      "Lees de algemene voorwaarden van Webvakwerk voor software development, webdevelopment en IT-diensten.",
+      "Lees de algemene voorwaarden van Webvakwerk voor software development, webdevelopment en IT-diensten. Van toepassing op alle opdrachten en overeenkomsten.",
     canonicalPath: "/voorwaarden",
   });
 

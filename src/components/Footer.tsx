@@ -24,19 +24,25 @@ const Footer = () => {
           <div>
             <p className="text-sm font-bold text-background/70 mb-4 uppercase tracking-widest">Pagina's</p>
             <ul className="space-y-2">
-              {["Werkwijze", "Diensten", "Pakketten", "Demo aanvragen"].map((item, i) => (
+              {[
+                { label: "Werkwijze", to: "/#werkwijze" },
+                { label: "Diensten", to: "/#diensten" },
+                { label: "Hosting & AI", to: "/diensten" },
+                { label: "Pakketten", to: "/#prijzen" },
+                { label: "Demo aanvragen", to: "/aanvraag" },
+              ].map((item, i) => (
                 <motion.li
-                  key={item}
+                  key={item.label}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
-                    to={item === "Demo aanvragen" ? "/aanvraag" : `/#${item.toLowerCase()}`}
+                    to={item.to}
                     className="text-sm text-background/50 hover:text-primary transition-colors"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </motion.li>
               ))}
