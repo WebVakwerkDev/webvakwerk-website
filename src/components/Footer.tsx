@@ -16,7 +16,7 @@ const Footer = () => {
               <span className="text-xl font-extrabold text-primary font-syne">.</span>
             </div>
             <p className="text-sm text-background/50 leading-relaxed max-w-xs">
-              Websites op maat voor ondernemers die online gevonden willen worden. Actief in de regio Eindhoven, Nijmegen en Venlo.
+              Websites op maat voor ondernemers die online gevonden willen worden. Actief in Noord-Brabant en Limburg.
             </p>
           </div>
 
