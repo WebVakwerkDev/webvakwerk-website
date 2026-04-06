@@ -72,7 +72,7 @@ const OverWebvakwerk = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              Ik ben een developer uit de regio Eindhoven tot Venlo met een achtergrond in IT-infrastructuur, webdevelopment en automatisering. Ik help zzp'ers en kleine bedrijven aan een website die helder uitlegt wat je doet en direct aanzet tot contact. Geen lang traject of vaag gedoe.
+              Ik ben een developer uit Noord-Brabant en Limburg met een achtergrond in IT-infrastructuur, webdevelopment en automatisering. Ik help zzp'ers en kleine bedrijven aan een website die helder uitlegt wat je doet en direct aanzet tot contact. Geen lang traject of vaag gedoe.
             </motion.p>
             <motion.p
               className="mt-3 text-base leading-relaxed text-muted-foreground"

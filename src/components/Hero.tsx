@@ -57,7 +57,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            Voor zzp'ers en kleine bedrijven die online gevonden willen worden. Geen duur bureau, geen lang traject. Gewoon een website die klanten oplevert. Actief in de regio Eindhoven, Nijmegen en Venlo.
+            Elke dag zonder goede website gaat een potentiële klant naar iemand anders. Ik help zzp'ers en kleine bedrijven in de regio Eindhoven, Nijmegen en Venlo aan een website die dat verandert. Geen duur bureau, geen lang traject.
           </motion.p>
 
           <motion.div
@@ -85,6 +85,18 @@ const Hero = () => {
           >
             Geen technisch gedoe van jouw kant. Je betaalt pas als je verder wilt.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+            className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1"
+          >
+            <span className="text-xs text-muted-foreground/60 uppercase tracking-widest font-bold">Eerder gemaakt voor</span>
+            {["Rens Barber", "SnackSpot (20+ gebruikers)", "BunkHosting"].map((name) => (
+              <span key={name} className="text-xs font-semibold text-foreground/50">{name}</span>
+            ))}
+          </motion.div>
         </div>
 
         {/* Right Visual — 3D tilt browser mockup */}

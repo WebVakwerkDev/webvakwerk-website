@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "Hoeveel aanpassingen kan ik doen?",
-    answer: "Bij het Starter pakket heb je 3 revisierondes, bij Enterprise 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
+    answer: "Bij het Starter pakket heb je 3 revisierondes, bij Plus 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
   },
   {
     question: "Kan ik mijn website zelf beheren na oplevering?",
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     question: "Wat kost een website laten maken bij Webvakwerk?",
-    answer: "Het Starter pakket begint vanaf €499 eenmalig, het Enterprise pakket vanaf €899. Beide zijn exclusief 21% btw. Voor grotere projecten, koppelingen of maatwerk vragen we een prijs op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
+    answer: "Het Starter pakket begint vanaf €499 eenmalig, het Plus pakket vanaf €899. Beide zijn exclusief 21% btw. Voor grotere projecten, koppelingen of maatwerk vragen we een prijs op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
   },
   {
     question: "Kan ik ook hulp krijgen bij hosting?",

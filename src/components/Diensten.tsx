@@ -6,7 +6,7 @@ const webServices = [
   {
     icon: Code,
     title: "Website op maat",
-    description: "Wij bouwen een website die past bij je bedrijf, diensten en klanten. Geen standaard template, maar een site die er professioneel uitziet en aansluit op wat jij aanbiedt.",
+    description: "Ik bouw een website die past bij je bedrijf, diensten en klanten. Geen standaard template, maar een site die er professioneel uitziet en aansluit op wat jij aanbiedt.",
   },
   {
     icon: Smartphone,
@@ -16,22 +16,22 @@ const webServices = [
   {
     icon: Search,
     title: "Gevonden worden (SEO)",
-    description: "Wij zorgen ervoor dat je website beter vindbaar is in Google, zodat klanten je makkelijker vinden. Dat levert meer aanvragen op zonder dat je hoeft te betalen voor advertenties.",
+    description: "Ik zorg ervoor dat je website beter vindbaar is in Google, zodat klanten je makkelijker vinden. Dat levert meer aanvragen op zonder dat je hoeft te betalen voor advertenties.",
   },
   {
     icon: FileText,
     title: "Content & teksten",
-    description: "We helpen je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze eerder contact op.",
+    description: "Ik help je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze eerder contact op.",
   },
   {
     icon: Server,
     title: "Betaalbare hosting",
-    description: "Veel bedrijven betalen te veel voor hosting via een bureau of reseller. Wij helpen bij het opzetten van goedkope, betrouwbare hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
+    description: "Veel bedrijven betalen te veel voor hosting via een bureau of reseller. Ik help bij het opzetten van goedkope, betrouwbare hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
   },
   {
     icon: ArrowRightLeft,
     title: "Overdracht op maat",
-    description: "Wil je het zelf beheren of bij je eigen partij neerleggen? Dan dragen we alles netjes over. Zo zit je nergens aan vast en houd je zelf de regie over je website.",
+    description: "Wil je het zelf beheren of bij je eigen partij neerleggen? Dan draag ik alles netjes over. Jij behoudt altijd de volledige controle over je eigen website.",
   },
 ];
 
@@ -127,9 +127,9 @@ const Diensten = () => {
         >
           <Link
             to="/diensten"
-            className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-all duration-300"
           >
-            Bekijk onze overige diensten
+            Bekijk overige diensten
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

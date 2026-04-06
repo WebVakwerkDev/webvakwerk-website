@@ -5,18 +5,18 @@ const steps = [
   {
     number: "01",
     title: "Intake en demo",
-    description: "Jij deelt je wensen en doelen. Wij bouwen gratis een demo-website zodat je direct kunt zien wat we voor je kunnen doen.",
+    description: "Jij deelt je wensen en doelen. Ik bouw gratis een demo-website zodat je direct kunt zien wat ik voor je kan doen.",
   },
   {
     number: "02",
     title: "Akkoord en uitwerking",
-    description: "Tevreden met de richting? Dan kies je het pakket dat past en verwerken we je feedback in duidelijke aanpassingsrondes.",
+    description: "Tevreden met de richting? Dan kies je het pakket dat past en verwerk ik je feedback in duidelijke aanpassingsrondes.",
     accent: true,
   },
   {
     number: "03",
     title: "Oplevering",
-    description: "We leveren de definitieve website op en zorgen voor een nette overdracht of livegang. Klaar om klanten te ontvangen.",
+    description: "Ik lever de definitieve website op en zorg voor een nette overdracht of livegang. Binnen 3 weken vindbaar op Google en klaar om klanten te ontvangen.",
   },
 ];
 
@@ -42,7 +42,7 @@ const Werkwijze = () => {
             Snel van idee naar live
           </h2>
           <p className="text-muted-foreground max-w-xl text-lg">
-            Van intake tot overdracht: eerst een gratis demo, daarna pas het betaalde traject als je verder wilt.
+            Van intake tot overdracht: eerst een gratis demo, daarna pas het betaalde traject als jij verder wilt.
           </p>
         </motion.div>
 

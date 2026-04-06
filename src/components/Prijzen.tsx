@@ -101,7 +101,7 @@ const Prijzen = () => {
             Transparante prijzen, geen verrassingen
           </h2>
           <p className="max-w-2xl text-lg text-muted-foreground">
-            Starter voor een compacte site, Enterprise voor extra ruimte en Op maat voor grotere trajecten. Alle prijzen zijn exclusief 21% btw.
+            Starter voor een compacte site, Plus voor extra ruimte en Op maat voor grotere trajecten. Alle prijzen zijn exclusief 21% btw.
           </p>
         </motion.div>
 
