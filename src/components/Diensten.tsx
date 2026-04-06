@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Smartphone, Search, FileText, ArrowRightLeft, ArrowRight } from "lucide-react";
+import { Code, Smartphone, Search, FileText, Server, ArrowRightLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const webServices = [
@@ -22,6 +22,11 @@ const webServices = [
     icon: FileText,
     title: "Content & teksten",
     description: "We helpen je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze eerder contact op.",
+  },
+  {
+    icon: Server,
+    title: "Betaalbare hosting",
+    description: "Veel bedrijven betalen te veel voor hosting via een bureau of reseller. Wij helpen bij het opzetten van goedkope, betrouwbare hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
   },
   {
     icon: ArrowRightLeft,
