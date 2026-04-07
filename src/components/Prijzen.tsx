@@ -37,9 +37,9 @@ const plans = [
     tagline: "Voor zzp'ers die deze week nog vindbaar willen zijn op Google.",
     features: [
       "Tot 3 pagina's, professioneel en mobiel klaar",
-      "Basis SEO — klanten vinden je via Google",
-      "Klantklare Copy — jij vertelt, ik schrijf",
-      "Beheer Kickstart — schermopname hoe je zelf aanpast",
+      "Basis SEO: klanten vinden je via Google",
+      "Klantklare Copy: jij vertelt, ik schrijf",
+      "Beheer Kickstart: schermopname hoe je zelf aanpast",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
       "Max. 3 revisierondes inbegrepen",
@@ -58,11 +58,11 @@ const plans = [
     features: [
       "Tot 5 pagina's, animaties en premium design",
       "Contactformulier zodat klanten direct contact opnemen",
-      "Uitgebreide SEO — beter vindbaar in Google",
-      "Klantklare Copy — jij vertelt, ik schrijf",
-      "Google Snelstart — Google Mijn Bedrijf setup",
-      "Beheer Kickstart — schermopname hoe je zelf aanpast",
-      "30 Dagen Nazorg — gratis aanpassingen eerste maand",
+      "Uitgebreide SEO: beter vindbaar in Google",
+      "Klantklare Copy: jij vertelt, ik schrijf",
+      "Google Snelstart: Google Mijn Bedrijf setup",
+      "Beheer Kickstart: schermopname hoe je zelf aanpast",
+      "30 Dagen Nazorg: gratis aanpassingen eerste maand",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
       "Max. 5 revisierondes inbegrepen",
@@ -175,7 +175,7 @@ const Prijzen = () => {
                 )}
                 {plan.valueAnchor && (
                   <p className={`mt-2 text-xs font-semibold ${plan.featured ? "text-primary-foreground/50" : "text-muted-foreground/60"}`}>
-                    {plan.valueAnchor} — jij betaalt{" "}
+                    {plan.valueAnchor}, jij betaalt{" "}
                     <span className={plan.featured ? "text-primary-foreground font-bold" : "text-primary font-bold"}>
                       {plan.priceLabel}
                     </span>
@@ -232,7 +232,7 @@ const Prijzen = () => {
           className="mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 px-8 py-6 text-center"
         >
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Dubbele garantie</p>
-          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Extra ronde gratis. Nog steeds niet blij? Dan betaal je niks — en houd je de demo.</p>
+          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Extra ronde gratis. Nog steeds niet blij? Dan betaal je niks. En je houdt de demo.</p>
           <p className="text-foreground font-semibold mb-1">Na oplevering: als je site binnen 90 dagen niet vindbaar is op Google voor je belangrijkste zoekterm, werk ik gratis door tot het zover is.</p>
           <p className="text-sm text-muted-foreground mt-2">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
         </motion.div>
@@ -261,7 +261,7 @@ const Prijzen = () => {
             Onderhoud & groei
           </h3>
           <p className="mb-8 text-center text-muted-foreground">
-            Optioneel — je zit nergens aan vast en kunt maandelijks opzeggen.
+            Optioneel. Je zit nergens aan vast en kunt maandelijks opzeggen.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

@@ -5,49 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!--
   ============================================================
-  WEBVAKWERK — COLD EMAIL TEMPLATE
+  WEBVAKWERK — COLD EMAIL TEMPLATES
   ============================================================
 
-  GEBRUIK
-  -------
-  Variabelen om in te vullen per ontvanger:
-    {{VOORNAAM}}      — Voornaam van de ontvanger
+  VARIABELEN (per ontvanger)
+  --------------------------
+  Je hebt alleen nodig:
     {{BEDRIJFSNAAM}}  — Naam van het bedrijf
-    {{SECTOR}}        — Type bedrijf (kapper, restaurant, dakdekker…)
     {{STAD}}          — Stad/regio van het bedrijf
+  Dat is alles. Geen voornaam nodig — "Goedemiddag" zonder naam
+  werkt prima voor cold email en voorkomt fake-persoonlijk gevoel.
 
-  ONDERWERPREGELS (kies één per campagne)
-  ----------------------------------------
-  Generiek:  "website {{BEDRIJFSNAAM}}"
-  Kapper:    "kapper {{STAD}}"
-  Aannemer:  "aanvragen {{BEDRIJFSNAAM}}"
-  Restaurant:"klanten {{STAD}}"
+  ONDERWERPREGELS (kies per campagne)
+  ------------------------------------
+  Kappers:      "kapper {{STAD}}"
+  Aannemers:    "{{BEDRIJFSNAAM}} website"
+  Restaurants:  "klanten {{STAD}}"
+  Salons:       "salon {{STAD}}"
+  Generiek:     "website {{BEDRIJFSNAAM}}"
   → Altijd lowercase, max 4 woorden, geen uitroeptekens of emoji.
 
-  VERZENDSTRATEGIE
-  ----------------
-  Volume:    50–75 mails per dag (NIET 100 — zie uitleg onderaan)
-  Timing:    Di t/m Do, tussen 08:00–10:00 of 13:00–15:00
-  Tool:      Lemlist, Instantly, of Smartlead (ingebouwde warmup + tracking)
-  Warmup:    Nieuw domein/account? Minimaal 3 weken opwarmen voor je op volume gaat
-
-  FOLLOW-UP SEQUENTIE (4 touches, 1 campagne)
-  --------------------------------------------
-  Dag 1:   E-mail 1 — dit template (demo aanbod)
-  Dag 4:   E-mail 2 — ander invalshoek (zie variant onderaan)
-  Dag 9:   E-mail 3 — kort, direct, nieuwe hook
-  Dag 16:  E-mail 4 — afscheidsemail ("Laatste bericht van mij")
-  → Elke mail staat op zichzelf — niet iedereen leest de vorige.
-
-  SEGMENTATIE (cruciaal voor hogere reply rate)
-  ---------------------------------------------
-  Maak aparte campagnes per sector:
+  CAMPAGNE-OPZET
+  ---------------
+  Maak per sector een APARTE campagne (niet mixen):
   - Kappers / barbershops
   - Restaurants / cafés
   - Aannemers / bouwbedrijven
   - Schoonheidssalons / nagelstudio's
   - Fysiotherapeuten / therapeuten
-  Gebruik per sector de relevante variant onderaan dit bestand.
+  Kopieer de juiste sectorvariant, vul de variabelen in, klaar.
+
+  VERZENDSTRATEGIE
+  ----------------
+  Volume:    50–75 mails per dag totaal (verdeeld over segmenten)
+  Timing:    Di t/m Do, tussen 08:00–10:00 of 13:00–15:00
+  Tool:      Lemlist, Instantly, of Smartlead
+  Warmup:    Nieuw domein? Minimaal 3 weken opwarmen eerst
+
+  FOLLOW-UP SEQUENTIE (4 mails, 1 campagne)
+  ------------------------------------------
+  Dag 1:   Mail 1 — sectorvariant hieronder
+  Dag 4:   Mail 2 — andere invalshoek
+  Dag 9:   Mail 3 — kort + direct
+  Dag 16:  Mail 4 — afscheid ("laatste bericht")
+  → Elke mail staat op zichzelf.
 
   MEETDOELEN
   ----------
@@ -63,63 +64,28 @@
   <div style="max-width:560px;padding:32px 24px;">
 
     <!-- ================================================
-         VERSIE 1: GENERIEK (met placeholders)
-         Gebruik dit als startpunt voor elke sector.
-         Vervang de placeholders door echte data.
-         ================================================ -->
-
-    <p>Goedemiddag {{VOORNAAM}},</p>
-
-    <p>
-      Ik zocht online naar {{SECTOR}} in {{STAD}} — maar kon {{BEDRIJFSNAAM}} niet vinden in Google.
-    </p>
-
-    <p>
-      Mensen die zoeken naar "{{SECTOR}} {{STAD}}" bellen nu je concurrent.
-      Die aanvragen mis je elke dag.
-    </p>
-
-    <p>
-      Ik doe het anders: ik bouw eerst een gratis demo voor {{BEDRIJFSNAAM}},
-      zodat je kunt zien wat er mogelijk is. Jij beslist daarna of je verder wilt —
-      geen verplichtingen, geen kosten vooraf.
-    </p>
-
-    <p>Zal ik hem maken?</p>
-
-    <p style="margin-top:32px;">
-      Groet,<br />
-      <strong>Stijn van de Pol</strong><br />
-      Webvakwerk<br />
-      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
-    </p>
-
-    <p style="color:#555555;font-size:13px;">
-      P.S. Niet wat je verwachtte? Dan betaal je niks — en houd je de demo.
-    </p>
-
-    <!-- ================================================
-         VERSIE 2: KAPPER / BARBERSHOP
-         Onderwerpregel: "kapper {{STAD}}"
+         MAIL 1 — KAPPERS / BARBERSHOPS
+         Onderwerp: "kapper {{STAD}}"
          Bewezen proof: Barber Rens
          ================================================ -->
-    <!--
 
-    <p>Goedemiddag {{VOORNAAM}},</p>
+    <p>Goedemiddag,</p>
 
     <p>
-      Ik zocht online naar een kapper in {{STAD}} — maar kon {{BEDRIJFSNAAM}} niet vinden.
+      Ik zocht online naar een kapper in {{STAD}}, maar kon
+      {{BEDRIJFSNAAM}} niet vinden in Google.
     </p>
 
     <p>
-      Klanten die zoeken naar "kapper {{STAD}}" gaan nu naar wie wél bovenaan staat.
-      Dat zijn aanvragen die jij elke dag misloopt.
+      Klanten die zoeken naar "kapper {{STAD}}" gaan nu naar wie
+      wél bovenaan staat. Dat zijn afspraken die je elke dag misloopt.
     </p>
 
     <p>
-      Ik bouwde een site voor Barber Rens in Brabant — hij krijgt nu nieuwe klanten
-      via Google zonder te adverteren. Zelfde aanpak: ik maak eerst gratis een demo
-      voor {{BEDRIJFSNAAM}}, jij beslist daarna.
+      Ik bouwde een site voor een barbershop in Brabant. Die krijgt nu
+      nieuwe klanten via Google zonder te adverteren. Zelfde aanpak:
+      ik maak eerst gratis een demo voor {{BEDRIJFSNAAM}}, jij beslist
+      daarna. Geen kosten, geen verplichtingen.
     </p>
 
     <p>Zal ik hem bouwen?</p>
@@ -127,7 +93,123 @@
     <p style="margin-top:32px;">
       Groet,<br />
       <strong>Stijn</strong><br />
-      Webvakwerk | <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
+      Webvakwerk<br />
+      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
+    </p>
+
+    <p style="color:#555555;font-size:13px;">
+      P.S. Niet blij met de demo? Dan betaal je niks.
+    </p>
+
+    <!-- ================================================
+         MAIL 1 — AANNEMERS / BOUWBEDRIJVEN
+         Onderwerp: "{{BEDRIJFSNAAM}} website"
+         ================================================ -->
+    <!--
+
+    <p>Goedemiddag,</p>
+
+    <p>
+      Ik zocht naar een aannemer in {{STAD}}, maar kon
+      {{BEDRIJFSNAAM}} niet vinden in Google.
+    </p>
+
+    <p>
+      Mensen die zoeken naar "aannemer {{STAD}}" of "verbouwing {{STAD}}"
+      bellen nu je concurrent. Dat zijn offerteaanvragen die je dagelijks misloopt.
+    </p>
+
+    <p>
+      Ik bouw eerst gratis een demo-website voor {{BEDRIJFSNAAM}},
+      zodat je concreet ziet hoe het eruit kan zien. Jij kijkt,
+      beslist daarna. Geen offerte, geen verplichtingen.
+    </p>
+
+    <p>Zal ik hem maken?</p>
+
+    <p style="margin-top:32px;">
+      Groet,<br />
+      <strong>Stijn</strong><br />
+      Webvakwerk<br />
+      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
+    </p>
+
+    <p style="color:#555555;font-size:13px;">
+      P.S. Niet tevreden? Dan betaal je niks. En je houdt de demo.
+    </p>
+
+    -->
+
+    <!-- ================================================
+         MAIL 1 — RESTAURANTS / CAFÉS
+         Onderwerp: "klanten {{STAD}}"
+         ================================================ -->
+    <!--
+
+    <p>Goedemiddag,</p>
+
+    <p>
+      Ik zocht online naar een restaurant in {{STAD}}, maar
+      {{BEDRIJFSNAAM}} kwam niet naar boven in Google.
+    </p>
+
+    <p>
+      Gasten die zoeken naar "uit eten {{STAD}}" of "restaurant {{STAD}}"
+      kiezen nu een concurrent. Elke dag dat je niet vindbaar bent,
+      loop je reserveringen mis.
+    </p>
+
+    <p>
+      Ik maak gratis een demo-website voor {{BEDRIJFSNAAM}} zodat
+      je ziet wat er mogelijk is. Bevalt het? Dan gaan we verder.
+      Bevalt het niet? Dan betaal je niks.
+    </p>
+
+    <p>Zal ik hem maken?</p>
+
+    <p style="margin-top:32px;">
+      Groet,<br />
+      <strong>Stijn</strong><br />
+      Webvakwerk<br />
+      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
+    </p>
+
+    <p style="color:#555555;font-size:13px;">
+      P.S. Demo niet wat je verwachtte? Dan kost het je niks.
+    </p>
+
+    -->
+
+    <!-- ================================================
+         MAIL 1 — SCHOONHEIDSSALONS / NAGELSTUDIO'S
+         Onderwerp: "salon {{STAD}}"
+         ================================================ -->
+    <!--
+
+    <p>Goedemiddag,</p>
+
+    <p>
+      Ik zocht online naar een salon in {{STAD}}, maar
+      {{BEDRIJFSNAAM}} kon ik niet vinden in Google.
+    </p>
+
+    <p>
+      Klanten die zoeken naar "nagelstudio {{STAD}}" of "schoonheidssalon {{STAD}}"
+      boeken nu bij wie wél bovenaan staat. Dat zijn afspraken die je mist.
+    </p>
+
+    <p>
+      Ik maak gratis een demo-website voor {{BEDRIJFSNAAM}}. Jij kijkt,
+      beslist daarna. Geen kosten vooraf, geen verplichtingen.
+    </p>
+
+    <p>Interesse?</p>
+
+    <p style="margin-top:32px;">
+      Groet,<br />
+      <strong>Stijn</strong><br />
+      Webvakwerk<br />
+      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
     </p>
 
     <p style="color:#555555;font-size:13px;">
@@ -137,65 +219,78 @@
     -->
 
     <!-- ================================================
-         VERSIE 3: AANNEMER / BOUWBEDRIJF
-         Onderwerpregel: "aanvragen {{BEDRIJFSNAAM}}"
+         MAIL 1 — GENERIEK (als sector niet past)
+         Onderwerp: "website {{BEDRIJFSNAAM}}"
          ================================================ -->
     <!--
 
-    <p>Goedemiddag {{VOORNAAM}},</p>
+    <p>Goedemiddag,</p>
 
     <p>
-      Ik zag dat {{BEDRIJFSNAAM}} actief is in {{STAD}}, maar jullie website
-      staat niet in de top van Google als iemand zoekt naar een {{SECTOR}} in die regio.
+      Ik zocht online naar {{BEDRIJFSNAAM}} in {{STAD}}, maar
+      kon jullie niet vinden in Google.
     </p>
 
     <p>
-      Dat betekent dat aanvragen die je kunt doen nu naar een concurrent gaan —
-      puur omdat die hoger staat.
+      Klanten die zoeken naar wat jullie aanbieden in {{STAD}}
+      bellen nu een concurrent. Dat zijn aanvragen die je elke dag misloopt.
     </p>
 
     <p>
-      Ik bouw eerst een gratis demo zodat je concreet ziet hoe dat eruit zou zien.
-      Geen offerte, geen verplichtingen. Jij kijkt, beslist daarna.
+      Ik maak gratis een demo-website voor {{BEDRIJFSNAAM}} zodat je
+      concreet ziet wat er mogelijk is. Jij beslist daarna. Geen
+      kosten, geen verplichtingen.
     </p>
 
-    <p>Wil ik dat voor {{BEDRIJFSNAAM}} doen?</p>
+    <p>Zal ik hem maken?</p>
 
     <p style="margin-top:32px;">
       Groet,<br />
       <strong>Stijn</strong><br />
-      Webvakwerk | <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
+      Webvakwerk<br />
+      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
     </p>
 
     <p style="color:#555555;font-size:13px;">
-      P.S. Niet tevreden met de demo? Betaal je niks.
+      P.S. Niet wat je verwachtte? Dan betaal je niks.
     </p>
 
     -->
 
+
     <!-- ================================================
-         FOLLOW-UP E-MAIL 2 (dag 4) — andere hoek
-         Onderwerpregel: "re: website {{BEDRIJFSNAAM}}"
+
+         FOLLOW-UP MAILS (alle sectoren)
+         Gebruik dezelfde variabelen: {{BEDRIJFSNAAM}} en {{STAD}}
+
+         ================================================ -->
+
+
+    <!-- ================================================
+         MAIL 2 (dag 4) — andere invalshoek
+         Onderwerp: "re: {{BEDRIJFSNAAM}}"
          ================================================ -->
     <!--
 
-    <p>Goedemiddag {{VOORNAAM}},</p>
-
-    <p>Stuurde je vorige week een mail over een gratis demo voor {{BEDRIJFSNAAM}}.</p>
+    <p>Goedemiddag,</p>
 
     <p>
-      Misschien niet het juiste moment geweest — daarom nog één gedachte:
+      Stuurde vorige week een mail over een gratis demo voor
+      {{BEDRIJFSNAAM}}.
     </p>
 
     <p>
-      De meeste ondernemers die ik spreek, weten al dat hun site niet goed genoeg is.
-      Ze stellen het uit omdat het gedoe lijkt. Mijn aanpak is juist zo opgezet dat
-      jij er niks aan hoeft te doen — ik bouw de demo, jij beoordeelt hem.
+      Misschien niet het juiste moment. Daarom nog één gedachte:
     </p>
 
     <p>
-      Is het de moeite waard om even te kijken wat ik voor {{BEDRIJFSNAAM}} kan maken?
+      De meeste ondernemers weten dat hun site niet goed genoeg is,
+      maar stellen het uit omdat het gedoe lijkt. Mijn aanpak is zo
+      opgezet dat jij er niks aan hoeft te doen. Ik bouw de demo,
+      jij beoordeelt hem. Kost je 2 minuten.
     </p>
+
+    <p>Wil je dat ik hem maak voor {{BEDRIJFSNAAM}}?</p>
 
     <p style="margin-top:32px;">
       Groet,<br />
@@ -206,22 +301,47 @@
     -->
 
     <!-- ================================================
-         FOLLOW-UP E-MAIL 4 (dag 16) — afscheids-mail
-         Onderwerpregel: "even afsluiten"
+         MAIL 3 (dag 9) — kort en direct
+         Onderwerp: "demo {{BEDRIJFSNAAM}}"
          ================================================ -->
     <!--
 
-    <p>Goedemiddag {{VOORNAAM}},</p>
+    <p>Goedemiddag,</p>
+
+    <p>
+      Kort bericht: ik heb deze maand nog plek om een gratis
+      demo te bouwen voor {{BEDRIJFSNAAM}}. Geen verplichtingen.
+      je kijkt, je beslist.
+    </p>
+
+    <p>Zal ik hem maken?</p>
+
+    <p style="margin-top:32px;">
+      Groet,<br />
+      <strong>Stijn</strong><br />
+      Webvakwerk
+    </p>
+
+    -->
+
+    <!-- ================================================
+         MAIL 4 (dag 16) — afscheid
+         Onderwerp: "even afsluiten"
+         ================================================ -->
+    <!--
+
+    <p>Goedemiddag,</p>
 
     <p>Laatste bericht van mij over de website van {{BEDRIJFSNAAM}}.</p>
 
     <p>
-      Als het nu geen prioriteit is — geen probleem. Ik haal je van de lijst af.
+      Als het nu geen prioriteit is, geen probleem. Ik haal je
+      van de lijst af.
     </p>
 
     <p>
-      Mocht je ooit alsnog een keer willen kijken wat er mogelijk is,
-      weet je me te vinden via info@webvakwerk.nl.
+      Mocht je ooit alsnog willen kijken wat er mogelijk is:
+      <a href="mailto:info@webvakwerk.nl" style="color:#1a1a1a;">info@webvakwerk.nl</a>
     </p>
 
     <p style="margin-top:32px;">

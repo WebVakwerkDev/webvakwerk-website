@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 const portfolio = [
   {
     name: "Barber Rens",
-    description: "Nu vindbaar op Google voor kappers in zijn regio — nieuwe klanten via Google zonder te adverteren.",
+    description: "Nu vindbaar op Google voor kappers in zijn regio. Nieuwe klanten via Google zonder te adverteren.",
     url: "https://rensvandepol.nl",
   },
   {

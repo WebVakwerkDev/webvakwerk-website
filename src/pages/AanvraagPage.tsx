@@ -88,7 +88,7 @@ const AanvraagPage = () => {
   usePageSeo({
     title: "Gratis website demo aanvragen | Webvakwerk",
     description:
-      "Vraag je gratis demo-website aan bij Webvakwerk. Binnen 5 werkdagen een eerste versie van je website — vrijblijvend, zonder kosten. Voor een website op maat of automatisering.",
+      "Vraag je gratis demo-website aan bij Webvakwerk. Binnen 5 werkdagen een eerste versie van je website. Vrijblijvend, zonder kosten. Voor een website op maat of automatisering.",
     canonicalPath: "/aanvraag",
   });
 
