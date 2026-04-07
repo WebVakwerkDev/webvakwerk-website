@@ -73,7 +73,7 @@ const CTA = () => {
                 to="/aanvraag"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold text-sm transition-colors hover:opacity-90 shadow-lg"
               >
-                Gratis demo aanvragen
+                Ja, ik wil een gratis demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
@@ -98,7 +98,8 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.9 }}
           >
-            Geen verplichting. Geen kleine lettertjes. Demo binnen 5 werkdagen. Live binnen 3 weken.
+            Geen verplichting. Geen kleine lettertjes. Demo binnen 5 werkdagen. Live binnen 3 weken.{" "}
+            <span className="text-primary-foreground/80 font-semibold">Nog 1 plek vrij deze maand — wacht niet te lang.</span>
           </motion.p>
         </motion.div>
       </motion.div>

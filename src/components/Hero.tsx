@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 const wordVariants = {
   hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
@@ -13,7 +14,14 @@ const wordVariants = {
 };
 
 const Hero = () => {
-  const titleWords = "Meer klanten via een website die werkt".split(" ");
+  const [endWord] = useState<"worden" | "doen">(() => {
+    const stored = localStorage.getItem("hero-end-word");
+    const next = stored === "worden" ? "doen" : "worden";
+    localStorage.setItem("hero-end-word", next);
+    return next;
+  });
+
+  const titleWords = `Gratis zien wat jouw website kan ${endWord}`.split(" ");
 
   return (
     <section
@@ -44,7 +52,7 @@ const Hero = () => {
                 variants={wordVariants}
                 initial="hidden"
                 animate="visible"
-                className={`inline-block mr-[0.3em] ${word === "website" ? "text-primary" : ""}`}
+                className={`inline-block mr-[0.3em] ${word === endWord ? "text-primary" : ""}`}
               >
                 {word}
               </motion.span>
@@ -57,7 +65,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            Elke dag zonder goede website gaat een potentiële klant naar iemand anders. Ik help zzp'ers en kleine bedrijven aan een website die dat verandert.
+            Elke dag zonder website gaat een klant naar je concurrent. Ik laat je eerst gratis zien hoe dat verandert.
           </motion.p>
 
           <motion.div
@@ -72,7 +80,7 @@ const Hero = () => {
               to="/aanvraag"
               className="group inline-flex items-center gap-2 px-8 py-4 sm:py-4 rounded-full bg-primary text-primary-foreground font-bold text-base sm:text-sm transition-all hover:opacity-90 hover:shadow-[0_16px_40px_-6px_hsl(var(--warm-orange)/0.5)] shadow-[0_8px_24px_-6px_hsl(var(--warm-orange)/0.4)]"
             >
-              Gratis demo aanvragen
+              Ja, ik wil een gratis demo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -90,12 +98,16 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.5 }}
-            className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1"
+            className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2"
           >
             <span className="text-xs text-muted-foreground/60 uppercase tracking-widest font-bold">Eerder gemaakt voor</span>
             {["Barber Rens", "SnackSpot", "BunkHosting"].map((name) => (
               <span key={name} className="text-xs font-semibold text-foreground/50">{name}</span>
             ))}
+            <span className="flex items-center gap-1 text-xs text-muted-foreground/50 ml-auto sm:ml-0">
+              <MapPin className="w-3 h-3" />
+              Noord-Brabant
+            </span>
           </motion.div>
         </div>
 

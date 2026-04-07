@@ -1,5 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const steps = [
   {
@@ -104,6 +106,32 @@ const Werkwijze = () => {
             ))}
           </div>
         </div>
+
+        {/* Inline samenvatting + CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-2xl bg-card border border-foreground/[0.04] px-6 py-5 shadow-sm"
+        >
+          <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-foreground/70">
+            <span className="text-primary font-bold">Gratis demo</span>
+            <span className="text-muted-foreground/40">→</span>
+            <span>Jij beslist</span>
+            <span className="text-muted-foreground/40">→</span>
+            <span>Live in 3 weken</span>
+          </div>
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/aanvraag"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm transition-all hover:opacity-90 whitespace-nowrap"
+            >
+              Ja, ik wil een gratis demo
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

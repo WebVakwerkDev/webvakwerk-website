@@ -260,7 +260,7 @@ const AanvraagPage = () => {
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               <div className="rounded-2xl border border-foreground/5 bg-card p-5 shadow-sm">
                 <CheckCircle2 className="h-5 w-5 text-primary" />
-                <p className="mt-3 text-sm font-medium text-foreground">Gericht op serieuze aanvragen</p>
+                <p className="mt-3 text-sm font-medium text-foreground">Ik behandel elke aanvraag persoonlijk</p>
               </div>
               <div className="rounded-2xl border border-foreground/5 bg-card p-5 shadow-sm">
                 <FileImage className="h-5 w-5 text-primary" />

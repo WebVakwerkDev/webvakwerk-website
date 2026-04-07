@@ -72,7 +72,7 @@ const Navbar = () => {
             to="/aanvraag"
             className="block px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm transition-colors hover:opacity-90"
           >
-            Gratis demo aanvragen
+            Ja, ik wil een gratis demo
           </Link>
         </motion.div>
 
@@ -147,7 +147,7 @@ const Navbar = () => {
                   className="mt-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm text-center block"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Gratis demo aanvragen
+                  Ja, ik wil een gratis demo
                 </Link>
               </motion.div>
             </div>
