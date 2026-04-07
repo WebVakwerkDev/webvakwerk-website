@@ -28,7 +28,7 @@ function AnimatedPrice({ target, prefix = "€" }: { target: number; prefix?: st
 
 const plans = [
   {
-    name: "Starter",
+    name: "Vindbaar in 3 Weken",
     price: 499,
     priceLabel: "€499",
     valueAnchor: "Totale waarde €2.000",
@@ -37,8 +37,8 @@ const plans = [
     tagline: "Voor zzp'ers die deze week nog vindbaar willen zijn op Google.",
     features: [
       "Tot 3 pagina's, professioneel en mobiel klaar",
-      "Klanten vinden je via Google, SEO inbegrepen",
-      "Klantklare Teksten — jij vertelt, ik schrijf de copy",
+      "Basis SEO — klanten vinden je via Google",
+      "Klantklare Copy — jij vertelt, ik schrijf",
       "Beheer Kickstart — schermopname hoe je zelf aanpast",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
@@ -47,10 +47,10 @@ const plans = [
     ],
   },
   {
-    name: "Plus",
+    name: "De Klantenmagneet",
     price: 899,
     priceLabel: "€899",
-    valueAnchor: "Totale waarde €3.499",
+    valueAnchor: "Totale waarde €3.900",
     period: "eenmalig",
     featured: true,
     badge: "Meest gekozen",
@@ -58,8 +58,9 @@ const plans = [
     features: [
       "Tot 5 pagina's, animaties en premium design",
       "Contactformulier zodat klanten direct contact opnemen",
-      "Uitgebreide SEO, beter vindbaar in Google",
-      "Klantklare Teksten — jij vertelt, ik schrijf de copy",
+      "Uitgebreide SEO — beter vindbaar in Google",
+      "Klantklare Copy — jij vertelt, ik schrijf",
+      "Google Snelstart — Google Mijn Bedrijf setup",
       "Beheer Kickstart — schermopname hoe je zelf aanpast",
       "30 Dagen Nazorg — gratis aanpassingen eerste maand",
       "Gratis demo vooraf, betaal pas bij akkoord",
@@ -69,7 +70,7 @@ const plans = [
     ],
   },
   {
-    name: "Op maat",
+    name: "Groeipartner",
     price: 0,
     priceLabel: "Op aanvraag",
     valueAnchor: null,
@@ -205,7 +206,7 @@ const Prijzen = () => {
                       : "border border-foreground/15 text-foreground hover:bg-secondary"
                   }`}
                 >
-                  {plan.price === 0 ? "Plan een gesprek" : "Ja, ik wil een gratis demo →"}
+                  {plan.price === 0 ? "Neem contact op →" : "Ja, ik wil een gratis demo →"}
                 </Link>
               </motion.div>
             </motion.div>
@@ -230,8 +231,9 @@ const Prijzen = () => {
           transition={{ delay: 0.7 }}
           className="mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 px-8 py-6 text-center"
         >
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Onze garantie</p>
-          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Je krijgt een extra ronde gratis. Daarna nog steeds niet blij? Dan betaal je niks — en houd je de demo.</p>
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Dubbele garantie</p>
+          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Extra ronde gratis. Nog steeds niet blij? Dan betaal je niks — en houd je de demo.</p>
+          <p className="text-foreground font-semibold mb-1">Na oplevering: als je site binnen 90 dagen niet vindbaar is op Google voor je belangrijkste zoekterm, werk ik gratis door tot het zover is.</p>
           <p className="text-sm text-muted-foreground mt-2">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
         </motion.div>
 
@@ -245,6 +247,75 @@ const Prijzen = () => {
         >
           Ik neem maximaal 3 nieuwe projecten per maand aan om kwaliteit te garanderen.
         </motion.p>
+
+        {/* Onderhoudspakketten */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mx-auto mt-16 max-w-3xl"
+        >
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3 text-center">Na oplevering</p>
+          <h3 className="mb-2 font-syne text-2xl font-extrabold text-foreground text-center md:text-3xl">
+            Onderhoud & groei
+          </h3>
+          <p className="mb-8 text-center text-muted-foreground">
+            Optioneel — je zit nergens aan vast en kunt maandelijks opzeggen.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              {
+                tier: "Basis",
+                price: "€49",
+                features: [
+                  "Hosting & technische updates",
+                  "Uptime monitoring",
+                  "1 kleine aanpassing per maand",
+                  "E-mail support",
+                ],
+              },
+              {
+                tier: "Plus",
+                price: "€99",
+                highlight: true,
+                features: [
+                  "Alles van Basis",
+                  "Maandelijkse SEO-check",
+                  "Google prestatierapport",
+                  "3 aanpassingen per maand",
+                  "Prioriteit support",
+                ],
+              },
+            ].map((plan) => (
+              <motion.div
+                key={plan.tier}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`rounded-2xl p-6 ${
+                  plan.highlight
+                    ? "bg-primary/5 border-2 border-primary/20"
+                    : "bg-card border border-foreground/[0.04]"
+                } shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)]`}
+              >
+                <h4 className="font-syne text-lg font-bold text-foreground">{plan.tier}</h4>
+                <div className="mt-1 mb-4">
+                  <span className="font-syne text-2xl font-extrabold text-foreground">{plan.price}</span>
+                  <span className="ml-1 text-sm text-muted-foreground">/maand excl. btw</span>
+                </div>
+                <ul className="space-y-2">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-foreground">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

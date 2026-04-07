@@ -14,7 +14,7 @@ const Index = () => {
   usePageSeo({
     title: "Website laten maken op maat | Webvakwerk",
     description:
-      "Webvakwerk bouwt converterende websites op maat voor ondernemers. Van intake tot livegang: snel, duidelijk en professioneel uitgevoerd. Pakketten vanaf €499, gratis demo in 5 dagen.",
+      "Webvakwerk bouwt websites die klanten opleveren. Gratis demo in 5 dagen, live in 3 weken. Vindbaar in 3 Weken vanaf €499, De Klantenmagneet vanaf €899. Niet tevreden? Dan betaal je niks.",
     canonicalPath: "/",
   });
 

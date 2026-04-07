@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "Hoeveel aanpassingen kan ik doen?",
-    answer: "Bij het Starter pakket heb je 3 revisierondes, bij Plus 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
+    answer: "Bij Vindbaar in 3 Weken heb je 3 revisierondes, bij De Klantenmagneet 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
   },
   {
     question: "Kan ik mijn website zelf beheren na oplevering?",
@@ -21,11 +21,19 @@ const faqs = [
   },
   {
     question: "Wat kost een website laten maken bij Webvakwerk?",
-    answer: "Het Starter pakket begint vanaf €499 eenmalig, het Plus pakket vanaf €899. Beide zijn exclusief 21% btw. Voor grotere projecten, koppelingen of maatwerk vragen we een prijs op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
+    answer: "Vindbaar in 3 Weken begint vanaf €499 eenmalig, De Klantenmagneet vanaf €899. Beide zijn exclusief 21% btw. Voor grotere trajecten is er het Groeipartner pakket op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
+  },
+  {
+    question: "Kan ik ook in termijnen betalen?",
+    answer: "Ja. Vindbaar in 3 Weken kan in 2 termijnen van €275, De Klantenmagneet in 3 termijnen van €330. Je betaalt het eerste deel bij akkoord, de rest gespreid over het traject.",
+  },
+  {
+    question: "Wat houdt het onderhoudspakket in?",
+    answer: "Na oplevering kun je kiezen voor een optioneel onderhoudspakket. Basis (€49/maand) bevat hosting, updates en 1 aanpassing per maand. Plus (€99/maand) voegt daar een maandelijkse SEO-check, prestatierapport en 3 aanpassingen aan toe. Je zit nergens aan vast en kunt maandelijks opzeggen.",
   },
   {
     question: "Kan ik ook hulp krijgen bij hosting?",
-    answer: "Ja. Ik help je bij het opzetten van betaalbare, betrouwbare hosting in eigen beheer, of bij het migreren van je huidige omgeving. Geen onnodige marges via een bureau, gewoon hosting die past bij wat jij nodig hebt.",
+    answer: "Ja. Hosting zit inbegrepen in het onderhoudspakket, of ik help je bij het opzetten van betaalbare hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
   },
 ];
 
