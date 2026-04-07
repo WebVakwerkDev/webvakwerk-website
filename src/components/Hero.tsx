@@ -65,7 +65,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="text-base sm:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            Elke dag zonder website gaat een klant naar je concurrent. Ik laat je eerst gratis zien hoe dat verandert.
+            Elke dag zonder website gaat een klant naar je concurrent. Ik laat je gratis zien hoe jij structureel nieuwe aanvragen krijgt via Google — zonder advertentiekosten.
           </motion.p>
 
           <motion.div

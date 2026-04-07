@@ -31,13 +31,15 @@ const plans = [
     name: "Starter",
     price: 499,
     priceLabel: "€499",
+    valueAnchor: "Totale waarde €2.000",
     period: "eenmalig",
     featured: false,
-    tagline: "Perfect voor zzp'ers die snel online gevonden willen worden.",
+    tagline: "Voor zzp'ers die deze week nog vindbaar willen zijn op Google.",
     features: [
       "Tot 3 pagina's, professioneel en mobiel klaar",
-      "Werkt op elke telefoon, tablet en computer",
       "Klanten vinden je via Google, SEO inbegrepen",
+      "Klantklare Teksten — jij vertelt, ik schrijf de copy",
+      "Beheer Kickstart — schermopname hoe je zelf aanpast",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
       "Max. 3 revisierondes inbegrepen",
@@ -48,19 +50,21 @@ const plans = [
     name: "Plus",
     price: 899,
     priceLabel: "€899",
+    valueAnchor: "Totale waarde €3.499",
     period: "eenmalig",
     featured: true,
     badge: "Meest gekozen",
-    tagline: "Voor ondernemers die meer uit hun website willen halen.",
+    tagline: "Voor ondernemers die structureel nieuwe klanten willen trekken via Google.",
     features: [
-      "Tot 5 pagina's, ruimte voor je verhaal",
-      "Animaties en premium design dat opvalt",
+      "Tot 5 pagina's, animaties en premium design",
       "Contactformulier zodat klanten direct contact opnemen",
       "Uitgebreide SEO, beter vindbaar in Google",
+      "Klantklare Teksten — jij vertelt, ik schrijf de copy",
+      "Beheer Kickstart — schermopname hoe je zelf aanpast",
+      "30 Dagen Nazorg — gratis aanpassingen eerste maand",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
       "Max. 5 revisierondes inbegrepen",
-      "1 week support na livegang",
       "Jij blijft altijd eigenaar van je site",
     ],
   },
@@ -68,6 +72,7 @@ const plans = [
     name: "Op maat",
     price: 0,
     priceLabel: "Op aanvraag",
+    valueAnchor: null,
     period: "",
     featured: false,
     tagline: "Voor ondernemers die verder willen gaan dan alleen een website.",
@@ -162,10 +167,18 @@ const Prijzen = () => {
                 </span>
                 {plan.period && <span className={`ml-2 text-sm ${plan.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{plan.period}</span>}
                 {plan.price > 0 && !plan.featured && (
-                  <p className="mt-2 text-sm font-medium text-muted-foreground">Excl. 21% btw</p>
+                  <p className="mt-1 text-sm font-medium text-muted-foreground">Excl. 21% btw</p>
                 )}
                 {plan.price > 0 && plan.featured && (
-                  <p className="mt-2 text-sm font-medium text-primary-foreground/60">Excl. 21% btw</p>
+                  <p className="mt-1 text-sm font-medium text-primary-foreground/60">Excl. 21% btw</p>
+                )}
+                {plan.valueAnchor && (
+                  <p className={`mt-2 text-xs font-semibold ${plan.featured ? "text-primary-foreground/50" : "text-muted-foreground/60"}`}>
+                    {plan.valueAnchor} — jij betaalt{" "}
+                    <span className={plan.featured ? "text-primary-foreground font-bold" : "text-primary font-bold"}>
+                      {plan.priceLabel}
+                    </span>
+                  </p>
                 )}
               </div>
               <ul className="mb-7 flex-1 space-y-3">
@@ -218,9 +231,20 @@ const Prijzen = () => {
           className="mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 px-8 py-6 text-center"
         >
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Onze garantie</p>
-          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Je krijgt een extra ronde gratis.</p>
-          <p className="text-sm text-muted-foreground">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
+          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Je krijgt een extra ronde gratis. Daarna nog steeds niet blij? Dan betaal je niks — en houd je de demo.</p>
+          <p className="text-sm text-muted-foreground mt-2">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
         </motion.div>
+
+        {/* Schaarste */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.9 }}
+          className="mx-auto mt-5 max-w-2xl text-center text-sm text-muted-foreground/60"
+        >
+          Ik neem maximaal 3 nieuwe projecten per maand aan om kwaliteit te garanderen.
+        </motion.p>
       </div>
     </section>
   );
