@@ -99,7 +99,7 @@ const CTA = () => {
             transition={{ delay: 0.9 }}
           >
             Geen verplichting. Geen kleine lettertjes. Demo binnen 5 werkdagen. Live binnen 3 weken.{" "}
-            <span className="text-primary-foreground/80 font-semibold">Nog 1 plek vrij deze maand — wacht niet te lang.</span>
+            <span className="text-primary-foreground/80 font-semibold">Ik neem maximaal 3 projecten per maand aan — wacht niet te lang.</span>
           </motion.p>
         </motion.div>
       </motion.div>
