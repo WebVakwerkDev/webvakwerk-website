@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, RefreshCw, ShieldCheck, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 
@@ -38,8 +38,6 @@ const plans = [
     features: [
       "Tot 3 pagina's, professioneel en mobiel klaar",
       "Basis SEO: klanten vinden je via Google",
-      "Klantklare Copy: jij vertelt, ik schrijf",
-      "Beheer Kickstart: schermopname hoe je zelf aanpast",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
       "Max. 3 revisierondes inbegrepen",
@@ -59,9 +57,7 @@ const plans = [
       "Tot 5 pagina's, animaties en premium design",
       "Contactformulier zodat klanten direct contact opnemen",
       "Uitgebreide SEO: beter vindbaar in Google",
-      "Klantklare Copy: jij vertelt, ik schrijf",
       "Google Snelstart: Google Mijn Bedrijf setup",
-      "Beheer Kickstart: schermopname hoe je zelf aanpast",
       "30 Dagen Nazorg: gratis aanpassingen eerste maand",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
@@ -213,39 +209,56 @@ const Prijzen = () => {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground"
-        >
-          Revisierondes op? Extra rondes zijn bij te boeken voor €149 per keer (excl. btw).
-        </motion.p>
-
-        {/* Garantieblok */}
+        {/* Trust signals */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.7 }}
-          className="mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 px-8 py-6 text-center"
+          transition={{ delay: 0.6 }}
+          className="mx-auto mt-10 max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Nu tijdelijk</p>
-          <p className="text-foreground font-semibold mb-1">Extra ronde gratis.</p>
-          <p className="text-sm text-muted-foreground mt-2">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
+          {[
+            {
+              icon: RefreshCw,
+              label: "Extra revisieronde gratis",
+              sub: "Tijdelijk cadeau — normaal €149 per ronde",
+              accent: true,
+            },
+            {
+              icon: ShieldCheck,
+              label: "Betaal pas bij akkoord",
+              sub: "Geen verborgen kosten, geen kleine lettertjes",
+              accent: false,
+            },
+            {
+              icon: Users,
+              label: "Max. 3 projecten/maand",
+              sub: "Zo garandeer ik kwaliteit voor elk project",
+              accent: false,
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.65 + i * 0.08 }}
+              className={`flex flex-col items-center text-center gap-2 rounded-2xl px-5 py-5 ${
+                item.accent
+                  ? "bg-primary/8 border border-primary/20"
+                  : "bg-card border border-foreground/[0.05]"
+              }`}
+            >
+              <div className={`rounded-full p-2 ${item.accent ? "bg-primary/15" : "bg-secondary"}`}>
+                <item.icon className={`h-4 w-4 ${item.accent ? "text-primary" : "text-muted-foreground"}`} />
+              </div>
+              <p className={`text-sm font-semibold leading-snug ${item.accent ? "text-primary" : "text-foreground"}`}>
+                {item.label}
+              </p>
+              <p className="text-xs text-muted-foreground leading-snug">{item.sub}</p>
+            </motion.div>
+          ))}
         </motion.div>
-
-        {/* Schaarste */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.9 }}
-          className="mx-auto mt-5 max-w-2xl text-center text-sm text-muted-foreground/60"
-        >
-          Ik neem maximaal 3 nieuwe projecten per maand aan om kwaliteit te garanderen.
-        </motion.p>
 
         {/* Onderhoudspakketten */}
         <motion.div
