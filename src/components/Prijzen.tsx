@@ -28,10 +28,10 @@ function AnimatedPrice({ target, prefix = "€" }: { target: number; prefix?: st
 
 const plans = [
   {
-    name: "Vindbaar in 3 Weken",
+    name: "Snel vindbaar",
     price: 499,
     priceLabel: "€499",
-    valueAnchor: "Totale waarde €2.000",
+    valueAnchor: null,
     period: "eenmalig",
     featured: false,
     tagline: "Voor zzp'ers die deze week nog vindbaar willen zijn op Google.",
@@ -47,10 +47,10 @@ const plans = [
     ],
   },
   {
-    name: "De Klantenmagneet",
+    name: "Optimaal vindbaar",
     price: 899,
     priceLabel: "€899",
-    valueAnchor: "Totale waarde €3.900",
+    valueAnchor: null,
     period: "eenmalig",
     featured: true,
     badge: "Meest gekozen",
@@ -70,7 +70,7 @@ const plans = [
     ],
   },
   {
-    name: "Groeipartner",
+    name: "Op maat",
     price: 0,
     priceLabel: "Op aanvraag",
     valueAnchor: null,
@@ -107,7 +107,7 @@ const Prijzen = () => {
             Transparante prijzen, geen verrassingen
           </h2>
           <p className="max-w-2xl text-lg text-muted-foreground">
-            Starter voor een compacte site, Plus voor extra ruimte en Op maat voor grotere trajecten. Alle prijzen zijn exclusief 21% btw.
+            Snel vindbaar voor een compacte site, Optimaal vindbaar voor extra ruimte en Op maat voor grotere trajecten. Alle prijzen zijn exclusief 21% btw.
           </p>
         </motion.div>
 
@@ -231,9 +231,8 @@ const Prijzen = () => {
           transition={{ delay: 0.7 }}
           className="mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 px-8 py-6 text-center"
         >
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Dubbele garantie</p>
-          <p className="text-foreground font-semibold mb-1">Demo niet wat je verwachtte? Extra ronde gratis. Nog steeds niet blij? Dan betaal je niks. En je houdt de demo.</p>
-          <p className="text-foreground font-semibold mb-1">Na oplevering: als je site binnen 90 dagen niet vindbaar is op Google voor je belangrijkste zoekterm, werk ik gratis door tot het zover is.</p>
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Nu tijdelijk</p>
+          <p className="text-foreground font-semibold mb-1">Extra ronde gratis.</p>
           <p className="text-sm text-muted-foreground mt-2">Je betaalt pas als je besluit verder te gaan. Geen verborgen kosten, geen kleine lettertjes.</p>
         </motion.div>
 
