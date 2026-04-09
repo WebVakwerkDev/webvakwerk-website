@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Check, RefreshCw, ShieldCheck, Users } from "lucide-react";
+import { Check, RefreshCw, ShieldCheck, Users, Zap, TrendingUp, Wrench, Mail, BarChart2, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 
