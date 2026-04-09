@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "Hoeveel aanpassingen kan ik doen?",
-    answer: "Bij Vindbaar in 3 Weken heb je 3 revisierondes, bij De Klantenmagneet 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
+    answer: "Bij Snel vindbaar heb je 3 revisierondes, bij Optimaal vindbaar 5. Heb je daarna nog wijzigingen nodig? Die kun je bijboeken voor €149 per ronde (excl. btw).",
   },
   {
     question: "Kan ik mijn website zelf beheren na oplevering?",
@@ -21,11 +21,11 @@ const faqs = [
   },
   {
     question: "Wat kost een website laten maken bij Webvakwerk?",
-    answer: "Vindbaar in 3 Weken begint vanaf €499 eenmalig, De Klantenmagneet vanaf €899. Beide zijn exclusief 21% btw. Voor grotere trajecten is er het Groeipartner pakket op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
+    answer: "Snel vindbaar begint vanaf €499 eenmalig, Optimaal vindbaar vanaf €899. Beide zijn exclusief 21% btw. Voor grotere trajecten is er het Op maat pakket op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
   },
   {
     question: "Kan ik ook in termijnen betalen?",
-    answer: "Ja. Vindbaar in 3 Weken kan in 2 termijnen van €275, De Klantenmagneet in 3 termijnen van €330. Je betaalt het eerste deel bij akkoord, de rest gespreid over het traject.",
+    answer: "Ja. Snel vindbaar kan in 2 termijnen van €275, Optimaal vindbaar in 3 termijnen van €330. Je betaalt het eerste deel bij akkoord, de rest gespreid over het traject.",
   },
   {
     question: "Wat houdt het onderhoudspakket in?",

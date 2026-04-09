@@ -91,7 +91,7 @@ const Hero = () => {
             transition={{ delay: 1.3, duration: 0.5 }}
             className="mt-4 text-sm text-muted-foreground"
           >
-            Binnen 5 dagen een werkende demo. Geen technisch gedoe. Je betaalt pas als je verder wilt.
+            Binnen 5 dagen een werkende demo. Je betaalt pas als je verder wilt.
           </motion.p>
 
           <motion.div
