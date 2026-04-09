@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Check, RefreshCw, ShieldCheck, Users, Minus } from "lucide-react";
+import { Check, RefreshCw, ShieldCheck, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 
@@ -57,8 +57,6 @@ const plans = [
       "Tot 5 pagina's, animaties en premium design",
       "Contactformulier zodat klanten direct contact opnemen",
       "Uitgebreide SEO: beter vindbaar in Google",
-      "Google Snelstart: Google Mijn Bedrijf setup",
-      "30 Dagen Nazorg: gratis aanpassingen eerste maand",
       "Gratis demo vooraf, betaal pas bij akkoord",
       "Live binnen 3 weken na akkoord",
       "Max. 5 revisierondes inbegrepen",
@@ -297,84 +295,78 @@ const Prijzen = () => {
             </p>
           </motion.div>
 
-          {/* Comparison table — donkere variant */}
+          {/* Één container, twee kolommen */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.35 }}
-            className="rounded-2xl border border-white/[0.08] overflow-hidden"
+            className="rounded-2xl border border-white/[0.08] overflow-hidden grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.07]"
           >
-            {/* Column headers */}
-            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-white/[0.05] border-b border-white/[0.07] px-5 sm:px-6 py-4">
-              <div />
-              <div className="text-center px-2">
-                <p className="text-xs font-bold uppercase tracking-widest text-background/40 mb-0.5">Basis</p>
-                <p className="font-syne text-xl font-extrabold text-background">€49<span className="text-xs font-normal text-background/40">/mnd</span></p>
+            {/* Basis */}
+            <motion.div
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.45 }}
+              className="p-8 flex flex-col"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-background/35 mb-5">Basis</p>
+              <div className="mb-7">
+                <span className="font-syne text-6xl font-extrabold text-background leading-none">€49</span>
+                <span className="block text-sm text-background/30 mt-2">per maand, excl. btw</span>
               </div>
-              <div className="text-center px-2">
-                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-0.5">Plus</p>
-                <p className="font-syne text-xl font-extrabold text-primary">€99<span className="text-xs font-normal text-primary/50">/mnd</span></p>
-              </div>
-            </div>
-
-            {/* Feature rows */}
-            {([
-              { label: "Hosting & technische updates", basis: true,     plus: true         },
-              { label: "Uptime monitoring",            basis: true,     plus: true         },
-              { label: "Aanpassingen per maand",       basis: "1x",     plus: "3x"         },
-              { label: "Maandelijkse SEO-check",       basis: false,    plus: true         },
-              { label: "Google prestatierapport",      basis: false,    plus: true         },
-              { label: "Support",                      basis: "E-mail", plus: "Prioriteit" },
-            ] as const).map((row, i) => (
-              <motion.div
-                key={row.label}
-                initial={{ opacity: 0, x: -8 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + i * 0.05 }}
-                className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] px-5 sm:px-6 py-3.5 border-b border-white/[0.05] last:border-0"
+              <ul className="space-y-2.5 flex-1 mb-8">
+                {["Hosting & technische updates", "Uptime monitoring", "1 aanpassing per maand", "E-mail support"].map((f) => (
+                  <li key={f} className="flex items-center gap-2.5 text-sm text-background/45">
+                    <span className="w-1 h-1 rounded-full bg-background/25 shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/aanvraag"
+                className="block text-center text-sm font-semibold py-3 rounded-full border border-white/15 text-background/70 hover:bg-white/[0.07] transition-colors"
               >
-                <span className="text-sm text-background/60 self-center">{row.label}</span>
-                <div className="flex justify-center items-center px-2">
-                  {row.basis === true
-                    ? <Check className="h-4 w-4 text-background/35" />
-                    : row.basis === false
-                    ? <Minus className="h-3.5 w-3.5 text-background/15" />
-                    : <span className="text-xs font-semibold text-background/50">{row.basis}</span>
-                  }
-                </div>
-                <div className="flex justify-center items-center px-2">
-                  {row.plus === true
-                    ? <Check className="h-4 w-4 text-primary" />
-                    : row.plus === false
-                    ? <Minus className="h-3.5 w-3.5 text-background/15" />
-                    : <span className="text-xs font-semibold text-primary">{row.plus}</span>
-                  }
-                </div>
-              </motion.div>
-            ))}
+                Basis kiezen
+              </Link>
+            </motion.div>
 
-            {/* CTA row */}
-            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-white/[0.04] px-5 sm:px-6 py-4 gap-3">
-              <div />
-              <div className="px-2">
-                <Link
-                  to="/aanvraag"
-                  className="block text-center text-xs font-semibold py-2 px-3 rounded-full border border-white/20 text-background hover:bg-white/10 transition-colors whitespace-nowrap"
-                >
-                  Basis kiezen
-                </Link>
+            {/* Plus */}
+            <motion.div
+              initial={{ opacity: 0, x: 12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="p-8 flex flex-col bg-primary/[0.06]"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary mb-5">Plus</p>
+              <div className="mb-7">
+                <span className="font-syne text-6xl font-extrabold text-primary leading-none">€99</span>
+                <span className="block text-sm text-primary/35 mt-2">per maand, excl. btw</span>
               </div>
-              <div className="px-2">
-                <Link
-                  to="/aanvraag"
-                  className="block text-center text-xs font-bold py-2 px-3 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity whitespace-nowrap"
-                >
-                  Plus kiezen
-                </Link>
-              </div>
-            </div>
+              <ul className="space-y-2.5 flex-1 mb-8">
+                {["Alles van Basis", "Maandelijkse SEO-check", "Google prestatierapport", "3 aanpassingen per maand", "Prioriteit support"].map((f, i) => (
+                  <motion.li
+                    key={f}
+                    initial={{ opacity: 0, x: 6 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.55 + i * 0.05 }}
+                    className="flex items-center gap-2.5 text-sm text-background/60"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
+                    {f}
+                  </motion.li>
+                ))}
+              </ul>
+              <Link
+                to="/aanvraag"
+                className="block text-center text-sm font-bold py-3 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
+              >
+                Plus kiezen
+              </Link>
+            </motion.div>
           </motion.div>
 
           <p className="mt-4 text-center text-xs text-background/30">
