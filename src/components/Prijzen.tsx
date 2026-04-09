@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Check, RefreshCw, ShieldCheck, Users, Wrench, BarChart2, Star } from "lucide-react";
+import { Check, RefreshCw, ShieldCheck, Users, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 
@@ -221,7 +221,7 @@ const Prijzen = () => {
             {
               icon: RefreshCw,
               label: "Extra revisieronde gratis",
-              sub: "Tijdelijk cadeau — normaal €149 per ronde",
+              sub: "Tijdelijk cadeau, normaal €149 per ronde",
               accent: true,
             },
             {
@@ -266,163 +266,102 @@ const Prijzen = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mx-auto mt-20 max-w-4xl"
+          className="mx-auto mt-20 max-w-3xl"
         >
-          {/* Header */}
-          <div className="text-center mb-10">
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Na oplevering</p>
-            <h3 className="mb-3 font-syne text-2xl font-extrabold text-foreground md:text-3xl">
-              Onderhoud & groei
-            </h3>
-            <p className="text-muted-foreground max-w-sm mx-auto text-sm">
-              Optioneel — maandelijks opzegbaar, geen gedoe.
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Na oplevering</p>
+              <h3 className="font-syne text-2xl font-extrabold text-foreground md:text-3xl">
+                Onderhoud & groei
+              </h3>
+            </div>
+            <p className="text-sm text-muted-foreground shrink-0">
+              Optioneel, maandelijks opzegbaar.
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-[0_12px_48px_-12px_hsl(var(--ink)/0.12)] border border-foreground/[0.06]">
-
-            {/* Basis */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              className="bg-card p-8 flex flex-col border-b md:border-b-0 md:border-r border-foreground/[0.06] relative"
-            >
-              {/* Subtle corner decoration */}
-              <div className="absolute top-0 right-0 w-24 h-24 opacity-[0.04] pointer-events-none">
-                <svg viewBox="0 0 96 96" fill="none">
-                  <circle cx="96" cy="0" r="60" fill="hsl(var(--ink))" />
-                </svg>
+          {/* Comparison table */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="rounded-2xl border border-foreground/[0.07] overflow-hidden"
+          >
+            {/* Column headers */}
+            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-secondary/50 border-b border-foreground/[0.06] px-5 sm:px-6 py-4">
+              <div />
+              <div className="text-center px-2">
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">Basis</p>
+                <p className="font-syne text-xl font-extrabold text-foreground">€49<span className="text-xs font-normal text-muted-foreground">/mnd</span></p>
               </div>
-
-              <div className="flex items-center gap-2 mb-5">
-                <div className="rounded-xl bg-secondary p-2">
-                  <Wrench className="h-4 w-4 text-muted-foreground" />
-                </div>
-                <span className="font-syne text-base font-bold text-foreground">Basis</span>
+              <div className="text-center px-2">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-0.5">Plus</p>
+                <p className="font-syne text-xl font-extrabold text-primary">€99<span className="text-xs font-normal text-primary/50">/mnd</span></p>
               </div>
+            </div>
 
-              <div className="mb-6">
-                <div className="flex items-end gap-1">
-                  <span className="font-syne text-4xl font-extrabold text-foreground">€49</span>
-                  <span className="text-sm text-muted-foreground mb-1">/maand</span>
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">excl. 21% btw</p>
-              </div>
-
-              <ul className="space-y-3 flex-1">
-                {[
-                  "Hosting & technische updates",
-                  "Uptime monitoring",
-                  "1 kleine aanpassing per maand",
-                  "E-mail support",
-                ].map((text) => (
-                  <li key={text} className="flex items-center gap-3 text-sm text-foreground">
-                    <Check className="h-4 w-4 shrink-0 text-muted-foreground" />
-                    {text}
-                  </li>
-                ))}
-              </ul>
-
-              <motion.a
-                href="/aanvraag"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-7 block rounded-full border border-foreground/15 py-2.5 text-center text-sm font-semibold text-foreground hover:bg-secondary transition-colors"
-              >
-                Basis kiezen →
-              </motion.a>
-            </motion.div>
-
-            {/* Plus — featured */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="bg-primary p-8 flex flex-col relative overflow-hidden"
-            >
-              {/* Shimmer */}
+            {/* Feature rows */}
+            {([
+              { label: "Hosting & technische updates", basis: true,    plus: true    },
+              { label: "Uptime monitoring",            basis: true,    plus: true    },
+              { label: "Aanpassingen per maand",       basis: "1x",    plus: "3x"    },
+              { label: "Maandelijkse SEO-check",       basis: false,   plus: true    },
+              { label: "Google prestatierapport",      basis: false,   plus: true    },
+              { label: "Support",                      basis: "E-mail",plus: "Prioriteit" },
+            ] as const).map((row, i) => (
               <motion.div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%)",
-                }}
-                animate={{ x: ["-100%", "200%"] }}
-                transition={{ duration: 4, repeat: Infinity, repeatDelay: 5, ease: "easeInOut" }}
-              />
-
-              {/* Decorative circle */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-white/[0.06] pointer-events-none" />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-white/[0.04] pointer-events-none" />
-
-              {/* Popular badge */}
-              <div className="absolute top-5 right-6">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.7, rotate: -6 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.65, type: "spring", stiffness: 280 }}
-                  className="flex items-center gap-1 rounded-full bg-primary-foreground/15 backdrop-blur-sm border border-white/20 px-3 py-1"
-                >
-                  <Star className="h-3 w-3 text-primary-foreground fill-primary-foreground" />
-                  <span className="text-xs font-bold text-primary-foreground">Populair</span>
-                </motion.div>
-              </div>
-
-              <div className="flex items-center gap-2 mb-5">
-                <div className="rounded-xl bg-primary-foreground/15 p-2">
-                  <BarChart2 className="h-4 w-4 text-primary-foreground" />
-                </div>
-                <span className="font-syne text-base font-bold text-primary-foreground">Plus</span>
-              </div>
-
-              <div className="mb-6">
-                <div className="flex items-end gap-1">
-                  <span className="font-syne text-4xl font-extrabold text-primary-foreground">€99</span>
-                  <span className="text-sm text-primary-foreground/70 mb-1">/maand</span>
-                </div>
-                <p className="text-xs text-primary-foreground/50 mt-1">excl. 21% btw</p>
-              </div>
-
-              <ul className="space-y-3 flex-1">
-                {[
-                  "Alles van Basis",
-                  "Maandelijkse SEO-check",
-                  "Google prestatierapport",
-                  "3 aanpassingen per maand",
-                  "Prioriteit support",
-                ].map((f, i) => (
-                  <motion.li
-                    key={f}
-                    initial={{ opacity: 0, x: 8 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + i * 0.06 }}
-                    className="flex items-center gap-3 text-sm text-primary-foreground/90"
-                  >
-                    <Check className="h-4 w-4 shrink-0 text-primary-foreground/60" />
-                    {f}
-                  </motion.li>
-                ))}
-              </ul>
-
-              <motion.a
-                href="/aanvraag"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-7 block rounded-full bg-primary-foreground py-2.5 text-center text-sm font-bold text-primary hover:opacity-90 transition-opacity"
+                key={row.label}
+                initial={{ opacity: 0, x: -8 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.45 + i * 0.05 }}
+                className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] px-5 sm:px-6 py-3.5 border-b border-foreground/[0.04] last:border-0"
               >
-                Plus kiezen →
-              </motion.a>
-            </motion.div>
-          </div>
+                <span className="text-sm text-foreground/75 self-center">{row.label}</span>
+                <div className="flex justify-center items-center px-2">
+                  {row.basis === true
+                    ? <Check className="h-4 w-4 text-muted-foreground" />
+                    : row.basis === false
+                    ? <Minus className="h-3.5 w-3.5 text-foreground/15" />
+                    : <span className="text-xs font-semibold text-muted-foreground">{row.basis}</span>
+                  }
+                </div>
+                <div className="flex justify-center items-center px-2">
+                  {row.plus === true
+                    ? <Check className="h-4 w-4 text-primary" />
+                    : row.plus === false
+                    ? <Minus className="h-3.5 w-3.5 text-foreground/15" />
+                    : <span className="text-xs font-semibold text-primary">{row.plus}</span>
+                  }
+                </div>
+              </motion.div>
+            ))}
 
-          {/* Small disclaimer */}
-          <p className="mt-5 text-center text-xs text-muted-foreground">
-            Geen contract — maandelijks opzegbaar. Onderhoud is altijd optioneel na oplevering.
+            {/* CTA row */}
+            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-secondary/30 px-5 sm:px-6 py-4 gap-3">
+              <div />
+              <div className="px-2">
+                <Link
+                  to="/aanvraag"
+                  className="block text-center text-xs font-semibold py-2 px-3 rounded-full border border-foreground/15 text-foreground hover:bg-secondary transition-colors whitespace-nowrap"
+                >
+                  Basis kiezen
+                </Link>
+              </div>
+              <div className="px-2">
+                <Link
+                  to="/aanvraag"
+                  className="block text-center text-xs font-bold py-2 px-3 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity whitespace-nowrap"
+                >
+                  Plus kiezen
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
+          <p className="mt-4 text-center text-xs text-muted-foreground">
+            Geen contract, maandelijks opzegbaar. Altijd optioneel na oplevering.
           </p>
         </motion.div>
       </div>

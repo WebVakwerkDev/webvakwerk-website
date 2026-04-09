@@ -58,7 +58,7 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            Laat zien wat je doet en ik bouw een eerste versie. Niet tevreden? Extra ronde gratis. Niet blij? Dan betaal je niks. En als je site binnen 90 dagen niet in Google staat, werk ik gratis door.
+            Laat zien wat je doet en ik bouw een eerste versie. Niet tevreden? Extra ronde gratis. Niet blij? Dan betaal je niks.
           </motion.p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.div
