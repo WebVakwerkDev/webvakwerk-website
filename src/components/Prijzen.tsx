@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Check, RefreshCw, ShieldCheck, Users, Zap, TrendingUp, Wrench, Mail, BarChart2, Star } from "lucide-react";
+import { Check, RefreshCw, ShieldCheck, Users, Wrench, BarChart2, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 
@@ -266,67 +266,164 @@ const Prijzen = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mx-auto mt-16 max-w-3xl"
+          className="mx-auto mt-20 max-w-4xl"
         >
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3 text-center">Na oplevering</p>
-          <h3 className="mb-2 font-syne text-2xl font-extrabold text-foreground text-center md:text-3xl">
-            Onderhoud & groei
-          </h3>
-          <p className="mb-8 text-center text-muted-foreground">
-            Optioneel. Je zit nergens aan vast en kunt maandelijks opzeggen.
-          </p>
+          {/* Header */}
+          <div className="text-center mb-10">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Na oplevering</p>
+            <h3 className="mb-3 font-syne text-2xl font-extrabold text-foreground md:text-3xl">
+              Onderhoud & groei
+            </h3>
+            <p className="text-muted-foreground max-w-sm mx-auto text-sm">
+              Optioneel — maandelijks opzegbaar, geen gedoe.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {[
-              {
-                tier: "Basis",
-                price: "€49",
-                features: [
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-[0_12px_48px_-12px_hsl(var(--ink)/0.12)] border border-foreground/[0.06]">
+
+            {/* Basis */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="bg-card p-8 flex flex-col border-b md:border-b-0 md:border-r border-foreground/[0.06] relative"
+            >
+              {/* Subtle corner decoration */}
+              <div className="absolute top-0 right-0 w-24 h-24 opacity-[0.04] pointer-events-none">
+                <svg viewBox="0 0 96 96" fill="none">
+                  <circle cx="96" cy="0" r="60" fill="hsl(var(--ink))" />
+                </svg>
+              </div>
+
+              <div className="flex items-center gap-2 mb-5">
+                <div className="rounded-xl bg-secondary p-2">
+                  <Wrench className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <span className="font-syne text-base font-bold text-foreground">Basis</span>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-end gap-1">
+                  <span className="font-syne text-4xl font-extrabold text-foreground">€49</span>
+                  <span className="text-sm text-muted-foreground mb-1">/maand</span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">excl. 21% btw</p>
+              </div>
+
+              <ul className="space-y-3 flex-1">
+                {[
                   "Hosting & technische updates",
                   "Uptime monitoring",
                   "1 kleine aanpassing per maand",
                   "E-mail support",
-                ],
-              },
-              {
-                tier: "Plus",
-                price: "€99",
-                highlight: true,
-                features: [
+                ].map((text) => (
+                  <li key={text} className="flex items-center gap-3 text-sm text-foreground">
+                    <Check className="h-4 w-4 shrink-0 text-muted-foreground" />
+                    {text}
+                  </li>
+                ))}
+              </ul>
+
+              <motion.a
+                href="/aanvraag"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-7 block rounded-full border border-foreground/15 py-2.5 text-center text-sm font-semibold text-foreground hover:bg-secondary transition-colors"
+              >
+                Basis kiezen →
+              </motion.a>
+            </motion.div>
+
+            {/* Plus — featured */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              className="bg-primary p-8 flex flex-col relative overflow-hidden"
+            >
+              {/* Shimmer */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%)",
+                }}
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 4, repeat: Infinity, repeatDelay: 5, ease: "easeInOut" }}
+              />
+
+              {/* Decorative circle */}
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-white/[0.06] pointer-events-none" />
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-white/[0.04] pointer-events-none" />
+
+              {/* Popular badge */}
+              <div className="absolute top-5 right-6">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.7, rotate: -6 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.65, type: "spring", stiffness: 280 }}
+                  className="flex items-center gap-1 rounded-full bg-primary-foreground/15 backdrop-blur-sm border border-white/20 px-3 py-1"
+                >
+                  <Star className="h-3 w-3 text-primary-foreground fill-primary-foreground" />
+                  <span className="text-xs font-bold text-primary-foreground">Populair</span>
+                </motion.div>
+              </div>
+
+              <div className="flex items-center gap-2 mb-5">
+                <div className="rounded-xl bg-primary-foreground/15 p-2">
+                  <BarChart2 className="h-4 w-4 text-primary-foreground" />
+                </div>
+                <span className="font-syne text-base font-bold text-primary-foreground">Plus</span>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-end gap-1">
+                  <span className="font-syne text-4xl font-extrabold text-primary-foreground">€99</span>
+                  <span className="text-sm text-primary-foreground/70 mb-1">/maand</span>
+                </div>
+                <p className="text-xs text-primary-foreground/50 mt-1">excl. 21% btw</p>
+              </div>
+
+              <ul className="space-y-3 flex-1">
+                {[
                   "Alles van Basis",
                   "Maandelijkse SEO-check",
                   "Google prestatierapport",
                   "3 aanpassingen per maand",
                   "Prioriteit support",
-                ],
-              },
-            ].map((plan) => (
-              <motion.div
-                key={plan.tier}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`rounded-2xl p-6 ${
-                  plan.highlight
-                    ? "bg-primary/5 border-2 border-primary/20"
-                    : "bg-card border border-foreground/[0.04]"
-                } shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)]`}
+                ].map((f, i) => (
+                  <motion.li
+                    key={f}
+                    initial={{ opacity: 0, x: 8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + i * 0.06 }}
+                    className="flex items-center gap-3 text-sm text-primary-foreground/90"
+                  >
+                    <Check className="h-4 w-4 shrink-0 text-primary-foreground/60" />
+                    {f}
+                  </motion.li>
+                ))}
+              </ul>
+
+              <motion.a
+                href="/aanvraag"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-7 block rounded-full bg-primary-foreground py-2.5 text-center text-sm font-bold text-primary hover:opacity-90 transition-opacity"
               >
-                <h4 className="font-syne text-lg font-bold text-foreground">{plan.tier}</h4>
-                <div className="mt-1 mb-4">
-                  <span className="font-syne text-2xl font-extrabold text-foreground">{plan.price}</span>
-                  <span className="ml-1 text-sm text-muted-foreground">/maand excl. btw</span>
-                </div>
-                <ul className="space-y-2">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-foreground">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+                Plus kiezen →
+              </motion.a>
+            </motion.div>
           </div>
+
+          {/* Small disclaimer */}
+          <p className="mt-5 text-center text-xs text-muted-foreground">
+            Geen contract — maandelijks opzegbaar. Onderhoud is altijd optioneel na oplevering.
+          </p>
         </motion.div>
       </div>
     </section>
