@@ -24,16 +24,12 @@ const faqs = [
     answer: "Snel vindbaar begint vanaf €499 eenmalig, Optimaal vindbaar vanaf €899. Beide zijn exclusief 21% btw. Voor grotere trajecten is er het Op maat pakket op aanvraag. Je betaalt sowieso pas nadat je de gratis demo hebt gezien en besluit verder te gaan.",
   },
   {
-    question: "Kan ik ook in termijnen betalen?",
-    answer: "Ja. Snel vindbaar kan in 2 termijnen van €275, Optimaal vindbaar in 3 termijnen van €330. Je betaalt het eerste deel bij akkoord, de rest gespreid over het traject.",
-  },
-  {
     question: "Wat houdt het onderhoudspakket in?",
     answer: "Na oplevering kun je kiezen voor een optioneel onderhoudspakket. Basis (€29/maand) bevat hosting, updates en e-mail support. Plus (€69/maand) voegt daar een aanpassing per maand, maandelijkse SEO-check, prestatierapport en prioriteit support aan toe. Je zit nergens aan vast en kunt maandelijks opzeggen.",
   },
   {
     question: "Kan ik ook hulp krijgen bij hosting?",
-    answer: "Ja. Hosting zit inbegrepen in het onderhoudspakket, of ik help je bij het opzetten van betaalbare hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
+    answer: "Ja, dat zit al inbegrepen bij het Snel vindbaar pakket. Veel bedrijven betalen te veel voor hosting via een bureau of reseller terwijl dat helemaal niet nodig is. Ik help je bij het overstappen naar een goedkopere, betrouwbare hostingpartij of bij het opzetten van hosting in eigen beheer. Geen onnodige marges, gewoon een stabiele omgeving voor een eerlijke prijs.",
   },
 ];
 
