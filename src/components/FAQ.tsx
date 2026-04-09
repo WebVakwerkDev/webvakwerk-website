@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: "Wat houdt het onderhoudspakket in?",
-    answer: "Na oplevering kun je kiezen voor een optioneel onderhoudspakket. Basis (€49/maand) bevat hosting, updates en 1 aanpassing per maand. Plus (€99/maand) voegt daar een maandelijkse SEO-check, prestatierapport en 3 aanpassingen aan toe. Je zit nergens aan vast en kunt maandelijks opzeggen.",
+    answer: "Na oplevering kun je kiezen voor een optioneel onderhoudspakket. Basis (€29/maand) bevat hosting, updates en e-mail support. Plus (€69/maand) voegt daar een aanpassing per maand, maandelijkse SEO-check, prestatierapport en prioriteit support aan toe. Je zit nergens aan vast en kunt maandelijks opzeggen.",
   },
   {
     question: "Kan ik ook hulp krijgen bij hosting?",

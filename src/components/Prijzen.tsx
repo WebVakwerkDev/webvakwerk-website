@@ -313,11 +313,11 @@ const Prijzen = () => {
             >
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-background/35 mb-5">Basis</p>
               <div className="mb-7">
-                <span className="font-syne text-6xl font-extrabold text-background leading-none">€49</span>
+                <span className="font-syne text-6xl font-extrabold text-background leading-none">€29</span>
                 <span className="block text-sm text-background/30 mt-2">per maand, excl. btw</span>
               </div>
               <ul className="space-y-2.5 flex-1 mb-8">
-                {["Hosting & technische updates", "Uptime monitoring", "1 aanpassing per maand", "E-mail support"].map((f) => (
+                {["Hosting & technische updates", "Uptime monitoring", "E-mail support"].map((f) => (
                   <li key={f} className="flex items-center gap-2.5 text-sm text-background/45">
                     <span className="w-1 h-1 rounded-full bg-background/25 shrink-0" />
                     {f}
@@ -338,24 +338,24 @@ const Prijzen = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="p-8 flex flex-col bg-primary/[0.06]"
+              className="p-8 flex flex-col bg-white/[0.04]"
             >
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary mb-5">Plus</p>
               <div className="mb-7">
-                <span className="font-syne text-6xl font-extrabold text-primary leading-none">€99</span>
-                <span className="block text-sm text-primary/35 mt-2">per maand, excl. btw</span>
+                <span className="font-syne text-6xl font-extrabold text-background leading-none">€69</span>
+                <span className="block text-sm text-background/30 mt-2">per maand, excl. btw</span>
               </div>
               <ul className="space-y-2.5 flex-1 mb-8">
-                {["Alles van Basis", "Maandelijkse SEO-check", "Google prestatierapport", "3 aanpassingen per maand", "Prioriteit support"].map((f, i) => (
+                {["Alles van Basis", "1 aanpassing per maand", "Maandelijkse SEO-check", "Google prestatierapport", "Prioriteit support"].map((f, i) => (
                   <motion.li
                     key={f}
                     initial={{ opacity: 0, x: 6 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.55 + i * 0.05 }}
-                    className="flex items-center gap-2.5 text-sm text-background/60"
+                    className="flex items-center gap-2.5 text-sm text-background/55"
                   >
-                    <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
+                    <span className="w-1 h-1 rounded-full bg-background/30 shrink-0" />
                     {f}
                   </motion.li>
                 ))}
