@@ -86,9 +86,10 @@ const plans = [
 
 const Prijzen = () => {
   return (
-    <section id="prijzen" className="scroll-mt-28 px-6 py-16 relative overflow-hidden">
-      {/* Subtle warm background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-primary/[0.04]" />
+    <section id="prijzen" className="scroll-mt-28 relative overflow-hidden">
+      {/* Prijzen deel — lichte achtergrond */}
+      <div className="px-6 py-16 relative">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-primary/[0.04]" />
 
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -260,40 +261,56 @@ const Prijzen = () => {
           ))}
         </motion.div>
 
-        {/* Onderhoudspakketten */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mx-auto mt-20 max-w-3xl"
-        >
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+      </div>
+      </div>
+
+      {/* Onderhoud — donkere escape, zelfde stijl als Diensten */}
+      <div className="bg-foreground/95 relative overflow-hidden px-6 py-16">
+        {/* Decoratieve gloed */}
+        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/15 blur-[100px] pointer-events-none" />
+        <div className="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
+        {/* Dot patroon */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle, hsl(var(--background)) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+
+        <div className="mx-auto max-w-3xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8"
+          >
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-2">Na oplevering</p>
-              <h3 className="font-syne text-2xl font-extrabold text-foreground md:text-3xl">
+              <h3 className="font-syne text-2xl font-extrabold text-background md:text-3xl">
                 Onderhoud & groei
               </h3>
             </div>
-            <p className="text-sm text-muted-foreground shrink-0">
+            <p className="text-sm text-background/40 shrink-0">
               Optioneel, maandelijks opzegbaar.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Comparison table */}
+          {/* Comparison table — donkere variant */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="rounded-2xl border border-foreground/[0.07] overflow-hidden"
+            transition={{ delay: 0.35 }}
+            className="rounded-2xl border border-white/[0.08] overflow-hidden"
           >
             {/* Column headers */}
-            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-secondary/50 border-b border-foreground/[0.06] px-5 sm:px-6 py-4">
+            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-white/[0.05] border-b border-white/[0.07] px-5 sm:px-6 py-4">
               <div />
               <div className="text-center px-2">
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">Basis</p>
-                <p className="font-syne text-xl font-extrabold text-foreground">€49<span className="text-xs font-normal text-muted-foreground">/mnd</span></p>
+                <p className="text-xs font-bold uppercase tracking-widest text-background/40 mb-0.5">Basis</p>
+                <p className="font-syne text-xl font-extrabold text-background">€49<span className="text-xs font-normal text-background/40">/mnd</span></p>
               </div>
               <div className="text-center px-2">
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-0.5">Plus</p>
@@ -303,35 +320,35 @@ const Prijzen = () => {
 
             {/* Feature rows */}
             {([
-              { label: "Hosting & technische updates", basis: true,    plus: true    },
-              { label: "Uptime monitoring",            basis: true,    plus: true    },
-              { label: "Aanpassingen per maand",       basis: "1x",    plus: "3x"    },
-              { label: "Maandelijkse SEO-check",       basis: false,   plus: true    },
-              { label: "Google prestatierapport",      basis: false,   plus: true    },
-              { label: "Support",                      basis: "E-mail",plus: "Prioriteit" },
+              { label: "Hosting & technische updates", basis: true,     plus: true         },
+              { label: "Uptime monitoring",            basis: true,     plus: true         },
+              { label: "Aanpassingen per maand",       basis: "1x",     plus: "3x"         },
+              { label: "Maandelijkse SEO-check",       basis: false,    plus: true         },
+              { label: "Google prestatierapport",      basis: false,    plus: true         },
+              { label: "Support",                      basis: "E-mail", plus: "Prioriteit" },
             ] as const).map((row, i) => (
               <motion.div
                 key={row.label}
                 initial={{ opacity: 0, x: -8 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.45 + i * 0.05 }}
-                className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] px-5 sm:px-6 py-3.5 border-b border-foreground/[0.04] last:border-0"
+                transition={{ delay: 0.4 + i * 0.05 }}
+                className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] px-5 sm:px-6 py-3.5 border-b border-white/[0.05] last:border-0"
               >
-                <span className="text-sm text-foreground/75 self-center">{row.label}</span>
+                <span className="text-sm text-background/60 self-center">{row.label}</span>
                 <div className="flex justify-center items-center px-2">
                   {row.basis === true
-                    ? <Check className="h-4 w-4 text-muted-foreground" />
+                    ? <Check className="h-4 w-4 text-background/35" />
                     : row.basis === false
-                    ? <Minus className="h-3.5 w-3.5 text-foreground/15" />
-                    : <span className="text-xs font-semibold text-muted-foreground">{row.basis}</span>
+                    ? <Minus className="h-3.5 w-3.5 text-background/15" />
+                    : <span className="text-xs font-semibold text-background/50">{row.basis}</span>
                   }
                 </div>
                 <div className="flex justify-center items-center px-2">
                   {row.plus === true
                     ? <Check className="h-4 w-4 text-primary" />
                     : row.plus === false
-                    ? <Minus className="h-3.5 w-3.5 text-foreground/15" />
+                    ? <Minus className="h-3.5 w-3.5 text-background/15" />
                     : <span className="text-xs font-semibold text-primary">{row.plus}</span>
                   }
                 </div>
@@ -339,12 +356,12 @@ const Prijzen = () => {
             ))}
 
             {/* CTA row */}
-            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-secondary/30 px-5 sm:px-6 py-4 gap-3">
+            <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_140px_140px] bg-white/[0.04] px-5 sm:px-6 py-4 gap-3">
               <div />
               <div className="px-2">
                 <Link
                   to="/aanvraag"
-                  className="block text-center text-xs font-semibold py-2 px-3 rounded-full border border-foreground/15 text-foreground hover:bg-secondary transition-colors whitespace-nowrap"
+                  className="block text-center text-xs font-semibold py-2 px-3 rounded-full border border-white/20 text-background hover:bg-white/10 transition-colors whitespace-nowrap"
                 >
                   Basis kiezen
                 </Link>
@@ -360,10 +377,10 @@ const Prijzen = () => {
             </div>
           </motion.div>
 
-          <p className="mt-4 text-center text-xs text-muted-foreground">
+          <p className="mt-4 text-center text-xs text-background/30">
             Geen contract, maandelijks opzegbaar. Altijd optioneel na oplevering.
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
