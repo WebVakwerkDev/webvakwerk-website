@@ -82,21 +82,24 @@ const processFaqs = [
 function ProcessFaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.button
-      type="button"
-      onClick={() => setOpen(!open)}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
-      className="w-full text-left rounded-2xl bg-card border border-foreground/[0.04] p-5 sm:p-6"
-    >
-      <div className="flex items-center justify-between gap-4">
-        <h3 className="font-syne text-base font-bold text-foreground">{question}</h3>
-        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.3 }} className="shrink-0">
-          <ChevronDown className="w-5 h-5 text-primary" />
-        </motion.div>
-      </div>
+    <div className="rounded-2xl bg-card border border-foreground/[0.04] p-5 sm:p-6">
+      <h3 className="font-syne text-base font-bold text-foreground">
+        <motion.button
+          type="button"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.08 }}
+          className="w-full text-left flex items-center justify-between gap-4"
+        >
+          {question}
+          <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.3 }} className="shrink-0">
+            <ChevronDown className="w-5 h-5 text-primary" />
+          </motion.div>
+        </motion.button>
+      </h3>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -110,7 +113,7 @@ function ProcessFaqItem({ question, answer, index }: { question: string; answer:
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.button>
+    </div>
   );
 }
 

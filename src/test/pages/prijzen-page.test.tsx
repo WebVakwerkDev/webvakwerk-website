@@ -11,8 +11,8 @@ describe('PrijzenPage', () => {
 
   it('toont alle drie pakketten', () => {
     render(<MemoryRouter><PrijzenPage /></MemoryRouter>);
-    expect(screen.getAllByText('Snel vindbaar').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Optimaal vindbaar').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Snel vindbaar')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Optimaal vindbaar')[0]).toBeInTheDocument();
     expect(screen.getByText('Op maat')).toBeInTheDocument();
   });
 
