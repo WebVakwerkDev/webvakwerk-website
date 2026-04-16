@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Check, RefreshCw, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Check, RefreshCw, ShieldCheck, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 
@@ -257,6 +257,23 @@ const Prijzen = () => {
               <p className="text-xs text-muted-foreground leading-snug">{item.sub}</p>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Link naar prijzen pagina */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7 }}
+          className="mt-6 text-center"
+        >
+          <Link
+            to="/prijzen"
+            className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
+          >
+            Bekijk alle pakketdetails en vergelijking
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
 
       </div>
