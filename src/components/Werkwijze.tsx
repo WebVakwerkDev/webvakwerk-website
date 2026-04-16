@@ -1,7 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -106,23 +104,6 @@ const Werkwijze = () => {
             ))}
           </div>
         </div>
-
-        {/* Link naar werkwijze pagina */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 text-center"
-        >
-          <Link
-            to="/werkwijze"
-            className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
-          >
-            Lees meer over hoe het werkt
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

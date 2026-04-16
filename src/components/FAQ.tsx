@@ -37,29 +37,26 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-2xl bg-card border border-foreground/[0.04] shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)] p-5 sm:p-6 transition-shadow hover:shadow-[0_8px_24px_-8px_hsl(var(--ink)/0.1)]">
-      <h3 className="font-syne text-base sm:text-lg font-bold text-foreground">
-        <motion.button
-          type="button"
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.08 }}
-          whileHover={{ scale: 1.01 }}
-          className="w-full text-left flex items-center justify-between gap-4"
+    <motion.button
+      type="button"
+      onClick={() => setOpen(!open)}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      whileHover={{ scale: 1.01 }}
+      className="w-full text-left rounded-2xl bg-card border border-foreground/[0.04] shadow-[0_4px_20px_-8px_hsl(var(--ink)/0.06)] p-5 sm:p-6 transition-shadow hover:shadow-[0_8px_24px_-8px_hsl(var(--ink)/0.1)]"
+    >
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="font-syne text-base sm:text-lg font-bold text-foreground">{question}</h3>
+        <motion.div
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+          className="shrink-0"
         >
-          {question}
-          <motion.div
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="shrink-0"
-          >
-            <ChevronDown className="w-5 h-5 text-primary" />
-          </motion.div>
-        </motion.button>
-      </h3>
+          <ChevronDown className="w-5 h-5 text-primary" />
+        </motion.div>
+      </div>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -73,7 +70,7 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.button>
   );
 }
 

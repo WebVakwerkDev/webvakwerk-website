@@ -25,10 +25,10 @@ const Footer = () => {
             <p className="text-sm font-bold text-background/70 mb-4 uppercase tracking-widest">Pagina's</p>
             <ul className="space-y-2">
               {[
-                { label: "Werkwijze", to: "/werkwijze" },
-                { label: "Diensten", to: "/diensten" },
+                { label: "Werkwijze", to: "/#werkwijze" },
+                { label: "Diensten", to: "/#diensten" },
                 { label: "Hosting & AI", to: "/diensten" },
-                { label: "Pakketten", to: "/prijzen" },
+                { label: "Pakketten", to: "/#prijzen" },
                 { label: "Demo aanvragen", to: "/aanvraag" },
               ].map((item, i) => (
                 <motion.li
