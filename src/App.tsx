@@ -6,6 +6,8 @@ import AanvraagPage from "./pages/AanvraagPage.tsx";
 import VoorwaardenPage from "./pages/VoorwaardenPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import DienstenPage from "./pages/DienstenPage.tsx";
+import WerkwijzePage from "./pages/WerkwijzePage.tsx";
+import PrijzenPage from "./pages/PrijzenPage.tsx";
 import ScrollManager from "./components/ScrollManager.tsx";
 
 const App = () => (
@@ -18,6 +20,8 @@ const App = () => (
         <Route path="/voorwaarden" element={<VoorwaardenPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/diensten" element={<DienstenPage />} />
+        <Route path="/werkwijze" element={<WerkwijzePage />} />
+        <Route path="/prijzen" element={<PrijzenPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
