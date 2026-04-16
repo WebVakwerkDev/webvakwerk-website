@@ -3,10 +3,10 @@ import { Compass, Layers, CreditCard, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const items = [
-  { icon: Compass, label: "Werkwijze", href: "/#werkwijze" },
-  { icon: Layers, label: "Diensten", href: "/#diensten" },
-  { icon: CreditCard, label: "Prijzen", href: "/#prijzen" },
-  { icon: Mail, label: "Contact", href: "/#contact" },
+  { icon: Compass, label: "Werkwijze", href: "/werkwijze" },
+  { icon: Layers, label: "Diensten", href: "/diensten" },
+  { icon: CreditCard, label: "Prijzen", href: "/prijzen" },
+  { icon: Mail, label: "Contact", href: "/aanvraag" },
 ];
 
 const MobileNav = () => {
