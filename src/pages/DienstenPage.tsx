@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Code, Smartphone, Search, FileText, Server, ArrowRightLeft, Workflow, Bot, Lightbulb, ArrowRight } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+import { Code, Smartphone, Search, FileText, HardDrive, ArrowRightLeft, Workflow, Bot, Lightbulb, ArrowRight, Server } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -33,7 +33,7 @@ const webServices = [
       "Ik help je met duidelijke teksten die meteen uitleggen wat je doet. Daardoor snappen bezoekers sneller je aanbod en nemen ze eerder contact op.",
   },
   {
-    icon: Server,
+    icon: HardDrive,
     title: "Betaalbare hosting",
     description:
       "Veel bedrijven betalen te veel voor hosting via een bureau of reseller. Ik help bij het opzetten van goedkope, betrouwbare hosting in eigen beheer.",
@@ -73,7 +73,7 @@ const extraServices = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40, rotateX: -10 },
   visible: (i: number) => ({
     opacity: 1,
