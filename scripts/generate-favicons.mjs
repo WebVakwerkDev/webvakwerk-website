@@ -19,7 +19,7 @@ async function renderSvgAt(size, outputPath) {
   body { width: ${size}px; height: ${size}px; overflow: hidden; }
   img { display: block; width: ${size}px; height: ${size}px; }
 </style></head>
-<body><img src="data:image/svg+xml;base64,${svgBase64}" /></body></html>`);
+<body><img src="data:image/svg+xml;base64,${svgBase64}" /></body></html>`, { waitUntil: 'networkidle' });
   await page.screenshot({
     path: outputPath,
     clip: { x: 0, y: 0, width: size, height: size },
@@ -28,13 +28,14 @@ async function renderSvgAt(size, outputPath) {
   console.log('Generated', path.basename(outputPath));
 }
 
-await renderSvgAt(32, path.join(publicDir, 'favicon-32x32.png'));
-await renderSvgAt(48, path.join(publicDir, 'favicon-48x48.png'));
-await renderSvgAt(180, path.join(publicDir, 'apple-touch-icon.png'));
+try {
+  await renderSvgAt(32, path.join(publicDir, 'favicon-32x32.png'));
+  await renderSvgAt(48, path.join(publicDir, 'favicon-48x48.png'));
+  await renderSvgAt(180, path.join(publicDir, 'apple-touch-icon.png'));
 
-// OG image 1200x630
-await page.setViewportSize({ width: 1200, height: 630 });
-await page.setContent(`<!DOCTYPE html>
+  // OG image 1200x630
+  await page.setViewportSize({ width: 1200, height: 630 });
+  await page.setContent(`<!DOCTYPE html>
 <html><head><style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -56,12 +57,13 @@ await page.setContent(`<!DOCTYPE html>
     <h1>Webvakwerk</h1>
     <p>Website laten maken op maat</p>
   </div>
-</body></html>`);
-await page.screenshot({
-  path: path.join(publicDir, 'og-image.png'),
-  clip: { x: 0, y: 0, width: 1200, height: 630 },
-});
-console.log('Generated og-image.png');
-
-await browser.close();
+</body></html>`, { waitUntil: 'networkidle' });
+  await page.screenshot({
+    path: path.join(publicDir, 'og-image.png'),
+    clip: { x: 0, y: 0, width: 1200, height: 630 },
+  });
+  console.log('Generated og-image.png');
+} finally {
+  await browser.close();
+}
 console.log('All done!');
