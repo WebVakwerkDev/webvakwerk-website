@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const navLinks = [
   { label: "Werkwijze", href: "/werkwijze" },
@@ -51,13 +51,15 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.08 }}
             >
-              <Link
+              <NavLink
                 to={item.href}
-                className="relative hover:text-primary transition-colors group"
+                className={({ isActive }) =>
+                  `relative transition-colors group ${isActive ? "text-primary" : "hover:text-primary"}`
+                }
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
-              </Link>
+              </NavLink>
             </motion.div>
           ))}
         </div>
@@ -111,13 +113,15 @@ const Navbar = () => {
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((item, i) => (
                 <motion.div key={item.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}>
-                  <Link
+                  <NavLink
                     to={item.href}
-                    className="text-foreground font-medium hover:text-primary transition-colors"
+                    className={({ isActive }) =>
+                      `font-medium transition-colors ${isActive ? "text-primary" : "text-foreground hover:text-primary"}`
+                    }
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
